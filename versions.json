@@ -2,13 +2,13 @@
   {
     "version": "renovate-stakater-.github-0.x",
     "title": "renovate-stakater-.github-0.x",
-    "aliases": [
-      "latest"
-    ]
+    "aliases": []
   },
   {
     "version": "feat-update-hibernation-docs",
     "title": "feat-update-hibernation-docs",
-    "aliases": []
+    "aliases": [
+      "latest"
+    ]
   }
 ]
