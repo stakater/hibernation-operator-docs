@@ -36,5 +36,6 @@ nav:
     - installation/setup-CRs.md
   - Integrations:
     - integrations/argocd.md
+  - changelog.md
   - eula.md
   - troubleshooting.md
