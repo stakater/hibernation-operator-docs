@@ -1,7 +1,5 @@
 # Concepts
 
-Here are the key concepts of the **Hibernation Operator**:
-
 ## Core Resources
 
 ### ClusterResourceSupervisor
