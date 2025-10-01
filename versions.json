@@ -7,9 +7,7 @@
   {
     "version": "renovate-stakater-.github-0.x",
     "title": "renovate-stakater-.github-0.x",
-    "aliases": [
-      "latest"
-    ]
+    "aliases": []
   },
   {
     "version": "renovate-nginxinc-nginx-unprivileged-1.x",
@@ -19,7 +17,9 @@
   {
     "version": "renovate-dotenv-17.x",
     "title": "renovate-dotenv-17.x",
-    "aliases": []
+    "aliases": [
+      "latest"
+    ]
   },
   {
     "version": "renovate-dotenv-16.x-lockfile",
