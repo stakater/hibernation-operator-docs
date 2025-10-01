@@ -5,13 +5,13 @@
       
       
       
-        <link rel="canonical" href="https://docs.stakater.com/mto/renovate-stakater-.github-0.x/integrations/argocd.html">
+        <link rel="canonical" href="https://docs.stakater.com/hibernation-operator-docs/renovate-stakater-.github-0.x/integrations/argocd.html">
       
       
-        <link rel="prev" href="../kubernetes-resources/tenant/how-to-guides/templated-metadata-values.html">
+        <link rel="prev" href="../how-to-guides/create-cluster-resource-supervisor.html">
       
       
-        <link rel="next" href="vault/vault.html">
+        <link rel="next" href="../changelog.html">
       
       
       <link rel="icon" href="../assets/images/favicon.svg">
@@ -19,7 +19,7 @@
     
     
       
-        <title>ArgoCD - Multi Tenant Operator</title>
+        <title>ArgoCD Integration - Hibernation Operator</title>
       
     
     
@@ -93,7 +93,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#argocd" class="md-skip">
+        <a href="#argocd-integration" class="md-skip">
           Skip to content
         </a>
       
@@ -338,7 +338,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   <nav class="md-header__inner md-grid" aria-label="Header">
 
     <!-- Link to home -->
-    <a href="../index.html" title="Multi Tenant Operator" class="md-header__button md-logo" aria-label="Multi Tenant Operator" data-md-component="logo">
+    <a href="../index.html" title="Hibernation Operator" class="md-header__button md-logo" aria-label="Hibernation Operator" data-md-component="logo">
       <!-- 
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -366,7 +366,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
           
           
           <div class="header-site-name">
-            <h5 class="site-name-text">Multi Tenant Operator</h5>
+            <h5 class="site-name-text">Hibernation Operator</h5>
           </div>
           
         </div>
@@ -1986,17 +1986,17 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 
 <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../index.html" title="Multi Tenant Operator" class="md-nav__button md-logo" aria-label="Multi Tenant Operator" data-md-component="logo">
+    <a href="../index.html" title="Hibernation Operator" class="md-nav__button md-logo" aria-label="Hibernation Operator" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"></path></svg>
 
     </a>
-    Multi Tenant Operator
+    Hibernation Operator
   </label>
   
     <div class="md-nav__source">
-      <a href="https://github.com/stakater/mto-docs" title="Go to repository" class="md-source" data-md-component="source">
+      <a href="https://github.com/stakater/hibernation-operator-docs" title="Go to repository" class="md-source" data-md-component="source">
   <div class="md-source__icon md-icon">
     
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.0.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"></path></svg>
@@ -2081,7 +2081,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
   <span class="md-ellipsis">
-    Key Features
+    🌐 Key Features
     
   </span>
   
@@ -2104,7 +2104,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
   <span class="md-ellipsis">
-    Use Cases
+    🧩 Use Cases
     
   </span>
   
@@ -2303,236 +2303,6 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
   
-    
-    
-    
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_3">
-        
-          
-          <label class="md-nav__link" for="__nav_4_3" id="__nav_4_3_label" tabindex="0">
-            
-  
-  
-  <span class="md-ellipsis">
-    On AKS
-    
-  </span>
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_3_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_4_3">
-            <span class="md-nav__icon md-icon"></span>
-            On AKS
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../installation/azure-aks/preparation.html" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    Prepration
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../installation/azure-aks/installation.html" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    Installation
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../installation/azure-aks/validation.html" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    Validation
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    
-    
-    
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_4">
-        
-          
-          <label class="md-nav__link" for="__nav_4_4" id="__nav_4_4_label" tabindex="0">
-            
-  
-  
-  <span class="md-ellipsis">
-    On EKS
-    
-  </span>
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_4_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_4_4">
-            <span class="md-nav__icon md-icon"></span>
-            On EKS
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../installation/aws-eks/preparation.html" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    Preparation
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../installation/aws-eks/installation.html" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    Installation
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../installation/aws-eks/validation.html" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    Validation
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
     <li class="md-nav__item">
       <a href="../installation/kubernetes.html" class="md-nav__link">
         
@@ -2540,29 +2310,6 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   <span class="md-ellipsis">
     On Kubernetes
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../installation/uninstalling.html" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    Uninstall via OperatorHub UI on OpenShift
     
   </span>
   
@@ -2603,7 +2350,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
   <span class="md-ellipsis">
-    Navigating Console
+    Kubernetes Resources
     
   </span>
   
@@ -2614,7 +2361,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
         <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_5">
             <span class="md-nav__icon md-icon"></span>
-            Navigating Console
+            Kubernetes Resources
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -2625,12 +2372,12 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../console/overview.html" class="md-nav__link">
+      <a href="../architecture/concepts.html" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
-    Overview
+    Concepts
     
   </span>
   
@@ -2648,12 +2395,12 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../console/dashboard.html" class="md-nav__link">
+      <a href="../kubernetes-resources/cluster-resource-supervisor.html" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
-    Dashboard
+    ClusterResourceSupervisor
     
   </span>
   
@@ -2671,219 +2418,12 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../console/tenants.html" class="md-nav__link">
+      <a href="../kubernetes-resources/resource-supervisor.html" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
-    Tenants
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../console/namespaces.html" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    Namespaces
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../console/hibernation.html" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    Hibernation
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../console/showback.html" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    Showback
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../console/quotas.html" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    Quotas
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../console/templates.html" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    Templates
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../console/template-instances.html" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    Template Instances
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../console/cluster-template-instances.html" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    Cluster Template Instances
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../console/capacity-planning.html" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    Capacity Planning
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../console/configuration.html" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    Configuration
+    ResourceSupervisor
     
   </span>
   
@@ -2924,7 +2464,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
   <span class="md-ellipsis">
-    Kubernetes Resources
+    How-to Guides
     
   </span>
   
@@ -2934,189 +2474,6 @@ This documentation is for a pull request deployment and is unreleased, it is onl
         
         <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_6">
-            <span class="md-nav__icon md-icon"></span>
-            Kubernetes Resources
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../architecture/concepts.html" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    Concepts
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../kubernetes-resources/quota.html" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    Quota
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../kubernetes-resources/tenant/tenant-overview.html" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    Tenant
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../kubernetes-resources/extensions.html" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    Extensions
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../kubernetes-resources/integration-config.html" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    Integration Config
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../kubernetes-resources/resource-supervisor.html" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    Resource Supervisor
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    
-    
-    
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7">
-        
-          
-          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
-            
-  
-  
-  <span class="md-ellipsis">
-    How-to Guides
-    
-  </span>
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_7">
             <span class="md-nav__icon md-icon"></span>
             How-to Guides
           </label>
@@ -3128,51 +2485,13 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
   
-    
-    
-    
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_1">
-        
-          
-          <label class="md-nav__link" for="__nav_7_1" id="__nav_7_1_label" tabindex="0">
-            
-  
-  
-  <span class="md-ellipsis">
-    Tenant
-    
-  </span>
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_1_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_7_1">
-            <span class="md-nav__icon md-icon"></span>
-            Tenant
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
     <li class="md-nav__item">
-      <a href="../kubernetes-resources/tenant/how-to-guides/create-tenant.html" class="md-nav__link">
+      <a href="../how-to-guides/create-resource-supervisor.html" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
-    Create a Tenant
+    Setup ResourceSupervisor
     
   </span>
   
@@ -3190,255 +2509,17 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../kubernetes-resources/tenant/how-to-guides/create-namespaces.html" class="md-nav__link">
+      <a href="../how-to-guides/create-cluster-resource-supervisor.html" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
-    Create Namespaces
+    Setup ClusterResourceSupervisor
     
   </span>
   
 
       </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../kubernetes-resources/tenant/how-to-guides/create-sandbox.html" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    Create Sandbox Namespaces
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../kubernetes-resources/tenant/how-to-guides/assign-metadata.html" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    Assign Metadata
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../kubernetes-resources/tenant/how-to-guides/hibernate-tenant.html" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    Hibernate a Tenant
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../kubernetes-resources/tenant/how-to-guides/restrict-nodepool-per-tenant.html" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    Restricting Tenant Workloads to Specific Nodes
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../kubernetes-resources/tenant/how-to-guides/disable-intra-tenant-networking.html" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    Disable intra-tenant networking
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../kubernetes-resources/tenant/how-to-guides/ingress-sharding.html" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    Ingress Sharding
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../kubernetes-resources/tenant/how-to-guides/custom-roles.html" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    Changing the default access level for tenant owners
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../kubernetes-resources/tenant/how-to-guides/extend-default-roles.html" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    Extending the default access level for tenant members
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../kubernetes-resources/tenant/how-to-guides/delete-tenant.html" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    Delete a Tenant
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../kubernetes-resources/tenant/how-to-guides/templated-metadata-values.html" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    Templated values in Labels and Annotations
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
     </li>
   
 
@@ -3468,10 +2549,10 @@ This documentation is for a pull request deployment and is unreleased, it is onl
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" checked>
         
           
-          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
             
   
   
@@ -3484,8 +2565,8 @@ This documentation is for a pull request deployment and is unreleased, it is onl
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_8">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_7">
             <span class="md-nav__icon md-icon"></span>
             Integrations
           </label>
@@ -3512,7 +2593,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
   <span class="md-ellipsis">
-    ArgoCD
+    ArgoCD Integration
     
   </span>
   
@@ -3525,7 +2606,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
   <span class="md-ellipsis">
-    ArgoCD
+    ArgoCD Integration
     
   </span>
   
@@ -3550,45 +2631,87 @@ This documentation is for a pull request deployment and is unreleased, it is onl
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#default-argocd-configuration" class="md-nav__link">
+  <a href="#how-it-works" class="md-nav__link">
     <span class="md-ellipsis">
-      Default ArgoCD configuration
+      How It Works
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#creating-argocd-appprojects-for-your-tenant" class="md-nav__link">
+  <a href="#enabling-argocd-integration" class="md-nav__link">
     <span class="md-ellipsis">
-      Creating ArgoCD AppProjects for your tenant
+      Enabling ArgoCD Integration
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Enabling ArgoCD Integration">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#step-1-install-hibernation-operator-with-argocd-support" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 1: Install Hibernation Operator with ArgoCD Support
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-2-create-a-clusterresourcesupervisor-targeting-appprojects" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 2: Create a ClusterResourceSupervisor Targeting AppProjects
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-3-verify-targeted-namespaces" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 3: Verify Targeted Namespaces
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#key-benefits" class="md-nav__link">
+    <span class="md-ellipsis">
+      Key Benefits
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#preventing-argocd-from-syncing-certain-name-spaced-resources" class="md-nav__link">
+  <a href="#requirements-permissions" class="md-nav__link">
     <span class="md-ellipsis">
-      Preventing ArgoCD from Syncing Certain Name-spaced Resources
+      Requirements &amp; Permissions
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#allowing-argocd-to-sync-certain-cluster-wide-resources" class="md-nav__link">
+  <a href="#combining-with-other-targeting-methods" class="md-nav__link">
     <span class="md-ellipsis">
-      Allowing ArgoCD to Sync Certain Cluster-Wide Resources
+      Combining with Other Targeting Methods
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#overriding-namespaceresourceblacklist-andor-clusterresourcewhitelist-per-tenant" class="md-nav__link">
+  <a href="#troubleshooting-tips" class="md-nav__link">
     <span class="md-ellipsis">
-      Overriding NamespaceResourceBlacklist and/or ClusterResourceWhitelist Per Tenant
+      Troubleshooting Tips
     </span>
   </a>
   
@@ -3603,261 +2726,9 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 
               
             
-              
-                
-  
-  
-  
-  
-    
-    
-    
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8_2">
-        
-          
-          <label class="md-nav__link" for="__nav_8_2" id="__nav_8_2_label" tabindex="0">
-            
-  
-  
-  <span class="md-ellipsis">
-    Vault
-    
-  </span>
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_8_2_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_8_2">
-            <span class="md-nav__icon md-icon"></span>
-            Vault
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="vault/vault.html" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    Multi-Tenancy in Vault
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="vault/vault-ic.html" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    Vault
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="vault/vault-kc-entraid.html" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    Integrating Vault and Keycloak with Microsoft Entra ID
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
           </ul>
         </nav>
       
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="devworkspace.html" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    DevWorkspace
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="mattermost.html" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    Mattermost
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="keycloak.html" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    Keycloak
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="azure-pricing.html" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    Azure Pricing
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="aws-pricing.html" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    AWS Pricing
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../pricing.html" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    Pricing
-    
-  </span>
-  
-
-      </a>
     </li>
   
 
@@ -3957,45 +2828,87 @@ This documentation is for a pull request deployment and is unreleased, it is onl
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#default-argocd-configuration" class="md-nav__link">
+  <a href="#how-it-works" class="md-nav__link">
     <span class="md-ellipsis">
-      Default ArgoCD configuration
+      How It Works
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#creating-argocd-appprojects-for-your-tenant" class="md-nav__link">
+  <a href="#enabling-argocd-integration" class="md-nav__link">
     <span class="md-ellipsis">
-      Creating ArgoCD AppProjects for your tenant
+      Enabling ArgoCD Integration
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Enabling ArgoCD Integration">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#step-1-install-hibernation-operator-with-argocd-support" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 1: Install Hibernation Operator with ArgoCD Support
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-2-create-a-clusterresourcesupervisor-targeting-appprojects" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 2: Create a ClusterResourceSupervisor Targeting AppProjects
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-3-verify-targeted-namespaces" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 3: Verify Targeted Namespaces
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#key-benefits" class="md-nav__link">
+    <span class="md-ellipsis">
+      Key Benefits
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#preventing-argocd-from-syncing-certain-name-spaced-resources" class="md-nav__link">
+  <a href="#requirements-permissions" class="md-nav__link">
     <span class="md-ellipsis">
-      Preventing ArgoCD from Syncing Certain Name-spaced Resources
+      Requirements &amp; Permissions
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#allowing-argocd-to-sync-certain-cluster-wide-resources" class="md-nav__link">
+  <a href="#combining-with-other-targeting-methods" class="md-nav__link">
     <span class="md-ellipsis">
-      Allowing ArgoCD to Sync Certain Cluster-Wide Resources
+      Combining with Other Targeting Methods
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#overriding-namespaceresourceblacklist-andor-clusterresourcewhitelist-per-tenant" class="md-nav__link">
+  <a href="#troubleshooting-tips" class="md-nav__link">
     <span class="md-ellipsis">
-      Overriding NamespaceResourceBlacklist and/or ClusterResourceWhitelist Per Tenant
+      Troubleshooting Tips
     </span>
   </a>
   
@@ -4020,199 +2933,129 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
 
 
-<h1 id="argocd">ArgoCD<a class="headerlink" href="#argocd" title="Permanent link">#</a></h1>
-<p>With the Multi-Tenant Operator (MTO), cluster administrators can configure multi-tenancy within their cluster. The integration of ArgoCD with MTO allows for the configuration of multi-tenancy in ArgoCD applications and AppProjects.</p>
-<p>MTO can be configured to create AppProjects for each tenant. These AppProjects enable tenants to create ArgoCD Applications that can be synced to namespaces owned by them. Cluster admins can blacklist certain namespace resources and allow specific cluster-scoped resources as needed (see the NamespaceResourceBlacklist and ClusterResourceWhitelist sections in <a href="../kubernetes-resources/integration-config.html">Integration Config docs</a> and <a href="../kubernetes-resources/tenant/tenant-overview.html">Tenant Custom Resource docs</a>).</p>
-<p>Note that ArgoCD integration in MTO is optional.</p>
-<h2 id="default-argocd-configuration">Default ArgoCD configuration<a class="headerlink" href="#default-argocd-configuration" title="Permanent link">#</a></h2>
-<p>We have set a default ArgoCD configuration in Multi Tenant Operator that fulfils the following use cases:</p>
+<h1 id="argocd-integration">ArgoCD Integration<a class="headerlink" href="#argocd-integration" title="Permanent link">#</a></h1>
+<p>The <strong>Hibernation Operator</strong> provides optional, native integration with <strong>ArgoCD</strong>, enabling platform teams to apply hibernation schedules based on <strong>ArgoCD AppProjects</strong>. This allows hibernation policies to align with GitOps application boundaries rather than infrastructure namespaces—ideal for organizations using ArgoCD for declarative application delivery.</p>
+<blockquote>
+<p>💡 <strong>Note</strong>: ArgoCD integration is <strong>optional</strong> and must be explicitly enabled during installation.</p>
+</blockquote>
+<h2 id="how-it-works">How It Works<a class="headerlink" href="#how-it-works" title="Permanent link">#</a></h2>
+<p>When a <code>ClusterResourceSupervisor</code> specifies <code>argocd.appProjects</code>, the Hibernation Operator:</p>
+<ol>
+<li><strong>Discovers</strong> all namespaces associated with the listed ArgoCD <code>AppProject</code>s (by reading the <code>AppProject.spec.destinations</code> field).</li>
+<li><strong>Applies hibernation</strong> (scaling <code>Deployments</code>/<code>StatefulSets</code> to 0) to workloads in those namespaces according to the defined <code>sleepSchedule</code> and <code>wakeSchedule</code>.</li>
+<li><strong>Tracks state</strong> in the CR’s <code>status.sleepingNamespaces</code> to ensure accurate restoration.</li>
+</ol>
+<p>This means you can hibernate entire application portfolios (e.g., <code>frontend-team</code>, <code>data-platform</code>) with a single policy—without manually listing namespaces.</p>
+<hr>
+<h2 id="enabling-argocd-integration">Enabling ArgoCD Integration<a class="headerlink" href="#enabling-argocd-integration" title="Permanent link">#</a></h2>
+<h3 id="step-1-install-hibernation-operator-with-argocd-support">Step 1: Install Hibernation Operator with ArgoCD Support<a class="headerlink" href="#step-1-install-hibernation-operator-with-argocd-support" title="Permanent link">#</a></h3>
+<p>During Helm installation, enable ArgoCD and specify the ArgoCD namespace:</p>
+<div class="highlight"><pre><span></span><code>helm<span class="w"> </span>install<span class="w"> </span>hibernation-operator<span class="w"> </span>oci://ghcr.io/stakater/public/charts/hibernation-operator<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--namespace<span class="w"> </span>hibernation-system<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--create-namespace<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--set<span class="w"> </span>argoCD.enabled<span class="o">=</span><span class="nb">true</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--set<span class="w"> </span>argoCD.namespace<span class="o">=</span>argocd
+</code></pre></div>
+<blockquote>
+<p>✅ The operator requires <strong>read-only access</strong> to <code>AppProject</code> resources in the ArgoCD namespace.</p>
+</blockquote>
+<h3 id="step-2-create-a-clusterresourcesupervisor-targeting-appprojects">Step 2: Create a <code>ClusterResourceSupervisor</code> Targeting AppProjects<a class="headerlink" href="#step-2-create-a-clusterresourcesupervisor-targeting-appprojects" title="Permanent link">#</a></h3>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">hibernation.stakater.com/v1beta1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ClusterResourceSupervisor</span>
+<span class="l l-Scalar l-Scalar-Plain">meta</span>
+<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">argocd-hibernation-policy</span>
+<span class="nt">spec</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">argocd</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">argocd</span><span class="w">                </span><span class="c1"># ← Namespace where ArgoCD is installed</span>
+<span class="w">    </span><span class="nt">appProjects</span><span class="p">:</span><span class="w">                     </span><span class="c1"># ← List of AppProject names</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">frontend-team</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">mobile-apps</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">data-platform</span>
+<span class="w">  </span><span class="nt">schedule</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">sleepSchedule</span><span class="p">:</span><span class="w"> </span><span class="s">"0</span><span class="nv"> </span><span class="s">18</span><span class="nv"> </span><span class="s">*</span><span class="nv"> </span><span class="s">*</span><span class="nv"> </span><span class="s">1-5"</span><span class="w">   </span><span class="c1"># Sleep weekdays at 6 PM UTC</span>
+<span class="w">    </span><span class="nt">wakeSchedule</span><span class="p">:</span><span class="w"> </span><span class="s">"0</span><span class="nv"> </span><span class="s">8</span><span class="nv"> </span><span class="s">*</span><span class="nv"> </span><span class="s">*</span><span class="nv"> </span><span class="s">1-5"</span><span class="w">     </span><span class="c1"># Wake weekdays at 8 AM UTC</span>
+</code></pre></div>
+<p>Apply it:</p>
+<div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>apply<span class="w"> </span>-f<span class="w"> </span>cluster-resource-supervisor-argocd.yaml
+</code></pre></div>
+<h3 id="step-3-verify-targeted-namespaces">Step 3: Verify Targeted Namespaces<a class="headerlink" href="#step-3-verify-targeted-namespaces" title="Permanent link">#</a></h3>
+<p>Check the status to see which namespaces are being watched:</p>
+<div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>get<span class="w"> </span>clusterresourcesupervisor<span class="w"> </span>argocd-hibernation-policy<span class="w"> </span>-o<span class="w"> </span><span class="nv">jsonpath</span><span class="o">=</span><span class="s1">'{.status.watchedNamespaces}'</span>
+</code></pre></div>
+<p>Example output:</p>
+<div class="highlight"><pre><span></span><code><span class="p">[</span><span class="s2">"frontend-dev"</span><span class="p">,</span><span class="w"> </span><span class="s2">"mobile-staging"</span><span class="p">,</span><span class="w"> </span><span class="s2">"data-platform-prod"</span><span class="p">]</span>
+</code></pre></div>
+<p>These are the namespaces defined in the <code>destinations</code> of the specified AppProjects.</p>
+<hr>
+<h2 id="key-benefits">Key Benefits<a class="headerlink" href="#key-benefits" title="Permanent link">#</a></h2>
+<table>
+<thead>
+<tr>
+<th>Benefit</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>GitOps-Aligned Hibernation</strong></td>
+<td>Hibernation follows application ownership (via AppProjects), not manual namespace lists.</td>
+</tr>
+<tr>
+<td><strong>Dynamic Namespace Discovery</strong></td>
+<td>New namespaces added to an AppProject are <strong>automatically included</strong> in hibernation.</td>
+</tr>
+<tr>
+<td><strong>No Duplication</strong></td>
+<td>Avoid maintaining separate namespace lists in both ArgoCD and hibernation policies.</td>
+</tr>
+<tr>
+<td><strong>Safe &amp; Observable</strong></td>
+<td>Original replica counts are preserved; status shows exactly which apps are sleeping.</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="requirements-permissions">Requirements &amp; Permissions<a class="headerlink" href="#requirements-permissions" title="Permanent link">#</a></h2>
 <ul>
-<li>Tenants can only see their ArgoCD applications in the ArgoCD frontend.</li>
-<li>Tenant 'Owners' and 'Editors' have full access to their ArgoCD applications.</li>
-<li>Tenants in the 'Viewers' group have read-only access to their ArgoCD applications.</li>
-<li>Tenants can sync all namespace-scoped resources, except those that are blacklisted.</li>
-<li>Tenants can sync only cluster-scoped resources that are allow-listed.</li>
-<li>Tenant 'Owners' can configure their own GitOps source repositories at the tenant level.</li>
-<li>Cluster admins can prevent specific resources from syncing via ArgoCD.</li>
-<li>Cluster admins have full access to all ArgoCD applications and AppProjects.</li>
-<li>ArgoCD integration is on a per-tenant level; namespace-scoped applications are synced only to tenant namespaces.</li>
+<li>ArgoCD must be installed in the cluster (typically in the <code>argocd</code> namespace).</li>
+<li>The Hibernation Operator needs the following RBAC (automatically included when <code>argoCD.enabled=true</code>):</li>
 </ul>
-<h2 id="creating-argocd-appprojects-for-your-tenant">Creating ArgoCD AppProjects for your tenant<a class="headerlink" href="#creating-argocd-appprojects-for-your-tenant" title="Permanent link">#</a></h2>
-<p>To ensure each tenant has their own ArgoCD AppProjects, administrators must first specify the ArgoCD namespace in the <a href="../kubernetes-resources/integration-config.html">IntegrationConfig</a>:</p>
-<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenantoperator.stakater.com/v1beta1</span>
-<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">IntegrationConfig</span>
-<span class="nt">metadata</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenant-operator-config</span>
-<span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">multi-tenant-operator</span>
-<span class="nt">spec</span><span class="p">:</span>
-<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">...</span>
-<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">argocd</span><span class="p p-Indicator">:</span>
-<span class="w">    </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">openshift-operators</span>
-<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">...</span>
+<div class="highlight"><pre><span></span><code><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">apiGroups</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">"argoproj.io"</span><span class="p p-Indicator">]</span>
+<span class="w">  </span><span class="nt">resources</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">"appprojects"</span><span class="p p-Indicator">]</span>
+<span class="w">  </span><span class="nt">verbs</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">"get"</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">"list"</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">"watch"</span><span class="p p-Indicator">]</span>
 </code></pre></div>
-<p>Administrators then create an Extension CR associated with the tenant:</p>
-<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenantoperator.stakater.com/v1alpha1</span>
-<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Extensions</span>
-<span class="nt">metadata</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">extensions-sample</span>
-<span class="nt">spec</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">tenantName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenant-sample</span>
-<span class="w">  </span><span class="nt">argoCD</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">onDeletePurgeAppProject</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
-<span class="w">    </span><span class="nt">appProject</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">sourceRepos</span><span class="p">:</span>
-<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">"github.com/stakater/repo"</span>
-<span class="w">      </span><span class="nt">clusterResourceWhitelist</span><span class="p">:</span>
-<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">group</span><span class="p">:</span><span class="w"> </span><span class="s">""</span>
-<span class="w">          </span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="s">"Pod"</span>
-<span class="w">      </span><span class="nt">namespaceResourceBlacklist</span><span class="p">:</span>
-<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">group</span><span class="p">:</span><span class="w"> </span><span class="s">"v1"</span>
-<span class="w">          </span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="s">"ConfigMap"</span>
+<blockquote>
+<p>🔒 The operator <strong>never modifies</strong> ArgoCD resources—it only reads <code>AppProject</code> definitions.</p>
+</blockquote>
+<hr>
+<h2 id="combining-with-other-targeting-methods">Combining with Other Targeting Methods<a class="headerlink" href="#combining-with-other-targeting-methods" title="Permanent link">#</a></h2>
+<p>You can <strong>combine</strong> ArgoCD targeting with explicit namespaces or label selectors:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">spec</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">argocd</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">argocd</span>
+<span class="w">    </span><span class="nt">appProjects</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">"frontend-team"</span><span class="p p-Indicator">]</span>
+<span class="w">  </span><span class="nt">namespaces</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">names</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">"legacy-staging"</span><span class="p p-Indicator">]</span>
+<span class="w">    </span><span class="nt">labelSelector</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">matchLabels</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">env</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dev</span>
 </code></pre></div>
-<p>This creates an AppProject for the tenant:</p>
-<div class="highlight"><pre><span></span><code>oc<span class="w"> </span>get<span class="w"> </span>AppProject<span class="w"> </span>-A
-NAMESPACE<span class="w">             </span>NAME<span class="w">           </span>AGE
-openshift-operators<span class="w">   </span>tenant-sample<span class="w">  </span>5d15h
-</code></pre></div>
-<p>Example of the created AppProject:</p>
-<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">argoproj.io/v1alpha1</span>
-<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">AppProject</span>
-<span class="nt">metadata</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenant-sample</span>
-<span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">openshift-operators</span>
-<span class="nt">spec</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">destinations</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenant-sample-build</span>
-<span class="w">      </span><span class="nt">server</span><span class="p">:</span><span class="w"> </span><span class="s">"https://kubernetes.default.svc"</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenant-sample-dev</span>
-<span class="w">      </span><span class="nt">server</span><span class="p">:</span><span class="w"> </span><span class="s">"https://kubernetes.default.svc"</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenant-sample-stage</span>
-<span class="w">      </span><span class="nt">server</span><span class="p">:</span><span class="w"> </span><span class="s">"https://kubernetes.default.svc"</span>
-<span class="w">  </span><span class="nt">roles</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">&gt;-</span>
-<span class="w">        </span><span class="no">Role that gives full access to all resources inside the tenant's</span>
-<span class="w">        </span><span class="no">namespace to the tenant owner groups</span>
-<span class="w">      </span><span class="nt">groups</span><span class="p">:</span>
-<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">saap-cluster-admins</span>
-<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">stakater-team</span>
-<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenant-sample-owner-group</span>
-<span class="w">      </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenant-sample-owner</span>
-<span class="w">      </span><span class="nt">policies</span><span class="p">:</span>
-<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">"p,</span><span class="nv"> </span><span class="s">proj:tenant-sample:tenant-sample-owner,</span><span class="nv"> </span><span class="s">*,</span><span class="nv"> </span><span class="s">*,</span><span class="nv"> </span><span class="s">tenant-sample/*,</span><span class="nv"> </span><span class="s">allow"</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">&gt;-</span>
-<span class="w">        </span><span class="no">Role that gives edit access to all resources inside the tenant's</span>
-<span class="w">        </span><span class="no">namespace to the tenant owner group</span>
-<span class="w">      </span><span class="nt">groups</span><span class="p">:</span>
-<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">saap-cluster-admins</span>
-<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">stakater-team</span>
-<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenant-sample-edit-group</span>
-<span class="w">      </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenant-sample-edit</span>
-<span class="w">      </span><span class="nt">policies</span><span class="p">:</span>
-<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">"p,</span><span class="nv"> </span><span class="s">proj:tenant-sample:tenant-sample-edit,</span><span class="nv"> </span><span class="s">*,</span><span class="nv"> </span><span class="s">*,</span><span class="nv"> </span><span class="s">tenant-sample/*,</span><span class="nv"> </span><span class="s">allow"</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">&gt;-</span>
-<span class="w">        </span><span class="no">Role that gives view access to all resources inside the tenant's</span>
-<span class="w">        </span><span class="no">namespace to the tenant owner group</span>
-<span class="w">      </span><span class="nt">groups</span><span class="p">:</span>
-<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">saap-cluster-admins</span>
-<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">stakater-team</span>
-<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenant-sample-view-group</span>
-<span class="w">      </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenant-sample-view</span>
-<span class="w">      </span><span class="nt">policies</span><span class="p">:</span>
-<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">"p,</span><span class="nv"> </span><span class="s">proj:tenant-sample:tenant-sample-view,</span><span class="nv"> </span><span class="s">*,</span><span class="nv"> </span><span class="s">get,</span><span class="nv"> </span><span class="s">tenant-sample/*,</span><span class="nv"> </span><span class="s">allow"</span>
-<span class="w">  </span><span class="nt">sourceRepos</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">"https://github.com/stakater/gitops-config"</span>
-</code></pre></div>
-<p>Users belonging to the tenant group will now see only applications created by them in the ArgoCD frontend:</p>
-<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../images/argocd.png" data-desc-position="bottom"><img alt="image" src="../images/argocd.png"></a></p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>For ArgoCD Multi Tenancy to work properly, any default roles or policies attached to all users must be removed.</p>
-</div>
-<h2 id="preventing-argocd-from-syncing-certain-name-spaced-resources">Preventing ArgoCD from Syncing Certain Name-spaced Resources<a class="headerlink" href="#preventing-argocd-from-syncing-certain-name-spaced-resources" title="Permanent link">#</a></h2>
-<p>To prevent tenants from syncing ResourceQuota and LimitRange resources to their namespaces, administrators can specify these resources in the blacklist section of the ArgoCD configuration in the <a href="../kubernetes-resources/integration-config.html">IntegrationConfig</a>:</p>
-<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenantoperator.stakater.com/v1beta1</span>
-<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">IntegrationConfig</span>
-<span class="nt">metadata</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenant-operator-config</span>
-<span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">multi-tenant-operator</span>
-<span class="nt">spec</span><span class="p">:</span>
-<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">...</span>
-<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">integrations</span><span class="p p-Indicator">:</span>
-<span class="w">    </span><span class="nt">argocd</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">openshift-operators</span>
-<span class="w">      </span><span class="nt">namespaceResourceBlacklist</span><span class="p">:</span>
-<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">group</span><span class="p">:</span><span class="w"> </span><span class="s">""</span>
-<span class="w">          </span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ResourceQuota</span>
-<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">group</span><span class="p">:</span><span class="w"> </span><span class="s">""</span>
-<span class="w">          </span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">LimitRange</span>
-<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">...</span>
-</code></pre></div>
-<p>This configuration ensures these resources are not synced by ArgoCD if added to any tenant's project directory in GitOps. The AppProject will include the blacklisted resources:</p>
-<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">argoproj.io/v1alpha1</span>
-<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">AppProject</span>
-<span class="nt">metadata</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenant-sample</span>
-<span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">openshift-operators</span>
-<span class="nt">spec</span><span class="p">:</span>
-<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">...</span>
-<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">namespaceResourceBlacklist</span><span class="p p-Indicator">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">group</span><span class="p">:</span><span class="w"> </span><span class="s">''</span>
-<span class="w">      </span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ResourceQuota</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">group</span><span class="p">:</span><span class="w"> </span><span class="s">''</span>
-<span class="w">      </span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">LimitRange</span>
-<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">...</span>
-</code></pre></div>
-<h2 id="allowing-argocd-to-sync-certain-cluster-wide-resources">Allowing ArgoCD to Sync Certain Cluster-Wide Resources<a class="headerlink" href="#allowing-argocd-to-sync-certain-cluster-wide-resources" title="Permanent link">#</a></h2>
-<p>To allow tenants to sync the Environment cluster-scoped resource, administrators can specify this resource in the allow-list section of the ArgoCD configuration in the IntegrationConfig's spec:</p>
-<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenantoperator.stakater.com/v1beta1</span>
-<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">IntegrationConfig</span>
-<span class="nt">metadata</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenant-operator-config</span>
-<span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">multi-tenant-operator</span>
-<span class="nt">spec</span><span class="p">:</span>
-<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">...</span>
-<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">integrations</span><span class="p p-Indicator">:</span>
-<span class="w">    </span><span class="nt">argocd</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">openshift-operators</span>
-<span class="w">      </span><span class="nt">clusterResourceWhitelist</span><span class="p">:</span>
-<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">group</span><span class="p">:</span><span class="w"> </span><span class="s">""</span>
-<span class="w">          </span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Environment</span>
-<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">...</span>
-</code></pre></div>
-<p>This configuration ensures these resources are synced by ArgoCD if added to any tenant's project directory in GitOps. The AppProject will include the allow-listed resources:</p>
-<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">argoproj.io/v1alpha1</span>
-<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">AppProject</span>
-<span class="nt">metadata</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenant-sample</span>
-<span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">openshift-operators</span>
-<span class="nt">spec</span><span class="p">:</span>
-<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">...</span>
-<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">clusterResourceWhitelist</span><span class="p p-Indicator">:</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">group</span><span class="p">:</span><span class="w"> </span><span class="s">""</span>
-<span class="w">    </span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Environment</span>
-<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">...</span>
-</code></pre></div>
-<h2 id="overriding-namespaceresourceblacklist-andor-clusterresourcewhitelist-per-tenant">Overriding NamespaceResourceBlacklist and/or ClusterResourceWhitelist Per Tenant<a class="headerlink" href="#overriding-namespaceresourceblacklist-andor-clusterresourcewhitelist-per-tenant" title="Permanent link">#</a></h2>
-<p>To override the <code>namespaceResourceBlacklist</code> and/or <code>clusterResourceWhitelist</code> set via Integration Config for a specific tenant, administrators can specify these in the <code>argoCD</code> section of the Extension CR:</p>
-<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenantoperator.stakater.com/v1alpha1</span>
-<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Extensions</span>
-<span class="nt">metadata</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">extensions-blue-sky</span>
-<span class="nt">spec</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">tenantName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">blue-sky</span>
-<span class="w">  </span><span class="nt">argoCD</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">onDeletePurgeAppProject</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
-<span class="w">    </span><span class="nt">appProject</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">sourceRepos</span><span class="p">:</span>
-<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">"github.com/stakater/repo"</span>
-<span class="w">      </span><span class="nt">clusterResourceWhitelist</span><span class="p">:</span>
-<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">group</span><span class="p">:</span><span class="w"> </span><span class="s">""</span>
-<span class="w">          </span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="s">"Pod"</span>
-<span class="w">      </span><span class="nt">namespaceResourceBlacklist</span><span class="p">:</span>
-<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">group</span><span class="p">:</span><span class="w"> </span><span class="s">"v1"</span>
-<span class="w">          </span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="s">"ConfigMap"</span>
-</code></pre></div>
-<p>This configuration allows for tailored settings for each tenant, ensuring flexibility and control over ArgoCD resources.</p>
+<p>In this case, hibernation applies to:</p>
+<ul>
+<li>All namespaces in the <code>frontend-team</code> AppProject <strong>plus</strong></li>
+<li>The <code>legacy-staging</code> namespace <strong>plus</strong></li>
+<li>Any namespace with label <code>env=dev</code></li>
+</ul>
+<blockquote>
+<p>🔄 The union of all targeting methods is used.</p>
+</blockquote>
+<hr>
+<h2 id="troubleshooting-tips">Troubleshooting Tips<a class="headerlink" href="#troubleshooting-tips" title="Permanent link">#</a></h2>
+<ul>
+<li><strong>AppProject not found?</strong> Ensure the <code>appProjects</code> names <strong>exactly match</strong> the <code>AppProject</code> resource names (case-sensitive).</li>
+<li><strong>Namespace not hibernating?</strong> Verify the namespace appears in <code>AppProject.spec.destinations</code>.</li>
+<li><strong>Permission errors?</strong> Check that the operator’s ServiceAccount has <code>get/list/watch</code> on <code>appprojects.argoproj.io</code>.</li>
+</ul>
 
 
 

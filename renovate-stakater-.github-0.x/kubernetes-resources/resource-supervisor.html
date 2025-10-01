@@ -5,13 +5,13 @@
       
       
       
-        <link rel="canonical" href="https://docs.stakater.com/mto/renovate-stakater-.github-0.x/kubernetes-resources/resource-supervisor.html">
+        <link rel="canonical" href="https://docs.stakater.com/hibernation-operator-docs/renovate-stakater-.github-0.x/kubernetes-resources/resource-supervisor.html">
       
       
-        <link rel="prev" href="integration-config.html">
+        <link rel="prev" href="cluster-resource-supervisor.html">
       
       
-        <link rel="next" href="tenant/how-to-guides/create-tenant.html">
+        <link rel="next" href="../how-to-guides/create-resource-supervisor.html">
       
       
       <link rel="icon" href="../assets/images/favicon.svg">
@@ -19,7 +19,7 @@
     
     
       
-        <title>Resource Supervisor - Multi Tenant Operator</title>
+        <title>ResourceSupervisor - Hibernation Operator</title>
       
     
     
@@ -93,7 +93,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#resource-supervisor" class="md-skip">
+        <a href="#resourcesupervisor" class="md-skip">
           Skip to content
         </a>
       
@@ -338,7 +338,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   <nav class="md-header__inner md-grid" aria-label="Header">
 
     <!-- Link to home -->
-    <a href="../index.html" title="Multi Tenant Operator" class="md-header__button md-logo" aria-label="Multi Tenant Operator" data-md-component="logo">
+    <a href="../index.html" title="Hibernation Operator" class="md-header__button md-logo" aria-label="Hibernation Operator" data-md-component="logo">
       <!-- 
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -366,7 +366,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
           
           
           <div class="header-site-name">
-            <h5 class="site-name-text">Multi Tenant Operator</h5>
+            <h5 class="site-name-text">Hibernation Operator</h5>
           </div>
           
         </div>
@@ -1986,17 +1986,17 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 
 <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../index.html" title="Multi Tenant Operator" class="md-nav__button md-logo" aria-label="Multi Tenant Operator" data-md-component="logo">
+    <a href="../index.html" title="Hibernation Operator" class="md-nav__button md-logo" aria-label="Hibernation Operator" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"></path></svg>
 
     </a>
-    Multi Tenant Operator
+    Hibernation Operator
   </label>
   
     <div class="md-nav__source">
-      <a href="https://github.com/stakater/mto-docs" title="Go to repository" class="md-source" data-md-component="source">
+      <a href="https://github.com/stakater/hibernation-operator-docs" title="Go to repository" class="md-source" data-md-component="source">
   <div class="md-source__icon md-icon">
     
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.0.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"></path></svg>
@@ -2081,7 +2081,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
   <span class="md-ellipsis">
-    Key Features
+    🌐 Key Features
     
   </span>
   
@@ -2104,7 +2104,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
   <span class="md-ellipsis">
-    Use Cases
+    🧩 Use Cases
     
   </span>
   
@@ -2303,236 +2303,6 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
   
-    
-    
-    
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_3">
-        
-          
-          <label class="md-nav__link" for="__nav_4_3" id="__nav_4_3_label" tabindex="0">
-            
-  
-  
-  <span class="md-ellipsis">
-    On AKS
-    
-  </span>
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_3_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_4_3">
-            <span class="md-nav__icon md-icon"></span>
-            On AKS
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../installation/azure-aks/preparation.html" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    Prepration
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../installation/azure-aks/installation.html" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    Installation
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../installation/azure-aks/validation.html" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    Validation
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    
-    
-    
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_4">
-        
-          
-          <label class="md-nav__link" for="__nav_4_4" id="__nav_4_4_label" tabindex="0">
-            
-  
-  
-  <span class="md-ellipsis">
-    On EKS
-    
-  </span>
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_4_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_4_4">
-            <span class="md-nav__icon md-icon"></span>
-            On EKS
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../installation/aws-eks/preparation.html" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    Preparation
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../installation/aws-eks/installation.html" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    Installation
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../installation/aws-eks/validation.html" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    Validation
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
     <li class="md-nav__item">
       <a href="../installation/kubernetes.html" class="md-nav__link">
         
@@ -2540,350 +2310,6 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   <span class="md-ellipsis">
     On Kubernetes
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../installation/uninstalling.html" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    Uninstall via OperatorHub UI on OpenShift
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    
-    
-    
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5">
-        
-          
-          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
-            
-  
-  
-  <span class="md-ellipsis">
-    Navigating Console
-    
-  </span>
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_5">
-            <span class="md-nav__icon md-icon"></span>
-            Navigating Console
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../console/overview.html" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    Overview
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../console/dashboard.html" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    Dashboard
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../console/tenants.html" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    Tenants
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../console/namespaces.html" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    Namespaces
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../console/hibernation.html" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    Hibernation
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../console/showback.html" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    Showback
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../console/quotas.html" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    Quotas
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../console/templates.html" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    Templates
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../console/template-instances.html" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    Template Instances
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../console/cluster-template-instances.html" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    Cluster Template Instances
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../console/capacity-planning.html" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    Capacity Planning
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../console/configuration.html" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    Configuration
     
   </span>
   
@@ -2918,10 +2344,10 @@ This documentation is for a pull request deployment and is unreleased, it is onl
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
         
           
-          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
             
   
   
@@ -2934,8 +2360,8 @@ This documentation is for a pull request deployment and is unreleased, it is onl
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_6">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5">
             <span class="md-nav__icon md-icon"></span>
             Kubernetes Resources
           </label>
@@ -2971,81 +2397,12 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="quota.html" class="md-nav__link">
+      <a href="cluster-resource-supervisor.html" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
-    Quota
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="tenant/tenant-overview.html" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    Tenant
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="extensions.html" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    Extensions
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="integration-config.html" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    Integration Config
+    ClusterResourceSupervisor
     
   </span>
   
@@ -3077,7 +2434,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
   <span class="md-ellipsis">
-    Resource Supervisor
+    ResourceSupervisor
     
   </span>
   
@@ -3090,7 +2447,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
   <span class="md-ellipsis">
-    Resource Supervisor
+    ResourceSupervisor
     
   </span>
   
@@ -3115,37 +2472,55 @@ This documentation is for a pull request deployment and is unreleased, it is onl
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#supported-modes" class="md-nav__link">
+  <a href="#supported-workloads" class="md-nav__link">
     <span class="md-ellipsis">
-      Supported modes
+      Supported Workloads
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Supported modes">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ignored-namespaces" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ignored Namespaces
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#supported-modes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Supported Modes
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Supported Modes">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#hibernation-with-cron-schedule" class="md-nav__link">
+  <a href="#1-hibernation-with-cron-schedule-sleep-wake" class="md-nav__link">
     <span class="md-ellipsis">
-      Hibernation with cron schedule
+      1. Hibernation with Cron Schedule (Sleep + Wake)
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#sleep" class="md-nav__link">
+  <a href="#2-permanent-sleep-manual-wake" class="md-nav__link">
     <span class="md-ellipsis">
-      Sleep
+      2. Permanent Sleep (Manual Wake)
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#sleep-at-given-cron-schedule" class="md-nav__link">
+  <a href="#3-immediate-sleep-no-schedule" class="md-nav__link">
     <span class="md-ellipsis">
-      Sleep at given cron schedule
+      3. Immediate Sleep (No Schedule)
     </span>
   </a>
   
@@ -3157,35 +2532,29 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 </li>
       
         <li class="md-nav__item">
-  <a href="#more-examples" class="md-nav__link">
+  <a href="#status-tracking" class="md-nav__link">
     <span class="md-ellipsis">
-      More examples
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="More examples">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#example-1" class="md-nav__link">
-    <span class="md-ellipsis">
-      Example 1
+      Status Tracking
     </span>
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#example-2" class="md-nav__link">
+      
+        <li class="md-nav__item">
+  <a href="#key-notes" class="md-nav__link">
     <span class="md-ellipsis">
-      Example 2
+      Key Notes
     </span>
   </a>
   
 </li>
-        
-      </ul>
-    </nav>
+      
+        <li class="md-nav__item">
+  <a href="#example-cicd-preview-namespace" class="md-nav__link">
+    <span class="md-ellipsis">
+      Example: CI/CD Preview Namespace
+    </span>
+  </a>
   
 </li>
       
@@ -3193,6 +2562,97 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
 </nav>
       
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6">
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    How-to Guides
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            How-to Guides
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../how-to-guides/create-resource-supervisor.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Setup ResourceSupervisor
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../how-to-guides/create-cluster-resource-supervisor.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Setup ClusterResourceSupervisor
+    
+  </span>
+  
+
+      </a>
     </li>
   
 
@@ -3228,7 +2688,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
   <span class="md-ellipsis">
-    How-to Guides
+    Integrations
     
   </span>
   
@@ -3238,373 +2698,6 @@ This documentation is for a pull request deployment and is unreleased, it is onl
         
         <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_7">
-            <span class="md-nav__icon md-icon"></span>
-            How-to Guides
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
-    
-    
-    
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_1">
-        
-          
-          <label class="md-nav__link" for="__nav_7_1" id="__nav_7_1_label" tabindex="0">
-            
-  
-  
-  <span class="md-ellipsis">
-    Tenant
-    
-  </span>
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_1_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_7_1">
-            <span class="md-nav__icon md-icon"></span>
-            Tenant
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="tenant/how-to-guides/create-tenant.html" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    Create a Tenant
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="tenant/how-to-guides/create-namespaces.html" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    Create Namespaces
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="tenant/how-to-guides/create-sandbox.html" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    Create Sandbox Namespaces
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="tenant/how-to-guides/assign-metadata.html" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    Assign Metadata
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="tenant/how-to-guides/hibernate-tenant.html" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    Hibernate a Tenant
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="tenant/how-to-guides/restrict-nodepool-per-tenant.html" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    Restricting Tenant Workloads to Specific Nodes
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="tenant/how-to-guides/disable-intra-tenant-networking.html" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    Disable intra-tenant networking
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="tenant/how-to-guides/ingress-sharding.html" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    Ingress Sharding
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="tenant/how-to-guides/custom-roles.html" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    Changing the default access level for tenant owners
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="tenant/how-to-guides/extend-default-roles.html" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    Extending the default access level for tenant members
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="tenant/how-to-guides/delete-tenant.html" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    Delete a Tenant
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="tenant/how-to-guides/templated-metadata-values.html" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    Templated values in Labels and Annotations
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    
-    
-    
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8">
-        
-          
-          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="0">
-            
-  
-  
-  <span class="md-ellipsis">
-    Integrations
-    
-  </span>
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_8">
             <span class="md-nav__icon md-icon"></span>
             Integrations
           </label>
@@ -3622,114 +2715,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
   <span class="md-ellipsis">
-    ArgoCD
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    
-    
-    
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8_2">
-        
-          
-          <label class="md-nav__link" for="__nav_8_2" id="__nav_8_2_label" tabindex="0">
-            
-  
-  
-  <span class="md-ellipsis">
-    Vault
-    
-  </span>
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_8_2_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_8_2">
-            <span class="md-nav__icon md-icon"></span>
-            Vault
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../integrations/vault/vault.html" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    Multi-Tenancy in Vault
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../integrations/vault/vault-ic.html" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    Vault
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../integrations/vault/vault-kc-entraid.html" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    Integrating Vault and Keycloak with Microsoft Entra ID
+    ArgoCD Integration
     
   </span>
   
@@ -3743,151 +2729,6 @@ This documentation is for a pull request deployment and is unreleased, it is onl
           </ul>
         </nav>
       
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../integrations/devworkspace.html" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    DevWorkspace
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../integrations/mattermost.html" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    Mattermost
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../integrations/keycloak.html" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    Keycloak
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../integrations/azure-pricing.html" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    Azure Pricing
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../integrations/aws-pricing.html" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    AWS Pricing
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../pricing.html" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    Pricing
-    
-  </span>
-  
-
-      </a>
     </li>
   
 
@@ -3987,37 +2828,55 @@ This documentation is for a pull request deployment and is unreleased, it is onl
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#supported-modes" class="md-nav__link">
+  <a href="#supported-workloads" class="md-nav__link">
     <span class="md-ellipsis">
-      Supported modes
+      Supported Workloads
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Supported modes">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ignored-namespaces" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ignored Namespaces
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#supported-modes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Supported Modes
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Supported Modes">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#hibernation-with-cron-schedule" class="md-nav__link">
+  <a href="#1-hibernation-with-cron-schedule-sleep-wake" class="md-nav__link">
     <span class="md-ellipsis">
-      Hibernation with cron schedule
+      1. Hibernation with Cron Schedule (Sleep + Wake)
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#sleep" class="md-nav__link">
+  <a href="#2-permanent-sleep-manual-wake" class="md-nav__link">
     <span class="md-ellipsis">
-      Sleep
+      2. Permanent Sleep (Manual Wake)
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#sleep-at-given-cron-schedule" class="md-nav__link">
+  <a href="#3-immediate-sleep-no-schedule" class="md-nav__link">
     <span class="md-ellipsis">
-      Sleep at given cron schedule
+      3. Immediate Sleep (No Schedule)
     </span>
   </a>
   
@@ -4029,35 +2888,29 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 </li>
       
         <li class="md-nav__item">
-  <a href="#more-examples" class="md-nav__link">
+  <a href="#status-tracking" class="md-nav__link">
     <span class="md-ellipsis">
-      More examples
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="More examples">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#example-1" class="md-nav__link">
-    <span class="md-ellipsis">
-      Example 1
+      Status Tracking
     </span>
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#example-2" class="md-nav__link">
+      
+        <li class="md-nav__item">
+  <a href="#key-notes" class="md-nav__link">
     <span class="md-ellipsis">
-      Example 2
+      Key Notes
     </span>
   </a>
   
 </li>
-        
-      </ul>
-    </nav>
+      
+        <li class="md-nav__item">
+  <a href="#example-cicd-preview-namespace" class="md-nav__link">
+    <span class="md-ellipsis">
+      Example: CI/CD Preview Namespace
+    </span>
+  </a>
   
 </li>
       
@@ -4080,120 +2933,115 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
 
 
-<h1 id="resource-supervisor">Resource Supervisor<a class="headerlink" href="#resource-supervisor" title="Permanent link">#</a></h1>
-<p>Supports hibernation of <code>deployments</code> and <code>statefulsets</code> for given namespaces via names and/or label selectors.
-If provided, it will update <a href="https://argo-cd.readthedocs.io/en/stable/user-guide/projects/#creating-projects">AppProject</a> instance with <a href="https://argo-cd.readthedocs.io/en/stable/user-guide/sync_windows/">SyncWindow</a> to deny sync to selected namespaces.</p>
-<p>Following namespaces will be ignored:</p>
+<h1 id="resourcesupervisor">ResourceSupervisor<a class="headerlink" href="#resourcesupervisor" title="Permanent link">#</a></h1>
+<p>The <code>ResourceSupervisor</code> is a <strong>namespace-scoped</strong> custom resource that enables <strong>self-service hibernation</strong> of workloads within a <strong>single namespace</strong>. It allows application teams or namespace owners to define schedules for scaling down and restoring <code>Deployments</code> and <code>StatefulSets</code> without requiring cluster-wide permissions.</p>
+<blockquote>
+<p>✅ <strong>Only affects the namespace in which it is created.</strong></p>
+</blockquote>
+<h2 id="supported-workloads">Supported Workloads<a class="headerlink" href="#supported-workloads" title="Permanent link">#</a></h2>
 <ul>
-<li>with annotation <code>"hibernation.stakater.com/exclude": "true"</code></li>
-<li>whose name match with privileged namespaces' regex specified in <a href="integration-config.html">IntegrationConfig</a></li>
-<li>namespace where MTO is installed</li>
+<li><code>Deployment</code></li>
+<li><code>StatefulSet</code></li>
 </ul>
-<h2 id="supported-modes">Supported modes<a class="headerlink" href="#supported-modes" title="Permanent link">#</a></h2>
-<h3 id="hibernation-with-cron-schedule">Hibernation with cron schedule<a class="headerlink" href="#hibernation-with-cron-schedule" title="Permanent link">#</a></h3>
-<p>Applications will sleep and wake up at provided cron schedule</p>
-<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenantoperator.stakater.com/v1beta1</span>
-<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ResourceSupervisor</span>
-<span class="nt">metadata</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">rs-example1</span>
-<span class="nt">spec</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">argocd</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">appProjects</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[]</span>
-<span class="w">    </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="s">""</span>
-<span class="w">  </span><span class="nt">namespaces</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">labelSelector</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">matchLabels</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{}</span>
-<span class="w">      </span><span class="nt">matchExpressions</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{}</span>
-<span class="w">    </span><span class="nt">names</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">bluesky-dev</span>
-<span class="w">  </span><span class="nt">schedule</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">sleepSchedule</span><span class="p">:</span><span class="w"> </span><span class="s">"10</span><span class="nv"> </span><span class="s">*</span><span class="nv"> </span><span class="s">*</span><span class="nv"> </span><span class="s">*</span><span class="nv"> </span><span class="s">*"</span><span class="w"> </span><span class="c1"># sleep each hour at min 10</span>
-<span class="w">    </span><span class="nt">wakeSchedule</span><span class="p">:</span><span class="w"> </span><span class="s">"50</span><span class="nv"> </span><span class="s">*</span><span class="nv"> </span><span class="s">*</span><span class="nv"> </span><span class="s">*</span><span class="nv"> </span><span class="s">*"</span><span class="w"> </span><span class="c1"># wake up each hour at min 50</span>
+<p>These resources are scaled to <strong>0 replicas</strong> during sleep and restored to their <strong>original replica count</strong> during wake.</p>
+<h2 id="ignored-namespaces">Ignored Namespaces<a class="headerlink" href="#ignored-namespaces" title="Permanent link">#</a></h2>
+<p>While <code>ResourceSupervisor</code> is namespace-scoped and only acts within its own namespace, the Hibernation Operator still respects global exclusion rules. A namespace (including the one containing the <code>ResourceSupervisor</code>) will be <strong>ignored</strong> if it has:</p>
+<ul>
+<li>The annotation:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="nt">hibernation.stakater.com/exclude</span><span class="p">:</span><span class="w"> </span><span class="s">"true"</span>
 </code></pre></div>
-<h3 id="sleep">Sleep<a class="headerlink" href="#sleep" title="Permanent link">#</a></h3>
-<p>Applications will sleep instantly, and will wake up when resource supervisor is deleted</p>
-<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenantoperator.stakater.com/v1beta1</span>
+<blockquote>
+<p>🔒 The operator <strong>never modifies</strong> workloads in excluded namespaces—even if a <code>ResourceSupervisor</code> exists there.</p>
+</blockquote>
+<h2 id="supported-modes">Supported Modes<a class="headerlink" href="#supported-modes" title="Permanent link">#</a></h2>
+<h3 id="1-hibernation-with-cron-schedule-sleep-wake">1. Hibernation with Cron Schedule (Sleep + Wake)<a class="headerlink" href="#1-hibernation-with-cron-schedule-sleep-wake" title="Permanent link">#</a></h3>
+<p>Define both <code>sleepSchedule</code> and <code>wakeSchedule</code> to automatically cycle workloads on and off.</p>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">hibernation.stakater.com/v1beta1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ResourceSupervisor</span>
-<span class="nt">metadata</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">rs-example2</span>
+<span class="l l-Scalar l-Scalar-Plain">meta</span>
+<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">nightly-hibernation</span>
+<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">namespace</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">my-app-staging</span><span class="w">  </span><span class="c1"># ← Must match target namespace</span>
 <span class="nt">spec</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">argocd</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">appProjects</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[]</span>
-<span class="w">    </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="s">""</span>
-<span class="w">  </span><span class="nt">namespaces</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">labelSelector</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">matchLabels</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{}</span>
-<span class="w">      </span><span class="nt">matchExpressions</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{}</span>
-<span class="w">    </span><span class="nt">names</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">bluesky-dev</span>
+<span class="w">  </span><span class="nt">schedule</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">sleepSchedule</span><span class="p">:</span><span class="w"> </span><span class="s">"0</span><span class="nv"> </span><span class="s">20</span><span class="nv"> </span><span class="s">*</span><span class="nv"> </span><span class="s">*</span><span class="nv"> </span><span class="s">*"</span><span class="w">   </span><span class="c1"># Sleep daily at 8:00 PM UTC</span>
+<span class="w">    </span><span class="nt">wakeSchedule</span><span class="p">:</span><span class="w"> </span><span class="s">"0</span><span class="nv"> </span><span class="s">8</span><span class="nv"> </span><span class="s">*</span><span class="nv"> </span><span class="s">*</span><span class="nv"> </span><span class="s">*"</span><span class="w">     </span><span class="c1"># Wake daily at 8:00 AM UTC</span>
+</code></pre></div>
+<blockquote>
+<p>🕒 <strong>Cron Format</strong>: Standard Unix cron (<code>minute hour day month weekday</code>). Timezone is <strong>UTC</strong>.</p>
+</blockquote>
+<hr>
+<h3 id="2-permanent-sleep-manual-wake">2. Permanent Sleep (Manual Wake)<a class="headerlink" href="#2-permanent-sleep-manual-wake" title="Permanent link">#</a></h3>
+<p>Omit <code>wakeSchedule</code> to keep workloads asleep indefinitely. Workloads will <strong>only wake</strong> when:</p>
+<ul>
+<li>The <code>ResourceSupervisor</code> is <strong>deleted</strong>, <strong>or</strong></li>
+<li>A <code>wakeSchedule</code> is <strong>added later</strong></li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">hibernation.stakater.com/v1beta1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ResourceSupervisor</span>
+<span class="l l-Scalar l-Scalar-Plain">meta</span>
+<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pause-for-maintenance</span>
+<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">namespace</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">demo-env</span>
+<span class="nt">spec</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">schedule</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">sleepSchedule</span><span class="p">:</span><span class="w"> </span><span class="s">"0</span><span class="nv"> </span><span class="s">12</span><span class="nv"> </span><span class="s">*</span><span class="nv"> </span><span class="s">*</span><span class="nv"> </span><span class="s">*"</span><span class="w">   </span><span class="c1"># Sleep today at noon UTC, never wake</span>
+<span class="w">    </span><span class="c1"># wakeSchedule: omitted → stay asleep</span>
+</code></pre></div>
+<blockquote>
+<p>💡 This is useful for temporary freezes (e.g., during security reviews or budget pauses).</p>
+</blockquote>
+<hr>
+<h3 id="3-immediate-sleep-no-schedule">3. Immediate Sleep (No Schedule)<a class="headerlink" href="#3-immediate-sleep-no-schedule" title="Permanent link">#</a></h3>
+<p>To sleep <strong>immediately</strong>, create a <code>ResourceSupervisor</code> with an <strong>empty <code>schedule</code></strong> block:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">hibernation.stakater.com/v1beta1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ResourceSupervisor</span>
+<span class="l l-Scalar l-Scalar-Plain">meta</span>
+<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">sleep-now</span>
+<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">namespace</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ci-preview-pr123</span>
+<span class="nt">spec</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">schedule</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{}</span>
 </code></pre></div>
-<h3 id="sleep-at-given-cron-schedule">Sleep at given cron schedule<a class="headerlink" href="#sleep-at-given-cron-schedule" title="Permanent link">#</a></h3>
-<p>Applications will sleep at provided cron schedule, and will wake up when resource supervisor is deleted</p>
-<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenantoperator.stakater.com/v1beta1</span>
-<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ResourceSupervisor</span>
-<span class="nt">metadata</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">rs-example3</span>
-<span class="nt">spec</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">argocd</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">appProjects</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[]</span>
-<span class="w">    </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="s">""</span>
-<span class="w">  </span><span class="nt">namespaces</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">labelSelector</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">matchLabels</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{}</span>
-<span class="w">      </span><span class="nt">matchExpressions</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{}</span>
-<span class="w">    </span><span class="nt">names</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">bluesky-dev</span>
-<span class="w">  </span><span class="nt">schedule</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">sleepSchedule</span><span class="p">:</span><span class="w"> </span><span class="s">"0</span><span class="nv"> </span><span class="s">0</span><span class="nv"> </span><span class="s">1</span><span class="nv"> </span><span class="s">2</span><span class="nv"> </span><span class="s">2025"</span><span class="w"> </span><span class="c1"># sleep on 1st February 2025</span>
+<ul>
+<li>Workloads are scaled to 0 <strong>as soon as the CR is created</strong>.</li>
+<li>They remain asleep until the CR is <strong>deleted</strong>.</li>
+</ul>
+<blockquote>
+<p>🚀 Ideal for ephemeral environments (e.g., CI/CD preview namespaces).</p>
+</blockquote>
+<hr>
+<h2 id="status-tracking">Status Tracking<a class="headerlink" href="#status-tracking" title="Permanent link">#</a></h2>
+<p>The operator updates the CR’s <code>status</code> to reflect current state:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">status</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">currentStatus</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">sleeping</span><span class="w">      </span><span class="c1"># or "running", "error"</span>
+<span class="w">  </span><span class="nt">nextReconcileTime</span><span class="p">:</span><span class="w"> </span><span class="s">"2025-02-01T08:00:00Z"</span>
 </code></pre></div>
-<h2 id="more-examples">More examples<a class="headerlink" href="#more-examples" title="Permanent link">#</a></h2>
-<h3 id="example-1">Example 1<a class="headerlink" href="#example-1" title="Permanent link">#</a></h3>
-<p>labelSelector's <code>matchLabels</code> and <code>matchExpressions</code> is <code>AND</code> operation. Here is an example with it:</p>
-<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenantoperator.stakater.com/v1beta1</span>
-<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ResourceSupervisor</span>
-<span class="nt">metadata</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">rs-example4</span>
-<span class="nt">spec</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">argocd</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">appProjects</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[]</span>
-<span class="w">    </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="s">""</span>
-<span class="w">  </span><span class="nt">namespaces</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">labelSelector</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">matchLabels</span><span class="p">:</span>
-<span class="w">        </span><span class="nt">stakater.com/current-tenant</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">bluesky</span>
-<span class="w">        </span><span class="nt">stakater.com/kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dev</span>
-<span class="w">      </span><span class="nt">matchExpressions</span><span class="p">:</span>
-<span class="w">       </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="nt"> key</span><span class="p">:</span><span class="w"> </span><span class="s">"private-sandbox"</span><span class="p p-Indicator">,</span><span class="nt"> operator</span><span class="p">:</span><span class="w"> </span><span class="nv">In</span><span class="w"> </span><span class="p p-Indicator">,</span><span class="nt"> values</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">"true"</span><span class="p p-Indicator">]</span><span class="w"> </span><span class="p p-Indicator">}</span>
-<span class="w">    </span><span class="nt">names</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">bluesky-staging</span>
-<span class="w">  </span><span class="nt">schedule</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">sleepSchedule</span><span class="p">:</span><span class="w"> </span><span class="s">""</span>
+<p>Use <code>kubectl describe</code> or <code>kubectl get -o yaml</code> to monitor:</p>
+<div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>get<span class="w"> </span>resourcesupervisor<span class="w"> </span>nightly-hibernation<span class="w"> </span>-n<span class="w"> </span>my-app-staging<span class="w"> </span>-o<span class="w"> </span><span class="nv">jsonpath</span><span class="o">=</span><span class="s1">'{.status}'</span>
 </code></pre></div>
-<p>It will sleep <code>bluesky-staging</code> namespace, and all those which have the specified labels.</p>
-<h3 id="example-2">Example 2<a class="headerlink" href="#example-2" title="Permanent link">#</a></h3>
-<p>If you provide Argo CD AppProject in spec, it will create <code>syncWindow</code> with <code>deny</code> policy</p>
-<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenantoperator.stakater.com/v1beta1</span>
+<hr>
+<h2 id="key-notes">Key Notes<a class="headerlink" href="#key-notes" title="Permanent link">#</a></h2>
+<ul>
+<li>❌ <strong>No <code>argocd</code> field</strong>: <code>ResourceSupervisor</code> <strong>does not support ArgoCD integration</strong>. Use <code>ClusterResourceSupervisor</code> for AppProject-based hibernation.</li>
+<li>❌ <strong>No <code>namespaces</code> field</strong>: It <strong>only affects its own namespace</strong>—you cannot target other namespaces.</li>
+<li>✅ <strong>Safe by default</strong>: Only <code>Deployments</code> and <code>StatefulSets</code> are scaled; all other resources are untouched.</li>
+<li>✅ <strong>Stateful restoration</strong>: Original replica counts are stored in the CR’s status and restored accurately—even after operator restarts.</li>
+</ul>
+<hr>
+<h2 id="example-cicd-preview-namespace">Example: CI/CD Preview Namespace<a class="headerlink" href="#example-cicd-preview-namespace" title="Permanent link">#</a></h2>
+<p>A CI pipeline creates a namespace <code>pr-456</code> and immediately hibernates it to save costs:</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># pr-456-hibernation.yaml</span>
+<span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">hibernation.stakater.com/v1beta1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ResourceSupervisor</span>
-<span class="nt">metadata</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">rs-example4</span>
+<span class="l l-Scalar l-Scalar-Plain">meta</span>
+<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">auto-sleep</span>
+<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">namespace</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pr-456</span>
 <span class="nt">spec</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">argocd</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">appProjects</span><span class="p">:</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dev-apps</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dev-apps2</span>
-<span class="w">    </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="s">"customer-argocd-projects"</span>
-<span class="w">  </span><span class="nt">namespaces</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">labelSelector</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">matchLabels</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{}</span>
-<span class="w">      </span><span class="nt">matchExpressions</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{}</span>
-<span class="w">    </span><span class="nt">names</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">bluesky-staging</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">bluesky-dev</span>
-<span class="w">  </span><span class="nt">schedule</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">sleepSchedule</span><span class="p">:</span><span class="w"> </span><span class="s">""</span>
+<span class="w">  </span><span class="nt">schedule</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{}</span>
 </code></pre></div>
-<p>It will sleep given namespaces, and create <code>deny</code> <code>syncWindow</code> on provided AppProjects</p>
+<p>Apply it:</p>
+<div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>apply<span class="w"> </span>-f<span class="w"> </span>pr-456-hibernation.yaml
+</code></pre></div>
+<p>Workloads sleep instantly. When the PR is merged, the pipeline deletes the namespace (or the CR), waking workloads briefly before cleanup.</p>
 
 
 
