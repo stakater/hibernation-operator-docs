@@ -2,14 +2,14 @@
   {
     "version": "renovate-stakater-vale-package-0.x",
     "title": "renovate-stakater-vale-package-0.x",
-    "aliases": [
-      "latest"
-    ]
+    "aliases": []
   },
   {
     "version": "renovate-stakater-.github-0.x",
     "title": "renovate-stakater-.github-0.x",
-    "aliases": []
+    "aliases": [
+      "latest"
+    ]
   },
   {
     "version": "renovate-nginxinc-nginx-unprivileged-1.x",
