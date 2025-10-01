@@ -1,27 +1,36 @@
 # Concepts
 
-Here are the key concepts of Multi-Tenant Operator (MTO):
+Here are the key concepts of the **Hibernation Operator**:
 
-## Core Operators
+## Core Resources
 
-### Tenant
+### ClusterResourceSupervisor
 
-A **Tenant** represents a logical grouping of namespaces, users, and resources within a Kubernetes cluster, enabling isolated environments for teams or projects. It defines access controls, resource quotas, and namespace configurations specific to each tenant.
+A **ClusterResourceSupervisor** is a **cluster-scoped** custom resource that defines hibernation schedules for **multiple namespaces** across the cluster. It enables platform administrators to centrally manage cost-saving policies by targeting namespaces either explicitly by name, dynamically via **Kubernetes label selectors**, or through **ArgoCD AppProjects**. The operator scales down `Deployments` and `StatefulSets` to zero during sleep windows and restores them to their original replica counts during wake windows. Its rich status field tracks watched, ignored, and sleeping namespaces along with preserved replica states for reliable recovery.
 
-### Quota
+### ResourceSupervisor
 
-**Quota** enforces resource limits for tenants, such as CPU, memory, and storage, ensuring fair allocation. It also defines minimum and maximum resource usage per pod or container within tenant namespaces.
+A **ResourceSupervisor** is a **namespace-scoped** custom resource that allows **application teams or namespace owners** to define hibernation schedules **within their own namespace**. It provides a lightweight, self-service mechanism to scale workloads down and up based on cron expressions—without requiring cluster-level permissions. This resource is ideal for teams managing staging, CI/CD preview, or demo environments that should run only during specific hours.
 
-### Extensions
+### Hibernation Schedule
 
-**Extensions** enhance MTO functionality by integrating external services like ArgoCD. They allow seamless configuration of AppProjects for tenants, extending multi-tenant workflows.
+The **Hibernation Schedule** is defined via two optional cron expressions:
 
-### Resource Supervisor
+- **`sleepSchedule`** (required): Specifies when workloads should be scaled to zero.
+- **`wakeSchedule`** (optional): Specifies when workloads should be restored.  
 
-**Resource Supervisor** manages the hibernation of deployments and stateful sets, enabling scaling down during user defined schedule or by manual trigger, optimizing resource utilization and reducing costs.
+> If `wakeSchedule` is omitted, resources remain asleep indefinitely until manually woken or the CR is updated. Both schedules use standard Unix cron format (e.g., `"0 18 * * 1-5"`).
 
-## Child Operators
+### Sleeping State
 
-### Template Operator
+The **Sleeping State** refers to the condition where a `Deployment` or `StatefulSet` has been scaled to **0 replicas** by the Hibernation Operator. The original replica count is preserved in the CR’s `status.sleepingNamespaces` field to ensure accurate restoration. Only workloads explicitly targeted by a supervisor are affected—everything else remains untouched.
 
-**Template Operator** is responsible for resource distribution in multiple namespaces based on user defined `Templates`. Full documentation can be found at [Template Operator Docs](https://docs.stakater.com/template-operator/latest/index.html)
+## Integration Concepts
+
+### ArgoCD AppProject Integration
+
+When a `ClusterResourceSupervisor` specifies `argocd.appProjects`, the operator automatically discovers all namespaces managed by those ArgoCD **AppProjects** and applies hibernation to them. This enables GitOps-native hibernation policies aligned with application boundaries rather than infrastructure boundaries.
+
+### Label-Based Namespace Selection
+
+Instead of listing namespaces individually, platform teams can use **Kubernetes-standard label selectors** (`matchLabels` and `matchExpressions`) to dynamically include namespaces that match certain criteria (e.g., `env: dev`, `team: frontend`). This supports scalable, policy-driven hibernation in large clusters.

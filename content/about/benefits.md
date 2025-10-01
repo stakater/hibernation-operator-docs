@@ -1,33 +1,59 @@
 # Benefits
 
-Kubernetes multi-tenancy enables organizations to share a single cluster among multiple tenants, driving cost efficiency, operational simplicity, and scalability. By reducing infrastructure duplication and leveraging shared resources, multi-tenancy lowers costs, enhances agility, and streamlines management. It's a powerful approach that balances efficiency with operational ease, making it an ideal choice for organizations looking to scale without compromising on performance or security.
+## ✅ **Benefits of `ClusterResourceSupervisor` (Cluster-Scoped)**
 
-## 1. Cost Optimization Through Resource Sharing
+1. **Centralized Control**  
+   - Enables cluster administrators to define **global hibernation policies** that apply across many namespaces or ArgoCD AppProjects.
+   - Ideal for cost optimization in large environments (e.g., dev/test clusters that sleep nights and weekends).
 
-In a single-tenancy model, each tenant (e.g., user, group, or department) requires a dedicated Kubernetes cluster. This approach incurs significant overhead as infrastructure components must be duplicated for each tenant, leading to higher per-tenant costs.
+1. **Flexible Namespace Targeting**  
+   - Supports **explicit namespace lists** (`names`) **and** **dynamic selection via label selectors** (`matchLabels`, `matchExpressions`).
+   - Allows automatic inclusion of new namespaces that match certain labels (e.g., `env: dev`).
 
-With multi-tenancy, a single cluster is efficiently shared across multiple tenants. This eliminates the need for redundant infrastructure, significantly reducing the cost per tenant while maximizing resource utilization.
+1. **ArgoCD Integration**  
+   - Can target **ArgoCD AppProjects**, enabling hibernation based on GitOps application boundaries.
+   - Useful in GitOps workflows where applications are grouped into projects—no need to track individual namespaces.
 
-## 2. Accelerated Agility for Scaling
+1. **Rich Observability & Auditability**  
+   - Detailed `status` includes:
+     - `watchedNamespaces` / `ignoreNamespaces`
+     - `sleepingNamespaces` with per-application replica counts and kinds (`Deployment`/`StatefulSet`)
+   - Helps operators debug, verify, and report on hibernation impact.
 
-The adoption of Kubernetes often begins with small-scale deployments and grows rapidly as the technology proves its value. While a single-tenant architecture may suffice initially, it can become a bottleneck as organizations scale. Managing multiple clusters for each tenant becomes increasingly complex and expensive.
+1. **Cluster-Wide Efficiency**  
+   - One CR can manage dozens or hundreds of namespaces—reducing configuration sprawl.
 
-Implementing a robust multi-tenancy strategy early ensures a smoother growth trajectory. It allows organizations to scale effortlessly without the operational and financial challenges associated with managing numerous clusters.
+---
 
-## 3. Streamlined Operations
+## ✅ **Benefits of `ResourceSupervisor` (Namespace-Scoped)**
 
-Managing a Kubernetes environment with one cluster per tenant introduces considerable operational overhead. Teams must handle monitoring, compliance, security, and maintenance for multiple clusters, multiplying the workload.
+1. **Self-Service for Teams**  
+   - Application owners or namespace tenants can define their **own hibernation schedule** without cluster-level permissions.
+   - Empowers autonomy while still enabling cost savings.
 
-Conversely, a multi-tenant architecture simplifies operations by consolidating cluster management. Even with automation tools or managed services like EKS, AKS, or GKE, multi-tenancy reduces complexity, enabling operations teams to focus on innovation rather than repetitive tasks.
+1. **Simplicity & Low Overhead**  
+   - Minimal spec: only requires a `schedule` (sleep/wake cron expressions).
+   - No need to understand label selectors, ArgoCD, or cross-namespace concerns.
 
-## 4. Enhanced Efficiency
+1. **Namespace Isolation**  
+   - Each namespace can have **independent schedules**—e.g., staging sleeps weekends, QA sleeps every night.
+   - Avoids "one-size-fits-all" policies that may not suit all workloads.
 
-Effective multi-tenancy maximizes efficiency by enabling better resource utilization and faster onboarding. Adding a new tenant is quicker and less resource-intensive than provisioning an entirely new cluster.
+1. **Lightweight Status**  
+   - Status tracks only `currentStatus` and `nextReconcileTime`—sufficient for local use cases.
+   - Reduces cognitive load and storage overhead.
 
-Shared components, such as monitoring, logging, and deployment pipelines, further enhance efficiency. Applications can be packed more densely on the underlying hardware, ensuring optimal performance and cost savings.
+1. **RBAC-Friendly**  
+   - Can be managed by users with only **namespace-level roles** (e.g., `edit` or custom roles), improving security posture.
 
-## 5. Simplified Management
+---
 
-With the right tools, multi-tenancy reduces the operational burden associated with managing multiple clusters. Fewer clusters mean a smaller attack surface, less duplication of maintenance efforts, and streamlined patching workflows.
+## 🎯 When to Use Which?
 
-While multi-tenancy introduces unique challenges, advancements in Kubernetes tooling are addressing these complexities, making multi-tenant environments simpler and more secure to manage.
+| Need | Solved By |
+|------|-----------|
+| Platform team managing 100 dev namespaces | `ClusterResourceSupervisor` |
+| Developer team wanting to hibernate their own namespace | `ResourceSupervisor` |
+| GitOps-driven environment using ArgoCD AppProjects | `ClusterResourceSupervisor` |
+| Multi-tenant cluster with mixed autonomy models | **Both** |
+| Avoiding privilege escalation for namespace owners | `ResourceSupervisor` |
