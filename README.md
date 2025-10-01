@@ -1,4 +1,4 @@
-# Multi Tenant Operator Documentation
+# Hibernation Operator Documentation
 
 This repository contains the source for the documentation for Hibernation Operator. It is built using [MkDocs](https://github.com/mkdocs/mkdocs) which is based on Python. It is also versioned using [mike](https://github.com/jimporter/mike).
 

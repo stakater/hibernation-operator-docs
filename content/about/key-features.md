@@ -58,4 +58,3 @@ The `ResourceSupervisor` provides **self-service hibernation** within a single n
 | Cluster admin managing hibernation for many teams | `ClusterResourceSupervisor` |
 | GitOps with ArgoCD AppProjects | `ClusterResourceSupervisor` |
 | Team wants full control over their namespace | `ResourceSupervisor` |
-| Multi-tenant platform with mixed governance | **Both** — use cluster for defaults, namespace for overrides |

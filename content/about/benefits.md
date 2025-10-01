@@ -55,5 +55,4 @@
 | Platform team managing 100 dev namespaces | `ClusterResourceSupervisor` |
 | Developer team wanting to hibernate their own namespace | `ResourceSupervisor` |
 | GitOps-driven environment using ArgoCD AppProjects | `ClusterResourceSupervisor` |
-| Multi-tenant cluster with mixed autonomy models | **Both** |
 | Avoiding privilege escalation for namespace owners | `ResourceSupervisor` |
