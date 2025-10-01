@@ -5,6 +5,11 @@
     "aliases": []
   },
   {
+    "version": "renovate-dotenv-16.x-lockfile",
+    "title": "renovate-dotenv-16.x-lockfile",
+    "aliases": []
+  },
+  {
     "version": "feat-update-hibernation-docs",
     "title": "feat-update-hibernation-docs",
     "aliases": [
