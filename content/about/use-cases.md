@@ -1,25 +1,54 @@
-# Use Cases
+# 🧩 Use Cases
 
-The first step in deciding how to share your cluster is understanding your specific use case. This understanding helps you evaluate the available patterns and tools best suited to your needs. Broadly, multi-tenancy in Kubernetes clusters can be categorized into two main types, though variations and hybrids often exist.
+## ✅ **`ClusterResourceSupervisor` – Cluster-Scoped Hibernation**
 
-## 1. Multi-Team Tenancy
+### 1. **Platform Team Managing Dev/Test Environments**
 
-A common use case for multi-tenancy involves sharing a cluster among multiple teams within an organization. Each team may operate one or more workloads, which often need to communicate with:
+> **Scenario**: A central platform team operates a shared Kubernetes cluster for 50+ development teams. To reduce cloud costs, they want all non-production namespaces to sleep during nights and weekends.  
+> **Solution**: Create a single `ClusterResourceSupervisor` with a label selector like `env in (dev, test, staging)` and a sleep schedule of `0 18 * * 1-5` (sleep at 6 PM on weekdays) and wake at `0 8 * * 1-5`.
 
-* Other workloads within the same cluster.
-* Workloads located in different clusters.
+### 2. **GitOps-Driven Hibernation via ArgoCD AppProjects**
 
-In this scenario:
+> **Scenario**: Your organization uses ArgoCD with AppProjects to group applications (e.g., `frontend-team`, `data-platform`). You want to hibernate entire AppProjects during off-hours.  
+> **Solution**: Define a `ClusterResourceSupervisor` targeting `appProjects: ["frontend-team", "data-platform"]` in the `argocd` namespace. The operator automatically discovers all namespaces managed by those AppProjects and applies hibernation.
 
-* Team members usually access Kubernetes resources either directly (e.g., via kubectl) or indirectly through tools like GitOps controllers or release automation systems.
-* There is typically some degree of trust between teams, but safeguards are crucial. Policies such as Role-Based Access Control (RBAC), resource quotas, and network policies are necessary to ensure clusters are shared securely and fairly.
+### 3. **Temporary Cluster-Wide Freeze for Maintenance**
 
-## 2. Multi-Customer Tenancy
+> **Scenario**: During a company-wide holiday break, you want to pause all non-critical workloads across the cluster.  
+> **Solution**: Deploy a `ClusterResourceSupervisor` with an empty `labelSelector` (which matches all namespaces) and no `wakeSchedule`. Workloads stay asleep until manually removed or overridden.
 
-Another common use case involves running multiple instances of a workload for customers, often by a Software-as-a-Service (SaaS) provider. This is sometimes referred to as "SaaS tenancy," but a more accurate term might be multi-customer tenancy, as this model is not exclusive to SaaS.
+### 4. **Cost Optimization in Multi-Tenant Clusters**
 
-In this scenario:
+> **Scenario**: You run a multi-tenant cluster where each tenant has a namespace labeled with `tenant-id`. Finance requires cost reports per tenant, and hibernation is part of the SLA.  
+> **Solution**: Use label selectors (`matchLabels: { tenant-tier: basic }`) to hibernate only lower-tier tenants, while premium tenants remain running.
 
-* Customers do not have direct access to the cluster. Kubernetes operates behind the scenes, used solely by the vendor to manage workloads.
-* Strong workload isolation is essential to maintain security and prevent resource contention.
-*Cost optimization is often a primary focus, achieved through Kubernetes policies that ensure efficient and secure resource usage.
+---
+
+## ✅ **`ResourceSupervisor` – Namespace-Scoped Hibernation**
+
+### 1. **Application Team Self-Service Hibernation**
+
+> **Scenario**: A product team owns the `payment-service-staging` namespace and wants it to sleep every night to save costs, but wake up by 9 AM for QA.  
+> **Solution**: The team creates a `ResourceSupervisor` in their namespace with `sleepSchedule: "0 20 * * *"` and `wakeSchedule: "0 9 * * *"`. No cluster admin involvement needed.
+
+### 2. **CI/CD Dynamic Environments**
+
+> **Scenario**: Your CI pipeline spins up ephemeral namespaces for PR previews (e.g., `pr-1234`). You want them to auto-sleep after 2 hours and never wake up.  
+> **Solution**: The CI job creates a `ResourceSupervisor` with a one-time-like cron (e.g., using a tool that schedules a future sleep) or a short recurring sleep with no wake. Alternatively, pair with a TTL controller—but `ResourceSupervisor` gives fine-grained control over *what* sleeps (Deployments/StatefulSets).
+
+### 3. **Training or Demo Environments**
+
+> **Scenario**: You provide demo environments for sales or training that should only run during business hours.  
+> **Solution**: In each demo namespace (`demo-customer-x`), deploy a `ResourceSupervisor` with weekday business-hour schedules. Easy to template and replicate.
+
+### 4. **Compliance-Driven Restrictions**
+
+> **Scenario**: A regulated workload must only run during approved maintenance windows (e.g., weekends).  
+> **Solution**: Namespace owners define a `ResourceSupervisor` that enforces strict `sleepSchedule`/`wakeSchedule` aligned with compliance policies.
+
+---
+
+## 🔄 Complementary Use Case: **Hybrid Governance**
+
+> **Scenario**: Your platform provides a default hibernation policy for all `env=dev` namespaces via `ClusterResourceSupervisor`, **but** allows teams to override it with a local `ResourceSupervisor` if they need custom behavior.  
+> **Implementation**: Your operator is designed to **skip namespaces** that contain a `ResourceSupervisor`, giving precedence to namespace-scoped control. This enables both standardization and flexibility.

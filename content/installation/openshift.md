@@ -1,166 +1,162 @@
 # On OpenShift
 
-MTO is [RedHat Certified](https://catalog.redhat.com/en/software/container-stacks/detail/618fa05e3adfdfc43f73b126) operator available on the Red Hat MarketPlace.
+The **Hibernation Operator** is a [Red Hat Certified Operator](https://catalog.redhat.com/en/software/container-stacks/detail/687efb0f70dee945827cfe24) available on the **Red Hat Marketplace** and **OperatorHub** in OpenShift.
 
-This document contains instructions on installing, uninstalling and configuring Multi Tenant Operator on OpenShift.
+This document contains instructions for installing, configuring, and uninstalling the Hibernation Operator on OpenShift.
 
-1. [OpenShift OperatorHub UI](#installing-via-operatorhub-ui)
-
-1. [CLI/GitOps](#installing-via-cli-or-gitops)
-
-1. [Enabling Console](#enabling-console)
-
+1. [OpenShift OperatorHub UI](#installing-via-operatorhub-ui)  
+1. [CLI / GitOps](#installing-via-cli-or-gitops)  
 1. [Uninstall](#uninstall-via-operatorhub-ui)
 
 ## Requirements
 
-* An **OpenShift** cluster
+* An **OpenShift** cluster (v4.10 or higher recommended)
+
+---
 
 ## Installing via OperatorHub UI
 
-* After opening OpenShift console click on `Operators`, followed by `OperatorHub` from the side menu
+1. In the OpenShift Console, navigate to **Operators → OperatorHub** from the left sidebar.
+1. Search for **`Hibernation Operator`** and click on the tile.
+1. Click the **Install** button.
 
-![image](../images/operatorHub.png)
+   ![Install button](../images/operatorHub.png)
 
-* Now search for `Multi Tenant Operator` and then click on `Multi Tenant Operator` tile
+1. Configure the installation:
+   * **Update channel**: `stable` (recommended for production)
+   * **Installed Namespace**: Select **`hibernation-operator-system`** (create if it doesn’t exist)
+   * **Update approval**:  
+       * `Automatic` for development  
+       * `Manual` for production (allows review of upgrades)
 
-![image](../images/search_tenant_operator_operatorHub.png)
+   Click **Install**.
 
-* Click on the `install` button
+   ![Install configuration](../images/hibernation_install.png)
 
-![image](../images/to_install_1.png)
+1. Wait for the operator to install. You’ll see a status of **Installed operator: Ready for use** when ready.
+1. Once installed, the Hibernation Operator is ready to manage hibernation policies across your cluster.
 
-* Select `Updated channel`. Select `multi-tenant-operator` to install the operator in `multi-tenant-operator` namespace from `Installed Namespace` dropdown menu. After configuring `Update approval` click on the `install` button.
+   ![Installation successful](../images/hibernation_installed_successful.png)
 
-> Note: Use `stable` channel for seamless upgrades. For `Production Environment` prefer `Manual` approval and use `Automatic` for `Development Environment`
+> 💡 **Note**: The operator is installed in the `hibernation-operator-system` namespace by default.
 
-![image](../images/to_install_2.png)
+---
 
-* Wait for the operator to be installed
+## Installing via CLI or GitOps
 
-![image](../images/to_install_wait.png)
+Use this method for automation, CI/CD pipelines, or GitOps workflows (e.g., with ArgoCD).
 
-* Once successfully installed, MTO will be ready to enforce multi-tenancy in your cluster
-
-![image](../images/to_installed_successful.png)
-
-> Note: MTO will be installed in `multi-tenant-operator` namespace.
-
-## Installing via CLI OR GitOps
-
-* Create namespace `multi-tenant-operator`
+### Step 1: Create the Operator Namespace
 
 ```bash
-oc create namespace multi-tenant-operator
-namespace/multi-tenant-operator created
+oc create namespace hibernation-operator-system
 ```
 
-* Create an OperatorGroup YAML for MTO and apply it in `multi-tenant-operator` namespace.
+### Step 2: Create an OperatorGroup
 
 ```bash
 oc create -f - << EOF
 apiVersion: operators.coreos.com/v1
 kind: OperatorGroup
 metadata:
-  name: tenant-operator
-  namespace: multi-tenant-operator
+  name: hibernation-operator
+  namespace: hibernation-operator-system
+spec:
+  targetNamespaces:
+  - hibernation-operator-system
 EOF
-operatorgroup.operators.coreos.com/tenant-operator created
 ```
 
-* Create a subscription YAML for MTO and apply it in `multi-tenant-operator` namespace. To enable console set `.spec.config.env[].ENABLE_CONSOLE` to `true`. This will create a route resource, which can be used to access the Multi-Tenant-Operator console.
+### Step 3: Create a Subscription
 
 ```bash
 oc create -f - << EOF
 apiVersion: operators.coreos.com/v1alpha1
 kind: Subscription
 metadata:
-  name: tenant-operator
-  namespace: multi-tenant-operator
+  name: hibernation-operator
+  namespace: hibernation-system
 spec:
-  channel: stable
+  channel: release-0.1
   installPlanApproval: Automatic
-  name: tenant-operator
+  name: hibernation-operator
   source: certified-operators
   sourceNamespace: openshift-marketplace
-  startingCSV: tenant-operator.v0.10.0
+  # Optional: pin to a specific version
+  # startingCSV: hibernation-operator.v0.1.102
 EOF
-subscription.operators.coreos.com/tenant-operator created
 ```
 
-> Note: To bring MTO via GitOps, add the above files in GitOps repository.
+> ✅ **GitOps Tip**: Commit these YAMLs to your GitOps repo to manage the operator declaratively.
 
-* After creating the `subscription` custom resource open OpenShift console and click on `Operators`, followed by `Installed Operators` from the side menu
+### Step 4: Verify Installation
 
-![image](../images/to_sub_installation_wait.png)
+In the OpenShift Console:
 
-* Wait for the installation to complete
+* Go to **Operators → Installed Operators**
+* Select the `hibernation-system` project
+* Confirm the **Hibernation Operator** status is **Succeeded**
 
-![image](../images/to_sub_installation_successful.png)
+Or via CLI:
 
-* Once the installation is complete click on `Workloads`, followed by `Pods` from the side menu and select `multi-tenant-operator` project
-
-![image](../images/select_multi_tenant_operator_project.png)
-
-* Once pods are up and running, MTO will be ready to enforce multi-tenancy in your cluster
-
-![image](../images/to_installed_successful_pod.png)
-
-For more details and configurations check out [IntegrationConfig](../kubernetes-resources/integration-config.md).
-
-## Enabling Console
-
-To enable console GUI for MTO, go to `Search` -> `IntegrationConfig` -> `tenant-operator-config` and make sure the following fields are set to `true`:
-
-```yaml
-spec:
-  components:
-    console: true
-    showback: true
+```bash
+oc get csv -n hibernation-operator-system
+oc get pods -n hibernation-operator-system
 ```
 
-> Note: If your `InstallPlan` approval is set to `Manual` then you will have to manually approve the `InstallPlan` for MTO console components to be installed.
+Wait until the `hibernation-controller` pod is `Running`.
 
-### Manual Approval
+![Running](../images/hibernation_running.png)
 
-* Open OpenShift console and click on `Operators`, followed by `Installed Operators` from the side menu.
-
-![image](../images/manual-approve-1.png)
-
-* Now click on `Upgrade available` in front of `mto-opencost` or `mto-prometheus`.
-
-![image](../images/manual-approve-2.png)
-
-* Now click on `Preview InstallPlan` on top.
-
-![image](../images/manual-approve-3.png)
-
-* Now click on `Approve` button.
-
-![image](../images/manual-approve-4.png)
-
-* Now the `InstallPlan` will be approved, and MTO console components will be installed.
+---
 
 ## Uninstall via OperatorHub UI
 
-You can uninstall MTO by following these steps:
+> ⚠️ **Warning**: Uninstalling the operator **does not delete your CRs** (`ClusterResourceSupervisor`, `ResourceSupervisor`). Workloads may remain asleep if not cleaned up.
 
-* Decide on whether you want to retain tenant namespaces and ArgoCD AppProjects or not. If yes, please set `spec.onDelete.cleanNamespaces` to `false` for all those tenants whose namespaces you want to retain, and `spec.onDelete.cleanAppProject` to `false` for all those tenants whose AppProject you want to retain. For more details check out [onDelete](../kubernetes-resources/tenant/how-to-guides/delete-tenant.md)
+### Step 1: (Optional) Clean Up Hibernation Policies
 
-* After making the required changes open OpenShift console and click on `Operators`, followed by `Installed Operators` from the side menu
+Delete any active hibernation resources to restore workloads:
 
-![image](../images/installed-operators.png)
+```bash
+# Delete all cluster-wide hibernation rules
+oc delete clusterresourcesupervisors.hibernation.stakater.com --all
 
-* Now click on uninstall and confirm uninstall.
+# Delete all namespace-scoped hibernation rules
+oc delete resourcesupervisors.hibernation.stakater.com --all --all-namespaces
+```
 
-![image](../images/uninstall-from-ui.png)
+### Step 2: Uninstall the Operator
 
-* Now the operator has been uninstalled.
+1. In OpenShift Console, go to **Operators → Installed Operators**
+1. Find **Hibernation Operator** in the `hibernation-operator-system` project
+1. Click the **three-dot menu → Uninstall Operator**
+1. Confirm removal
 
-* `Optional:` you can also manually remove MTO's CRDs and its resources from the cluster.
+   ![Uninstall from UI](../images/hibernation_uninstall.png)
+
+### Step 3: (Optional) Clean Up Leftover Resources
+
+To fully remove all traces:
+
+```bash
+# Remove namespace (includes RBAC, deployments, etc.)
+oc delete namespace hibernation-operator-system
+
+# Remove CRDs (only if no other instances exist)
+oc delete crd clusterresourcesupervisors.hibernation.stakater.com
+oc delete crd resourcesupervisors.hibernation.stakater.com
+```
+
+> 🔒 **Note**: CRD deletion is irreversible. Ensure no other tools depend on them.
+
+---
 
 ## Notes
 
-* For details on licensing of MTO please refer [Pricing](../pricing.md).
-* For more details on how to use MTO please refer [Tenant tutorial](../kubernetes-resources/tenant/how-to-guides/create-tenant.md).
-* For details on how to extend your MTO manager ClusterRole please refer [extend-default-clusterroles](../kubernetes-resources/tenant/how-to-guides/extend-default-roles.md).
+* The Hibernation Operator **does not include a web console**—it is a lightweight, API-driven operator.
+* It integrates natively with **OpenShift workloads** (`Deployments`, `StatefulSets`) and **ArgoCD** (if installed).
+* For production, use **Manual approval** and test upgrades in a staging cluster first.
+* Full CRD documentation:
+    * [`ClusterResourceSupervisor`](../kubernetes-resources/cluster-resource-supervisor.md)
+    * [`ResourceSupervisor`](../kubernetes-resources/resource-supervisor.md)

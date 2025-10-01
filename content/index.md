@@ -2,26 +2,26 @@
 head:
   - - meta
     - name: keywords
-      content: SEO plugin
+      content: hibernation operator, kubernetes, cost optimization, sleep, wake, cron, argocd, dev environments
 ---
 
 # Welcome to the Docs
 
-[//]: # ( introduction.md, features.md)
+Managing Kubernetes clusters at scale often leads to underutilized resources—especially in development, staging, and CI/CD environments that run 24/7 but are only actively used during business hours. This results in unnecessary cloud spend and inefficient resource utilization.
 
-Sharing Kubernetes clusters can significantly reduce costs and streamline administration. It enables efficient resource utilization, reduces configuration overhead, and simplifies the sharing of internal cluster resources among tenants. However, achieving secure and functional multi-tenancy presents challenges such as ensuring security, maintaining fairness, and mitigating the impact of noisy neighbors.
+The **Hibernation Operator** solves this by enabling **automated, policy-driven hibernation** of workloads. It safely scales down `Deployments` and `StatefulSets` to zero during off-hours and restores them to their original state when needed—helping teams reduce costs without sacrificing developer experience.
 
-Kubernetes is inherently designed as a single-tenant platform. Managed Kubernetes services like AKS, EKS, GKE, and OpenShift have improved security through "secure by default" concepts, but designing and orchestrating all the moving parts required for a secure multi-tenant platform remains a complex task. This complexity makes it challenging for cluster administrators to effectively host multiple tenants within a single cluster.
+With the Hibernation Operator, you can:
 
-Clusters can be shared in various ways:
+- **Schedule hibernation** using standard cron expressions for sleep and wake times.
+- **Target workloads** across multiple namespaces using explicit lists, dynamic label selectors, or **ArgoCD AppProjects** (for GitOps-aligned teams).
+- **Empower platform teams** with cluster-wide policies via `ClusterResourceSupervisor`.
+- **Enable self-service** for application teams using namespace-scoped `ResourceSupervisor`.
+- **Preserve state reliably**: Original replica counts are stored in the CR’s status for accurate restoration—even after operator restarts.
+- **Integrate seamlessly** with existing Kubernetes and ArgoCD workflows—no external dependencies required.
 
-* Different applications might run in the same cluster.
-* Multiple instances of the same application could operate within a single cluster, one for each end user.
-
-These scenarios are collectively referred to as multi-tenancy. While Kubernetes and many managed applications provide foundational resources to achieve multi-tenancy, leveraging these primitives requires professional expertise and deep knowledge of the platform.
-
-The Multi-Tenant Operator (MTO) builds on Kubernetes' capabilities, simplifying the orchestration of secure and efficient multi-tenancy. By addressing the unique needs of shared clusters, MTO helps cluster administrators overcome the inherent complexities of multi-tenancy, enabling them to harness its full potential.
+The Hibernation Operator is lightweight, secure, and built for real-world Kubernetes environments—whether you're running on OpenShift, EKS, AKS, GKE, or vanilla Kubernetes.
 
 ## Installation
 
-Refer to the [installation guide](./installation/overview.md) for setting up MTO.
+Refer to the [installation guide](./installation/overview.md) to deploy the Hibernation Operator in your cluster via **Helm** or **Operator Lifecycle Manager (OLM)**.
