@@ -52,4 +52,3 @@ Look for:
 - Only `Deployments` and `StatefulSets` in the **same namespace** are affected.
 - The operator **scales them to 0 replicas** during sleep and **restores original replica counts** on wake.
 - If `wakeSchedule` is omitted, workloads stay asleep until manually deleted or updated.
-[text](resource-supervisor.md)
