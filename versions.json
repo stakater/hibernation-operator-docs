@@ -5,5 +5,10 @@
     "aliases": [
       "latest"
     ]
+  },
+  {
+    "version": "feat-update-hibernation-docs",
+    "title": "feat-update-hibernation-docs",
+    "aliases": []
   }
 ]
