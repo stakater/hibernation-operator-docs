@@ -33,7 +33,8 @@ nav:
     - kubernetes-resources/cluster-resource-supervisor.md
     - kubernetes-resources/resource-supervisor.md
   - How-to Guides:
-    - installation/setup-CRs.md
+    - how-to-guides/create-resource-supervisor.md
+    - how-to-guides/create-cluster-resource-supervisor.md
   - Integrations:
     - integrations/argocd.md
   - changelog.md

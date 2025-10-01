@@ -53,8 +53,8 @@ kubectl get pods -n hibernation-operator-system --watch
 
 Once all pods are `Running`, you can begin creating hibernation policies:
 
-* [Create a ClusterResourceSupervisor](../kubernetes-resources/cluster-resource-supervisor/how-to-guides/create-cluster-resource-supervisor.md)  
-* [Create a ResourceSupervisor](../kubernetes-resources/resource-supervisor/how-to-guides/create-resource-supervisor.md)
+* [Create a ClusterResourceSupervisor](../how-to-guides/create-cluster-resource-supervisor.md)  
+* [Create a ResourceSupervisor](../how-to-guides/create-resource-supervisor.md)
 
 ## Uninstall via Helm CLI
 
