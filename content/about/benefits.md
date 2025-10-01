@@ -14,7 +14,7 @@
    - Can target **ArgoCD AppProjects**, enabling hibernation based on GitOps application boundaries.
    - Useful in GitOps workflows where applications are grouped into projects—no need to track individual namespaces.
 
-1. **Rich Observability & Auditability**  
+1. **Rich Observability & auditability**  
    - Detailed `status` includes:
      - `watchedNamespaces` / `ignoreNamespaces`
      - `sleepingNamespaces` with per-application replica counts and kinds (`Deployment`/`StatefulSet`)

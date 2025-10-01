@@ -41,7 +41,7 @@
 > **Scenario**: You provide demo environments for sales or training that should only run during business hours.  
 > **Solution**: In each demo namespace (`demo-customer-x`), deploy a `ResourceSupervisor` with weekday business-hour schedules. Easy to template and replicate.
 
-### 4. **Compliance-Driven Runtime Restrictions**
+### 4. **Compliance-Driven Restrictions**
 
 > **Scenario**: A regulated workload must only run during approved maintenance windows (e.g., weekends).  
 > **Solution**: Namespace owners define a `ResourceSupervisor` that enforces strict `sleepSchedule`/`wakeSchedule` aligned with compliance policies.

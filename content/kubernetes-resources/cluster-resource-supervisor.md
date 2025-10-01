@@ -44,7 +44,7 @@ spec:
 
 🔍 **Note**:
 
-> - `matchLabels` and `matchExpressions` are **ANDed** together.  
+> - `matchLabels` and `matchExpressions` are **AND** together.  
 > - An empty `labelSelector: {}` matches **all namespaces**.  
 > - A missing/`null` `labelSelector` matches **none**.
 

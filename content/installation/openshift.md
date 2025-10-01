@@ -131,7 +131,7 @@ oc delete resourcesupervisors.hibernation.stakater.com --all --all-namespaces
 1. In OpenShift Console, go to **Operators → Installed Operators**
 1. Find **Hibernation Operator** in the `hibernation-operator-system` project
 1. Click the **three-dot menu → Uninstall Operator**
-1. Confirm uninstallation
+1. Confirm removal
 
    ![Uninstall from UI](../images/hibernation_uninstall.png)
 

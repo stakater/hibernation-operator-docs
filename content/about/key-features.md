@@ -24,7 +24,7 @@ The `ClusterResourceSupervisor` enables **platform-level hibernation management*
         - Application kind (`Deployment` or `StatefulSet`)
         - Original replica count (for accurate restoration)
         - Per-namespace and per-application status
-    - `nextReconcileTime`: Predictable next action time (ISO 8601 datetime)
+    - `nextReconcileTime`: Predictable next action time (`ISO 8601 datetime`)
 
 > 💡 **Use Case**: Enforce cost-saving hibernation for all `env=dev` namespaces or all applications in the `platform-team` ArgoCD AppProject.
 
@@ -45,7 +45,7 @@ The `ResourceSupervisor` provides **self-service hibernation** within a single n
     - `wakeSchedule` (optional): Cron expression to wake workloads; if not set, workloads stay asleep indefinitely
 - **Lightweight status**:
     - `currentStatus`: Current hibernation state (`sleeping`, `running`, `error`)
-    - `nextReconcileTime`: Next scheduled action (ISO 8601 datetime)
+    - `nextReconcileTime`: Next scheduled action (`ISO 8601 datetime`)
 
 > 💡 **Use Case**: A development team creates a `ResourceSupervisor` in their `myapp-staging` namespace to sleep workloads every night and wake them each morning.
 
