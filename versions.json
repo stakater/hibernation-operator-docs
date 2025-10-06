@@ -17,14 +17,14 @@
   {
     "version": "renovate-main-stakater-vale-package-0.x",
     "title": "renovate-main-stakater-vale-package-0.x",
-    "aliases": []
+    "aliases": [
+      "latest"
+    ]
   },
   {
     "version": "renovate-dotenv-17.x",
     "title": "renovate-dotenv-17.x",
-    "aliases": [
-      "latest"
-    ]
+    "aliases": []
   },
   {
     "version": "renovate-dotenv-16.x-lockfile",
