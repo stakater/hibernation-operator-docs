@@ -15,6 +15,11 @@
     "aliases": []
   },
   {
+    "version": "renovate-main-stakater-vale-package-0.x",
+    "title": "renovate-main-stakater-vale-package-0.x",
+    "aliases": []
+  },
+  {
     "version": "renovate-dotenv-17.x",
     "title": "renovate-dotenv-17.x",
     "aliases": [
