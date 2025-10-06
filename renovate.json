@@ -1,7 +1,8 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": [
-    "config:recommended"
+    "config:recommended",
+    "local>stakater-ab/.github:renovate-config"
   ],
   "labels": [
     "dependencies"
@@ -10,16 +11,29 @@
     "$default",
     "/^[0-9]+\\.[0-9]+$/"
   ],
+  "groupName": "all dependencies",
+  "rangeStrategy": "replace",
+  "group": {
+    "major": {
+      "groupName": "all majors"
+    },
+    "minor": {
+      "groupName": "all minors"
+    },
+    "patch": {
+      "groupName": "all patches"
+    }
+  },
   "customManagers": [
     {
-        "customType": "regex",
-        "fileMatch": [
-            ".vale.ini"
-        ],
-        "matchStrings": [
-            "https:\/\/github\\.com\/(?<depName>.*)\/releases\/download\/(?<currentValue>.*)\/.*\\.zip"
-        ],
-        "datasourceTemplate": "github-releases"
+      "customType": "regex",
+      "fileMatch": [
+        ".vale.ini"
+      ],
+      "matchStrings": [
+        "https://github\\.com/(?<depName>.*)/releases/download/(?<currentValue>.*)/.*\\.zip"
+      ],
+      "datasourceTemplate": "github-releases"
     }
   ]
 }
