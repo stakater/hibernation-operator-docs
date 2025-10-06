@@ -25,5 +25,10 @@
     "version": "renovate-dotenv-16.x-lockfile",
     "title": "renovate-dotenv-16.x-lockfile",
     "aliases": []
+  },
+  {
+    "version": "renovate-actions-checkout-5.x",
+    "title": "renovate-actions-checkout-5.x",
+    "aliases": []
   }
 ]
