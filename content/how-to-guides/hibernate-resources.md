@@ -138,7 +138,7 @@ status:
       replicas: 3
 ```
 
-## Hibernating namespaces and/or ArgoCD Applications with ResourceSupervisor
+## Hibernating namespaces and/or ArgoCD Applications with Cluster ResourceSupervisor
 
 Bill, the cluster administrator, wants to hibernate a collection of namespaces and AppProjects belonging to multiple different tenants. He can do so by creating a ResourceSupervisor manually, specifying the hibernation schedule in its spec, the namespaces and ArgoCD Applications that need to be hibernated as per the mentioned schedule.
 Bill can also use the same method to hibernate some namespaces and ArgoCD Applications that do not belong to any tenant on his cluster.
@@ -147,9 +147,9 @@ The example given below will hibernate the ArgoCD Applications in the 'test-app-
 
 ```yaml
 apiVersion: hibernation.stakater.com/v1beta1
-kind: ResourceSupervisor
+kind: ClusterResourceSupervisor
 metadata:
-  name: test-resource-supervisor
+  name: test-cluster-resource-supervisor
 spec:
   argocd:
     appProjects:
