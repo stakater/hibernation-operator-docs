@@ -2919,14 +2919,14 @@ Hibernation downsizes the running <code>Deployments</code> and <code>StatefulSet
 <p>Additionally, adding the <code>hibernation.stakater.com/exclude: 'true'</code> annotation to a namespace excludes it from hibernating.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>This is only true for hibernation applied via the Tenant Custom Resource, and does not apply for hibernation done by manually creating a ResourceSupervisor (details about that below).</p>
+<p>This is only true for hibernation applied via the Tenant Custom Resource, and does not apply for hibernation done by manually creating a ClusterResourceSupervisor (details about that below).</p>
 </div>
 <h2 id="cluster-namespace-resource-supervisor">Cluster &amp; Namespace Resource Supervisor<a class="headerlink" href="#cluster-namespace-resource-supervisor" title="Permanent link">#</a></h2>
-<p>Adding a Hibernation Schedule to a Tenant creates an accompanying ResourceSupervisor Custom Resource.</p>
+<p>Adding a Hibernation Schedule to a Tenant creates an accompanying ClusterResourceSupervisor Custom Resource.</p>
 <p>When the sleep timer is activated, the Resource Supervisor puts your applications to sleep and store their previous state. When the wake timer is activated, it uses the stored state to bring them back to running state.</p>
 <p>Enabling ArgoCD support for Tenants will also hibernate applications in the tenants' <code>appProjects</code>.</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">hibernation.stakater.com/v1beta1</span>
-<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ResourceSupervisor</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ClusterResourceSupervisor</span>
 <span class="nt">metadata</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">sigma-tenant</span>
 <span class="nt">spec</span><span class="p">:</span>
@@ -2960,9 +2960,9 @@ The ResourceSupervisor definition will contain the hibernation cron schedule, th
 <li>Namespaces and AppProjects belonging to a tenant that the cluster admin is not a member of</li>
 <li>Non-tenant namespaces and ArgoCD AppProjects</li>
 </ul>
-<p>As an example, the following ResourceSupervisor could be created manually, to apply hibernation explicitly to the 'ns1' and 'ns2' namespaces, and to the 'sample-app-project' AppProject.</p>
+<p>As an example, the following ClusterResourceSupervisor could be created manually, to apply hibernation explicitly to the 'ns1' and 'ns2' namespaces, and to the 'sample-app-project' AppProject.</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">hibernation.stakater.com/v1beta1</span>
-<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ResourceSupervisor</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ClusterResourceSupervisor</span>
 <span class="nt">metadata</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">hibernator</span>
 <span class="nt">spec</span><span class="p">:</span>
@@ -2984,9 +2984,9 @@ The ResourceSupervisor definition will contain the hibernation cron schedule, th
 </code></pre></div>
 <h2 id="freeing-up-unused-resources-with-hibernation">Freeing up unused resources with hibernation<a class="headerlink" href="#freeing-up-unused-resources-with-hibernation" title="Permanent link">#</a></h2>
 <h2 id="hibernation-states">Hibernation States<a class="headerlink" href="#hibernation-states" title="Permanent link">#</a></h2>
-<p>The ResourceSupervisor will look like this at 'sleeping' time (as per the schedule):</p>
+<p>The ClusterResourceSupervisor will look like this at 'sleeping' time (as per the schedule):</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">hibernation.stakater.com/v1beta1</span>
-<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ResourceSupervisor</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ClusterResourceSupervisor</span>
 <span class="nt">metadata</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">example</span>
 <span class="nt">spec</span><span class="p">:</span>
