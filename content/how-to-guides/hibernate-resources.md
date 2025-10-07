@@ -23,11 +23,11 @@ hibernation:
 Additionally, adding the `hibernation.stakater.com/exclude: 'true'` annotation to a namespace excludes it from hibernating.
 
 !!! note
-    This is only true for hibernation applied via the Tenant Custom Resource, and does not apply for hibernation done by manually creating a ResourceSupervisor (details about that below).
+    This is only true for hibernation applied via the Tenant Custom Resource, and does not apply for hibernation done by manually creating a ClusterResourceSupervisor (details about that below).
 
 ## Cluster & Namespace Resource Supervisor
 
-Adding a Hibernation Schedule to a Tenant creates an accompanying ResourceSupervisor Custom Resource.
+Adding a Hibernation Schedule to a Tenant creates an accompanying ClusterResourceSupervisor Custom Resource.
 
 When the sleep timer is activated, the Resource Supervisor puts your applications to sleep and store their previous state. When the wake timer is activated, it uses the stored state to bring them back to running state.
 
@@ -35,7 +35,7 @@ Enabling ArgoCD support for Tenants will also hibernate applications in the tena
 
 ```yaml
 apiVersion: hibernation.stakater.com/v1beta1
-kind: ResourceSupervisor
+kind: ClusterResourceSupervisor
 metadata:
   name: sigma-tenant
 spec:
@@ -71,11 +71,11 @@ This method can be used to hibernate:
 - Namespaces and AppProjects belonging to a tenant that the cluster admin is not a member of
 - Non-tenant namespaces and ArgoCD AppProjects
 
-As an example, the following ResourceSupervisor could be created manually, to apply hibernation explicitly to the 'ns1' and 'ns2' namespaces, and to the 'sample-app-project' AppProject.
+As an example, the following ClusterResourceSupervisor could be created manually, to apply hibernation explicitly to the 'ns1' and 'ns2' namespaces, and to the 'sample-app-project' AppProject.
 
 ```yaml
 apiVersion: hibernation.stakater.com/v1beta1
-kind: ResourceSupervisor
+kind: ClusterResourceSupervisor
 metadata:
   name: hibernator
 spec:
@@ -100,11 +100,11 @@ spec:
 
 ## Hibernation States
 
-The ResourceSupervisor will look like this at 'sleeping' time (as per the schedule):
+The ClusterResourceSupervisor will look like this at 'sleeping' time (as per the schedule):
 
 ```yaml
 apiVersion: hibernation.stakater.com/v1beta1
-kind: ResourceSupervisor
+kind: ClusterResourceSupervisor
 metadata:
   name: example
 spec:
