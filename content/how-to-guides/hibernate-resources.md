@@ -138,38 +138,6 @@ status:
       replicas: 3
 ```
 
-Bill wants to prevent the `build` namespace from going to sleep, so he can add the `hibernation.stakater.com/exclude: 'true'` annotation to it. The ResourceSupervisor will now look like this after reconciling:
-
-```yaml
-apiVersion: hibernation.stakater.com/v1beta1
-kind: ResourceSupervisor
-metadata:
-  name: example
-spec:
-  argocd:
-    appProjects: []
-    namespace: ''
-  schedule:
-    sleepSchedule: 0 20 * * 1-5
-    wakeSchedule: 0 8 * * 1-5
-  namespaces:
-    labelSelector:
-      matchLabels: {}
-      matchExpressions: {}
-    names:
-      - stage
-      - dev
-status:
-  currentStatus: sleeping
-  nextReconcileTime: '2024-07-12T08:00:00Z'
-  sleepingNamespaces:
-  - Namespace: build
-    sleepingApplications:
-    - kind: Deployment
-      name: example
-      replicas: 3
-```
-
 ## Hibernating namespaces and/or ArgoCD Applications with ResourceSupervisor
 
 Bill, the cluster administrator, wants to hibernate a collection of namespaces and AppProjects belonging to multiple different tenants. He can do so by creating a ResourceSupervisor manually, specifying the hibernation schedule in its spec, the namespaces and ArgoCD Applications that need to be hibernated as per the mentioned schedule.
