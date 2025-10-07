@@ -27,6 +27,11 @@
     ]
   },
   {
+    "version": "renovate-main-dotenv-16.x-lockfile",
+    "title": "renovate-main-dotenv-16.x-lockfile",
+    "aliases": []
+  },
+  {
     "version": "renovate-dotenv-17.x",
     "title": "renovate-dotenv-17.x",
     "aliases": []
