@@ -27,7 +27,9 @@
   {
     "version": "renovate-main-python-3.x",
     "title": "renovate-main-python-3.x",
-    "aliases": []
+    "aliases": [
+      "latest"
+    ]
   },
   {
     "version": "renovate-main-nginxinc-nginx-unprivileged-1.x",
@@ -42,9 +44,7 @@
   {
     "version": "renovate-main-actions-checkout-5.x",
     "title": "renovate-main-actions-checkout-5.x",
-    "aliases": [
-      "latest"
-    ]
+    "aliases": []
   },
   {
     "version": "renovate-dotenv-17.x",
