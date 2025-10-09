@@ -25,6 +25,11 @@
     "aliases": []
   },
   {
+    "version": "renovate-main-python-3.x",
+    "title": "renovate-main-python-3.x",
+    "aliases": []
+  },
+  {
     "version": "renovate-main-nginxinc-nginx-unprivileged-1.x",
     "title": "renovate-main-nginxinc-nginx-unprivileged-1.x",
     "aliases": []
