@@ -12,9 +12,7 @@
   {
     "version": "renovate-0.1-dotenv-16.x-lockfile",
     "title": "renovate-0.1-dotenv-16.x-lockfile",
-    "aliases": [
-      "latest"
-    ]
+    "aliases": []
   },
   {
     "version": "renovate-stakater-vale-package-0.x",
@@ -39,7 +37,9 @@
   {
     "version": "renovate-main-stakater-.github-0.x",
     "title": "renovate-main-stakater-.github-0.x",
-    "aliases": []
+    "aliases": [
+      "latest"
+    ]
   },
   {
     "version": "renovate-main-python-3.x",
