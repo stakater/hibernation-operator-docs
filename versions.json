@@ -37,7 +37,9 @@
   {
     "version": "renovate-main-stakater-.github-0.x",
     "title": "renovate-main-stakater-.github-0.x",
-    "aliases": []
+    "aliases": [
+      "latest"
+    ]
   },
   {
     "version": "renovate-main-python-3.x",
@@ -82,8 +84,6 @@
   {
     "version": "0.1-fix-for-metadata",
     "title": "0.1-fix-for-metadata",
-    "aliases": [
-      "latest"
-    ]
+    "aliases": []
   }
 ]
