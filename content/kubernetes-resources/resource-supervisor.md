@@ -16,7 +16,7 @@ These resources are scaled to **0 replicas** during sleep and restored to their 
 While `ResourceSupervisor` is namespace-scoped and only acts within its own namespace, the Hibernation Operator still respects global exclusion rules. A namespace (including the one containing the `ResourceSupervisor`) will be **ignored** if it has:
 
 - The annotation:
-  
+
   ```yaml
   hibernation.stakater.com/exclude: "true"
   ```
@@ -32,7 +32,7 @@ Define both `sleepSchedule` and `wakeSchedule` to automatically cycle workloads 
 ```yaml
 apiVersion: hibernation.stakater.com/v1beta1
 kind: ResourceSupervisor
-meta
+metadata:
   name: nightly-hibernation
   namespace: my-app-staging  # ← Must match target namespace
 spec:
@@ -55,7 +55,7 @@ Omit `wakeSchedule` to keep workloads asleep indefinitely. Workloads will **only
 ```yaml
 apiVersion: hibernation.stakater.com/v1beta1
 kind: ResourceSupervisor
-meta
+metadata:
   name: pause-for-maintenance
   namespace: demo-env
 spec:
@@ -75,7 +75,7 @@ To sleep **immediately**, create a `ResourceSupervisor` with an **empty `schedul
 ```yaml
 apiVersion: hibernation.stakater.com/v1beta1
 kind: ResourceSupervisor
-meta
+metadata:
   name: sleep-now
   namespace: ci-preview-pr123
 spec:
@@ -124,7 +124,7 @@ A CI pipeline creates a namespace `pr-456` and immediately hibernates it to save
 # pr-456-hibernation.yaml
 apiVersion: hibernation.stakater.com/v1beta1
 kind: ResourceSupervisor
-meta
+metadata:
   name: auto-sleep
   namespace: pr-456
 spec:
