@@ -37,7 +37,7 @@ helm install hibernation-operator oci://ghcr.io/stakater/public/charts/hibernati
 ```yaml
 apiVersion: hibernation.stakater.com/v1beta1
 kind: ClusterResourceSupervisor
-meta
+metadata:
   name: argocd-hibernation-policy
 spec:
   argocd:
