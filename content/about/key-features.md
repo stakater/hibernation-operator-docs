@@ -1,4 +1,4 @@
-# 🌐 Key Features
+# Key Features
 
 ## **1. `ClusterResourceSupervisor` (Cluster-Scoped)**
 
@@ -43,9 +43,14 @@ The `ResourceSupervisor` provides **self-service hibernation** within a single n
 - **Cron-based scheduling**:
     - `sleepSchedule`: Required cron expression to hibernate workloads
     - `wakeSchedule` (optional): Cron expression to wake workloads; if not set, workloads stay asleep indefinitely
-- **Lightweight status**:
-    - `currentStatus`: Current hibernation state (`sleeping`, `running`, `error`)
-    - `nextReconcileTime`: Next scheduled action (`ISO 8601 datetime`)
+- **Comprehensive status tracking**:
+    - `currentStatus`: Overall state (`sleeping`, `running`, `error`)
+    - `nextReconcileTime`: Predictable next action time (`ISO 8601 datetime`)
+    - `sleepingApplications`: Detailed records of scaled-down applications within its namespace, including:
+        - Namespace name
+        - Application kind (`Deployment` or `StatefulSet`)
+        - Original replica count (for accurate restoration)
+        - Per-namespace and per-application status
 
 > 💡 **Use Case**: A development team creates a `ResourceSupervisor` in their `myapp-staging` namespace to sleep workloads every night and wake them each morning.
 
