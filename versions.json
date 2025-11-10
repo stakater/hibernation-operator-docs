@@ -82,9 +82,7 @@
   {
     "version": "0.1-fix-for-RS-status",
     "title": "0.1-fix-for-RS-status",
-    "aliases": [
-      "latest"
-    ]
+    "aliases": []
   },
   {
     "version": "0.1-fix-for-metadata",
@@ -94,6 +92,8 @@
   {
     "version": "0.1",
     "title": "0.1",
-    "aliases": []
+    "aliases": [
+      "latest"
+    ]
   }
 ]
