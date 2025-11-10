@@ -90,5 +90,10 @@
     "version": "0.1-fix-for-metadata",
     "title": "0.1-fix-for-metadata",
     "aliases": []
+  },
+  {
+    "version": "0.1",
+    "title": "0.1",
+    "aliases": []
   }
 ]
