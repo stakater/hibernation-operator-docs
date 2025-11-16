@@ -2,7 +2,9 @@
   {
     "version": "renovate-0.1-stakater-vale-package-0.x",
     "title": "renovate-0.1-stakater-vale-package-0.x",
-    "aliases": []
+    "aliases": [
+      "latest"
+    ]
   },
   {
     "version": "renovate-0.1-stakater-.github-0.x",
@@ -92,8 +94,6 @@
   {
     "version": "0.1",
     "title": "0.1",
-    "aliases": [
-      "latest"
-    ]
+    "aliases": []
   }
 ]
