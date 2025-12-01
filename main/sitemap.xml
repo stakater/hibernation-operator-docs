@@ -2,70 +2,70 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://docs.stakater.com/hibernation-operator-docs/main/index.html</loc>
-         <lastmod>2025-10-01</lastmod>
+         <lastmod>2025-12-01</lastmod>
     </url>
     <url>
          <loc>https://docs.stakater.com/hibernation-operator-docs/main/changelog.html</loc>
-         <lastmod>2025-10-01</lastmod>
+         <lastmod>2025-12-01</lastmod>
     </url>
     <url>
          <loc>https://docs.stakater.com/hibernation-operator-docs/main/eula.html</loc>
-         <lastmod>2025-10-01</lastmod>
+         <lastmod>2025-12-01</lastmod>
     </url>
     <url>
          <loc>https://docs.stakater.com/hibernation-operator-docs/main/troubleshooting.html</loc>
-         <lastmod>2025-10-01</lastmod>
+         <lastmod>2025-12-01</lastmod>
     </url>
     <url>
          <loc>https://docs.stakater.com/hibernation-operator-docs/main/about/benefits.html</loc>
-         <lastmod>2025-10-01</lastmod>
+         <lastmod>2025-12-01</lastmod>
     </url>
     <url>
          <loc>https://docs.stakater.com/hibernation-operator-docs/main/about/key-features.html</loc>
-         <lastmod>2025-10-01</lastmod>
+         <lastmod>2025-12-01</lastmod>
     </url>
     <url>
          <loc>https://docs.stakater.com/hibernation-operator-docs/main/about/use-cases.html</loc>
-         <lastmod>2025-10-01</lastmod>
+         <lastmod>2025-12-01</lastmod>
     </url>
     <url>
          <loc>https://docs.stakater.com/hibernation-operator-docs/main/architecture/architecture.html</loc>
-         <lastmod>2025-10-01</lastmod>
+         <lastmod>2025-12-01</lastmod>
     </url>
     <url>
          <loc>https://docs.stakater.com/hibernation-operator-docs/main/architecture/concepts.html</loc>
-         <lastmod>2025-10-01</lastmod>
+         <lastmod>2025-12-01</lastmod>
     </url>
     <url>
          <loc>https://docs.stakater.com/hibernation-operator-docs/main/how-to-guides/create-cluster-resource-supervisor.html</loc>
-         <lastmod>2025-10-01</lastmod>
+         <lastmod>2025-12-01</lastmod>
     </url>
     <url>
          <loc>https://docs.stakater.com/hibernation-operator-docs/main/how-to-guides/create-resource-supervisor.html</loc>
-         <lastmod>2025-10-01</lastmod>
+         <lastmod>2025-12-01</lastmod>
     </url>
     <url>
          <loc>https://docs.stakater.com/hibernation-operator-docs/main/installation/kubernetes.html</loc>
-         <lastmod>2025-10-01</lastmod>
+         <lastmod>2025-12-01</lastmod>
     </url>
     <url>
          <loc>https://docs.stakater.com/hibernation-operator-docs/main/installation/openshift.html</loc>
-         <lastmod>2025-10-01</lastmod>
+         <lastmod>2025-12-01</lastmod>
     </url>
     <url>
          <loc>https://docs.stakater.com/hibernation-operator-docs/main/installation/overview.html</loc>
-         <lastmod>2025-10-01</lastmod>
+         <lastmod>2025-12-01</lastmod>
     </url>
     <url>
          <loc>https://docs.stakater.com/hibernation-operator-docs/main/integrations/argocd.html</loc>
-         <lastmod>2025-10-01</lastmod>
+         <lastmod>2025-12-01</lastmod>
     </url>
     <url>
          <loc>https://docs.stakater.com/hibernation-operator-docs/main/kubernetes-resources/cluster-resource-supervisor.html</loc>
-         <lastmod>2025-10-01</lastmod>
+         <lastmod>2025-12-01</lastmod>
     </url>
     <url>
          <loc>https://docs.stakater.com/hibernation-operator-docs/main/kubernetes-resources/resource-supervisor.html</loc>
-         <lastmod>2025-10-01</lastmod>
+         <lastmod>2025-12-01</lastmod>
     </url>
 </urlset>
