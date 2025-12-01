@@ -60,6 +60,11 @@
     "aliases": []
   },
   {
+    "version": "renovate-main-actions-checkout-6.x",
+    "title": "renovate-main-actions-checkout-6.x",
+    "aliases": []
+  },
+  {
     "version": "renovate-dotenv-17.x",
     "title": "renovate-dotenv-17.x",
     "aliases": []
