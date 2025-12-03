@@ -62,9 +62,7 @@
   {
     "version": "renovate-main-actions-setup-node-6.x",
     "title": "renovate-main-actions-setup-node-6.x",
-    "aliases": [
-      "latest"
-    ]
+    "aliases": []
   },
   {
     "version": "renovate-main-actions-checkout-6.x",
@@ -99,6 +97,8 @@
   {
     "version": "0.1",
     "title": "0.1",
-    "aliases": []
+    "aliases": [
+      "latest"
+    ]
   }
 ]
