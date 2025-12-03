@@ -47,7 +47,9 @@
   {
     "version": "renovate-main-node-24.x",
     "title": "renovate-main-node-24.x",
-    "aliases": []
+    "aliases": [
+      "latest"
+    ]
   },
   {
     "version": "renovate-main-nginxinc-nginx-unprivileged-1.x",
@@ -102,8 +104,6 @@
   {
     "version": "0.1",
     "title": "0.1",
-    "aliases": [
-      "latest"
-    ]
+    "aliases": []
   }
 ]
