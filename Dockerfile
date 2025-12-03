@@ -1,5 +1,5 @@
 # syntax=docker/dockerfile:1
-FROM nginxinc/nginx-unprivileged:1.28-alpine
+FROM nginxinc/nginx-unprivileged:1.29-alpine
 WORKDIR /usr/share/nginx/html/
 
 # copy the entire application
@@ -11,10 +11,10 @@ COPY default.conf /etc/nginx/conf.d/
 USER 1001
 
 LABEL name="Hibernation Operator Documentation" \
-      maintainer="Stakater <hello@stakater.com>" \
-      vendor="Stakater" \
-      release="1" \
-      summary="Documentation for Hibernation Operator"
+  maintainer="Stakater <hello@stakater.com>" \
+  vendor="Stakater" \
+  release="1" \
+  summary="Documentation for Hibernation Operator"
 
 EXPOSE 8080:8080/tcp
 
