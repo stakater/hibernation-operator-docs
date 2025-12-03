@@ -49,7 +49,6 @@ jobs:
           registry: ghcr.io/stakater
           username: ${{ github.actor }}
           password: ${{ secrets.GHCR_TOKEN }}
-
       - name: Run Docker container for the docs
         run: |
           docker run -d --name hibernation-operator-docs -p 8080:8080 $IMAGE_PATH
