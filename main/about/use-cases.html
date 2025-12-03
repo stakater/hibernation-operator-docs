@@ -22,7 +22,7 @@
     
     
       
-        <title>🧩 Use Cases - Hibernation Operator</title>
+        <title>Use Cases - Hibernation Operator</title>
       
     
     
@@ -2100,7 +2100,7 @@ This documentation is either for an old version, or for the unreleased 'main' ve
   <span class="md-ellipsis">
     
   
-    🌐 Key Features
+    Key Features
   
 
     
@@ -2137,7 +2137,7 @@ This documentation is either for an old version, or for the unreleased 'main' ve
   <span class="md-ellipsis">
     
   
-    🧩 Use Cases
+    Use Cases
   
 
     
@@ -2155,7 +2155,7 @@ This documentation is either for an old version, or for the unreleased 'main' ve
   <span class="md-ellipsis">
     
   
-    🧩 Use Cases
+    Use Cases
   
 
     
@@ -2820,6 +2820,34 @@ This documentation is either for an old version, or for the unreleased 'main' ve
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../how-to-guides/hibernate-resources.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Hibernate a Tenant
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -3171,54 +3199,54 @@ This documentation is either for an old version, or for the unreleased 'main' ve
   
 
 
-<h1 id="use-cases">🧩 Use Cases<a class="headerlink" href="#use-cases" title="Permanent link">#</a></h1>
+<h1 id="use-cases">Use Cases<a class="headerlink" href="#use-cases" title="Permanent link">#</a></h1>
 <h2 id="clusterresourcesupervisor-cluster-scoped-hibernation">✅ <strong><code>ClusterResourceSupervisor</code> – Cluster-Scoped Hibernation</strong><a class="headerlink" href="#clusterresourcesupervisor-cluster-scoped-hibernation" title="Permanent link">#</a></h2>
 <h3 id="1-platform-team-managing-devtest-environments">1. <strong>Platform Team Managing Dev/Test Environments</strong><a class="headerlink" href="#1-platform-team-managing-devtest-environments" title="Permanent link">#</a></h3>
 <blockquote>
-<p><strong>Scenario</strong>: A central platform team operates a shared Kubernetes cluster for 50+ development teams. To reduce cloud costs, they want all non-production namespaces to sleep during nights and weekends.<br>
+<p><strong>Scenario</strong>: A central platform team operates a shared Kubernetes cluster for 50+ development teams. To reduce cloud costs, they want all non-production namespaces to sleep during nights and weekends.
 <strong>Solution</strong>: Create a single <code>ClusterResourceSupervisor</code> with a label selector like <code>env in (dev, test, staging)</code> and a sleep schedule of <code>0 18 * * 1-5</code> (sleep at 6 PM on weekdays) and wake at <code>0 8 * * 1-5</code>.</p>
 </blockquote>
 <h3 id="2-gitops-driven-hibernation-via-argocd-appprojects">2. <strong>GitOps-Driven Hibernation via ArgoCD AppProjects</strong><a class="headerlink" href="#2-gitops-driven-hibernation-via-argocd-appprojects" title="Permanent link">#</a></h3>
 <blockquote>
-<p><strong>Scenario</strong>: Your organization uses ArgoCD with AppProjects to group applications (e.g., <code>frontend-team</code>, <code>data-platform</code>). You want to hibernate entire AppProjects during off-hours.<br>
+<p><strong>Scenario</strong>: Your organization uses ArgoCD with AppProjects to group applications (e.g., <code>frontend-team</code>, <code>data-platform</code>). You want to hibernate entire AppProjects during off-hours.
 <strong>Solution</strong>: Define a <code>ClusterResourceSupervisor</code> targeting <code>appProjects: ["frontend-team", "data-platform"]</code> in the <code>argocd</code> namespace. The operator automatically discovers all namespaces managed by those AppProjects and applies hibernation.</p>
 </blockquote>
 <h3 id="3-temporary-cluster-wide-freeze-for-maintenance">3. <strong>Temporary Cluster-Wide Freeze for Maintenance</strong><a class="headerlink" href="#3-temporary-cluster-wide-freeze-for-maintenance" title="Permanent link">#</a></h3>
 <blockquote>
-<p><strong>Scenario</strong>: During a company-wide holiday break, you want to pause all non-critical workloads across the cluster.<br>
+<p><strong>Scenario</strong>: During a company-wide holiday break, you want to pause all non-critical workloads across the cluster.
 <strong>Solution</strong>: Deploy a <code>ClusterResourceSupervisor</code> with an empty <code>labelSelector</code> (which matches all namespaces) and no <code>wakeSchedule</code>. Workloads stay asleep until manually removed or overridden.</p>
 </blockquote>
 <h3 id="4-cost-optimization-in-multi-tenant-clusters">4. <strong>Cost Optimization in Multi-Tenant Clusters</strong><a class="headerlink" href="#4-cost-optimization-in-multi-tenant-clusters" title="Permanent link">#</a></h3>
 <blockquote>
-<p><strong>Scenario</strong>: You run a multi-tenant cluster where each tenant has a namespace labeled with <code>tenant-id</code>. Finance requires cost reports per tenant, and hibernation is part of the SLA.<br>
+<p><strong>Scenario</strong>: You run a multi-tenant cluster where each tenant has a namespace labeled with <code>tenant-id</code>. Finance requires cost reports per tenant, and hibernation is part of the SLA.
 <strong>Solution</strong>: Use label selectors (<code>matchLabels: { tenant-tier: basic }</code>) to hibernate only lower-tier tenants, while premium tenants remain running.</p>
 </blockquote>
 <hr>
 <h2 id="resourcesupervisor-namespace-scoped-hibernation">✅ <strong><code>ResourceSupervisor</code> – Namespace-Scoped Hibernation</strong><a class="headerlink" href="#resourcesupervisor-namespace-scoped-hibernation" title="Permanent link">#</a></h2>
 <h3 id="1-application-team-self-service-hibernation">1. <strong>Application Team Self-Service Hibernation</strong><a class="headerlink" href="#1-application-team-self-service-hibernation" title="Permanent link">#</a></h3>
 <blockquote>
-<p><strong>Scenario</strong>: A product team owns the <code>payment-service-staging</code> namespace and wants it to sleep every night to save costs, but wake up by 9 AM for QA.<br>
+<p><strong>Scenario</strong>: A product team owns the <code>payment-service-staging</code> namespace and wants it to sleep every night to save costs, but wake up by 9 AM for QA.
 <strong>Solution</strong>: The team creates a <code>ResourceSupervisor</code> in their namespace with <code>sleepSchedule: "0 20 * * *"</code> and <code>wakeSchedule: "0 9 * * *"</code>. No cluster admin involvement needed.</p>
 </blockquote>
 <h3 id="2-cicd-dynamic-environments">2. <strong>CI/CD Dynamic Environments</strong><a class="headerlink" href="#2-cicd-dynamic-environments" title="Permanent link">#</a></h3>
 <blockquote>
-<p><strong>Scenario</strong>: Your CI pipeline spins up ephemeral namespaces for PR previews (e.g., <code>pr-1234</code>). You want them to auto-sleep after 2 hours and never wake up.<br>
+<p><strong>Scenario</strong>: Your CI pipeline spins up ephemeral namespaces for PR previews (e.g., <code>pr-1234</code>). You want them to auto-sleep after 2 hours and never wake up.
 <strong>Solution</strong>: The CI job creates a <code>ResourceSupervisor</code> with a one-time-like cron (e.g., using a tool that schedules a future sleep) or a short recurring sleep with no wake. Alternatively, pair with a TTL controller—but <code>ResourceSupervisor</code> gives fine-grained control over <em>what</em> sleeps (Deployments/StatefulSets).</p>
 </blockquote>
 <h3 id="3-training-or-demo-environments">3. <strong>Training or Demo Environments</strong><a class="headerlink" href="#3-training-or-demo-environments" title="Permanent link">#</a></h3>
 <blockquote>
-<p><strong>Scenario</strong>: You provide demo environments for sales or training that should only run during business hours.<br>
+<p><strong>Scenario</strong>: You provide demo environments for sales or training that should only run during business hours.
 <strong>Solution</strong>: In each demo namespace (<code>demo-customer-x</code>), deploy a <code>ResourceSupervisor</code> with weekday business-hour schedules. Easy to template and replicate.</p>
 </blockquote>
 <h3 id="4-compliance-driven-restrictions">4. <strong>Compliance-Driven Restrictions</strong><a class="headerlink" href="#4-compliance-driven-restrictions" title="Permanent link">#</a></h3>
 <blockquote>
-<p><strong>Scenario</strong>: A regulated workload must only run during approved maintenance windows (e.g., weekends).<br>
+<p><strong>Scenario</strong>: A regulated workload must only run during approved maintenance windows (e.g., weekends).
 <strong>Solution</strong>: Namespace owners define a <code>ResourceSupervisor</code> that enforces strict <code>sleepSchedule</code>/<code>wakeSchedule</code> aligned with compliance policies.</p>
 </blockquote>
 <hr>
 <h2 id="complementary-use-case-hybrid-governance">🔄 Complementary Use Case: <strong>Hybrid Governance</strong><a class="headerlink" href="#complementary-use-case-hybrid-governance" title="Permanent link">#</a></h2>
 <blockquote>
-<p><strong>Scenario</strong>: Your platform provides a default hibernation policy for all <code>env=dev</code> namespaces via <code>ClusterResourceSupervisor</code>, <strong>but</strong> allows teams to override it with a local <code>ResourceSupervisor</code> if they need custom behavior.<br>
+<p><strong>Scenario</strong>: Your platform provides a default hibernation policy for all <code>env=dev</code> namespaces via <code>ClusterResourceSupervisor</code>, <strong>but</strong> allows teams to override it with a local <code>ResourceSupervisor</code> if they need custom behavior.
 <strong>Implementation</strong>: Your operator is designed to <strong>skip namespaces</strong> that contain a <code>ResourceSupervisor</code>, giving precedence to namespace-scoped control. This enables both standardization and flexibility.</p>
 </blockquote>
 

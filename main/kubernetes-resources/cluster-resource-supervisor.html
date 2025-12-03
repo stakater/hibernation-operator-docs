@@ -2098,7 +2098,7 @@ This documentation is either for an old version, or for the unreleased 'main' ve
   <span class="md-ellipsis">
     
   
-    🌐 Key Features
+    Key Features
   
 
     
@@ -2126,7 +2126,7 @@ This documentation is either for an old version, or for the unreleased 'main' ve
   <span class="md-ellipsis">
     
   
-    🧩 Use Cases
+    Use Cases
   
 
     
@@ -2842,6 +2842,34 @@ This documentation is either for an old version, or for the unreleased 'main' ve
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../how-to-guides/hibernate-resources.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Hibernate a Tenant
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -3218,8 +3246,8 @@ This documentation is either for an old version, or for the unreleased 'main' ve
 <h1 id="clusterresourcesupervisor">ClusterResourceSupervisor<a class="headerlink" href="#clusterresourcesupervisor" title="Permanent link">#</a></h1>
 <p>The <code>ClusterResourceSupervisor</code> is a <strong>cluster-scoped</strong> custom resource that enables <strong>centralized hibernation management</strong> across multiple namespaces. It is designed for <strong>platform administrators</strong> who need to enforce cost-saving policies at scale—whether by targeting explicit namespaces, using dynamic label selectors, or integrating with <strong>ArgoCD AppProjects</strong>.</p>
 <blockquote>
-<p>✅ <strong>Scope</strong>: Cluster-wide<br>
-✅ <strong>Permissions</strong>: Requires cluster-admin or equivalent<br>
+<p>✅ <strong>Scope</strong>: Cluster-wide
+✅ <strong>Permissions</strong>: Requires cluster-admin or equivalent
 ✅ <strong>Use Case</strong>: Platform-level hibernation for dev/test environments, GitOps portfolios, or tenant groups</p>
 </blockquote>
 <hr>
@@ -3250,8 +3278,8 @@ This documentation is either for an old version, or for the unreleased 'main' ve
 <p>🔍 <strong>Note</strong>:</p>
 <blockquote>
 <ul>
-<li><code>matchLabels</code> and <code>matchExpressions</code> are <strong>AND</strong> together.  </li>
-<li>An empty <code>labelSelector: {}</code> matches <strong>all namespaces</strong>.  </li>
+<li><code>matchLabels</code> and <code>matchExpressions</code> are <strong>AND</strong> together.</li>
+<li>An empty <code>labelSelector: {}</code> matches <strong>all namespaces</strong>.</li>
 <li>A missing/<code>null</code> <code>labelSelector</code> matches <strong>none</strong>.</li>
 </ul>
 </blockquote>
@@ -3265,7 +3293,7 @@ This documentation is either for an old version, or for the unreleased 'main' ve
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">data-platform</span>
 </code></pre></div>
 <blockquote>
-<p>🔄 The operator reads <code>AppProject.spec.destinations</code> to discover target namespaces.<br>
+<p>🔄 The operator reads <code>AppProject.spec.destinations</code> to discover target namespaces.
 ✅ <strong>No manual namespace listing needed</strong>—ideal for GitOps environments.
 ⚠️ <strong>Prerequisite</strong>: ArgoCD integration must be <a href="../installation/kubernetes.html#optional-enable-argocd-integration">enabled during installation</a>.</p>
 </blockquote>
@@ -3289,7 +3317,7 @@ This documentation is either for an old version, or for the unreleased 'main' ve
 <h2 id="ignored-namespaces">Ignored Namespaces<a class="headerlink" href="#ignored-namespaces" title="Permanent link">#</a></h2>
 <p>Even if a namespace matches your targeting rules, it will be <strong>excluded</strong> if it has:</p>
 <ul>
-<li>The annotation:  </li>
+<li>The annotation:</li>
 </ul>
 <div class="highlight"><pre><span></span><code><span class="nt">hibernation.stakater.com/exclude</span><span class="p">:</span><span class="w"> </span><span class="s">"true"</span>
 </code></pre></div>
@@ -3323,8 +3351,8 @@ This documentation is either for an old version, or for the unreleased 'main' ve
 <h2 id="example-platform-wide-dev-hibernation">Example: Platform-Wide Dev Hibernation<a class="headerlink" href="#example-platform-wide-dev-hibernation" title="Permanent link">#</a></h2>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">hibernation.stakater.com/v1beta1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ClusterResourceSupervisor</span>
-<span class="l l-Scalar l-Scalar-Plain">meta</span>
-<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dev-environments-hibernation</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dev-environments-hibernation</span>
 <span class="nt">spec</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">namespaces</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">labelSelector</span><span class="p">:</span>
@@ -3341,8 +3369,8 @@ This documentation is either for an old version, or for the unreleased 'main' ve
 <h2 id="example-argocd-label-selector-combo">Example: ArgoCD + Label Selector Combo<a class="headerlink" href="#example-argocd-label-selector-combo" title="Permanent link">#</a></h2>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">hibernation.stakater.com/v1beta1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ClusterResourceSupervisor</span>
-<span class="l l-Scalar l-Scalar-Plain">meta</span>
-<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">hybrid-hibernation</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">hybrid-hibernation</span>
 <span class="nt">spec</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">argocd</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">argocd</span>
@@ -3361,8 +3389,8 @@ This documentation is either for an old version, or for the unreleased 'main' ve
 <p>🔄 Hibernates:</p>
 <blockquote>
 <ul>
-<li>All namespaces in the <code>mobile-apps</code> AppProject  </li>
-<li>Plus <code>legacy-staging</code>  </li>
+<li>All namespaces in the <code>mobile-apps</code> AppProject</li>
+<li>Plus <code>legacy-staging</code></li>
 <li>Plus any namespace with label <code>temporary=true</code></li>
 </ul>
 </blockquote>

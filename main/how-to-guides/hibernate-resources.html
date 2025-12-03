@@ -5,13 +5,13 @@
       
       
       
-        <link rel="canonical" href="https://docs.stakater.com/hibernation-operator-docs/main/kubernetes-resources/resource-supervisor.html">
+        <link rel="canonical" href="https://docs.stakater.com/hibernation-operator-docs/main/how-to-guides/hibernate-resources.html">
       
       
-        <link rel="prev" href="cluster-resource-supervisor.html">
+        <link rel="prev" href="create-cluster-resource-supervisor.html">
       
       
-        <link rel="next" href="../how-to-guides/create-resource-supervisor.html">
+        <link rel="next" href="../integrations/argocd.html">
       
       
         
@@ -22,7 +22,7 @@
     
     
       
-        <title>ResourceSupervisor - Hibernation Operator</title>
+        <title>Hibernate a Tenant - Hibernation Operator</title>
       
     
     
@@ -95,7 +95,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#resourcesupervisor" class="md-skip">
+        <a href="#hibernate-a-tenant" class="md-skip">
           Skip to content
         </a>
       
@@ -2399,20 +2399,18 @@ This documentation is either for an old version, or for the unreleased 'main' ve
       
   
   
-    
   
   
-  
     
     
     
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5">
         
           
           <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
@@ -2433,7 +2431,7 @@ This documentation is either for an old version, or for the unreleased 'main' ve
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_5">
             <span class="md-nav__icon md-icon"></span>
             
@@ -2479,7 +2477,7 @@ This documentation is either for an old version, or for the unreleased 'main' ve
   
   
     <li class="md-nav__item">
-      <a href="cluster-resource-supervisor.html" class="md-nav__link">
+      <a href="../kubernetes-resources/cluster-resource-supervisor.html" class="md-nav__link">
         
   
   
@@ -2487,6 +2485,146 @@ This documentation is either for an old version, or for the unreleased 'main' ve
     
   
     ClusterResourceSupervisor
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../kubernetes-resources/resource-supervisor.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ResourceSupervisor
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    How-to Guides
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    How-to Guides
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="create-resource-supervisor.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Setup ResourceSupervisor
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="create-cluster-resource-supervisor.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Setup ClusterResourceSupervisor
   
 
     
@@ -2523,7 +2661,7 @@ This documentation is either for an old version, or for the unreleased 'main' ve
   <span class="md-ellipsis">
     
   
-    ResourceSupervisor
+    Hibernate a Tenant
   
 
     
@@ -2534,14 +2672,14 @@ This documentation is either for an old version, or for the unreleased 'main' ve
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <a href="resource-supervisor.html" class="md-nav__link md-nav__link--active">
+      <a href="hibernate-resources.html" class="md-nav__link md-nav__link--active">
         
   
   
   <span class="md-ellipsis">
     
   
-    ResourceSupervisor
+    Hibernate a Tenant
   
 
     
@@ -2569,10 +2707,10 @@ This documentation is either for an old version, or for the unreleased 'main' ve
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#supported-workloads" class="md-nav__link">
+  <a href="#configuring-hibernation-for-tenant-namespaces" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Supported Workloads
+        Configuring Hibernation for Tenant Namespaces
       
     </span>
   </a>
@@ -2580,55 +2718,22 @@ This documentation is either for an old version, or for the unreleased 'main' ve
 </li>
       
         <li class="md-nav__item">
-  <a href="#ignored-namespaces" class="md-nav__link">
+  <a href="#cluster-namespace-resource-supervisor" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Ignored Namespaces
+        Cluster &amp; Namespace Resource Supervisor
       
     </span>
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#supported-modes" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Supported Modes
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Supported Modes">
+    <nav class="md-nav" aria-label="Cluster &amp; Namespace Resource Supervisor">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#1-hibernation-with-cron-schedule-sleep-wake" class="md-nav__link">
+  <a href="#manual-creation-of-resourcesupervisor" class="md-nav__link">
     <span class="md-ellipsis">
       
-        1. Hibernation with Cron Schedule (Sleep + Wake)
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#2-permanent-sleep-manual-wake" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        2. Permanent Sleep (Manual Wake)
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#3-immediate-sleep-no-schedule" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        3. Immediate Sleep (No Schedule)
+        Manual creation of ResourceSupervisor
       
     </span>
   </a>
@@ -2641,10 +2746,10 @@ This documentation is either for an old version, or for the unreleased 'main' ve
 </li>
       
         <li class="md-nav__item">
-  <a href="#status-tracking" class="md-nav__link">
+  <a href="#freeing-up-unused-resources-with-hibernation" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Status Tracking
+        Freeing up unused resources with hibernation
       
     </span>
   </a>
@@ -2652,10 +2757,10 @@ This documentation is either for an old version, or for the unreleased 'main' ve
 </li>
       
         <li class="md-nav__item">
-  <a href="#key-notes" class="md-nav__link">
+  <a href="#hibernation-states" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Key Notes
+        Hibernation States
       
     </span>
   </a>
@@ -2663,10 +2768,10 @@ This documentation is either for an old version, or for the unreleased 'main' ve
 </li>
       
         <li class="md-nav__item">
-  <a href="#example-cicd-preview-namespace" class="md-nav__link">
+  <a href="#hibernating-namespaces-andor-argocd-applications-with-cluster-resourcesupervisor" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Example: CI/CD Preview Namespace
+        Hibernating namespaces and/or ArgoCD Applications with Cluster ResourceSupervisor
       
     </span>
   </a>
@@ -2677,144 +2782,6 @@ This documentation is either for an old version, or for the unreleased 'main' ve
   
 </nav>
       
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    
-    
-    
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6">
-        
-          
-          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
-            
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    How-to Guides
-  
-
-    
-  </span>
-  
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_6">
-            <span class="md-nav__icon md-icon"></span>
-            
-  
-    How-to Guides
-  
-
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../how-to-guides/create-resource-supervisor.html" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Setup ResourceSupervisor
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../how-to-guides/create-cluster-resource-supervisor.html" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Setup ClusterResourceSupervisor
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../how-to-guides/hibernate-resources.html" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Hibernate a Tenant
-  
-
-    
-  </span>
-  
-  
-
-      </a>
     </li>
   
 
@@ -3019,10 +2986,10 @@ This documentation is either for an old version, or for the unreleased 'main' ve
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#supported-workloads" class="md-nav__link">
+  <a href="#configuring-hibernation-for-tenant-namespaces" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Supported Workloads
+        Configuring Hibernation for Tenant Namespaces
       
     </span>
   </a>
@@ -3030,55 +2997,22 @@ This documentation is either for an old version, or for the unreleased 'main' ve
 </li>
       
         <li class="md-nav__item">
-  <a href="#ignored-namespaces" class="md-nav__link">
+  <a href="#cluster-namespace-resource-supervisor" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Ignored Namespaces
+        Cluster &amp; Namespace Resource Supervisor
       
     </span>
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#supported-modes" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Supported Modes
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Supported Modes">
+    <nav class="md-nav" aria-label="Cluster &amp; Namespace Resource Supervisor">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#1-hibernation-with-cron-schedule-sleep-wake" class="md-nav__link">
+  <a href="#manual-creation-of-resourcesupervisor" class="md-nav__link">
     <span class="md-ellipsis">
       
-        1. Hibernation with Cron Schedule (Sleep + Wake)
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#2-permanent-sleep-manual-wake" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        2. Permanent Sleep (Manual Wake)
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#3-immediate-sleep-no-schedule" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        3. Immediate Sleep (No Schedule)
+        Manual creation of ResourceSupervisor
       
     </span>
   </a>
@@ -3091,10 +3025,10 @@ This documentation is either for an old version, or for the unreleased 'main' ve
 </li>
       
         <li class="md-nav__item">
-  <a href="#status-tracking" class="md-nav__link">
+  <a href="#freeing-up-unused-resources-with-hibernation" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Status Tracking
+        Freeing up unused resources with hibernation
       
     </span>
   </a>
@@ -3102,10 +3036,10 @@ This documentation is either for an old version, or for the unreleased 'main' ve
 </li>
       
         <li class="md-nav__item">
-  <a href="#key-notes" class="md-nav__link">
+  <a href="#hibernation-states" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Key Notes
+        Hibernation States
       
     </span>
   </a>
@@ -3113,10 +3047,10 @@ This documentation is either for an old version, or for the unreleased 'main' ve
 </li>
       
         <li class="md-nav__item">
-  <a href="#example-cicd-preview-namespace" class="md-nav__link">
+  <a href="#hibernating-namespaces-andor-argocd-applications-with-cluster-resourcesupervisor" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Example: CI/CD Preview Namespace
+        Hibernating namespaces and/or ArgoCD Applications with Cluster ResourceSupervisor
       
     </span>
   </a>
@@ -3143,115 +3077,160 @@ This documentation is either for an old version, or for the unreleased 'main' ve
   
 
 
-<h1 id="resourcesupervisor">ResourceSupervisor<a class="headerlink" href="#resourcesupervisor" title="Permanent link">#</a></h1>
-<p>The <code>ResourceSupervisor</code> is a <strong>namespace-scoped</strong> custom resource that enables <strong>self-service hibernation</strong> of workloads within a <strong>single namespace</strong>. It allows application teams or namespace owners to define schedules for scaling down and restoring <code>Deployments</code> and <code>StatefulSets</code> without requiring cluster-wide permissions.</p>
-<blockquote>
-<p>✅ <strong>Only affects the namespace in which it is created.</strong></p>
-</blockquote>
-<h2 id="supported-workloads">Supported Workloads<a class="headerlink" href="#supported-workloads" title="Permanent link">#</a></h2>
-<ul>
-<li><code>Deployment</code></li>
-<li><code>StatefulSet</code></li>
-</ul>
-<p>These resources are scaled to <strong>0 replicas</strong> during sleep and restored to their <strong>original replica count</strong> during wake.</p>
-<h2 id="ignored-namespaces">Ignored Namespaces<a class="headerlink" href="#ignored-namespaces" title="Permanent link">#</a></h2>
-<p>While <code>ResourceSupervisor</code> is namespace-scoped and only acts within its own namespace, the Hibernation Operator still respects global exclusion rules. A namespace (including the one containing the <code>ResourceSupervisor</code>) will be <strong>ignored</strong> if it has:</p>
-<ul>
-<li>The annotation:</li>
-</ul>
-<div class="highlight"><pre><span></span><code><span class="nt">hibernation.stakater.com/exclude</span><span class="p">:</span><span class="w"> </span><span class="s">"true"</span>
+<h1 id="hibernate-a-tenant">Hibernate a Tenant<a class="headerlink" href="#hibernate-a-tenant" title="Permanent link">#</a></h1>
+<p>Implementing hibernation for tenants' namespaces efficiently manages cluster resources by temporarily reducing workload activities during off-peak hours. This guide demonstrates how to configure hibernation schedules for tenant namespaces, leveraging Tenant and ResourceSupervisor for precise control.</p>
+<h2 id="configuring-hibernation-for-tenant-namespaces">Configuring Hibernation for Tenant Namespaces<a class="headerlink" href="#configuring-hibernation-for-tenant-namespaces" title="Permanent link">#</a></h2>
+<p>You can manage workloads in your cluster with MTO by implementing a hibernation schedule for your tenants.
+Hibernation downsizes the running <code>Deployments</code> and <code>StatefulSets</code> in a tenant’s namespace according to a defined cron schedule. You can set a hibernation schedule for your tenants by adding the ‘spec.hibernation’ field to the tenant's respective Custom Resource.</p>
+<div class="highlight"><pre><span></span><code><span class="nt">hibernation</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">sleepSchedule</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">23 * * * *</span>
+<span class="w">  </span><span class="nt">wakeSchedule</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">26 * * * *</span>
 </code></pre></div>
-<blockquote>
-<p>🔒 The operator <strong>never modifies</strong> workloads in excluded namespaces—even if a <code>ResourceSupervisor</code> exists there.</p>
-</blockquote>
-<h2 id="supported-modes">Supported Modes<a class="headerlink" href="#supported-modes" title="Permanent link">#</a></h2>
-<h3 id="1-hibernation-with-cron-schedule-sleep-wake">1. Hibernation with Cron Schedule (Sleep + Wake)<a class="headerlink" href="#1-hibernation-with-cron-schedule-sleep-wake" title="Permanent link">#</a></h3>
-<p>Define both <code>sleepSchedule</code> and <code>wakeSchedule</code> to automatically cycle workloads on and off.</p>
+<p><code>spec.hibernation.sleepSchedule</code> accepts a cron expression indicating the time to put the workloads in your tenant’s namespaces to sleep.</p>
+<p><code>spec.hibernation.wakeSchedule</code> accepts a cron expression indicating the time to wake the workloads in your tenant’s namespaces up.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Both sleep and wake schedules must be specified for your tenant's hibernation schedule to be valid.</p>
+</div>
+<p>Additionally, adding the <code>hibernation.stakater.com/exclude: 'true'</code> annotation to a namespace excludes it from hibernating.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This is only true for hibernation applied via the Tenant Custom Resource, and does not apply for hibernation done by manually creating a ClusterResourceSupervisor (details about that below).</p>
+</div>
+<h2 id="cluster-namespace-resource-supervisor">Cluster &amp; Namespace Resource Supervisor<a class="headerlink" href="#cluster-namespace-resource-supervisor" title="Permanent link">#</a></h2>
+<p>Adding a Hibernation Schedule to a Tenant creates an accompanying ClusterResourceSupervisor Custom Resource.</p>
+<p>When the sleep timer is activated, the Resource Supervisor puts your applications to sleep and store their previous state. When the wake timer is activated, it uses the stored state to bring them back to running state.</p>
+<p>Enabling ArgoCD support for Tenants will also hibernate applications in the tenants' <code>appProjects</code>.</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">hibernation.stakater.com/v1beta1</span>
-<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ResourceSupervisor</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ClusterResourceSupervisor</span>
 <span class="nt">metadata</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">nightly-hibernation</span>
-<span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">my-app-staging</span><span class="w">  </span><span class="c1"># ← Must match target namespace</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">sigma-tenant</span>
 <span class="nt">spec</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">argocd</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">appProjects</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">sigma-tenant</span>
+<span class="w">    </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">openshift-gitops</span>
 <span class="w">  </span><span class="nt">schedule</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">sleepSchedule</span><span class="p">:</span><span class="w"> </span><span class="s">"0</span><span class="nv"> </span><span class="s">20</span><span class="nv"> </span><span class="s">*</span><span class="nv"> </span><span class="s">*</span><span class="nv"> </span><span class="s">*"</span><span class="w">   </span><span class="c1"># Sleep daily at 8:00 PM UTC</span>
-<span class="w">    </span><span class="nt">wakeSchedule</span><span class="p">:</span><span class="w"> </span><span class="s">"0</span><span class="nv"> </span><span class="s">8</span><span class="nv"> </span><span class="s">*</span><span class="nv"> </span><span class="s">*</span><span class="nv"> </span><span class="s">*"</span><span class="w">     </span><span class="c1"># Wake daily at 8:00 AM UTC</span>
+<span class="w">    </span><span class="nt">sleepSchedule</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">42 * * * *</span>
+<span class="w">    </span><span class="nt">wakeSchedule</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">45 * * * *</span>
+
+<span class="w">  </span><span class="nt">namespaces</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">labelSelector</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">matchLabels</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">stakater.com/current-tenant</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">sigma</span>
+<span class="w">      </span><span class="nt">matchExpressions</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{}</span>
+<span class="w">    </span><span class="nt">names</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenant-ns1</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenant-ns2</span>
 </code></pre></div>
 <blockquote>
-<p>🕒 <strong>Cron Format</strong>: Standard Unix cron (<code>minute hour day month weekday</code>). Timezone is <strong>UTC</strong>.</p>
+<p>Currently, Hibernation is available only for <code>StatefulSets</code> and <code>Deployments</code>.</p>
 </blockquote>
-<hr>
-<h3 id="2-permanent-sleep-manual-wake">2. Permanent Sleep (Manual Wake)<a class="headerlink" href="#2-permanent-sleep-manual-wake" title="Permanent link">#</a></h3>
-<p>Omit <code>wakeSchedule</code> to keep workloads asleep indefinitely. Workloads will <strong>only wake</strong> when:</p>
+<h3 id="manual-creation-of-resourcesupervisor">Manual creation of ResourceSupervisor<a class="headerlink" href="#manual-creation-of-resourcesupervisor" title="Permanent link">#</a></h3>
+<p>Hibernation can also be applied by creating a ResourceSupervisor resource manually.
+The ResourceSupervisor definition will contain the hibernation cron schedule, the names of the namespaces to be hibernated, and the names of the ArgoCD AppProjects whose ArgoCD Applications have to be hibernated (as per the given schedule).</p>
+<p>This method can be used to hibernate:</p>
 <ul>
-<li>The <code>ResourceSupervisor</code> is <strong>deleted</strong>, <strong>or</strong></li>
-<li>A <code>wakeSchedule</code> is <strong>added later</strong></li>
+<li>Some specific namespaces and AppProjects in a tenant</li>
+<li>A set of namespaces and AppProjects belonging to different tenants</li>
+<li>Namespaces and AppProjects belonging to a tenant that the cluster admin is not a member of</li>
+<li>Non-tenant namespaces and ArgoCD AppProjects</li>
 </ul>
+<p>As an example, the following ClusterResourceSupervisor could be created manually, to apply hibernation explicitly to the 'ns1' and 'ns2' namespaces, and to the 'sample-app-project' AppProject.</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">hibernation.stakater.com/v1beta1</span>
-<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ResourceSupervisor</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ClusterResourceSupervisor</span>
 <span class="nt">metadata</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pause-for-maintenance</span>
-<span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">demo-env</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">hibernator</span>
 <span class="nt">spec</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">argocd</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">appProjects</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">sample-app-project</span>
+<span class="w">    </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">openshift-gitops</span>
 <span class="w">  </span><span class="nt">schedule</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">sleepSchedule</span><span class="p">:</span><span class="w"> </span><span class="s">"0</span><span class="nv"> </span><span class="s">12</span><span class="nv"> </span><span class="s">*</span><span class="nv"> </span><span class="s">*</span><span class="nv"> </span><span class="s">*"</span><span class="w">   </span><span class="c1"># Sleep today at noon UTC, never wake</span>
-<span class="w">    </span><span class="c1"># wakeSchedule: omitted → stay asleep</span>
+<span class="w">    </span><span class="nt">sleepSchedule</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">42 * * * *</span>
+<span class="w">    </span><span class="nt">wakeSchedule</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">45 * * * *</span>
+
+<span class="w">  </span><span class="nt">namespaces</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">labelSelector</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">matchLabels</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{}</span>
+<span class="w">      </span><span class="nt">matchExpressions</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{}</span>
+<span class="w">    </span><span class="nt">names</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ns1</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ns2</span>
 </code></pre></div>
-<blockquote>
-<p>💡 This is useful for temporary freezes (e.g., during security reviews or budget pauses).</p>
-</blockquote>
-<hr>
-<h3 id="3-immediate-sleep-no-schedule">3. Immediate Sleep (No Schedule)<a class="headerlink" href="#3-immediate-sleep-no-schedule" title="Permanent link">#</a></h3>
-<p>To sleep <strong>immediately</strong>, create a <code>ResourceSupervisor</code> with an <strong>empty <code>schedule</code></strong> block:</p>
+<h2 id="freeing-up-unused-resources-with-hibernation">Freeing up unused resources with hibernation<a class="headerlink" href="#freeing-up-unused-resources-with-hibernation" title="Permanent link">#</a></h2>
+<h2 id="hibernation-states">Hibernation States<a class="headerlink" href="#hibernation-states" title="Permanent link">#</a></h2>
+<p>The ClusterResourceSupervisor will look like this at 'sleeping' time (as per the schedule):</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">hibernation.stakater.com/v1beta1</span>
-<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ResourceSupervisor</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ClusterResourceSupervisor</span>
 <span class="nt">metadata</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">sleep-now</span>
-<span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ci-preview-pr123</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">example</span>
 <span class="nt">spec</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">schedule</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{}</span>
+<span class="w">  </span><span class="nt">argocd</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">appProjects</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[]</span>
+<span class="w">    </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="s">''</span>
+<span class="w">  </span><span class="nt">schedule</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">sleepSchedule</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0 20 * * 1-5</span>
+<span class="w">    </span><span class="nt">wakeSchedule</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0 8 * * 1-5</span>
+<span class="w">  </span><span class="nt">namespaces</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">labelSelector</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">matchLabels</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{}</span>
+<span class="w">      </span><span class="nt">matchExpressions</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{}</span>
+<span class="w">    </span><span class="nt">names</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">build</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">stage</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dev</span>
+<span class="nt">status</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">currentStatus</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">sleeping</span>
+<span class="w">  </span><span class="nt">nextReconcileTime</span><span class="p">:</span><span class="w"> </span><span class="s">'2024-06-11T08:00:00Z'</span>
+<span class="w">  </span><span class="nt">sleepingNamespaces</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">Namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">build</span>
+<span class="w">    </span><span class="nt">sleepingApplications</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Deployment</span>
+<span class="w">      </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Example</span>
+<span class="w">      </span><span class="nt">replicas</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">Namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">stage</span>
+<span class="w">    </span><span class="nt">sleepingApplications</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Deployment</span>
+<span class="w">      </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Example</span>
+<span class="w">      </span><span class="nt">replicas</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3</span>
 </code></pre></div>
-<ul>
-<li>Workloads are scaled to 0 <strong>as soon as the CR is created</strong>.</li>
-<li>They remain asleep until the CR is <strong>deleted</strong>.</li>
-</ul>
-<blockquote>
-<p>🚀 Ideal for ephemeral environments (e.g., CI/CD preview namespaces).</p>
-</blockquote>
-<hr>
-<h2 id="status-tracking">Status Tracking<a class="headerlink" href="#status-tracking" title="Permanent link">#</a></h2>
-<p>The operator updates the CR’s <code>status</code> to reflect current state:</p>
-<div class="highlight"><pre><span></span><code><span class="nt">status</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">currentStatus</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">sleeping</span><span class="w">      </span><span class="c1"># or "running", "error"</span>
-<span class="w">  </span><span class="nt">nextReconcileTime</span><span class="p">:</span><span class="w"> </span><span class="s">"2025-02-01T08:00:00Z"</span>
-</code></pre></div>
-<p>Use <code>kubectl describe</code> or <code>kubectl get -o yaml</code> to monitor:</p>
-<div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>get<span class="w"> </span>resourcesupervisor<span class="w"> </span>nightly-hibernation<span class="w"> </span>-n<span class="w"> </span>my-app-staging<span class="w"> </span>-o<span class="w"> </span><span class="nv">jsonpath</span><span class="o">=</span><span class="s1">'{.status}'</span>
-</code></pre></div>
-<hr>
-<h2 id="key-notes">Key Notes<a class="headerlink" href="#key-notes" title="Permanent link">#</a></h2>
-<ul>
-<li>❌ <strong>No <code>argocd</code> field</strong>: <code>ResourceSupervisor</code> <strong>does not support ArgoCD integration</strong>. Use <code>ClusterResourceSupervisor</code> for AppProject-based hibernation.</li>
-<li>❌ <strong>No <code>namespaces</code> field</strong>: It <strong>only affects its own namespace</strong>—you cannot target other namespaces.</li>
-<li>✅ <strong>Safe by default</strong>: Only <code>Deployments</code> and <code>StatefulSets</code> are scaled; all other resources are untouched.</li>
-<li>✅ <strong>Stateful restoration</strong>: Original replica counts are stored in the CR’s status and restored accurately—even after operator restarts.</li>
-</ul>
-<hr>
-<h2 id="example-cicd-preview-namespace">Example: CI/CD Preview Namespace<a class="headerlink" href="#example-cicd-preview-namespace" title="Permanent link">#</a></h2>
-<p>A CI pipeline creates a namespace <code>pr-456</code> and immediately hibernates it to save costs:</p>
-<div class="highlight"><pre><span></span><code><span class="c1"># pr-456-hibernation.yaml</span>
-<span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">hibernation.stakater.com/v1beta1</span>
-<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ResourceSupervisor</span>
+<h2 id="hibernating-namespaces-andor-argocd-applications-with-cluster-resourcesupervisor">Hibernating namespaces and/or ArgoCD Applications with Cluster ResourceSupervisor<a class="headerlink" href="#hibernating-namespaces-andor-argocd-applications-with-cluster-resourcesupervisor" title="Permanent link">#</a></h2>
+<p>Bill, the cluster administrator, wants to hibernate a collection of namespaces and AppProjects belonging to multiple different tenants. He can do so by creating a ResourceSupervisor manually, specifying the hibernation schedule in its spec, the namespaces and ArgoCD Applications that need to be hibernated as per the mentioned schedule.
+Bill can also use the same method to hibernate some namespaces and ArgoCD Applications that do not belong to any tenant on his cluster.</p>
+<p>The example given below will hibernate the ArgoCD Applications in the 'test-app-project' AppProject; and it will also hibernate the 'ns2' and 'ns4' namespaces.</p>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">hibernation.stakater.com/v1beta1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ClusterResourceSupervisor</span>
 <span class="nt">metadata</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">auto-sleep</span>
-<span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pr-456</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">test-cluster-resource-supervisor</span>
 <span class="nt">spec</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">schedule</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{}</span>
+<span class="w">  </span><span class="nt">argocd</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">appProjects</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">test-app-project</span>
+<span class="w">    </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">argocd-ns</span>
+<span class="w">  </span><span class="nt">schedule</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">sleepSchedule</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0 20 * * 1-5</span>
+<span class="w">    </span><span class="nt">wakeSchedule</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0 8 * * 1-5</span>
+<span class="w">  </span><span class="nt">namespaces</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">labelSelector</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">matchLabels</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{}</span>
+<span class="w">      </span><span class="nt">matchExpressions</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{}</span>
+<span class="w">    </span><span class="nt">names</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ns2</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ns4</span>
+<span class="nt">status</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">currentStatus</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">sleeping</span>
+<span class="w">  </span><span class="nt">nextReconcileTime</span><span class="p">:</span><span class="w"> </span><span class="s">'2022-10-13T08:00:00Z'</span>
+<span class="w">  </span><span class="nt">sleepingNamespaces</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">Namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">build</span>
+<span class="w">    </span><span class="nt">sleepingApplications</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Deployment</span>
+<span class="w">      </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">test-deployment</span>
+<span class="w">      </span><span class="nt">replicas</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Deployment</span>
+<span class="w">      </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">test-deployment</span>
+<span class="w">      </span><span class="nt">replicas</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3</span>
 </code></pre></div>
-<p>Apply it:</p>
-<div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>apply<span class="w"> </span>-f<span class="w"> </span>pr-456-hibernation.yaml
-</code></pre></div>
-<p>Workloads sleep instantly. When the PR is merged, the pipeline deletes the namespace (or the CR), waking workloads briefly before cleanup.</p>
 
 
 

@@ -22,7 +22,7 @@
     
     
       
-        <title>🌐 Key Features - Hibernation Operator</title>
+        <title>Key Features - Hibernation Operator</title>
       
     
     
@@ -2109,7 +2109,7 @@ This documentation is either for an old version, or for the unreleased 'main' ve
   <span class="md-ellipsis">
     
   
-    🌐 Key Features
+    Key Features
   
 
     
@@ -2127,7 +2127,7 @@ This documentation is either for an old version, or for the unreleased 'main' ve
   <span class="md-ellipsis">
     
   
-    🌐 Key Features
+    Key Features
   
 
     
@@ -2244,7 +2244,7 @@ This documentation is either for an old version, or for the unreleased 'main' ve
   <span class="md-ellipsis">
     
   
-    🧩 Use Cases
+    Use Cases
   
 
     
@@ -2754,6 +2754,34 @@ This documentation is either for an old version, or for the unreleased 'main' ve
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../how-to-guides/hibernate-resources.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Hibernate a Tenant
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -3039,7 +3067,7 @@ This documentation is either for an old version, or for the unreleased 'main' ve
   
 
 
-<h1 id="key-features">🌐 Key Features<a class="headerlink" href="#key-features" title="Permanent link">#</a></h1>
+<h1 id="key-features">Key Features<a class="headerlink" href="#key-features" title="Permanent link">#</a></h1>
 <h2 id="1-clusterresourcesupervisor-cluster-scoped"><strong>1. <code>ClusterResourceSupervisor</code> (Cluster-Scoped)</strong><a class="headerlink" href="#1-clusterresourcesupervisor-cluster-scoped" title="Permanent link">#</a></h2>
 <p>The <code>ClusterResourceSupervisor</code> enables <strong>platform-level hibernation management</strong> across multiple namespaces or ArgoCD AppProjects. Ideal for cluster administrators and GitOps-driven environments.</p>
 <h3 id="key-features_1">✅ Key Features<a class="headerlink" href="#key-features_1" title="Permanent link">#</a></h3>
@@ -3093,9 +3121,16 @@ This documentation is either for an old version, or for the unreleased 'main' ve
 <li><code>wakeSchedule</code> (optional): Cron expression to wake workloads; if not set, workloads stay asleep indefinitely</li>
 </ul>
 </li>
-<li><strong>Lightweight status</strong>:<ul>
-<li><code>currentStatus</code>: Current hibernation state (<code>sleeping</code>, <code>running</code>, <code>error</code>)</li>
-<li><code>nextReconcileTime</code>: Next scheduled action (<code>ISO 8601 datetime</code>)</li>
+<li><strong>Comprehensive status tracking</strong>:<ul>
+<li><code>currentStatus</code>: Overall state (<code>sleeping</code>, <code>running</code>, <code>error</code>)</li>
+<li><code>nextReconcileTime</code>: Predictable next action time (<code>ISO 8601 datetime</code>)</li>
+<li><code>sleepingApplications</code>: Detailed records of scaled-down applications within its namespace, including:<ul>
+<li>Namespace name</li>
+<li>Application kind (<code>Deployment</code> or <code>StatefulSet</code>)</li>
+<li>Original replica count (for accurate restoration)</li>
+<li>Per-namespace and per-application status</li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
