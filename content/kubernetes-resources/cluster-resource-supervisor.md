@@ -2,8 +2,8 @@
 
 The `ClusterResourceSupervisor` is a **cluster-scoped** custom resource that enables **centralized hibernation management** across multiple namespaces. It is designed for **platform administrators** who need to enforce cost-saving policies at scale—whether by targeting explicit namespaces, using dynamic label selectors, or integrating with **ArgoCD AppProjects**.
 
-> ✅ **Scope**: Cluster-wide  
-> ✅ **Permissions**: Requires cluster-admin or equivalent  
+> ✅ **Scope**: Cluster-wide
+> ✅ **Permissions**: Requires cluster-admin or equivalent
 > ✅ **Use Case**: Platform-level hibernation for dev/test environments, GitOps portfolios, or tenant groups
 
 ---
@@ -44,8 +44,8 @@ spec:
 
 🔍 **Note**:
 
-> - `matchLabels` and `matchExpressions` are **AND** together.  
-> - An empty `labelSelector: {}` matches **all namespaces**.  
+> - `matchLabels` and `matchExpressions` are **AND** together.
+> - An empty `labelSelector: {}` matches **all namespaces**.
 > - A missing/`null` `labelSelector` matches **none**.
 
 ### 3. **ArgoCD AppProject Integration** *(Optional)*
@@ -61,7 +61,7 @@ spec:
       - data-platform
 ```
 
-> 🔄 The operator reads `AppProject.spec.destinations` to discover target namespaces.  
+> 🔄 The operator reads `AppProject.spec.destinations` to discover target namespaces.
 > ✅ **No manual namespace listing needed**—ideal for GitOps environments.
 > ⚠️ **Prerequisite**: ArgoCD integration must be [enabled during installation](../installation/kubernetes.md#optional-enable-argocd-integration).
 
@@ -97,7 +97,7 @@ spec:
 
 Even if a namespace matches your targeting rules, it will be **excluded** if it has:
 
-- The annotation:  
+- The annotation:
 
   ```yaml
   hibernation.stakater.com/exclude: "true"
@@ -143,7 +143,7 @@ kubectl get clusterresourcesupervisor my-policy -o jsonpath='{.status}'
 ```yaml
 apiVersion: hibernation.stakater.com/v1beta1
 kind: ClusterResourceSupervisor
-meta
+metadata:
   name: dev-environments-hibernation
 spec:
   namespaces:
@@ -164,7 +164,7 @@ spec:
 ```yaml
 apiVersion: hibernation.stakater.com/v1beta1
 kind: ClusterResourceSupervisor
-meta
+metadata:
   name: hybrid-hibernation
 spec:
   argocd:
@@ -184,8 +184,8 @@ spec:
 
 🔄 Hibernates:
 
-> - All namespaces in the `mobile-apps` AppProject  
-> - Plus `legacy-staging`  
+> - All namespaces in the `mobile-apps` AppProject
+> - Plus `legacy-staging`
 > - Plus any namespace with label `temporary=true`
 
 ---

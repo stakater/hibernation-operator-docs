@@ -2,7 +2,7 @@
 head:
   - - meta
     - name: keywords
-      content: hibernation operator, kubernetes, cost optimization, sleep, wake, cron, argocd, dev environments
+      content: hibernation operator, kubernetes, cost optimization, sleep, wake, cron, argocd
 ---
 
 # Welcome to the Docs
