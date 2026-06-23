@@ -18,26 +18,38 @@ extra:
 
 nav:
   - index.md
-  - About:
-    - about/key-features.md
-    - about/use-cases.md
-    - about/benefits.md
-  - Architecture:
-    - architecture/architecture.md
-  - Installation:
-    - installation/overview.md
-    - installation/openshift.md
-    - installation/kubernetes.md
-  - Kubernetes Resources:
-    - architecture/concepts.md
-    - kubernetes-resources/cluster-resource-supervisor.md
-    - kubernetes-resources/resource-supervisor.md
-  - How-to Guides:
-    - how-to-guides/create-resource-supervisor.md
-    - how-to-guides/create-cluster-resource-supervisor.md
-    - how-to-guides/hibernate-resources.md
+  - Overview:
+    - overview/key-features.md
+    - overview/use-cases.md
+    - overview/benefits.md
+  - Concepts:
+    - concepts/architecture.md
+    - concepts/terminology.md
+  - Getting Started:
+    - getting-started/quick-start.md
+    - Installation:
+      - getting-started/installation/overview.md
+      - getting-started/installation/openshift.md
+      - getting-started/installation/kubernetes.md
+    - getting-started/uninstalling.md
+  - Guides:
+    - guides/create-resource-supervisor.md
+    - guides/create-cluster-resource-supervisor.md
+    - guides/hibernate-resources.md
   - Integrations:
     - integrations/argocd.md
-  - changelog.md
-  - eula.md
-  - troubleshooting.md
+  - Reference:
+    - API Reference:
+      - reference/api/resource-supervisor.md
+      - reference/api/cluster-resource-supervisor.md
+    - reference/configuration.md
+    - reference/rbac.md
+    - reference/metrics.md
+    - reference/webhooks.md
+    - reference/security-model.md
+  - Troubleshooting:
+    - troubleshooting.md
+  - Release Notes:
+    - release-notes.md
+  - EULA:
+    - eula.md

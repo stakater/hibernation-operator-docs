@@ -6,7 +6,7 @@ This guide explains how to create a **cluster-scoped** `ClusterResourceSuperviso
 
 ### Prerequisites
 
-- The **Hibernation Operator** must be [installed](../installation/kubernetes.md).
+- The **Hibernation Operator** must be [installed](../getting-started/installation/kubernetes.md).
 - You have **cluster-admin** permissions.
 
 ### Step 1: Choose a Targeting Strategy
@@ -40,7 +40,7 @@ spec:
 
 #### Example B: ArgoCD AppProject Integration
 
-> ✅ Ensure `argoCD.enabled=true` was set during [Helm install](../installation/kubernetes.md#optional-enable-argocd-integration)
+> ✅ Ensure `argoCD.enabled=true` was set during [Helm install](../getting-started/installation/kubernetes.md#optional-enable-argocd-integration)
 
 ```yaml
 apiVersion: hibernation.stakater.com/v1beta1

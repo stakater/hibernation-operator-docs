@@ -24,4 +24,4 @@ The Hibernation Operator is lightweight, secure, and built for real-world Kubern
 
 ## Installation
 
-Refer to the [installation guide](./installation/overview.md) to deploy the Hibernation Operator in your cluster via **Helm** or **Operator Lifecycle Manager (OLM)**.
+Refer to the [installation guide](./getting-started/installation/overview.md) to deploy the Hibernation Operator in your cluster via **Helm** or **Operator Lifecycle Manager (OLM)**.

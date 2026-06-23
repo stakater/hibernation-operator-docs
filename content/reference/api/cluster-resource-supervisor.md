@@ -63,7 +63,7 @@ spec:
 
 > 🔄 The operator reads `AppProject.spec.destinations` to discover target namespaces.
 > ✅ **No manual namespace listing needed**—ideal for GitOps environments.
-> ⚠️ **Prerequisite**: ArgoCD integration must be [enabled during installation](../installation/kubernetes.md#optional-enable-argocd-integration).
+> ⚠️ **Prerequisite**: ArgoCD integration must be [enabled during installation](../../getting-started/installation/kubernetes.md#optional-enable-argocd-integration).
 
 ---
 
@@ -207,3 +207,39 @@ spec:
 | GitOps with ArgoCD AppProjects | ✅ |
 | Dynamic namespace selection via labels | ✅ |
 | Team self-service in one namespace | ❌ → Use `ResourceSupervisor` |
+
+---
+
+## API Reference
+
+**Group/Version:** `hibernation.stakater.com/v1beta1` · **Kind:** `ClusterResourceSupervisor` · **Scope:** Cluster
+
+### Spec
+
+| Field | Type | Required | Description |
+|-------|------|----------|-------------|
+| `schedule` | `object` (Hibernation) | Yes | Hibernation schedule applied to all matched namespaces. |
+| `schedule.sleepSchedule` | `string` | No | Standard 5-field Unix cron expression (UTC) for scaling workloads to zero. |
+| `schedule.wakeSchedule` | `string` | No | Standard 5-field Unix cron expression (UTC) for restoring workloads. If omitted, workloads stay asleep. |
+| `namespaces` | `object` | No | Targets namespaces by name and/or label selector. |
+| `namespaces.names` | `[]string` | No | Explicit list of namespace names to manage. |
+| `namespaces.labelSelector` | `object` (`metav1.LabelSelector`) | No | Standard Kubernetes label selector (`matchLabels` / `matchExpressions`). Empty `{}` matches all namespaces; absent matches none. |
+| `argocd` | `object` | No | Target namespaces via ArgoCD AppProjects. Requires ArgoCD integration enabled at install time. |
+| `argocd.appProjects` | `[]string` | Yes (within `argocd`) | ArgoCD AppProject names whose destination namespaces follow the schedule. |
+| `argocd.namespace` | `string` | Yes (within `argocd`) | Namespace where the ArgoCD AppProjects reside. |
+
+### Status
+
+| Field | Type | Description |
+|-------|------|-------------|
+| `currentStatus` | `string` (enum: `sleeping`, `running`, `error`) | Overall state of managed workloads. |
+| `nextReconcileTime` | `string` (RFC 3339 timestamp) | Next scheduled sleep/wake reconciliation. |
+| `watchedNamespaces` | `[]string` | Namespaces currently managed by this resource. |
+| `ignoreNamespaces` | `[]string` | Namespaces excluded from management (e.g. via the exclude annotation). |
+| `sleepingNamespaces` | `[]object` (SleepingNamespace) | Per-namespace record of scaled-down workloads, used for accurate restoration. |
+| `sleepingNamespaces[].Namespace` | `string` | The namespace containing the sleeping applications. |
+| `sleepingNamespaces[].status` | `string` (enum) | Per-namespace error/state indicator. |
+| `sleepingNamespaces[].sleepingApplications` | `[]object` (SleepingApplication) | Workloads scaled down in the namespace. |
+| `sleepingNamespaces[].sleepingApplications[].name` | `string` | Name of the sleeping application. |
+| `sleepingNamespaces[].sleepingApplications[].kind` | `string` (enum: `Deployment`, `StatefulSet`) | Workload kind. |
+| `sleepingNamespaces[].sleepingApplications[].replicas` | `int32` | Original replica count, preserved for restoration on wake. |

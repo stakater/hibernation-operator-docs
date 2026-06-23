@@ -20,7 +20,7 @@ This document contains instructions for installing, configuring, and uninstallin
 1. Search for **`Hibernation Operator`** and click on the tile.
 1. Click the **Install** button.
 
-   ![Install button](../images/operatorHub.png)
+   ![Install button](../../images/operatorHub.png)
 
 1. Configure the installation:
    * **Update channel**: `stable` (recommended for production)
@@ -31,12 +31,12 @@ This document contains instructions for installing, configuring, and uninstallin
 
    Click **Install**.
 
-   ![Install configuration](../images/hibernation_install.png)
+   ![Install configuration](../../images/hibernation_install.png)
 
 1. Wait for the operator to install. You’ll see a status of **Installed operator: Ready for use** when ready.
 1. Once installed, the Hibernation Operator is ready to manage hibernation policies across your cluster.
 
-   ![Installation successful](../images/hibernation_installed_successful.png)
+   ![Installation successful](../../images/hibernation_installed_successful.png)
 
 > 💡 **Note**: The operator is installed in the `hibernation-operator-system` namespace by default.
 
@@ -106,7 +106,7 @@ oc get pods -n hibernation-operator-system
 
 Wait until the `hibernation-controller` pod is `Running`.
 
-![Running](../images/hibernation_running.png)
+![Running](../../images/hibernation_running.png)
 
 ---
 
@@ -133,7 +133,7 @@ oc delete resourcesupervisors.hibernation.stakater.com --all --all-namespaces
 1. Click the **three-dot menu → Uninstall Operator**
 1. Confirm removal
 
-   ![Uninstall from UI](../images/hibernation_uninstall.png)
+   ![Uninstall from UI](../../images/hibernation_uninstall.png)
 
 ### Step 3: (Optional) Clean Up Leftover Resources
 
@@ -158,5 +158,5 @@ oc delete crd resourcesupervisors.hibernation.stakater.com
 * It integrates natively with **OpenShift workloads** (`Deployments`, `StatefulSets`) and **ArgoCD** (if installed).
 * For production, use **Manual approval** and test upgrades in a staging cluster first.
 * Full CRD documentation:
-    * [`ClusterResourceSupervisor`](../kubernetes-resources/cluster-resource-supervisor.md)
-    * [`ResourceSupervisor`](../kubernetes-resources/resource-supervisor.md)
+    * [`ClusterResourceSupervisor`](../../reference/api/cluster-resource-supervisor.md)
+    * [`ResourceSupervisor`](../../reference/api/resource-supervisor.md)
