@@ -92,7 +92,9 @@
   {
     "version": "feat-organize-docs",
     "title": "feat-organize-docs",
-    "aliases": []
+    "aliases": [
+      "latest"
+    ]
   },
   {
     "version": "0.1-fix-for-RS-status",
