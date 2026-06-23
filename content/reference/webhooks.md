@@ -24,7 +24,7 @@ The webhook endpoints are:
 
 ## Schedule validation (both resources)
 
-Cron schedules are parsed using standard cron syntax. The validator enforces:
+Cron schedules are parsed using standard cron syntax. The webhook enforces:
 
 - **Empty schedules are allowed** — both `sleepSchedule` and `wakeSchedule`
   empty (immediate/permanent sleep use cases) passes validation.

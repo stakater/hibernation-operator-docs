@@ -8,8 +8,8 @@ The Hibernation Operator exposes Prometheus-compatible metrics through the
 The metrics server is **disabled by default** (`--metrics-bind-address=0`). When
 enabled it serves on:
 
-- **`:8443`** over HTTPS when `--metrics-secure=true` (the default), or
-- **`:8080`** over HTTP when `--metrics-secure=false`.
+- **`:8443`** over https when `--metrics-secure=true` (the default), or
+- **`:8080`** over http when `--metrics-secure=false`.
 
 The endpoint path is `/metrics`. In secure mode, requests are authenticated and
 authorized using the Kubernetes API (bearer token), so only principals granted
@@ -22,7 +22,7 @@ the metrics-reader permission can scrape it. See
 A Prometheus Operator `ServiceMonitor` (`controller-manager-metrics-monitor`)
 is provided to scrape the endpoint:
 
-- **scheme:** HTTPS, **port:** `https`, **path:** `/metrics`
+- **scheme:** https, **port:** `https`, **path:** `/metrics`
 - **auth:** bearer token from `/var/run/secrets/kubernetes.io/serviceaccount/token`
 - **selector:** matches the manager service labels
   (`control-plane: hibernation-controller-manager`,

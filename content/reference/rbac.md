@@ -46,7 +46,7 @@ kubectl create rolebinding alice-rs-editor \
 
 ## Leader election and metrics roles
 
-- **Leader election** — a namespaced `Role` granting access to `coordination.k8s.io`
+- **Leader election** — a `Role` granting access to `coordination.k8s.io`
   leases and events, used only when `--leader-elect` is enabled.
 - **Metrics access** — a `metrics-reader` role (read the `/metrics` endpoint) and
   a `metrics-auth` role used by the authentication/authorization filter that

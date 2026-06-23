@@ -46,10 +46,10 @@ left untouched.
 
 - **Webhooks** are served over TLS, with certificates managed by cert-manager
   (or supplied via flags). See [Webhooks](webhooks.md).
-- **Metrics** are served over HTTPS with bearer-token authentication by default.
+- **Metrics** are served over https with bearer-token authentication by default.
   See [Metrics](metrics.md).
-- **HTTP/2 is disabled by default** (`--enable-http2=false`) to mitigate known
-  HTTP/2 denial-of-service vulnerabilities (e.g. the "Rapid Reset" class of
+- **`HTTP/2` is disabled by default** (`--enable-http2=false`) to mitigate known
+  `HTTP/2` denial-of-service vulnerabilities (e.g. the "Rapid Reset" class of
   CVEs). Enable it only if you understand the risk.
 - An optional `NetworkPolicy` is provided to restrict ingress to the metrics
   endpoint.

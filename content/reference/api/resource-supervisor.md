@@ -143,7 +143,7 @@ Workloads sleep instantly. When the PR is merged, the pipeline deletes the names
 
 ## API Reference
 
-**Group/Version:** `hibernation.stakater.com/v1beta1` · **Kind:** `ResourceSupervisor` · **Scope:** Namespaced
+**Group/Version:** `hibernation.stakater.com/v1beta1` · **Kind:** `ResourceSupervisor` · **Scope:** Namespace
 
 ### Spec
 
@@ -157,5 +157,5 @@ Workloads sleep instantly. When the PR is merged, the pipeline deletes the names
 
 | Field | Type | Description |
 |-------|------|-------------|
-| `currentStatus` | `string` (enum: `sleeping`, `running`, `error`) | Current state of the targeted workloads. |
+| `currentStatus` | `string` (`sleeping`, `running`, `error`) | Current state of the targeted workloads. |
 | `nextReconcileTime` | `string` (RFC 3339 timestamp) | Next time the operator will sleep or wake the namespace's workloads. |

@@ -232,14 +232,14 @@ spec:
 
 | Field | Type | Description |
 |-------|------|-------------|
-| `currentStatus` | `string` (enum: `sleeping`, `running`, `error`) | Overall state of managed workloads. |
+| `currentStatus` | `string` (`sleeping`, `running`, `error`) | Overall state of managed workloads. |
 | `nextReconcileTime` | `string` (RFC 3339 timestamp) | Next scheduled sleep/wake reconciliation. |
 | `watchedNamespaces` | `[]string` | Namespaces currently managed by this resource. |
 | `ignoreNamespaces` | `[]string` | Namespaces excluded from management (e.g. via the exclude annotation). |
 | `sleepingNamespaces` | `[]object` (SleepingNamespace) | Per-namespace record of scaled-down workloads, used for accurate restoration. |
 | `sleepingNamespaces[].Namespace` | `string` | The namespace containing the sleeping applications. |
-| `sleepingNamespaces[].status` | `string` (enum) | Per-namespace error/state indicator. |
+| `sleepingNamespaces[].status` | `string`  (`sleeping`, `running`, `error`)  | Per-namespace error/state indicator. |
 | `sleepingNamespaces[].sleepingApplications` | `[]object` (SleepingApplication) | Workloads scaled down in the namespace. |
 | `sleepingNamespaces[].sleepingApplications[].name` | `string` | Name of the sleeping application. |
-| `sleepingNamespaces[].sleepingApplications[].kind` | `string` (enum: `Deployment`, `StatefulSet`) | Workload kind. |
+| `sleepingNamespaces[].sleepingApplications[].kind` | `string` | Workload kind. |
 | `sleepingNamespaces[].sleepingApplications[].replicas` | `int32` | Original replica count, preserved for restoration on wake. |
