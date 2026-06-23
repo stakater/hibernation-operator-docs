@@ -24,7 +24,7 @@ kubectl delete namespace hibernation-operator-system
 If you installed via the OpenShift OperatorHub:
 
 1. In the web console, go to **Operators → Installed Operators**.
-2. Select **Hibernation Operator** and choose **Uninstall Operator**.
+1. Select **Hibernation Operator** and choose **Uninstall Operator**.
 
 Or with the CLI, delete the `Subscription` and `ClusterServiceVersion`:
 
