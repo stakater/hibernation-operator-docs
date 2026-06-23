@@ -23,7 +23,7 @@ jobs:
   build_container:
     needs: deploy_doc
     if: ${{ github.base_ref == 'main' }}
-    uses: stakater/.github/.github/workflows/pull_request_container_build.yaml@v0.0.131
+    uses: stakater/.github/.github/workflows/pull_request_container_build.yaml@v0.0.188
     with:
       DOCKER_BUILD_CONTEXTS: content=https://github.com/stakater/hibernation-operator-docs.git#pull-request-deployments
       DOCKER_FILE_PATH: Dockerfile
