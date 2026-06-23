@@ -3479,10 +3479,7 @@ that control the metrics, health, and webhook endpoints.</p>
 <p>For the full installation flow, see <a href="../getting-started/installation/kubernetes.html">Installation › Kubernetes</a>.</p>
 <h2 id="helm-values">Helm values<a class="headerlink" href="#helm-values" title="Permanent link">#</a></h2>
 <p>The operator is installed from the OCI chart
-<code>oci://ghcr.io/stakater/public/charts/hibernation-operator</code>. The chart is
-generated with <a href="https://github.com/arttor/helmify">helmify</a>, so values are
-deeply nested. The table below lists the values most commonly tuned — inspect
-the full set with:</p>
+<code>oci://ghcr.io/stakater/public/charts/hibernation-operator</code>. The table below lists the values most commonly tuned — inspect the full set with:</p>
 <div class="highlight"><pre><span></span><code>helm<span class="w"> </span>show<span class="w"> </span>values<span class="w"> </span>oci://ghcr.io/stakater/public/charts/hibernation-operator
 </code></pre></div>
 <table>
@@ -3497,7 +3494,7 @@ the full set with:</p>
 <tr>
 <td><code>controllerManager.controllerManager.env.enableRsController</code></td>
 <td><code>"true"</code></td>
-<td>Enable the namespaced <code>ResourceSupervisor</code> controller.</td>
+<td>Enable the <code>ResourceSupervisor</code> controller.</td>
 </tr>
 <tr>
 <td><code>controllerManager.controllerManager.env.enableCrsController</code></td>
@@ -3561,7 +3558,7 @@ the full set with:</p>
 </tr>
 </tbody>
 </table>
-<p>Example — disable the namespaced controller at install time:</p>
+<p>Example — disable the controller at install time:</p>
 <div class="highlight"><pre><span></span><code>helm<span class="w"> </span>install<span class="w"> </span>hibernation-operator<span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>oci://ghcr.io/stakater/public/charts/hibernation-operator<span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>--namespace<span class="w"> </span>hibernation-system<span class="w"> </span>--create-namespace<span class="w"> </span><span class="se">\</span>
@@ -3569,7 +3566,7 @@ the full set with:</p>
 </code></pre></div>
 <h2 id="environment-variables">Environment variables<a class="headerlink" href="#environment-variables" title="Permanent link">#</a></h2>
 <p>These are consumed by the operator process directly (the Helm chart sets them
-on the deployment). Boolean variables are enabled only when set to the exact
+on the deployment). Flag variables are enabled only when set to the exact
 string <code>"true"</code>.</p>
 <table>
 <thead>
@@ -3632,7 +3629,7 @@ container <code>args</code>).</p>
 <tr>
 <td><code>--metrics-secure</code></td>
 <td><code>true</code></td>
-<td>Serve metrics over HTTPS.</td>
+<td>Serve metrics over https.</td>
 </tr>
 <tr>
 <td><code>--health-probe-bind-address</code></td>
@@ -3647,7 +3644,7 @@ container <code>args</code>).</p>
 <tr>
 <td><code>--enable-http2</code></td>
 <td><code>false</code></td>
-<td>Enable HTTP/2 for the metrics and webhook servers. Disabled by default to mitigate HTTP/2 CVEs.</td>
+<td>Enable <code>HTTP/2</code> for the metrics and webhook servers. Disabled by default to mitigate <code>HTTP/2</code> CVEs.</td>
 </tr>
 <tr>
 <td><code>--webhook-cert-path</code></td>

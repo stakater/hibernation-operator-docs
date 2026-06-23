@@ -3478,8 +3478,8 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 <p>The metrics server is <strong>disabled by default</strong> (<code>--metrics-bind-address=0</code>). When
 enabled it serves on:</p>
 <ul>
-<li><strong><code>:8443</code></strong> over HTTPS when <code>--metrics-secure=true</code> (the default), or</li>
-<li><strong><code>:8080</code></strong> over HTTP when <code>--metrics-secure=false</code>.</li>
+<li><strong><code>:8443</code></strong> over https when <code>--metrics-secure=true</code> (the default), or</li>
+<li><strong><code>:8080</code></strong> over http when <code>--metrics-secure=false</code>.</li>
 </ul>
 <p>The endpoint path is <code>/metrics</code>. In secure mode, requests are authenticated and
 authorized using the Kubernetes API (bearer token), so only principals granted
@@ -3490,7 +3490,7 @@ the metrics-reader permission can scrape it. See
 <p>A Prometheus Operator <code>ServiceMonitor</code> (<code>controller-manager-metrics-monitor</code>)
 is provided to scrape the endpoint:</p>
 <ul>
-<li><strong>scheme:</strong> HTTPS, <strong>port:</strong> <code>https</code>, <strong>path:</strong> <code>/metrics</code></li>
+<li><strong>scheme:</strong> https, <strong>port:</strong> <code>https</code>, <strong>path:</strong> <code>/metrics</code></li>
 <li><strong>auth:</strong> bearer token from <code>/var/run/secrets/kubernetes.io/serviceaccount/token</code></li>
 <li><strong>selector:</strong> matches the manager service labels
   (<code>control-plane: hibernation-controller-manager</code>,

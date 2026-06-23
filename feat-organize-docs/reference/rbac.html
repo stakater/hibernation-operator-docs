@@ -3561,7 +3561,7 @@ touches other workload types or arbitrary resources. See the
 </code></pre></div>
 <h2 id="leader-election-and-metrics-roles">Leader election and metrics roles<a class="headerlink" href="#leader-election-and-metrics-roles" title="Permanent link">#</a></h2>
 <ul>
-<li><strong>Leader election</strong> — a namespaced <code>Role</code> granting access to <code>coordination.k8s.io</code>
+<li><strong>Leader election</strong> — a <code>Role</code> granting access to <code>coordination.k8s.io</code>
   leases and events, used only when <code>--leader-elect</code> is enabled.</li>
 <li><strong>Metrics access</strong> — a <code>metrics-reader</code> role (read the <code>/metrics</code> endpoint) and
   a <code>metrics-auth</code> role used by the authentication/authorization filter that

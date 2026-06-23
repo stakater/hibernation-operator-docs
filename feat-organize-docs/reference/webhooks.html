@@ -3516,7 +3516,7 @@ namespace targeting.</p>
 <li><code>/validate-hibernation-stakater-com-v1beta1-clusterresourcesupervisor</code> (<code>vclusterresourcesupervisor.kb.io</code>)</li>
 </ul>
 <h2 id="schedule-validation-both-resources">Schedule validation (both resources)<a class="headerlink" href="#schedule-validation-both-resources" title="Permanent link">#</a></h2>
-<p>Cron schedules are parsed using standard cron syntax. The validator enforces:</p>
+<p>Cron schedules are parsed using standard cron syntax. The webhook enforces:</p>
 <ul>
 <li><strong>Empty schedules are allowed</strong> — both <code>sleepSchedule</code> and <code>wakeSchedule</code>
   empty (immediate/permanent sleep use cases) passes validation.</li>

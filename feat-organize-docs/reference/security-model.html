@@ -3534,10 +3534,10 @@ left untouched.</p>
 <ul>
 <li><strong>Webhooks</strong> are served over TLS, with certificates managed by cert-manager
   (or supplied via flags). See <a href="webhooks.html">Webhooks</a>.</li>
-<li><strong>Metrics</strong> are served over HTTPS with bearer-token authentication by default.
+<li><strong>Metrics</strong> are served over https with bearer-token authentication by default.
   See <a href="metrics.html">Metrics</a>.</li>
-<li><strong>HTTP/2 is disabled by default</strong> (<code>--enable-http2=false</code>) to mitigate known
-  HTTP/2 denial-of-service vulnerabilities (e.g. the "Rapid Reset" class of
+<li><strong><code>HTTP/2</code> is disabled by default</strong> (<code>--enable-http2=false</code>) to mitigate known
+  <code>HTTP/2</code> denial-of-service vulnerabilities (e.g. the "Rapid Reset" class of
   CVEs). Enable it only if you understand the risk.</li>
 <li>An optional <code>NetworkPolicy</code> is provided to restrict ingress to the metrics
   endpoint.</li>

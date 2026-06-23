@@ -4064,7 +4064,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 <tbody>
 <tr>
 <td><code>currentStatus</code></td>
-<td><code>string</code> (enum: <code>sleeping</code>, <code>running</code>, <code>error</code>)</td>
+<td><code>string</code> (<code>sleeping</code>, <code>running</code>, <code>error</code>)</td>
 <td>Overall state of managed workloads.</td>
 </tr>
 <tr>
@@ -4094,7 +4094,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 </tr>
 <tr>
 <td><code>sleepingNamespaces[].status</code></td>
-<td><code>string</code> (enum)</td>
+<td><code>string</code>  (<code>sleeping</code>, <code>running</code>, <code>error</code>)</td>
 <td>Per-namespace error/state indicator.</td>
 </tr>
 <tr>
@@ -4109,7 +4109,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 </tr>
 <tr>
 <td><code>sleepingNamespaces[].sleepingApplications[].kind</code></td>
-<td><code>string</code> (enum: <code>Deployment</code>, <code>StatefulSet</code>)</td>
+<td><code>string</code></td>
 <td>Workload kind.</td>
 </tr>
 <tr>
