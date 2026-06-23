@@ -17,8 +17,8 @@ extra:
     default: latest
 
 nav:
-  - index.md
   - Overview:
+    - Introduction: index.md
     - overview/key-features.md
     - overview/use-cases.md
     - overview/benefits.md

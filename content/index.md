@@ -5,7 +5,7 @@ head:
       content: hibernation operator, kubernetes, cost optimization, sleep, wake, cron, argocd
 ---
 
-# Welcome to the Docs
+# Introduction
 
 Managing Kubernetes clusters at scale often leads to underutilized resources—especially in development, staging, and CI/CD environments that run 24/7 but are only actively used during business hours. This results in unnecessary cloud spend and inefficient resource utilization.
 
