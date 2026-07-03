@@ -6,7 +6,7 @@ This guide explains how to create a **namespace-scoped** `ResourceSupervisor` to
 
 ### Prerequisites
 
-- The **Hibernation Operator** must be [installed](../installation/kubernetes.md) in your cluster.
+- The **Hibernation Operator** must be [installed](../getting-started/installation/kubernetes.md) in your cluster.
 - You have **edit** (or equivalent) permissions in the target namespace.
 
 ### Step 1: Create a `ResourceSupervisor` YAML

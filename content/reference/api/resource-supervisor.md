@@ -138,3 +138,24 @@ kubectl apply -f pr-456-hibernation.yaml
 ```
 
 Workloads sleep instantly. When the PR is merged, the pipeline deletes the namespace (or the CR), waking workloads briefly before cleanup.
+
+---
+
+## API Reference
+
+**Group/Version:** `hibernation.stakater.com/v1beta1` · **Kind:** `ResourceSupervisor` · **Scope:** Namespace
+
+### Spec
+
+| Field | Type | Required | Description |
+|-------|------|----------|-------------|
+| `schedule` | `object` (Hibernation) | Yes | Hibernation schedule for workloads in this namespace. An empty object (`schedule: {}`) triggers immediate sleep. |
+| `schedule.sleepSchedule` | `string` | No | Standard 5-field Unix cron expression (UTC) for scaling workloads to zero. If empty, workloads sleep immediately on creation. |
+| `schedule.wakeSchedule` | `string` | No | Standard 5-field Unix cron expression (UTC) for restoring workloads. If omitted, workloads remain asleep until the CR is updated or deleted. |
+
+### Status
+
+| Field | Type | Description |
+|-------|------|-------------|
+| `currentStatus` | `string` (`sleeping`, `running`, `error`) | Current state of the targeted workloads. |
+| `nextReconcileTime` | `string` (RFC 3339 timestamp) | Next time the operator will sleep or wake the namespace's workloads. |
