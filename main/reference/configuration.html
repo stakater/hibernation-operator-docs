@@ -5,28 +5,28 @@
       
       
       
-        <link rel="canonical" href="https://docs.stakater.com/hibernation-operator-docs/main/installation/openshift.html">
+        <link rel="canonical" href="https://docs.stakater.com/hibernation-operator-docs/main/reference/configuration.html">
       
       
-        <link rel="prev" href="overview.html">
+        <link rel="prev" href="api/cluster-resource-supervisor.html">
       
       
-        <link rel="next" href="kubernetes.html">
+        <link rel="next" href="rbac.html">
       
       
         
       
       
       <link rel="icon" href="../assets/images/favicon.svg">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.0">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
     
     
       
-        <title>On OpenShift - Hibernation Operator</title>
+        <title>Configuration - Hibernation Operator</title>
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.618322db.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
       
         
         <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
@@ -42,7 +42,7 @@
       
         
         
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Space+Grotesk:300,300i,400,400i,700,700i%7CMonospace:400,400i,700,700i&amp;display=fallback">
         <style>:root{--md-text-font:"Space Grotesk";--md-code-font:"Monospace"}</style>
       
@@ -95,7 +95,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#on-openshift" class="md-skip">
+        <a href="#configuration" class="md-skip">
           Skip to content
         </a>
       
@@ -104,7 +104,7 @@
       
     </div>
     
-      <div data-md-color-scheme="default" data-md-component="outdated" hidden>
+      <div data-md-color-scheme="default" data-md-component="outdated" hidden="">
         
           <aside class="md-banner md-banner--warning">
             <div class="md-banner__inner md-grid md-typeset">
@@ -339,7 +339,7 @@ This documentation is either for an old version, or for the unreleased 'main' ve
   <nav class="md-header__inner md-grid" aria-label="Header">
 
     <!-- Link to home -->
-    <a href="../index.html" title="Hibernation Operator" class="md-header__button md-logo" aria-label="Hibernation Operator" data-md-component="logo">
+    <a href=".." title="Hibernation Operator" class="md-header__button md-logo" aria-label="Hibernation Operator" data-md-component="logo">
       <!-- 
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -1093,7 +1093,7 @@ This documentation is either for an old version, or for the unreleased 'main' ve
   
   <input class="md-option" data-md-color-media="(prefers-color-scheme)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo" aria-label="Switch to system preference" type="radio" name="__palette" id="__palette_0">
   
-  <label class="md-header__button md-icon" title="Switch to system preference" for="__palette_1" hidden>
+  <label class="md-header__button md-icon" title="Switch to system preference" for="__palette_1" hidden="">
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m14.3 16-.7-2h-3.2l-.7 2H7.8L11 7h2l3.2 9zM20 8.69V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12zm-9.15 3.96h2.3L12 9z"></path></svg>
   </label>
   
@@ -1103,7 +1103,7 @@ This documentation is either for an old version, or for the unreleased 'main' ve
   
   <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="custom" aria-label="Switch to light mode" type="radio" name="__palette" id="__palette_1">
   
-  <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_2" hidden>
+  <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_2" hidden="">
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"></path></svg>
   </label>
   
@@ -1113,7 +1113,7 @@ This documentation is either for an old version, or for the unreleased 'main' ve
   
   <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="custom" data-md-color-accent="custom" aria-label="Switch to dark mode" type="radio" name="__palette" id="__palette_2">
   
-  <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_0" hidden>
+  <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_0" hidden="">
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9 2c-1.05 0-2.05.16-3 .46 4.06 1.27 7 5.04 7 9.54s-2.94 8.27-7 9.54c.95.3 1.95.46 3 .46a10 10 0 0 0 10-10A10 10 0 0 0 9 2"></path></svg>
   </label>
   
@@ -1161,7 +1161,7 @@ This documentation is either for an old version, or for the unreleased 'main' ve
   <label class="md-search__overlay" for="__search"></label>
   <div class="md-search__inner" role="search">
     <form class="md-search__form" name="search">
-      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required="">
       <label class="md-search__icon md-icon" for="__search">
         
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
@@ -1178,7 +1178,7 @@ This documentation is either for an old version, or for the unreleased 'main' ve
       
     </form>
     <div class="md-search__output">
-      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix="">
         <div class="md-search-result" data-md-component="search-result">
           <div class="md-search-result__meta">
             Initializing search
@@ -1987,7 +1987,7 @@ This documentation is either for an old version, or for the unreleased 'main' ve
 
 <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../index.html" title="Hibernation Operator" class="md-nav__button md-logo" aria-label="Hibernation Operator" data-md-component="logo">
+    <a href=".." title="Hibernation Operator" class="md-nav__button md-logo" aria-label="Hibernation Operator" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"></path></svg>
@@ -2008,10 +2008,57 @@ This documentation is either for an old version, or for the unreleased 'main' ve
 </a>
     </div>
   
-  <ul class="md-nav__list" data-md-scrollfix>
+  <ul class="md-nav__list" data-md-scrollfix="">
     
       
       
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1">
+        
+          
+          <label class="md-nav__link" for="__nav_1" id="__nav_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Overview
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
   
   
   
@@ -2024,7 +2071,7 @@ This documentation is either for an old version, or for the unreleased 'main' ve
   <span class="md-ellipsis">
     
   
-    Welcome to the Docs
+    Introduction
   
 
     
@@ -2033,6 +2080,98 @@ This documentation is either for an old version, or for the unreleased 'main' ve
   
 
       </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../overview/key-features.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Key Features
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../overview/use-cases.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Use Cases
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../overview/benefits.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Benefits
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
     </li>
   
 
@@ -2062,7 +2201,7 @@ This documentation is either for an old version, or for the unreleased 'main' ve
   <span class="md-ellipsis">
     
   
-    About
+    Concepts
   
 
     
@@ -2078,11 +2217,11 @@ This documentation is either for an old version, or for the unreleased 'main' ve
             <span class="md-nav__icon md-icon"></span>
             
   
-    About
+    Concepts
   
 
           </label>
-          <ul class="md-nav__list" data-md-scrollfix>
+          <ul class="md-nav__list" data-md-scrollfix="">
             
               
                 
@@ -2091,14 +2230,14 @@ This documentation is either for an old version, or for the unreleased 'main' ve
   
   
     <li class="md-nav__item">
-      <a href="../about/key-features.html" class="md-nav__link">
+      <a href="../concepts/architecture.html" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Key Features
+    Architecture
   
 
     
@@ -2119,42 +2258,14 @@ This documentation is either for an old version, or for the unreleased 'main' ve
   
   
     <li class="md-nav__item">
-      <a href="../about/use-cases.html" class="md-nav__link">
+      <a href="../concepts/terminology.html" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Use Cases
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../about/benefits.html" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Benefits
+    Concepts
   
 
     
@@ -2200,7 +2311,7 @@ This documentation is either for an old version, or for the unreleased 'main' ve
   <span class="md-ellipsis">
     
   
-    Architecture
+    Getting Started
   
 
     
@@ -2216,11 +2327,11 @@ This documentation is either for an old version, or for the unreleased 'main' ve
             <span class="md-nav__icon md-icon"></span>
             
   
-    Architecture
+    Getting Started
   
 
           </label>
-          <ul class="md-nav__list" data-md-scrollfix>
+          <ul class="md-nav__list" data-md-scrollfix="">
             
               
                 
@@ -2229,14 +2340,14 @@ This documentation is either for an old version, or for the unreleased 'main' ve
   
   
     <li class="md-nav__item">
-      <a href="../architecture/architecture.html" class="md-nav__link">
+      <a href="../getting-started/quick-start.html" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Architecture
+    Quick Start
   
 
     
@@ -2250,18 +2361,9 @@ This documentation is either for an old version, or for the unreleased 'main' ve
 
               
             
-          </ul>
-        </nav>
-      
-    </li>
+              
+                
   
-
-    
-      
-      
-  
-  
-    
   
   
   
@@ -2270,14 +2372,14 @@ This documentation is either for an old version, or for the unreleased 'main' ve
     
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2">
         
           
-          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_3_2" id="__nav_3_2_label" tabindex="0">
             
   
   
@@ -2295,8 +2397,8 @@ This documentation is either for an old version, or for the unreleased 'main' ve
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_4">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_2">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -2304,7 +2406,7 @@ This documentation is either for an old version, or for the unreleased 'main' ve
   
 
           </label>
-          <ul class="md-nav__list" data-md-scrollfix>
+          <ul class="md-nav__list" data-md-scrollfix="">
             
               
                 
@@ -2313,7 +2415,7 @@ This documentation is either for an old version, or for the unreleased 'main' ve
   
   
     <li class="md-nav__item">
-      <a href="overview.html" class="md-nav__link">
+      <a href="../getting-started/installation/overview.html" class="md-nav__link">
         
   
   
@@ -2338,37 +2440,10 @@ This documentation is either for an old version, or for the unreleased 'main' ve
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    On OpenShift
-  
-
-    
-  </span>
-  
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="openshift.html" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../getting-started/installation/openshift.html" class="md-nav__link">
         
   
   
@@ -2384,171 +2459,41 @@ This documentation is either for an old version, or for the unreleased 'main' ve
   
 
       </a>
-      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../getting-started/installation/kubernetes.html" class="md-nav__link">
         
-
-  
-
-<nav class="md-nav md-nav--secondary" aria-label="On this page">
   
   
-  
+  <span class="md-ellipsis">
     
   
+    On Kubernetes
   
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      On this page
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#requirements" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Requirements
-      
-    </span>
-  </a>
+
+    
+  </span>
   
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#installing-via-operatorhub-ui" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Installing via OperatorHub UI
-      
-    </span>
-  </a>
   
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#installing-via-cli-or-gitops" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Installing via CLI or GitOps
-      
-    </span>
-  </a>
+
+      </a>
+    </li>
   
-    <nav class="md-nav" aria-label="Installing via CLI or GitOps">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#step-1-create-the-operator-namespace" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Step 1: Create the Operator Namespace
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#step-2-create-an-operatorgroup" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Step 2: Create an OperatorGroup
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#step-3-create-a-subscription" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Step 3: Create a Subscription
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#step-4-verify-installation" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Step 4: Verify Installation
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#uninstall-via-operatorhub-ui" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Uninstall via OperatorHub UI
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Uninstall via OperatorHub UI">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#step-1-optional-clean-up-hibernation-policies" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Step 1: (Optional) Clean Up Hibernation Policies
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#step-2-uninstall-the-operator" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Step 2: Uninstall the Operator
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#step-3-optional-clean-up-leftover-resources" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Step 3: (Optional) Clean Up Leftover Resources
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#notes" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Notes
-      
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
+
+              
+            
+          </ul>
+        </nav>
       
     </li>
   
@@ -2562,14 +2507,152 @@ This documentation is either for an old version, or for the unreleased 'main' ve
   
   
     <li class="md-nav__item">
-      <a href="kubernetes.html" class="md-nav__link">
+      <a href="../getting-started/uninstalling.html" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    On Kubernetes
+    Uninstalling
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4">
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Guides
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Guides
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../guides/create-resource-supervisor.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Setup ResourceSupervisor
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../guides/create-cluster-resource-supervisor.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Setup ClusterResourceSupervisor
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../guides/hibernate-resources.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Hibernate a Tenant
   
 
     
@@ -2615,7 +2698,7 @@ This documentation is either for an old version, or for the unreleased 'main' ve
   <span class="md-ellipsis">
     
   
-    Kubernetes Resources
+    Integrations
   
 
     
@@ -2631,11 +2714,11 @@ This documentation is either for an old version, or for the unreleased 'main' ve
             <span class="md-nav__icon md-icon"></span>
             
   
-    Kubernetes Resources
+    Integrations
   
 
           </label>
-          <ul class="md-nav__list" data-md-scrollfix>
+          <ul class="md-nav__list" data-md-scrollfix="">
             
               
                 
@@ -2644,70 +2727,14 @@ This documentation is either for an old version, or for the unreleased 'main' ve
   
   
     <li class="md-nav__item">
-      <a href="../architecture/concepts.html" class="md-nav__link">
+      <a href="../integrations/argocd.html" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Concepts
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../kubernetes-resources/cluster-resource-supervisor.html" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    ClusterResourceSupervisor
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../kubernetes-resources/resource-supervisor.html" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    ResourceSupervisor
+    ArgoCD Integration
   
 
     
@@ -2732,6 +2759,55 @@ This documentation is either for an old version, or for the unreleased 'main' ve
       
   
   
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" checked="">
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Reference
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Reference
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
   
   
     
@@ -2743,17 +2819,17 @@ This documentation is either for an old version, or for the unreleased 'main' ve
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6">
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_1">
         
           
-          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_6_1" id="__nav_6_1_label" tabindex="0">
             
   
   
   <span class="md-ellipsis">
     
   
-    How-to Guides
+    API Reference
   
 
     
@@ -2764,16 +2840,16 @@ This documentation is either for an old version, or for the unreleased 'main' ve
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_6">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_1">
             <span class="md-nav__icon md-icon"></span>
             
   
-    How-to Guides
+    API Reference
   
 
           </label>
-          <ul class="md-nav__list" data-md-scrollfix>
+          <ul class="md-nav__list" data-md-scrollfix="">
             
               
                 
@@ -2782,14 +2858,14 @@ This documentation is either for an old version, or for the unreleased 'main' ve
   
   
     <li class="md-nav__item">
-      <a href="../how-to-guides/create-resource-supervisor.html" class="md-nav__link">
+      <a href="api/resource-supervisor.html" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Setup ResourceSupervisor
+    ResourceSupervisor
   
 
     
@@ -2810,14 +2886,160 @@ This documentation is either for an old version, or for the unreleased 'main' ve
   
   
     <li class="md-nav__item">
-      <a href="../how-to-guides/create-cluster-resource-supervisor.html" class="md-nav__link">
+      <a href="api/cluster-resource-supervisor.html" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Setup ClusterResourceSupervisor
+    ClusterResourceSupervisor
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Configuration
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="configuration.html" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Configuration
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+  
+
+<nav class="md-nav md-nav--secondary" aria-label="On this page">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      On this page
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+      
+        <li class="md-nav__item">
+  <a href="#helm-values" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Helm values
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#environment-variables" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Environment variables
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#manager-flags" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Manager flags
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="rbac.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    RBAC
   
 
     
@@ -2838,14 +3060,70 @@ This documentation is either for an old version, or for the unreleased 'main' ve
   
   
     <li class="md-nav__item">
-      <a href="../how-to-guides/hibernate-resources.html" class="md-nav__link">
+      <a href="metrics.html" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Hibernate a Tenant
+    Metrics
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="webhooks.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Webhooks
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="security-model.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Security Model
   
 
     
@@ -2891,7 +3169,7 @@ This documentation is either for an old version, or for the unreleased 'main' ve
   <span class="md-ellipsis">
     
   
-    Integrations
+    Troubleshooting
   
 
     
@@ -2907,11 +3185,11 @@ This documentation is either for an old version, or for the unreleased 'main' ve
             <span class="md-nav__icon md-icon"></span>
             
   
-    Integrations
+    Troubleshooting
   
 
           </label>
-          <ul class="md-nav__list" data-md-scrollfix>
+          <ul class="md-nav__list" data-md-scrollfix="">
             
               
                 
@@ -2920,14 +3198,14 @@ This documentation is either for an old version, or for the unreleased 'main' ve
   
   
     <li class="md-nav__item">
-      <a href="../integrations/argocd.html" class="md-nav__link">
+      <a href="../troubleshooting.html" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    ArgoCD Integration
+    Troubleshooting Guide
   
 
     
@@ -2954,8 +3232,55 @@ This documentation is either for an old version, or for the unreleased 'main' ve
   
   
   
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8">
+        
+          
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Release Notes
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Release Notes
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
     <li class="md-nav__item">
-      <a href="../changelog.html" class="md-nav__link">
+      <a href="../release-notes.html" class="md-nav__link">
         
   
   
@@ -2974,9 +3299,64 @@ This documentation is either for an old version, or for the unreleased 'main' ve
     </li>
   
 
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
     
       
       
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9">
+        
+          
+          <label class="md-nav__link" for="__nav_9" id="__nav_9_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    EULA
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    EULA
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
   
   
   
@@ -3001,30 +3381,11 @@ This documentation is either for an old version, or for the unreleased 'main' ve
     </li>
   
 
-    
+              
+            
+          </ul>
+        </nav>
       
-      
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../troubleshooting.html" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Troubleshooting Guide
-  
-
-    
-  </span>
-  
-  
-
-      </a>
     </li>
   
 
@@ -3055,24 +3416,13 @@ This documentation is either for an old version, or for the unreleased 'main' ve
       <span class="md-nav__icon md-icon"></span>
       On this page
     </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
       
         <li class="md-nav__item">
-  <a href="#requirements" class="md-nav__link">
+  <a href="#helm-values" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Requirements
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#installing-via-operatorhub-ui" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Installing via OperatorHub UI
+        Helm values
       
     </span>
   </a>
@@ -3080,121 +3430,21 @@ This documentation is either for an old version, or for the unreleased 'main' ve
 </li>
       
         <li class="md-nav__item">
-  <a href="#installing-via-cli-or-gitops" class="md-nav__link">
+  <a href="#environment-variables" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Installing via CLI or GitOps
+        Environment variables
       
     </span>
   </a>
-  
-    <nav class="md-nav" aria-label="Installing via CLI or GitOps">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#step-1-create-the-operator-namespace" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Step 1: Create the Operator Namespace
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#step-2-create-an-operatorgroup" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Step 2: Create an OperatorGroup
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#step-3-create-a-subscription" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Step 3: Create a Subscription
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#step-4-verify-installation" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Step 4: Verify Installation
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#uninstall-via-operatorhub-ui" class="md-nav__link">
+  <a href="#manager-flags" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Uninstall via OperatorHub UI
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Uninstall via OperatorHub UI">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#step-1-optional-clean-up-hibernation-policies" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Step 1: (Optional) Clean Up Hibernation Policies
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#step-2-uninstall-the-operator" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Step 2: Uninstall the Operator
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#step-3-optional-clean-up-leftover-resources" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Step 3: (Optional) Clean Up Leftover Resources
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#notes" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Notes
+        Manager flags
       
     </span>
   </a>
@@ -3221,142 +3471,217 @@ This documentation is either for an old version, or for the unreleased 'main' ve
   
 
 
-<h1 id="on-openshift">On OpenShift<a class="headerlink" href="#on-openshift" title="Permanent link">#</a></h1>
-<p>The <strong>Hibernation Operator</strong> is a <a href="https://catalog.redhat.com/en/software/container-stacks/detail/687efb0f70dee945827cfe24">Red Hat Certified Operator</a> available on the <strong>Red Hat Marketplace</strong> and <strong>OperatorHub</strong> in OpenShift.</p>
-<p>This document contains instructions for installing, configuring, and uninstalling the Hibernation Operator on OpenShift.</p>
-<ol>
-<li><a href="#installing-via-operatorhub-ui">OpenShift OperatorHub UI</a>  </li>
-<li><a href="#installing-via-cli-or-gitops">CLI / GitOps</a>  </li>
-<li><a href="#uninstall-via-operatorhub-ui">Uninstall</a></li>
-</ol>
-<h2 id="requirements">Requirements<a class="headerlink" href="#requirements" title="Permanent link">#</a></h2>
-<ul>
-<li>An <strong>OpenShift</strong> cluster (v4.10 or higher recommended)</li>
-</ul>
-<hr>
-<h2 id="installing-via-operatorhub-ui">Installing via OperatorHub UI<a class="headerlink" href="#installing-via-operatorhub-ui" title="Permanent link">#</a></h2>
-<ol>
-<li>In the OpenShift Console, navigate to <strong>Operators → OperatorHub</strong> from the left sidebar.</li>
-<li>Search for <strong><code>Hibernation Operator</code></strong> and click on the tile.</li>
-<li>Click the <strong>Install</strong> button.</li>
-</ol>
-<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../images/operatorHub.png" data-desc-position="bottom"><img alt="Install button" src="../images/operatorHub.png"></a></p>
-<ol>
-<li>Configure the installation:</li>
-<li><strong>Update channel</strong>: <code>stable</code> (recommended for production)</li>
-<li><strong>Installed Namespace</strong>: Select <strong><code>hibernation-operator-system</code></strong> (create if it doesn’t exist)</li>
-<li><strong>Update approval</strong>:  <ul>
-<li><code>Automatic</code> for development  </li>
-<li><code>Manual</code> for production (allows review of upgrades)</li>
-</ul>
-</li>
-</ol>
-<p>Click <strong>Install</strong>.</p>
-<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../images/hibernation_install.png" data-desc-position="bottom"><img alt="Install configuration" src="../images/hibernation_install.png"></a></p>
-<ol>
-<li>Wait for the operator to install. You’ll see a status of <strong>Installed operator: Ready for use</strong> when ready.</li>
-<li>Once installed, the Hibernation Operator is ready to manage hibernation policies across your cluster.</li>
-</ol>
-<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../images/hibernation_installed_successful.png" data-desc-position="bottom"><img alt="Installation successful" src="../images/hibernation_installed_successful.png"></a></p>
+<h1 id="configuration">Configuration<a class="headerlink" href="#configuration" title="Permanent link">#</a></h1>
+<p>This page documents the configuration surface of the Hibernation Operator: the
+<strong>Helm chart values</strong> you set at install time, the <strong>environment variables</strong>
+that toggle controllers and webhooks, and the <strong>manager command-line flags</strong>
+that control the metrics, health, and webhook endpoints.</p>
+<p>For the full installation flow, see <a href="../getting-started/installation/kubernetes.html">Installation › Kubernetes</a>.</p>
+<h2 id="helm-values">Helm values<a class="headerlink" href="#helm-values" title="Permanent link">#</a></h2>
+<p>The operator is installed from the OCI chart
+<code>oci://ghcr.io/stakater/public/charts/hibernation-operator</code>. The table below lists the values most commonly tuned — inspect the full set with:</p>
+<div class="highlight"><pre><span></span><code>helm<span class="w"> </span>show<span class="w"> </span>values<span class="w"> </span>oci://ghcr.io/stakater/public/charts/hibernation-operator
+</code></pre></div>
+<table>
+<thead>
+<tr>
+<th>Value</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>controllerManager.controllerManager.env.enableRsController</code></td>
+<td><code>"true"</code></td>
+<td>Enable the <code>ResourceSupervisor</code> controller.</td>
+</tr>
+<tr>
+<td><code>controllerManager.controllerManager.env.enableCrsController</code></td>
+<td><code>"true"</code></td>
+<td>Enable the cluster-scoped <code>ClusterResourceSupervisor</code> controller.</td>
+</tr>
+<tr>
+<td><code>controllerManager.controllerManager.env.enableWebhooks</code></td>
+<td><code>"false"</code></td>
+<td>Enable validating webhooks on the controller deployment.</td>
+</tr>
+<tr>
+<td><code>controllerManager.controllerManager.env.leaderElectionId</code></td>
+<td><code>hibernation-operator-election-id</code></td>
+<td>Leader-election lock identifier.</td>
+</tr>
+<tr>
+<td><code>controllerManager.controllerManager.image.repository</code></td>
+<td><code>ghcr.io/stakater/public/hibernation-operator</code></td>
+<td>Operator image repository.</td>
+</tr>
+<tr>
+<td><code>controllerManager.controllerManager.image.tag</code></td>
+<td>chart <code>appVersion</code></td>
+<td>Operator image tag.</td>
+</tr>
+<tr>
+<td><code>controllerManager.controllerManager.resources</code></td>
+<td>requests <code>10m</code>/<code>64Mi</code>, limits <code>500m</code>/<code>128Mi</code></td>
+<td>Manager container resource requests/limits.</td>
+</tr>
+<tr>
+<td><code>controllerManager.replicas</code></td>
+<td><code>1</code></td>
+<td>Number of manager replicas.</td>
+</tr>
+<tr>
+<td><code>webhook.manager.env.enableWebhooks</code></td>
+<td><code>"true"</code></td>
+<td>Enable webhooks on the dedicated webhook deployment.</td>
+</tr>
+<tr>
+<td><code>webhook.manager.resources</code></td>
+<td>requests <code>100m</code>/<code>20Mi</code>, limits <code>2</code>/<code>2Gi</code></td>
+<td>Webhook container resource requests/limits.</td>
+</tr>
+<tr>
+<td><code>webhook.replicas</code></td>
+<td><code>1</code></td>
+<td>Number of webhook deployment replicas.</td>
+</tr>
+<tr>
+<td><code>imagePullSecrets</code></td>
+<td><code>[]</code></td>
+<td>Image pull secrets for private registries.</td>
+</tr>
+<tr>
+<td><code>kubernetesClusterDomain</code></td>
+<td><code>cluster.local</code></td>
+<td>Cluster DNS domain (used for in-cluster service URLs).</td>
+</tr>
+</tbody>
+</table>
+<p>Example — disable the controller at install time:</p>
+<div class="highlight"><pre><span></span><code>helm<span class="w"> </span>install<span class="w"> </span>hibernation-operator<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>oci://ghcr.io/stakater/public/charts/hibernation-operator<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--namespace<span class="w"> </span>hibernation-system<span class="w"> </span>--create-namespace<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--set<span class="w"> </span>controllerManager.controllerManager.env.enableRsController<span class="o">=</span><span class="s2">"false"</span>
+</code></pre></div>
+<h2 id="environment-variables">Environment variables<a class="headerlink" href="#environment-variables" title="Permanent link">#</a></h2>
+<p>These are consumed by the operator process directly (the Helm chart sets them
+on the deployment). Flag variables are enabled only when set to the exact
+string <code>"true"</code>.</p>
+<table>
+<thead>
+<tr>
+<th>Variable</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>ENABLE_RS_CONTROLLER</code></td>
+<td>unset (off)</td>
+<td>Enable the <code>ResourceSupervisor</code> controller.</td>
+</tr>
+<tr>
+<td><code>ENABLE_CRS_CONTROLLER</code></td>
+<td>unset (off)</td>
+<td>Enable the <code>ClusterResourceSupervisor</code> controller.</td>
+</tr>
+<tr>
+<td><code>ENABLE_WEBHOOKS</code></td>
+<td>unset (off)</td>
+<td>Enable the validating webhooks.</td>
+</tr>
+<tr>
+<td><code>OPERATOR_NAME_PREFIX</code></td>
+<td><code>hibernation-operator</code></td>
+<td>Name prefix used for operator-owned resources.</td>
+</tr>
+<tr>
+<td><code>OPERATOR_NAMESPACE</code></td>
+<td><code>hibernation-operator-system</code></td>
+<td>Namespace the operator runs in (used for leader election; auto-detected in-cluster if unset).</td>
+</tr>
+<tr>
+<td><code>LEADER_ELECTION_ID</code></td>
+<td>—</td>
+<td>Identifier for the leader-election lock.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="manager-flags">Manager flags<a class="headerlink" href="#manager-flags" title="Permanent link">#</a></h2>
+<p>Command-line flags accepted by the manager binary (set via the deployment's
+container <code>args</code>).</p>
+<table>
+<thead>
+<tr>
+<th>Flag</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>--metrics-bind-address</code></td>
+<td><code>0</code> (disabled)</td>
+<td>Address the metrics endpoint binds to (<code>:8443</code> secure, <code>:8080</code> insecure, <code>0</code> to disable).</td>
+</tr>
+<tr>
+<td><code>--metrics-secure</code></td>
+<td><code>true</code></td>
+<td>Serve metrics over https.</td>
+</tr>
+<tr>
+<td><code>--health-probe-bind-address</code></td>
+<td><code>:8081</code></td>
+<td>Address for liveness/readiness probes.</td>
+</tr>
+<tr>
+<td><code>--leader-elect</code></td>
+<td><code>false</code></td>
+<td>Enable leader election for high-availability deployments.</td>
+</tr>
+<tr>
+<td><code>--enable-http2</code></td>
+<td><code>false</code></td>
+<td>Enable <code>HTTP/2</code> for the metrics and webhook servers. Disabled by default to mitigate <code>HTTP/2</code> CVEs.</td>
+</tr>
+<tr>
+<td><code>--webhook-cert-path</code></td>
+<td><code>""</code></td>
+<td>Directory containing the webhook certificate.</td>
+</tr>
+<tr>
+<td><code>--webhook-cert-name</code></td>
+<td><code>tls.crt</code></td>
+<td>Webhook certificate file name.</td>
+</tr>
+<tr>
+<td><code>--webhook-cert-key</code></td>
+<td><code>tls.key</code></td>
+<td>Webhook key file name.</td>
+</tr>
+<tr>
+<td><code>--metrics-cert-path</code></td>
+<td><code>""</code></td>
+<td>Directory containing the metrics server certificate.</td>
+</tr>
+<tr>
+<td><code>--metrics-cert-name</code></td>
+<td><code>tls.crt</code></td>
+<td>Metrics certificate file name.</td>
+</tr>
+<tr>
+<td><code>--metrics-cert-key</code></td>
+<td><code>tls.key</code></td>
+<td>Metrics key file name.</td>
+</tr>
+</tbody>
+</table>
 <blockquote>
-<p>💡 <strong>Note</strong>: The operator is installed in the <code>hibernation-operator-system</code> namespace by default.</p>
+<p>See <a href="metrics.html">Metrics</a> for how the metrics endpoint and <code>ServiceMonitor</code>
+are wired up, and <a href="webhooks.html">Webhooks</a> for webhook certificate management.</p>
 </blockquote>
-<hr>
-<h2 id="installing-via-cli-or-gitops">Installing via CLI or GitOps<a class="headerlink" href="#installing-via-cli-or-gitops" title="Permanent link">#</a></h2>
-<p>Use this method for automation, CI/CD pipelines, or GitOps workflows (e.g., with ArgoCD).</p>
-<h3 id="step-1-create-the-operator-namespace">Step 1: Create the Operator Namespace<a class="headerlink" href="#step-1-create-the-operator-namespace" title="Permanent link">#</a></h3>
-<div class="highlight"><pre><span></span><code>oc<span class="w"> </span>create<span class="w"> </span>namespace<span class="w"> </span>hibernation-operator-system
-</code></pre></div>
-<h3 id="step-2-create-an-operatorgroup">Step 2: Create an OperatorGroup<a class="headerlink" href="#step-2-create-an-operatorgroup" title="Permanent link">#</a></h3>
-<div class="highlight"><pre><span></span><code>oc<span class="w"> </span>create<span class="w"> </span>-f<span class="w"> </span>-<span class="w"> </span><span class="s">&lt;&lt; EOF</span>
-<span class="s">apiVersion: operators.coreos.com/v1</span>
-<span class="s">kind: OperatorGroup</span>
-<span class="s">metadata:</span>
-<span class="s">  name: hibernation-operator</span>
-<span class="s">  namespace: hibernation-operator-system</span>
-<span class="s">spec:</span>
-<span class="s">  targetNamespaces:</span>
-<span class="s">  - hibernation-operator-system</span>
-<span class="s">EOF</span>
-</code></pre></div>
-<h3 id="step-3-create-a-subscription">Step 3: Create a Subscription<a class="headerlink" href="#step-3-create-a-subscription" title="Permanent link">#</a></h3>
-<div class="highlight"><pre><span></span><code>oc<span class="w"> </span>create<span class="w"> </span>-f<span class="w"> </span>-<span class="w"> </span><span class="s">&lt;&lt; EOF</span>
-<span class="s">apiVersion: operators.coreos.com/v1alpha1</span>
-<span class="s">kind: Subscription</span>
-<span class="s">metadata:</span>
-<span class="s">  name: hibernation-operator</span>
-<span class="s">  namespace: hibernation-system</span>
-<span class="s">spec:</span>
-<span class="s">  channel: release-0.1</span>
-<span class="s">  installPlanApproval: Automatic</span>
-<span class="s">  name: hibernation-operator</span>
-<span class="s">  source: certified-operators</span>
-<span class="s">  sourceNamespace: openshift-marketplace</span>
-<span class="s">  # Optional: pin to a specific version</span>
-<span class="s">  # startingCSV: hibernation-operator.v0.1.102</span>
-<span class="s">EOF</span>
-</code></pre></div>
-<blockquote>
-<p>✅ <strong>GitOps Tip</strong>: Commit these YAMLs to your GitOps repo to manage the operator declaratively.</p>
-</blockquote>
-<h3 id="step-4-verify-installation">Step 4: Verify Installation<a class="headerlink" href="#step-4-verify-installation" title="Permanent link">#</a></h3>
-<p>In the OpenShift Console:</p>
-<ul>
-<li>Go to <strong>Operators → Installed Operators</strong></li>
-<li>Select the <code>hibernation-system</code> project</li>
-<li>Confirm the <strong>Hibernation Operator</strong> status is <strong>Succeeded</strong></li>
-</ul>
-<p>Or via CLI:</p>
-<div class="highlight"><pre><span></span><code>oc<span class="w"> </span>get<span class="w"> </span>csv<span class="w"> </span>-n<span class="w"> </span>hibernation-operator-system
-oc<span class="w"> </span>get<span class="w"> </span>pods<span class="w"> </span>-n<span class="w"> </span>hibernation-operator-system
-</code></pre></div>
-<p>Wait until the <code>hibernation-controller</code> pod is <code>Running</code>.</p>
-<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../images/hibernation_running.png" data-desc-position="bottom"><img alt="Running" src="../images/hibernation_running.png"></a></p>
-<hr>
-<h2 id="uninstall-via-operatorhub-ui">Uninstall via OperatorHub UI<a class="headerlink" href="#uninstall-via-operatorhub-ui" title="Permanent link">#</a></h2>
-<blockquote>
-<p>⚠️ <strong>Warning</strong>: Uninstalling the operator <strong>does not delete your CRs</strong> (<code>ClusterResourceSupervisor</code>, <code>ResourceSupervisor</code>). Workloads may remain asleep if not cleaned up.</p>
-</blockquote>
-<h3 id="step-1-optional-clean-up-hibernation-policies">Step 1: (Optional) Clean Up Hibernation Policies<a class="headerlink" href="#step-1-optional-clean-up-hibernation-policies" title="Permanent link">#</a></h3>
-<p>Delete any active hibernation resources to restore workloads:</p>
-<div class="highlight"><pre><span></span><code><span class="c1"># Delete all cluster-wide hibernation rules</span>
-oc<span class="w"> </span>delete<span class="w"> </span>clusterresourcesupervisors.hibernation.stakater.com<span class="w"> </span>--all
-
-<span class="c1"># Delete all namespace-scoped hibernation rules</span>
-oc<span class="w"> </span>delete<span class="w"> </span>resourcesupervisors.hibernation.stakater.com<span class="w"> </span>--all<span class="w"> </span>--all-namespaces
-</code></pre></div>
-<h3 id="step-2-uninstall-the-operator">Step 2: Uninstall the Operator<a class="headerlink" href="#step-2-uninstall-the-operator" title="Permanent link">#</a></h3>
-<ol>
-<li>In OpenShift Console, go to <strong>Operators → Installed Operators</strong></li>
-<li>Find <strong>Hibernation Operator</strong> in the <code>hibernation-operator-system</code> project</li>
-<li>Click the <strong>three-dot menu → Uninstall Operator</strong></li>
-<li>Confirm removal</li>
-</ol>
-<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../images/hibernation_uninstall.png" data-desc-position="bottom"><img alt="Uninstall from UI" src="../images/hibernation_uninstall.png"></a></p>
-<h3 id="step-3-optional-clean-up-leftover-resources">Step 3: (Optional) Clean Up Leftover Resources<a class="headerlink" href="#step-3-optional-clean-up-leftover-resources" title="Permanent link">#</a></h3>
-<p>To fully remove all traces:</p>
-<div class="highlight"><pre><span></span><code><span class="c1"># Remove namespace (includes RBAC, deployments, etc.)</span>
-oc<span class="w"> </span>delete<span class="w"> </span>namespace<span class="w"> </span>hibernation-operator-system
-
-<span class="c1"># Remove CRDs (only if no other instances exist)</span>
-oc<span class="w"> </span>delete<span class="w"> </span>crd<span class="w"> </span>clusterresourcesupervisors.hibernation.stakater.com
-oc<span class="w"> </span>delete<span class="w"> </span>crd<span class="w"> </span>resourcesupervisors.hibernation.stakater.com
-</code></pre></div>
-<blockquote>
-<p>🔒 <strong>Note</strong>: CRD deletion is irreversible. Ensure no other tools depend on them.</p>
-</blockquote>
-<hr>
-<h2 id="notes">Notes<a class="headerlink" href="#notes" title="Permanent link">#</a></h2>
-<ul>
-<li>The Hibernation Operator <strong>does not include a web console</strong>—it is a lightweight, API-driven operator.</li>
-<li>It integrates natively with <strong>OpenShift workloads</strong> (<code>Deployments</code>, <code>StatefulSets</code>) and <strong>ArgoCD</strong> (if installed).</li>
-<li>For production, use <strong>Manual approval</strong> and test upgrades in a staging cluster first.</li>
-<li>Full CRD documentation:<ul>
-<li><a href="../kubernetes-resources/cluster-resource-supervisor.html"><code>ClusterResourceSupervisor</code></a></li>
-<li><a href="../kubernetes-resources/resource-supervisor.html"><code>ResourceSupervisor</code></a></li>
-</ul>
-</li>
-</ul>
 
 
 
@@ -3379,7 +3704,7 @@ oc<span class="w"> </span>delete<span class="w"> </span>crd<span class="w"> </sp
 <script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
         </div>
         
-          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden="">
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"></path></svg>
   Back to top
@@ -3980,7 +4305,7 @@ oc<span class="w"> </span>delete<span class="w"> </span>crd<span class="w"> </sp
     </div>
     
     
-      <div class="md-consent" data-md-component="consent" id="__consent" hidden>
+      <div class="md-consent" data-md-component="consent" id="__consent" hidden="">
         <div class="md-consent__overlay"></div>
         <aside class="md-consent__inner">
           <form class="md-consent__form md-grid md-typeset" name="consent">
@@ -4004,7 +4329,7 @@ oc<span class="w"> </span>delete<span class="w"> </span>crd<span class="w"> </sp
   
   <li class="task-list-item">
     <label class="task-list-control">
-      <input type="checkbox" name="analytics" checked>
+      <input type="checkbox" name="analytics" checked="">
       <span class="task-list-indicator"></span>
       Google Analytics
     </label>
@@ -4022,7 +4347,7 @@ oc<span class="w"> </span>delete<span class="w"> </span>crd<span class="w"> </sp
   
   <li class="task-list-item">
     <label class="task-list-control">
-      <input type="checkbox" name="github" checked>
+      <input type="checkbox" name="github" checked="">
       <span class="task-list-indicator"></span>
       GitHub
     </label>
@@ -4062,10 +4387,10 @@ oc<span class="w"> </span>delete<span class="w"> </span>crd<span class="w"> </sp
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["content.code.copy", "navigation.tracking", "toc.follow", "navigation.top"], "search": "../assets/javascripts/workers/search.7a47a382.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"default": "latest", "provider": "mike"}}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["content.code.copy", "navigation.tracking", "toc.follow", "navigation.top"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"default": "latest", "provider": "mike"}}</script>
     
     
-      <script src="../assets/javascripts/bundle.e71a0d61.min.js"></script>
+      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
       
     
   

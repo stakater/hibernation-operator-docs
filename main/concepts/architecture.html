@@ -5,28 +5,28 @@
       
       
       
-        <link rel="canonical" href="https://docs.stakater.com/hibernation-operator-docs/main/about/key-features.html">
+        <link rel="canonical" href="https://docs.stakater.com/hibernation-operator-docs/main/concepts/architecture.html">
       
       
-        <link rel="prev" href="../index.html">
+        <link rel="prev" href="../overview/benefits.html">
       
       
-        <link rel="next" href="use-cases.html">
+        <link rel="next" href="terminology.html">
       
       
         
       
       
       <link rel="icon" href="../assets/images/favicon.svg">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.0">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
     
     
       
-        <title>Key Features - Hibernation Operator</title>
+        <title>Architecture - Hibernation Operator</title>
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.618322db.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
       
         
         <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
@@ -42,7 +42,7 @@
       
         
         
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Space+Grotesk:300,300i,400,400i,700,700i%7CMonospace:400,400i,700,700i&amp;display=fallback">
         <style>:root{--md-text-font:"Space Grotesk";--md-code-font:"Monospace"}</style>
       
@@ -95,7 +95,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#key-features" class="md-skip">
+        <a href="#architecture" class="md-skip">
           Skip to content
         </a>
       
@@ -104,7 +104,7 @@
       
     </div>
     
-      <div data-md-color-scheme="default" data-md-component="outdated" hidden>
+      <div data-md-color-scheme="default" data-md-component="outdated" hidden="">
         
           <aside class="md-banner md-banner--warning">
             <div class="md-banner__inner md-grid md-typeset">
@@ -339,7 +339,7 @@ This documentation is either for an old version, or for the unreleased 'main' ve
   <nav class="md-header__inner md-grid" aria-label="Header">
 
     <!-- Link to home -->
-    <a href="../index.html" title="Hibernation Operator" class="md-header__button md-logo" aria-label="Hibernation Operator" data-md-component="logo">
+    <a href=".." title="Hibernation Operator" class="md-header__button md-logo" aria-label="Hibernation Operator" data-md-component="logo">
       <!-- 
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -1093,7 +1093,7 @@ This documentation is either for an old version, or for the unreleased 'main' ve
   
   <input class="md-option" data-md-color-media="(prefers-color-scheme)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo" aria-label="Switch to system preference" type="radio" name="__palette" id="__palette_0">
   
-  <label class="md-header__button md-icon" title="Switch to system preference" for="__palette_1" hidden>
+  <label class="md-header__button md-icon" title="Switch to system preference" for="__palette_1" hidden="">
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m14.3 16-.7-2h-3.2l-.7 2H7.8L11 7h2l3.2 9zM20 8.69V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12zm-9.15 3.96h2.3L12 9z"></path></svg>
   </label>
   
@@ -1103,7 +1103,7 @@ This documentation is either for an old version, or for the unreleased 'main' ve
   
   <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="custom" aria-label="Switch to light mode" type="radio" name="__palette" id="__palette_1">
   
-  <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_2" hidden>
+  <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_2" hidden="">
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"></path></svg>
   </label>
   
@@ -1113,7 +1113,7 @@ This documentation is either for an old version, or for the unreleased 'main' ve
   
   <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="custom" data-md-color-accent="custom" aria-label="Switch to dark mode" type="radio" name="__palette" id="__palette_2">
   
-  <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_0" hidden>
+  <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_0" hidden="">
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9 2c-1.05 0-2.05.16-3 .46 4.06 1.27 7 5.04 7 9.54s-2.94 8.27-7 9.54c.95.3 1.95.46 3 .46a10 10 0 0 0 10-10A10 10 0 0 0 9 2"></path></svg>
   </label>
   
@@ -1161,7 +1161,7 @@ This documentation is either for an old version, or for the unreleased 'main' ve
   <label class="md-search__overlay" for="__search"></label>
   <div class="md-search__inner" role="search">
     <form class="md-search__form" name="search">
-      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required="">
       <label class="md-search__icon md-icon" for="__search">
         
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
@@ -1178,7 +1178,7 @@ This documentation is either for an old version, or for the unreleased 'main' ve
       
     </form>
     <div class="md-search__output">
-      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix="">
         <div class="md-search-result" data-md-component="search-result">
           <div class="md-search-result__meta">
             Initializing search
@@ -1987,7 +1987,7 @@ This documentation is either for an old version, or for the unreleased 'main' ve
 
 <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../index.html" title="Hibernation Operator" class="md-nav__button md-logo" aria-label="Hibernation Operator" data-md-component="logo">
+    <a href=".." title="Hibernation Operator" class="md-nav__button md-logo" aria-label="Hibernation Operator" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"></path></svg>
@@ -2008,10 +2008,57 @@ This documentation is either for an old version, or for the unreleased 'main' ve
 </a>
     </div>
   
-  <ul class="md-nav__list" data-md-scrollfix>
+  <ul class="md-nav__list" data-md-scrollfix="">
     
       
       
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1">
+        
+          
+          <label class="md-nav__link" for="__nav_1" id="__nav_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Overview
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
   
   
   
@@ -2024,7 +2071,7 @@ This documentation is either for an old version, or for the unreleased 'main' ve
   <span class="md-ellipsis">
     
   
-    Welcome to the Docs
+    Introduction
   
 
     
@@ -2033,198 +2080,6 @@ This documentation is either for an old version, or for the unreleased 'main' ve
   
 
       </a>
-    </li>
-  
-
-    
-      
-      
-  
-  
-    
-  
-  
-  
-    
-    
-    
-    
-    
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
-        
-          
-          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
-            
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    About
-  
-
-    
-  </span>
-  
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_2">
-            <span class="md-nav__icon md-icon"></span>
-            
-  
-    About
-  
-
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-    
-  
-  
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Key Features
-  
-
-    
-  </span>
-  
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="key-features.html" class="md-nav__link md-nav__link--active">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Key Features
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-      
-        
-
-  
-
-<nav class="md-nav md-nav--secondary" aria-label="On this page">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      On this page
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#1-clusterresourcesupervisor-cluster-scoped" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        1. ClusterResourceSupervisor (Cluster-Scoped)
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="1. ClusterResourceSupervisor (Cluster-Scoped)">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#key-features_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        ✅ Key Features
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#2-resourcesupervisor-namespace-scoped" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        2. ResourceSupervisor (Namespace-Scoped)
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="2. ResourceSupervisor (Namespace-Scoped)">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#key-features_2" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        ✅ Key Features
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#when-to-use-which" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        🎯 When to Use Which?
-      
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -2237,7 +2092,35 @@ This documentation is either for an old version, or for the unreleased 'main' ve
   
   
     <li class="md-nav__item">
-      <a href="use-cases.html" class="md-nav__link">
+      <a href="../overview/key-features.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Key Features
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../overview/use-cases.html" class="md-nav__link">
         
   
   
@@ -2265,7 +2148,7 @@ This documentation is either for an old version, or for the unreleased 'main' ve
   
   
     <li class="md-nav__item">
-      <a href="benefits.html" class="md-nav__link">
+      <a href="../overview/benefits.html" class="md-nav__link">
         
   
   
@@ -2273,6 +2156,211 @@ This documentation is either for an old version, or for the unreleased 'main' ve
     
   
     Benefits
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked="">
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Concepts
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Concepts
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Architecture
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="architecture.html" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Architecture
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+  
+
+<nav class="md-nav md-nav--secondary" aria-label="On this page">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      On this page
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+      
+        <li class="md-nav__item">
+  <a href="#component-overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Component Overview
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#integration-capabilities" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Integration Capabilities
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#architecture-diagram" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Architecture Diagram
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-it-works" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How It Works
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="terminology.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Concepts
   
 
     
@@ -2318,7 +2406,7 @@ This documentation is either for an old version, or for the unreleased 'main' ve
   <span class="md-ellipsis">
     
   
-    Architecture
+    Getting Started
   
 
     
@@ -2334,11 +2422,11 @@ This documentation is either for an old version, or for the unreleased 'main' ve
             <span class="md-nav__icon md-icon"></span>
             
   
-    Architecture
+    Getting Started
   
 
           </label>
-          <ul class="md-nav__list" data-md-scrollfix>
+          <ul class="md-nav__list" data-md-scrollfix="">
             
               
                 
@@ -2347,14 +2435,181 @@ This documentation is either for an old version, or for the unreleased 'main' ve
   
   
     <li class="md-nav__item">
-      <a href="../architecture/architecture.html" class="md-nav__link">
+      <a href="../getting-started/quick-start.html" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Architecture
+    Quick Start
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2">
+        
+          
+          <label class="md-nav__link" for="__nav_3_2" id="__nav_3_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Installation
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Installation
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../getting-started/installation/overview.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../getting-started/installation/openshift.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    On OpenShift
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../getting-started/installation/kubernetes.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    On Kubernetes
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../getting-started/uninstalling.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Uninstalling
   
 
     
@@ -2400,7 +2655,7 @@ This documentation is either for an old version, or for the unreleased 'main' ve
   <span class="md-ellipsis">
     
   
-    Installation
+    Guides
   
 
     
@@ -2416,11 +2671,11 @@ This documentation is either for an old version, or for the unreleased 'main' ve
             <span class="md-nav__icon md-icon"></span>
             
   
-    Installation
+    Guides
   
 
           </label>
-          <ul class="md-nav__list" data-md-scrollfix>
+          <ul class="md-nav__list" data-md-scrollfix="">
             
               
                 
@@ -2429,14 +2684,14 @@ This documentation is either for an old version, or for the unreleased 'main' ve
   
   
     <li class="md-nav__item">
-      <a href="../installation/overview.html" class="md-nav__link">
+      <a href="../guides/create-resource-supervisor.html" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Overview
+    Setup ResourceSupervisor
   
 
     
@@ -2457,14 +2712,14 @@ This documentation is either for an old version, or for the unreleased 'main' ve
   
   
     <li class="md-nav__item">
-      <a href="../installation/openshift.html" class="md-nav__link">
+      <a href="../guides/create-cluster-resource-supervisor.html" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    On OpenShift
+    Setup ClusterResourceSupervisor
   
 
     
@@ -2485,14 +2740,14 @@ This documentation is either for an old version, or for the unreleased 'main' ve
   
   
     <li class="md-nav__item">
-      <a href="../installation/kubernetes.html" class="md-nav__link">
+      <a href="../guides/hibernate-resources.html" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    On Kubernetes
+    Hibernate a Tenant
   
 
     
@@ -2538,7 +2793,7 @@ This documentation is either for an old version, or for the unreleased 'main' ve
   <span class="md-ellipsis">
     
   
-    Kubernetes Resources
+    Integrations
   
 
     
@@ -2554,11 +2809,11 @@ This documentation is either for an old version, or for the unreleased 'main' ve
             <span class="md-nav__icon md-icon"></span>
             
   
-    Kubernetes Resources
+    Integrations
   
 
           </label>
-          <ul class="md-nav__list" data-md-scrollfix>
+          <ul class="md-nav__list" data-md-scrollfix="">
             
               
                 
@@ -2567,70 +2822,14 @@ This documentation is either for an old version, or for the unreleased 'main' ve
   
   
     <li class="md-nav__item">
-      <a href="../architecture/concepts.html" class="md-nav__link">
+      <a href="../integrations/argocd.html" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Concepts
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../kubernetes-resources/cluster-resource-supervisor.html" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    ClusterResourceSupervisor
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../kubernetes-resources/resource-supervisor.html" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    ResourceSupervisor
+    ArgoCD Integration
   
 
     
@@ -2676,7 +2875,7 @@ This documentation is either for an old version, or for the unreleased 'main' ve
   <span class="md-ellipsis">
     
   
-    How-to Guides
+    Reference
   
 
     
@@ -2692,11 +2891,58 @@ This documentation is either for an old version, or for the unreleased 'main' ve
             <span class="md-nav__icon md-icon"></span>
             
   
-    How-to Guides
+    Reference
   
 
           </label>
-          <ul class="md-nav__list" data-md-scrollfix>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_1">
+        
+          
+          <label class="md-nav__link" for="__nav_6_1" id="__nav_6_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    API Reference
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    API Reference
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
             
               
                 
@@ -2705,14 +2951,14 @@ This documentation is either for an old version, or for the unreleased 'main' ve
   
   
     <li class="md-nav__item">
-      <a href="../how-to-guides/create-resource-supervisor.html" class="md-nav__link">
+      <a href="../reference/api/resource-supervisor.html" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Setup ResourceSupervisor
+    ResourceSupervisor
   
 
     
@@ -2733,14 +2979,50 @@ This documentation is either for an old version, or for the unreleased 'main' ve
   
   
     <li class="md-nav__item">
-      <a href="../how-to-guides/create-cluster-resource-supervisor.html" class="md-nav__link">
+      <a href="../reference/api/cluster-resource-supervisor.html" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Setup ClusterResourceSupervisor
+    ClusterResourceSupervisor
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../reference/configuration.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Configuration
   
 
     
@@ -2761,14 +3043,98 @@ This documentation is either for an old version, or for the unreleased 'main' ve
   
   
     <li class="md-nav__item">
-      <a href="../how-to-guides/hibernate-resources.html" class="md-nav__link">
+      <a href="../reference/rbac.html" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Hibernate a Tenant
+    RBAC
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../reference/metrics.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Metrics
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../reference/webhooks.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Webhooks
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../reference/security-model.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Security Model
   
 
     
@@ -2814,7 +3180,7 @@ This documentation is either for an old version, or for the unreleased 'main' ve
   <span class="md-ellipsis">
     
   
-    Integrations
+    Troubleshooting
   
 
     
@@ -2830,11 +3196,11 @@ This documentation is either for an old version, or for the unreleased 'main' ve
             <span class="md-nav__icon md-icon"></span>
             
   
-    Integrations
+    Troubleshooting
   
 
           </label>
-          <ul class="md-nav__list" data-md-scrollfix>
+          <ul class="md-nav__list" data-md-scrollfix="">
             
               
                 
@@ -2843,14 +3209,14 @@ This documentation is either for an old version, or for the unreleased 'main' ve
   
   
     <li class="md-nav__item">
-      <a href="../integrations/argocd.html" class="md-nav__link">
+      <a href="../troubleshooting.html" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    ArgoCD Integration
+    Troubleshooting Guide
   
 
     
@@ -2877,8 +3243,55 @@ This documentation is either for an old version, or for the unreleased 'main' ve
   
   
   
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8">
+        
+          
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Release Notes
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Release Notes
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
     <li class="md-nav__item">
-      <a href="../changelog.html" class="md-nav__link">
+      <a href="../release-notes.html" class="md-nav__link">
         
   
   
@@ -2897,9 +3310,64 @@ This documentation is either for an old version, or for the unreleased 'main' ve
     </li>
   
 
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
     
       
       
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9">
+        
+          
+          <label class="md-nav__link" for="__nav_9" id="__nav_9_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    EULA
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    EULA
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
   
   
   
@@ -2924,30 +3392,11 @@ This documentation is either for an old version, or for the unreleased 'main' ve
     </li>
   
 
-    
+              
+            
+          </ul>
+        </nav>
       
-      
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../troubleshooting.html" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Troubleshooting Guide
-  
-
-    
-  </span>
-  
-  
-
-      </a>
     </li>
   
 
@@ -2978,69 +3427,46 @@ This documentation is either for an old version, or for the unreleased 'main' ve
       <span class="md-nav__icon md-icon"></span>
       On this page
     </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
       
         <li class="md-nav__item">
-  <a href="#1-clusterresourcesupervisor-cluster-scoped" class="md-nav__link">
+  <a href="#component-overview" class="md-nav__link">
     <span class="md-ellipsis">
       
-        1. ClusterResourceSupervisor (Cluster-Scoped)
+        Component Overview
       
     </span>
   </a>
-  
-    <nav class="md-nav" aria-label="1. ClusterResourceSupervisor (Cluster-Scoped)">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#key-features_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        ✅ Key Features
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#2-resourcesupervisor-namespace-scoped" class="md-nav__link">
+  <a href="#integration-capabilities" class="md-nav__link">
     <span class="md-ellipsis">
       
-        2. ResourceSupervisor (Namespace-Scoped)
+        Integration Capabilities
       
     </span>
   </a>
-  
-    <nav class="md-nav" aria-label="2. ResourceSupervisor (Namespace-Scoped)">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#key-features_2" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        ✅ Key Features
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#when-to-use-which" class="md-nav__link">
+  <a href="#architecture-diagram" class="md-nav__link">
     <span class="md-ellipsis">
       
-        🎯 When to Use Which?
+        Architecture Diagram
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-it-works" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How It Works
       
     </span>
   </a>
@@ -3067,100 +3493,115 @@ This documentation is either for an old version, or for the unreleased 'main' ve
   
 
 
-<h1 id="key-features">Key Features<a class="headerlink" href="#key-features" title="Permanent link">#</a></h1>
-<h2 id="1-clusterresourcesupervisor-cluster-scoped"><strong>1. <code>ClusterResourceSupervisor</code> (Cluster-Scoped)</strong><a class="headerlink" href="#1-clusterresourcesupervisor-cluster-scoped" title="Permanent link">#</a></h2>
-<p>The <code>ClusterResourceSupervisor</code> enables <strong>platform-level hibernation management</strong> across multiple namespaces or ArgoCD AppProjects. Ideal for cluster administrators and GitOps-driven environments.</p>
-<h3 id="key-features_1">✅ Key Features<a class="headerlink" href="#key-features_1" title="Permanent link">#</a></h3>
-<ul>
-<li><strong>Cluster-wide scope</strong>: Applies hibernation policies across the entire cluster.</li>
-<li><strong>Flexible namespace targeting</strong>:<ul>
-<li>Explicit list of namespace names (<code>names</code>)</li>
-<li>Dynamic selection via Kubernetes-standard <strong>label selectors</strong> (<code>matchLabels</code> and <code>matchExpressions</code>)</li>
-</ul>
-</li>
-<li><strong>ArgoCD integration</strong>:<ul>
-<li>Target hibernation by <strong>ArgoCD AppProject names</strong></li>
-<li>Specify the ArgoCD namespace where AppProjects reside</li>
-</ul>
-</li>
-<li><strong>Cron-based scheduling</strong>:<ul>
-<li><code>sleepSchedule</code>: Cron expression to scale down workloads</li>
-<li><code>wakeSchedule</code> (optional): Cron expression to restore workloads; if omitted, resources remain asleep</li>
-</ul>
-</li>
-<li><strong>Comprehensive status tracking</strong>:<ul>
-<li><code>currentStatus</code>: Overall state (<code>sleeping</code>, <code>running</code>, <code>error</code>)</li>
-<li><code>watchedNamespaces</code> / <code>ignoreNamespaces</code>: Lists of affected and excluded namespaces</li>
-<li><code>sleepingNamespaces</code>: Detailed records of scaled-down applications, including:<ul>
-<li>Namespace name</li>
-<li>Application kind (<code>Deployment</code> or <code>StatefulSet</code>)</li>
-<li>Original replica count (for accurate restoration)</li>
-<li>Per-namespace and per-application status</li>
-</ul>
-</li>
-<li><code>nextReconcileTime</code>: Predictable next action time (<code>ISO 8601 datetime</code>)</li>
-</ul>
-</li>
-</ul>
-<blockquote>
-<p>💡 <strong>Use Case</strong>: Enforce cost-saving hibernation for all <code>env=dev</code> namespaces or all applications in the <code>platform-team</code> ArgoCD AppProject.</p>
-</blockquote>
-<hr>
-<h2 id="2-resourcesupervisor-namespace-scoped"><strong>2. <code>ResourceSupervisor</code> (Namespace-Scoped)</strong><a class="headerlink" href="#2-resourcesupervisor-namespace-scoped" title="Permanent link">#</a></h2>
-<p>The <code>ResourceSupervisor</code> provides <strong>self-service hibernation</strong> within a single namespace. Designed for application teams who want autonomy without cluster-wide permissions.</p>
-<h3 id="key-features_2">✅ Key Features<a class="headerlink" href="#key-features_2" title="Permanent link">#</a></h3>
-<ul>
-<li><strong>Namespace-scoped</strong>: Only affects resources in the same namespace where the CR is created.</li>
-<li><strong>Simple configuration</strong>:<ul>
-<li>Minimal spec with just a <code>schedule</code> block</li>
-<li>No need to manage namespace lists or label selectors</li>
-</ul>
-</li>
-<li><strong>Cron-based scheduling</strong>:<ul>
-<li><code>sleepSchedule</code>: Required cron expression to hibernate workloads</li>
-<li><code>wakeSchedule</code> (optional): Cron expression to wake workloads; if not set, workloads stay asleep indefinitely</li>
-</ul>
-</li>
-<li><strong>Comprehensive status tracking</strong>:<ul>
-<li><code>currentStatus</code>: Overall state (<code>sleeping</code>, <code>running</code>, <code>error</code>)</li>
-<li><code>nextReconcileTime</code>: Predictable next action time (<code>ISO 8601 datetime</code>)</li>
-<li><code>sleepingApplications</code>: Detailed records of scaled-down applications within its namespace, including:<ul>
-<li>Namespace name</li>
-<li>Application kind (<code>Deployment</code> or <code>StatefulSet</code>)</li>
-<li>Original replica count (for accurate restoration)</li>
-<li>Per-namespace and per-application status</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<blockquote>
-<p>💡 <strong>Use Case</strong>: A development team creates a <code>ResourceSupervisor</code> in their <code>myapp-staging</code> namespace to sleep workloads every night and wake them each morning.</p>
-</blockquote>
-<hr>
-<h2 id="when-to-use-which">🎯 When to Use Which?<a class="headerlink" href="#when-to-use-which" title="Permanent link">#</a></h2>
+<h1 id="architecture">Architecture<a class="headerlink" href="#architecture" title="Permanent link">#</a></h1>
+<p>The <strong>Hibernation Operator</strong> is a lightweight yet powerful system designed to automate cost-saving hibernation of workloads in Kubernetes environments. It enables both platform teams and application owners to define schedules for scaling down and restoring applications during off-hours.</p>
+<h2 id="component-overview">Component Overview<a class="headerlink" href="#component-overview" title="Permanent link">#</a></h2>
+<p>The operator consists of a single intelligent controller that reconciles two custom resources, along with optional supporting components for validation and observability.</p>
 <table>
 <thead>
 <tr>
-<th>Scenario</th>
-<th>Recommended CRD</th>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>Cluster admin managing hibernation for many teams</td>
-<td><code>ClusterResourceSupervisor</code></td>
+<td><strong>Hibernation Controller</strong></td>
+<td>Deployment</td>
+<td>Reconciles both <code>ClusterResourceSupervisor</code> (cluster-scoped) and <code>ResourceSupervisor</code> (namespace-scoped) CRDs. Scales <code>Deployments</code> and <code>StatefulSets</code> to zero during sleep windows and restores original replica counts during wake windows.</td>
 </tr>
 <tr>
-<td>GitOps with ArgoCD AppProjects</td>
-<td><code>ClusterResourceSupervisor</code></td>
+<td><strong>Webhook</strong></td>
+<td>Deployment</td>
+<td>Validates cron expressions and enforces required fields during CR creation/update via admission control.</td>
 </tr>
 <tr>
-<td>Team wants full control over their namespace</td>
-<td><code>ResourceSupervisor</code></td>
+<td><strong>Metrics Endpoint</strong></td>
+<td>Pod (sidecar or built-in)</td>
+<td>Exposes Prometheus metrics (e.g., <code>hibernation_operator_sleeping_namespaces</code>, <code>hibernation_operator_reconcile_errors</code>).</td>
+</tr>
+<tr>
+<td><strong>RBAC Resources</strong></td>
+<td>ClusterRole, Role, Bindings</td>
+<td>Grants minimal required permissions to list/watch namespaces, read ArgoCD <code>AppProject</code>s, and scale workloads.</td>
 </tr>
 </tbody>
 </table>
+<h2 id="integration-capabilities">Integration Capabilities<a class="headerlink" href="#integration-capabilities" title="Permanent link">#</a></h2>
+<ul>
+<li><strong>ArgoCD</strong>: Resolves namespaces from specified <code>AppProject</code>s.</li>
+<li><strong>Kubernetes Native</strong>: Works with standard <code>Deployment</code> and <code>StatefulSet</code> resources.</li>
+<li><strong>Prometheus</strong>: Optional metrics for monitoring hibernation state.</li>
+</ul>
+<hr>
+<h2 id="architecture-diagram">Architecture Diagram<a class="headerlink" href="#architecture-diagram" title="Permanent link">#</a></h2>
+<p>The following diagram illustrates how the Hibernation Operator interacts with Kubernetes resources and external systems:</p>
+<pre class="mermaid"><code>graph TD
+    subgraph "Kubernetes Cluster"
+        A[Hibernation Controller] --&gt;|Watches| B[ClusterResourceSupervisor CR]
+        A --&gt;|Watches| C[ResourceSupervisor CR]
+        A --&gt;|Reads| D[ArgoCD AppProject]
+        A --&gt;|Lists| E[(Namespaces)]
+        A --&gt;|Scales| F[Deployment / StatefulSet]
+        A --&gt;|Updates| G[CR Status]
+
+        B --&gt;|Specifies| H[ArgoCD.appProjects + Namespace]
+        B --&gt;|Specifies| I[Namespace.names / labelSelector]
+        B --&gt;|Defines| J[sleepSchedule / wakeSchedule]
+
+        C --&gt;|Defines| J
+
+        D --&gt;|Owns| E
+        E --&gt;|Contains| F
+    end
+
+    subgraph "Observability"
+        K[Prometheus] --&gt;|Scrapes| A
+    end
+
+    subgraph "Validation"
+        L[Webhook] --&gt;|Validates| B
+        L --&gt;|Validates| C
+    end</code></pre>
+<p>💡 <strong>Diagram Legend</strong></p>
+<blockquote>
+<ul>
+<li><strong>Solid arrows</strong>: Active interactions (watch, read, scale, etc.)</li>
+<li><strong>Dashed logic</strong>: Configuration relationships (e.g., CR fields define behavior)</li>
+<li><strong>CRs</strong> are custom resources created by users</li>
+<li>The controller <strong>never modifies</strong> namespaces or workloads unless explicitly targeted by a CR</li>
+</ul>
+</blockquote>
+<hr>
+<h2 id="how-it-works">How It Works<a class="headerlink" href="#how-it-works" title="Permanent link">#</a></h2>
+<ol>
+<li><strong>User creates a CR</strong>:</li>
+<li>Platform admin creates a <code>ClusterResourceSupervisor</code> to hibernate all <code>env=dev</code> namespaces.</li>
+<li>
+<p>Developer creates a <code>ResourceSupervisor</code> in their namespace for self-service hibernation.</p>
+</li>
+<li>
+<p><strong>Controller reconciles</strong>:</p>
+</li>
+<li>Discovers target namespaces (via names, labels, or ArgoCD AppProjects).</li>
+<li>Records current replica counts of <code>Deployment</code>/<code>StatefulSet</code> in CR <code>status</code>.</li>
+<li>Scales workloads to 0 at <code>sleepSchedule</code>.</li>
+<li>
+<p>Restores replicas at <code>wakeSchedule</code>.</p>
+</li>
+<li>
+<p><strong>State is preserved</strong>:</p>
+</li>
+<li>
+<p>Even if the operator restarts, it uses the stored replica count in <code>status.sleepingNamespaces</code> to restore accurately.</p>
+</li>
+<li>
+<p><strong>Observability</strong>:</p>
+</li>
+<li><code>currentStatus</code>, <code>nextReconcileTime</code>, and namespace lists are updated in real time.</li>
+<li>Prometheus metrics enable alerting and dashboards.</li>
+</ol>
 
 
 
@@ -3183,7 +3624,7 @@ This documentation is either for an old version, or for the unreleased 'main' ve
 <script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
         </div>
         
-          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden="">
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"></path></svg>
   Back to top
@@ -3784,7 +4225,7 @@ This documentation is either for an old version, or for the unreleased 'main' ve
     </div>
     
     
-      <div class="md-consent" data-md-component="consent" id="__consent" hidden>
+      <div class="md-consent" data-md-component="consent" id="__consent" hidden="">
         <div class="md-consent__overlay"></div>
         <aside class="md-consent__inner">
           <form class="md-consent__form md-grid md-typeset" name="consent">
@@ -3808,7 +4249,7 @@ This documentation is either for an old version, or for the unreleased 'main' ve
   
   <li class="task-list-item">
     <label class="task-list-control">
-      <input type="checkbox" name="analytics" checked>
+      <input type="checkbox" name="analytics" checked="">
       <span class="task-list-indicator"></span>
       Google Analytics
     </label>
@@ -3826,7 +4267,7 @@ This documentation is either for an old version, or for the unreleased 'main' ve
   
   <li class="task-list-item">
     <label class="task-list-control">
-      <input type="checkbox" name="github" checked>
+      <input type="checkbox" name="github" checked="">
       <span class="task-list-indicator"></span>
       GitHub
     </label>
@@ -3866,10 +4307,10 @@ This documentation is either for an old version, or for the unreleased 'main' ve
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["content.code.copy", "navigation.tracking", "toc.follow", "navigation.top"], "search": "../assets/javascripts/workers/search.7a47a382.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"default": "latest", "provider": "mike"}}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["content.code.copy", "navigation.tracking", "toc.follow", "navigation.top"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"default": "latest", "provider": "mike"}}</script>
     
     
-      <script src="../assets/javascripts/bundle.e71a0d61.min.js"></script>
+      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
       
     
   
