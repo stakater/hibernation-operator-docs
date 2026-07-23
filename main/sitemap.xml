@@ -2,102 +2,102 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://docs.stakater.com/hibernation-operator-docs/main/index.html</loc>
-         <lastmod>2026-07-03</lastmod>
+         <lastmod>2026-07-23</lastmod>
     </url>
     <url>
          <loc>https://docs.stakater.com/hibernation-operator-docs/main/eula.html</loc>
-         <lastmod>2026-07-03</lastmod>
+         <lastmod>2026-07-23</lastmod>
     </url>
     <url>
          <loc>https://docs.stakater.com/hibernation-operator-docs/main/release-notes.html</loc>
-         <lastmod>2026-07-03</lastmod>
+         <lastmod>2026-07-23</lastmod>
     </url>
     <url>
          <loc>https://docs.stakater.com/hibernation-operator-docs/main/troubleshooting.html</loc>
-         <lastmod>2026-07-03</lastmod>
+         <lastmod>2026-07-23</lastmod>
     </url>
     <url>
          <loc>https://docs.stakater.com/hibernation-operator-docs/main/concepts/architecture.html</loc>
-         <lastmod>2026-07-03</lastmod>
+         <lastmod>2026-07-23</lastmod>
     </url>
     <url>
          <loc>https://docs.stakater.com/hibernation-operator-docs/main/concepts/terminology.html</loc>
-         <lastmod>2026-07-03</lastmod>
+         <lastmod>2026-07-23</lastmod>
     </url>
     <url>
          <loc>https://docs.stakater.com/hibernation-operator-docs/main/getting-started/quick-start.html</loc>
-         <lastmod>2026-07-03</lastmod>
+         <lastmod>2026-07-23</lastmod>
     </url>
     <url>
          <loc>https://docs.stakater.com/hibernation-operator-docs/main/getting-started/uninstalling.html</loc>
-         <lastmod>2026-07-03</lastmod>
+         <lastmod>2026-07-23</lastmod>
     </url>
     <url>
          <loc>https://docs.stakater.com/hibernation-operator-docs/main/getting-started/installation/kubernetes.html</loc>
-         <lastmod>2026-07-03</lastmod>
+         <lastmod>2026-07-23</lastmod>
     </url>
     <url>
          <loc>https://docs.stakater.com/hibernation-operator-docs/main/getting-started/installation/openshift.html</loc>
-         <lastmod>2026-07-03</lastmod>
+         <lastmod>2026-07-23</lastmod>
     </url>
     <url>
          <loc>https://docs.stakater.com/hibernation-operator-docs/main/getting-started/installation/overview.html</loc>
-         <lastmod>2026-07-03</lastmod>
+         <lastmod>2026-07-23</lastmod>
     </url>
     <url>
          <loc>https://docs.stakater.com/hibernation-operator-docs/main/guides/create-cluster-resource-supervisor.html</loc>
-         <lastmod>2026-07-03</lastmod>
+         <lastmod>2026-07-23</lastmod>
     </url>
     <url>
          <loc>https://docs.stakater.com/hibernation-operator-docs/main/guides/create-resource-supervisor.html</loc>
-         <lastmod>2026-07-03</lastmod>
+         <lastmod>2026-07-23</lastmod>
     </url>
     <url>
          <loc>https://docs.stakater.com/hibernation-operator-docs/main/guides/hibernate-resources.html</loc>
-         <lastmod>2026-07-03</lastmod>
+         <lastmod>2026-07-23</lastmod>
     </url>
     <url>
          <loc>https://docs.stakater.com/hibernation-operator-docs/main/integrations/argocd.html</loc>
-         <lastmod>2026-07-03</lastmod>
+         <lastmod>2026-07-23</lastmod>
     </url>
     <url>
          <loc>https://docs.stakater.com/hibernation-operator-docs/main/overview/benefits.html</loc>
-         <lastmod>2026-07-03</lastmod>
+         <lastmod>2026-07-23</lastmod>
     </url>
     <url>
          <loc>https://docs.stakater.com/hibernation-operator-docs/main/overview/key-features.html</loc>
-         <lastmod>2026-07-03</lastmod>
+         <lastmod>2026-07-23</lastmod>
     </url>
     <url>
          <loc>https://docs.stakater.com/hibernation-operator-docs/main/overview/use-cases.html</loc>
-         <lastmod>2026-07-03</lastmod>
+         <lastmod>2026-07-23</lastmod>
     </url>
     <url>
          <loc>https://docs.stakater.com/hibernation-operator-docs/main/reference/configuration.html</loc>
-         <lastmod>2026-07-03</lastmod>
+         <lastmod>2026-07-23</lastmod>
     </url>
     <url>
          <loc>https://docs.stakater.com/hibernation-operator-docs/main/reference/metrics.html</loc>
-         <lastmod>2026-07-03</lastmod>
+         <lastmod>2026-07-23</lastmod>
     </url>
     <url>
          <loc>https://docs.stakater.com/hibernation-operator-docs/main/reference/rbac.html</loc>
-         <lastmod>2026-07-03</lastmod>
+         <lastmod>2026-07-23</lastmod>
     </url>
     <url>
          <loc>https://docs.stakater.com/hibernation-operator-docs/main/reference/security-model.html</loc>
-         <lastmod>2026-07-03</lastmod>
+         <lastmod>2026-07-23</lastmod>
     </url>
     <url>
          <loc>https://docs.stakater.com/hibernation-operator-docs/main/reference/webhooks.html</loc>
-         <lastmod>2026-07-03</lastmod>
+         <lastmod>2026-07-23</lastmod>
     </url>
     <url>
          <loc>https://docs.stakater.com/hibernation-operator-docs/main/reference/api/cluster-resource-supervisor.html</loc>
-         <lastmod>2026-07-03</lastmod>
+         <lastmod>2026-07-23</lastmod>
     </url>
     <url>
          <loc>https://docs.stakater.com/hibernation-operator-docs/main/reference/api/resource-supervisor.html</loc>
-         <lastmod>2026-07-03</lastmod>
+         <lastmod>2026-07-23</lastmod>
     </url>
 </urlset>
