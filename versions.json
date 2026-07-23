@@ -92,7 +92,9 @@
   {
     "version": "add-redirects-for-migrated-paths",
     "title": "add-redirects-for-migrated-paths",
-    "aliases": []
+    "aliases": [
+      "latest"
+    ]
   },
   {
     "version": "0.1-fix-for-RS-status",
