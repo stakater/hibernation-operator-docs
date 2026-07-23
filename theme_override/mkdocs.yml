@@ -11,6 +11,28 @@ validation:
   links:
     anchors: warn
 
+# Redirects for pages relocated during the docs restructure, so old bookmarks
+# keep working. Requires the `mkdocs-redirects` package at build time — see the
+# note in docs/superpowers/shared-theme-redirects.md (must be added to the
+# shared theme's requirements.txt).
+plugins:
+  - redirects:
+      redirect_maps:
+        about/key-features.md: overview/key-features.md
+        about/use-cases.md: overview/use-cases.md
+        about/benefits.md: overview/benefits.md
+        architecture/architecture.md: concepts/architecture.md
+        architecture/concepts.md: concepts/terminology.md
+        installation/overview.md: getting-started/installation/overview.md
+        installation/openshift.md: getting-started/installation/openshift.md
+        installation/kubernetes.md: getting-started/installation/kubernetes.md
+        how-to-guides/create-resource-supervisor.md: guides/create-resource-supervisor.md
+        how-to-guides/create-cluster-resource-supervisor.md: guides/create-cluster-resource-supervisor.md
+        how-to-guides/hibernate-resources.md: guides/hibernate-resources.md
+        kubernetes-resources/resource-supervisor.md: reference/api/resource-supervisor.md
+        kubernetes-resources/cluster-resource-supervisor.md: reference/api/cluster-resource-supervisor.md
+        changelog.md: release-notes.md
+
 extra:
   version:
     provider: mike
