@@ -158,5 +158,6 @@ oc delete crd resourcesupervisors.hibernation.stakater.com
 * It integrates natively with **OpenShift workloads** (`Deployments`, `StatefulSets`) and **ArgoCD** (if installed).
 * For production, use **Manual approval** and test upgrades in a staging cluster first.
 * Full CRD documentation:
-    * [`ClusterResourceSupervisor`](../../reference/api/cluster-resource-supervisor.md)
-    * [`ResourceSupervisor`](../../reference/api/resource-supervisor.md)
+    * [`ClusterResourceSupervisor`](../../concepts/cluster-resource-supervisor.md)
+    * [`ResourceSupervisor`](../../concepts/resource-supervisor.md)
+    * [API Reference](../../reference/api.md) — generated field reference

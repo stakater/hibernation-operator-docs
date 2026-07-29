@@ -63,7 +63,7 @@ spec:
 
 > 🔄 The operator reads `AppProject.spec.destinations` to discover target namespaces.
 > ✅ **No manual namespace listing needed**—ideal for GitOps environments.
-> ⚠️ **Prerequisite**: ArgoCD integration must be [enabled during installation](../../getting-started/installation/kubernetes.md#optional-enable-argocd-integration).
+> ⚠️ **Prerequisite**: ArgoCD integration must be [enabled during installation](../getting-started/installation/kubernetes.md#optional-enable-argocd-integration).
 
 ---
 

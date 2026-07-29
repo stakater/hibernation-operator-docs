@@ -68,4 +68,4 @@ The `currentStatus` field reports `running`, `sleeping`, or `error`.
 - [Create a ClusterResourceSupervisor](../guides/create-cluster-resource-supervisor.md)
   — cluster-wide, label, and ArgoCD targeting
 - [Concepts › Architecture](../concepts/architecture.md) — how it works
-- [Reference › API Reference](../reference/api/resource-supervisor.md) — every field
+- [Reference › API Reference](../reference/api.md) — every field

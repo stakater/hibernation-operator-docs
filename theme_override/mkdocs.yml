@@ -29,8 +29,10 @@ plugins:
         how-to-guides/create-resource-supervisor.md: guides/create-resource-supervisor.md
         how-to-guides/create-cluster-resource-supervisor.md: guides/create-cluster-resource-supervisor.md
         how-to-guides/hibernate-resources.md: guides/hibernate-resources.md
-        kubernetes-resources/resource-supervisor.md: reference/api/resource-supervisor.md
-        kubernetes-resources/cluster-resource-supervisor.md: reference/api/cluster-resource-supervisor.md
+        kubernetes-resources/resource-supervisor.md: concepts/resource-supervisor.md
+        kubernetes-resources/cluster-resource-supervisor.md: concepts/cluster-resource-supervisor.md
+        reference/api/resource-supervisor.md: concepts/resource-supervisor.md
+        reference/api/cluster-resource-supervisor.md: concepts/cluster-resource-supervisor.md
         changelog.md: release-notes.md
 
 extra:
@@ -47,6 +49,8 @@ nav:
   - Concepts:
     - concepts/architecture.md
     - concepts/terminology.md
+    - concepts/resource-supervisor.md
+    - concepts/cluster-resource-supervisor.md
   - Getting Started:
     - getting-started/quick-start.md
     - Installation:
@@ -61,9 +65,7 @@ nav:
   - Integrations:
     - integrations/argocd.md
   - Reference:
-    - API Reference:
-      - reference/api/resource-supervisor.md
-      - reference/api/cluster-resource-supervisor.md
+    - reference/api.md
     - reference/configuration.md
     - reference/rbac.md
     - reference/metrics.md
