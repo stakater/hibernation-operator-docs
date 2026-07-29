@@ -1,144 +1,14 @@
 # ClusterResourceSupervisor
 
-The `ClusterResourceSupervisor` is a **cluster-scoped** custom resource that enables **centralized hibernation management** across multiple namespaces. It is designed for **platform administrators** who need to enforce cost-saving policies at scale—whether by targeting explicit namespaces, using dynamic label selectors, or integrating with **ArgoCD AppProjects**.
+A `ClusterResourceSupervisor` applies one hibernation schedule to a group of namespaces. It is cluster-scoped and intended for platform teams parking development, test, or preview environments at scale. For a single namespace managed by the team that owns it, use a [ResourceSupervisor](resource-supervisor.md).
 
-> ✅ **Scope**: Cluster-wide
-> ✅ **Permissions**: Requires cluster-admin or equivalent
-> ✅ **Use Case**: Platform-level hibernation for dev/test environments, GitOps portfolios, or tenant groups
+As with the namespace-scoped resource, only `Deployments` and `StatefulSets` are affected.
 
----
+For the complete field listing, see the [API Reference](../reference/api.md).
 
-## Supported Targeting Methods
+## Selecting namespaces
 
-You can define **one or more** of the following targeting strategies. The operator applies hibernation to the **union** of all matched namespaces.
-
-### 1. **Explicit Namespace List**
-
-List namespaces by name:
-
-```yaml
-spec:
-  namespaces:
-    names:
-      - team-a-dev
-      - team-b-staging
-      - demo-env
-```
-
-### 2. **Label Selector (Dynamic)**
-
-Use Kubernetes-standard label selectors to match namespaces dynamically:
-
-```yaml
-spec:
-  namespaces:
-    labelSelector:
-      matchLabels:
-        env: dev
-        team: frontend
-      matchExpressions:
-        - key: "cost-center"
-          operator: In
-          values: ["cc-100", "cc-200"]
-```
-
-🔍 **Note**:
-
-> - `matchLabels` and `matchExpressions` are **AND** together.
-> - An empty `labelSelector: {}` matches **all namespaces**.
-> - A missing/`null` `labelSelector` matches **none**.
-
-### 3. **ArgoCD AppProject Integration** *(Optional)*
-
-Target all namespaces associated with one or more ArgoCD `AppProject`s:
-
-```yaml
-spec:
-  argocd:
-    namespace: argocd               # ← Namespace where ArgoCD is installed
-    appProjects:                    # ← List of AppProject names
-      - frontend-team
-      - data-platform
-```
-
-> 🔄 The operator reads `AppProject.spec.destinations` to discover target namespaces.
-> ✅ **No manual namespace listing needed**—ideal for GitOps environments.
-> ⚠️ **Prerequisite**: ArgoCD integration must be [enabled during installation](../getting-started/installation/kubernetes.md#optional-enable-argocd-integration).
-
----
-
-## Hibernation Scheduling
-
-Define when workloads should sleep and wake using standard **cron expressions** (UTC timezone).
-
-### Full Cycle: Sleep + Wake
-
-```yaml
-spec:
-  schedule:
-    sleepSchedule: "0 18 * * 1-5"   # Weekdays at 6 PM UTC
-    wakeSchedule: "0 8 * * 1-5"     # Weekdays at 8 AM UTC
-```
-
-### Permanent Sleep (Manual Wake)
-
-Omit `wakeSchedule` to keep workloads asleep until the CR is updated or deleted:
-
-```yaml
-spec:
-  schedule:
-    sleepSchedule: "0 0 1 * *"      # Sleep on the 1st of every month
-    # wakeSchedule: omitted → stay asleep
-```
-
----
-
-## Ignored Namespaces
-
-Even if a namespace matches your targeting rules, it will be **excluded** if it has:
-
-- The annotation:
-
-  ```yaml
-  hibernation.stakater.com/exclude: "true"
-  ```
-
-> 🔒 This allows teams to opt out of platform-wide hibernation policies.
-
----
-
-## Status Tracking
-
-The operator populates rich status fields for observability and debugging:
-
-```yaml
-status:
-  currentStatus: sleeping                 # "running", "sleeping", or "error"
-  nextReconcileTime: "2025-02-01T08:00:00Z"
-  watchedNamespaces:                      # Namespaces being managed
-    - team-a-dev
-    - frontend-staging
-  ignoreNamespaces:                       # Excluded (e.g., via annotation)
-    - kube-system
-  sleepingNamespaces:                     # Detailed state of scaled-down apps
-    - Namespace: team-a-dev
-      status: sleeping
-      sleepingApplications:
-        - name: web-api
-          kind: Deployment
-          replicas: 3                    # ← Original replica count (restored on wake)
-          status: sleeping
-```
-
-Use `kubectl describe` or `kubectl get -o yaml` to inspect:
-
-```sh
-kubectl get clusterresourcesupervisor my-policy -o jsonpath='{.status}'
-```
-
----
-
-## Example: Platform-Wide Dev Hibernation
+Namespaces come from `spec.namespaces`, by explicit name, by label selector, or both. The results are combined, so a namespace selected either way is hibernated.
 
 ```yaml
 apiVersion: hibernation.stakater.com/v1beta1
@@ -147,6 +17,8 @@ metadata:
   name: dev-environments-hibernation
 spec:
   namespaces:
+    names:
+      - legacy-staging
     labelSelector:
       matchLabels:
         env: dev
@@ -155,96 +27,86 @@ spec:
     wakeSchedule: "0 8 * * 1-5"
 ```
 
-> 🌐 Applies to **all namespaces** labeled `env=dev`, now and in the future.
+`labelSelector` is a standard Kubernetes label selector, so `matchLabels` and `matchExpressions` both work and are combined with AND. It is re-evaluated on each reconcile, which is what lets namespaces created later be picked up without editing the resource.
 
----
+!!! warning
+    An empty `labelSelector: {}` matches no namespaces, not all of them, and a `ClusterResourceSupervisor` with no `spec.namespaces` at all hibernates nothing. To cover a broad set, apply a label the target namespaces share and select on that.
 
-## Example: ArgoCD + Label Selector Combo
+## Scheduling
+
+`spec.schedule` behaves as it does for `ResourceSupervisor`: two five-field cron expressions evaluated in UTC. Setting both cycles the workloads, and omitting `wakeSchedule` sleeps them at the next sleep time and leaves them asleep.
 
 ```yaml
-apiVersion: hibernation.stakater.com/v1beta1
-kind: ClusterResourceSupervisor
-metadata:
-  name: hybrid-hibernation
 spec:
+  schedule:
+    sleepSchedule: "0 22 * * *"
+    wakeSchedule: "0 6 * * *"
+```
+
+## Exclusions
+
+Two filters run after selection, and a namespace caught by either is reported in `status.ignoreNamespaces` rather than hibernated:
+
+- The namespace is annotated `hibernation.stakater.com/exclude: "true"`.
+- The namespace is the one the operator itself runs in.
+
+The annotation is how an individual team opts out of a platform-wide policy without needing the selector changed.
+
+## Overlap between supervisors
+
+The admission webhook rejects a `ClusterResourceSupervisor` that claims a namespace already claimed by another one, and also rejects duplicate names within a single resource. Two cluster-scoped supervisors therefore cannot fight over the same namespace.
+
+!!! warning
+    That check does not extend to `ResourceSupervisor`. A namespace can hold its own `ResourceSupervisor` while also being selected here, and both controllers will then act on the same workloads on their own schedules. Exclude the namespace with the annotation if it should manage itself.
+
+## ArgoCD sync windows
+
+Workloads managed by ArgoCD present a problem: scaling them to zero is drift from Git, and ArgoCD will scale them back up. The `spec.argocd` field addresses this by writing a `deny` sync window onto the AppProjects you name, covering the sleep schedule and its computed duration.
+
+```yaml
+spec:
+  namespaces:
+    labelSelector:
+      matchLabels:
+        team: frontend
   argocd:
     namespace: argocd
     appProjects:
-      - mobile-apps
-  namespaces:
-    names:
-      - legacy-staging
-    labelSelector:
-      matchLabels:
-        temporary: "true"
+      - frontend-team
   schedule:
-    sleepSchedule: "0 20 * * *"
-    wakeSchedule: "0 8 * * *"
+    sleepSchedule: "0 22 * * *"
+    wakeSchedule: "0 6 * * *"
 ```
 
-🔄 Hibernates:
+!!! warning
+    `spec.argocd` does not select namespaces. It suppresses syncing for the AppProjects listed, nothing more, and the namespaces to hibernate still come entirely from `spec.namespaces`. A resource with `argocd` but no `namespaces` writes sync windows and hibernates nothing.
 
-> - All namespaces in the `mobile-apps` AppProject
-> - Plus `legacy-staging`
-> - Plus any namespace with label `temporary=true`
+Two further constraints:
 
----
+- The operator replaces `spec.syncWindows` on each named AppProject rather than appending, so any sync windows maintained there by other means are overwritten.
+- The ArgoCD `AppProject` CRD must be present. If it is absent the operator logs that and continues hibernating without touching ArgoCD.
 
-## Key Notes
+## Status
 
-- ❌ **Not namespace-scoped**: Cannot be created inside a namespace.
-- ✅ **Safe by default**: Only modifies `Deployments` and `StatefulSets`.
-- ✅ **Stateful restoration**: Replica counts are stored in `status.sleepingNamespaces`.
-- ✅ **Coexists with `ResourceSupervisor`**: If a namespace has a local `ResourceSupervisor`, the operator **skips it** (to avoid conflicts)—unless your operator logic is designed otherwise. *(Confirm behavior in your implementation.)*
+| Field | Shows |
+| --- | --- |
+| `currentStatus` | `running`, `sleeping`, or `error` |
+| `watchedNamespaces` | Namespaces currently being managed |
+| `ignoreNamespaces` | Selected namespaces filtered out by the exclusions above |
+| `sleepingNamespaces` | Per-namespace detail of scaled-down workloads and their original replica counts |
+| `nextReconcileTime` | Next scheduled sleep or wake |
 
----
+```sh
+kubectl get clusterresourcesupervisor dev-environments-hibernation -o jsonpath='{.status}'
+```
 
-## When to Use `ClusterResourceSupervisor`
+When a namespace you expected is missing from `watchedNamespaces`, `ignoreNamespaces` is the first place to look.
 
-| Scenario | Recommended |
-|--------|-------------|
-| Hibernating 50+ dev namespaces | ✅ |
-| GitOps with ArgoCD AppProjects | ✅ |
-| Dynamic namespace selection via labels | ✅ |
-| Team self-service in one namespace | ❌ → Use `ResourceSupervisor` |
+## Choosing between the two
 
----
-
-## API Reference
-
-**Group/Version:** `hibernation.stakater.com/v1beta1` · **Kind:** `ClusterResourceSupervisor` · **Scope:** Cluster
-
-### Spec
-
-| Field | Type | Required | Description |
-|-------|------|----------|-------------|
-| `schedule` | `object` (Hibernation) | Yes | Hibernation schedule applied to all matched namespaces. |
-| `schedule.sleepSchedule` | `string` | No | Standard 5-field Unix cron expression (UTC) for scaling workloads to zero. |
-| `schedule.wakeSchedule` | `string` | No | Standard 5-field Unix cron expression (UTC) for restoring workloads. If omitted, workloads stay asleep. |
-| `namespaces` | `object` | No | Targets namespaces by name and/or label selector. |
-| `namespaces.names` | `[]string` | No | Explicit list of namespace names to manage. |
-| `namespaces.labelSelector` | `object` (`metav1.LabelSelector`) | No | Standard Kubernetes label selector (`matchLabels` / `matchExpressions`). Empty `{}` matches all namespaces; absent matches none. |
-| `argocd` | `object` | No | Target namespaces via ArgoCD AppProjects. Requires ArgoCD integration enabled at install time. |
-| `argocd.appProjects` | `[]string` | Yes (within `argocd`) | ArgoCD AppProject names whose destination namespaces follow the schedule. |
-| `argocd.namespace` | `string` | Yes (within `argocd`) | Namespace where the ArgoCD AppProjects reside. |
-
-### Status
-
-| Field | Type | Description |
-|-------|------|-------------|
-| `currentStatus` | `string` (`sleeping`, `running`, `error`) | Overall state of managed workloads. |
-| `nextReconcileTime` | `string` (RFC 3339 timestamp) | Next scheduled sleep/wake reconciliation. |
-| `watchedNamespaces` | `[]string` | Namespaces currently managed by this resource. |
-| `ignoreNamespaces` | `[]string` | Namespaces excluded from management (e.g. via the exclude annotation). |
-| `sleepingNamespaces` | `[]object` (SleepingNamespace) | Per-namespace record of scaled-down workloads, used for accurate restoration. |
-| `sleepingNamespaces[].Namespace` | `string` | The namespace containing the sleeping applications. |
-| `sleepingNamespaces[].status` | `string`  (`sleeping`, `running`, `error`)  | Per-namespace error/state indicator. |
-| `sleepingNamespaces[].sleepingApplications` | `[]object` (SleepingApplication) | Workloads scaled down in the namespace. |
-| `sleepingNamespaces[].sleepingApplications[].name` | `string` | Name of the sleeping application. |
-| `sleepingNamespaces[].sleepingApplications[].kind` | `string` | Workload kind. |
-| `sleepingNamespaces[].sleepingApplications[].replicas` | `int32` | Original replica count, preserved for restoration on wake. |
+Use a `ResourceSupervisor` when a namespace should decide its own hibernation and the team owning it holds only namespace-level permissions. Use a `ClusterResourceSupervisor` when a platform team sets the policy across many namespaces, when the set is defined by labels and changes over time, or when ArgoCD sync windows need suppressing during sleep.
 
 ## Related guides
 
-- [Setup ClusterResourceSupervisor](../guides/create-cluster-resource-supervisor.md)
+- [Hibernate Workloads Across Multiple Namespaces](../guides/create-cluster-resource-supervisor.md)
 - [Hibernate a Tenant](../guides/hibernate-resources.md)

@@ -1,76 +1,54 @@
 # ResourceSupervisor
 
-The `ResourceSupervisor` is a **namespace-scoped** custom resource that enables **self-service hibernation** of workloads within a **single namespace**. It allows application teams or namespace owners to define schedules for scaling down and restoring `Deployments` and `StatefulSets` without requiring cluster-wide permissions.
+A `ResourceSupervisor` hibernates the workloads in the namespace it lives in. It is namespace-scoped, so a team that owns a namespace can park its own workloads outside working hours without needing cluster-wide permissions. To cover a group of namespaces from one place, use a [ClusterResourceSupervisor](cluster-resource-supervisor.md).
 
-> ✅ **Only affects the namespace in which it is created.**
+Only `Deployments` and `StatefulSets` are affected. Everything else in the namespace is left running.
 
-## Supported Workloads
+For the complete field listing, see the [API Reference](../reference/api.md).
 
-- `Deployment`
-- `StatefulSet`
+## Scheduling modes
 
-These resources are scaled to **0 replicas** during sleep and restored to their **original replica count** during wake.
+The `spec.schedule` block accepts two cron expressions, and which of them you set determines the behavior.
 
-## Ignored Namespaces
+| `sleepSchedule` | `wakeSchedule` | Behavior |
+| --- | --- | --- |
+| Set | Set | Workloads cycle between the two times |
+| Set | Omitted | Workloads sleep at the next sleep time and stay asleep |
+| Omitted | Omitted | Workloads sleep immediately and stay asleep |
 
-While `ResourceSupervisor` is namespace-scoped and only acts within its own namespace, the Hibernation Operator still respects global exclusion rules. A namespace (including the one containing the `ResourceSupervisor`) will be **ignored** if it has:
+Both expressions use standard five-field Unix cron syntax (`minute hour day month weekday`) and are evaluated in UTC, not the cluster's local timezone.
 
-- The annotation:
+### Recurring hibernation
 
-  ```yaml
-  hibernation.stakater.com/exclude: "true"
-  ```
-
-> 🔒 The operator **never modifies** workloads in excluded namespaces—even if a `ResourceSupervisor` exists there.
-
-## Supported Modes
-
-### 1. Hibernation with Cron Schedule (Sleep + Wake)
-
-Define both `sleepSchedule` and `wakeSchedule` to automatically cycle workloads on and off.
+Setting both schedules is the common case, parking an environment overnight and bringing it back in the morning.
 
 ```yaml
 apiVersion: hibernation.stakater.com/v1beta1
 kind: ResourceSupervisor
 metadata:
   name: nightly-hibernation
-  namespace: my-app-staging  # ← Must match target namespace
+  namespace: my-app-staging
 spec:
   schedule:
-    sleepSchedule: "0 20 * * *"   # Sleep daily at 8:00 PM UTC
-    wakeSchedule: "0 8 * * *"     # Wake daily at 8:00 AM UTC
+    sleepSchedule: "0 20 * * *"   # Sleep daily at 20:00 UTC
+    wakeSchedule: "0 8 * * *"     # Wake daily at 08:00 UTC
 ```
 
-> 🕒 **Cron Format**: Standard Unix cron (`minute hour day month weekday`). Timezone is **UTC**.
+### Sleep with no scheduled wake
 
----
-
-### 2. Permanent Sleep (Manual Wake)
-
-Omit `wakeSchedule` to keep workloads asleep indefinitely. Workloads will **only wake** when:
-
-- The `ResourceSupervisor` is **deleted**, **or**
-- A `wakeSchedule` is **added later**
+Omitting `wakeSchedule` sleeps the workloads at the next sleep time and leaves them there. The operator still reconciles at each subsequent sleep time, so workloads added to the namespace later are hibernated too rather than being left running.
 
 ```yaml
-apiVersion: hibernation.stakater.com/v1beta1
-kind: ResourceSupervisor
-metadata:
-  name: pause-for-maintenance
-  namespace: demo-env
 spec:
   schedule:
-    sleepSchedule: "0 12 * * *"   # Sleep today at noon UTC, never wake
-    # wakeSchedule: omitted → stay asleep
+    sleepSchedule: "0 12 * * *"   # Sleep at the next 12:00 UTC, no wake
 ```
 
-> 💡 This is useful for temporary freezes (e.g., during security reviews or budget pauses).
+To bring the workloads back, add a `wakeSchedule` or delete the resource.
 
----
+### Immediate sleep
 
-### 3. Immediate Sleep (No Schedule)
-
-To sleep **immediately**, create a `ResourceSupervisor` with an **empty `schedule`** block:
+An empty schedule sleeps the workloads as soon as the resource is created, and reconciles hourly to catch anything new. This suits ephemeral environments such as CI preview namespaces, where the namespace should be parked from the moment it exists.
 
 ```yaml
 apiVersion: hibernation.stakater.com/v1beta1
@@ -82,85 +60,37 @@ spec:
   schedule: {}
 ```
 
-- Workloads are scaled to 0 **as soon as the CR is created**.
-- They remain asleep until the CR is **deleted**.
+!!! note
+    Setting `wakeSchedule` without `sleepSchedule` is not a supported combination and the operator does not act on it.
 
-> 🚀 Ideal for ephemeral environments (e.g., CI/CD preview namespaces).
+## Replica counts and restoration
 
----
+Before scaling a workload down, the operator writes its replica count to the annotation `hibernation.stakater.com/original-replicas` on the workload itself, and reads it back on wake. Keeping the count on the workload rather than in the supervisor's status means it survives operator restarts and stays visible with `kubectl get`.
 
-## Status Tracking
+Workloads already at zero replicas are skipped, so they are not later "restored" to zero-with-a-record they never had.
 
-The operator updates the CR’s `status` to reflect current state:
+Deleting the `ResourceSupervisor` wakes its workloads first. A finalizer holds the resource until the restore finishes, which makes deletion the straightforward way to cancel hibernation.
 
-```yaml
-status:
-  currentStatus: sleeping      # or "running", "error"
-  nextReconcileTime: "2025-02-01T08:00:00Z"
-```
+## Exclusions
 
-Use `kubectl describe` or `kubectl get -o yaml` to monitor:
+A namespace annotated `hibernation.stakater.com/exclude: "true"` is never hibernated, even if a `ResourceSupervisor` exists in it. The operator's own namespace is excluded the same way. This gives platform teams a way to protect a namespace regardless of what is created inside it.
+
+## Status
+
+`status.currentStatus` reports `running`, `sleeping`, or `error`, and `status.nextReconcileTime` gives the next time the operator will act.
 
 ```sh
 kubectl get resourcesupervisor nightly-hibernation -n my-app-staging -o jsonpath='{.status}'
 ```
 
----
+## Differences from ClusterResourceSupervisor
 
-## Key Notes
+`ResourceSupervisor` has no `namespaces` field and cannot target anything beyond its own namespace, and no `argocd` field, so it cannot suppress ArgoCD syncing during sleep. If the namespace's workloads are managed by ArgoCD, ArgoCD will see the scaled-down state as drift and may restore it. Use a [ClusterResourceSupervisor](cluster-resource-supervisor.md) where that matters.
 
-- ❌ **No `argocd` field**: `ResourceSupervisor` **does not support ArgoCD integration**. Use `ClusterResourceSupervisor` for AppProject-based hibernation.
-- ❌ **No `namespaces` field**: It **only affects its own namespace**—you cannot target other namespaces.
-- ✅ **Safe by default**: Only `Deployments` and `StatefulSets` are scaled; all other resources are untouched.
-- ✅ **Stateful restoration**: Original replica counts are stored in the CR’s status and restored accurately—even after operator restarts.
-
----
-
-## Example: CI/CD Preview Namespace
-
-A CI pipeline creates a namespace `pr-456` and immediately hibernates it to save costs:
-
-```yaml
-# pr-456-hibernation.yaml
-apiVersion: hibernation.stakater.com/v1beta1
-kind: ResourceSupervisor
-metadata:
-  name: auto-sleep
-  namespace: pr-456
-spec:
-  schedule: {}
-```
-
-Apply it:
-
-```sh
-kubectl apply -f pr-456-hibernation.yaml
-```
-
-Workloads sleep instantly. When the PR is merged, the pipeline deletes the namespace (or the CR), waking workloads briefly before cleanup.
-
----
-
-## API Reference
-
-**Group/Version:** `hibernation.stakater.com/v1beta1` · **Kind:** `ResourceSupervisor` · **Scope:** Namespace
-
-### Spec
-
-| Field | Type | Required | Description |
-|-------|------|----------|-------------|
-| `schedule` | `object` (Hibernation) | Yes | Hibernation schedule for workloads in this namespace. An empty object (`schedule: {}`) triggers immediate sleep. |
-| `schedule.sleepSchedule` | `string` | No | Standard 5-field Unix cron expression (UTC) for scaling workloads to zero. If empty, workloads sleep immediately on creation. |
-| `schedule.wakeSchedule` | `string` | No | Standard 5-field Unix cron expression (UTC) for restoring workloads. If omitted, workloads remain asleep until the CR is updated or deleted. |
-
-### Status
-
-| Field | Type | Description |
-|-------|------|-------------|
-| `currentStatus` | `string` (`sleeping`, `running`, `error`) | Current state of the targeted workloads. |
-| `nextReconcileTime` | `string` (RFC 3339 timestamp) | Next time the operator will sleep or wake the namespace's workloads. |
+!!! warning
+    Nothing prevents a `ClusterResourceSupervisor` from also selecting a namespace that already has a `ResourceSupervisor`. The admission webhook rejects overlap between two `ClusterResourceSupervisor` resources, but it does not check for this case, and the two controllers will then act on the same workloads independently. Avoid the overlap, or exclude the namespace with the annotation above.
 
 ## Related guides
 
-- [Setup ResourceSupervisor](../guides/create-resource-supervisor.md)
+- [Hibernate Workloads in a Single Namespace](../guides/create-resource-supervisor.md)
 - [Hibernate a Tenant](../guides/hibernate-resources.md)

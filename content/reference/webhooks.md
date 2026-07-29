@@ -59,5 +59,5 @@ The webhook server requires TLS. The operator integrates with
 Alternatively, you can supply certificates directly via the
 `--webhook-cert-path`, `--webhook-cert-name`, and `--webhook-cert-key` flags.
 
-> ℹ️ cert-manager is a prerequisite only when webhooks are enabled. See
+> cert-manager is a prerequisite only when webhooks are enabled. See
 > [Installation › Kubernetes](../getting-started/installation/kubernetes.md).

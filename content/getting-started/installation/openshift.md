@@ -38,7 +38,7 @@ This document contains instructions for installing, configuring, and uninstallin
 
    ![Installation successful](../../images/hibernation_installed_successful.png)
 
-> 💡 **Note**: The operator is installed in the `hibernation-operator-system` namespace by default.
+> **Note**: The operator is installed in the `hibernation-operator-system` namespace by default.
 
 ---
 
@@ -87,7 +87,7 @@ spec:
 EOF
 ```
 
-> ✅ **GitOps Tip**: Commit these YAMLs to your GitOps repo to manage the operator declaratively.
+> **GitOps Tip**: Commit these YAMLs to your GitOps repo to manage the operator declaratively.
 
 ### Step 4: Verify Installation
 
@@ -112,7 +112,7 @@ Wait until the `hibernation-controller` pod is `Running`.
 
 ## Uninstall via OperatorHub UI
 
-> ⚠️ **Warning**: Uninstalling the operator **does not delete your CRs** (`ClusterResourceSupervisor`, `ResourceSupervisor`). Workloads may remain asleep if not cleaned up.
+> **Warning**: Uninstalling the operator **does not delete your CRs** (`ClusterResourceSupervisor`, `ResourceSupervisor`). Workloads may remain asleep if not cleaned up.
 
 ### Step 1: (Optional) Clean Up Hibernation Policies
 
@@ -148,7 +148,7 @@ oc delete crd clusterresourcesupervisors.hibernation.stakater.com
 oc delete crd resourcesupervisors.hibernation.stakater.com
 ```
 
-> 🔒 **Note**: CRD deletion is irreversible. Ensure no other tools depend on them.
+> **Note**: CRD deletion is irreversible. Ensure no other tools depend on them.
 
 ---
 

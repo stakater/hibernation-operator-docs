@@ -56,7 +56,7 @@ kubectl delete crd \
   clusterresourcesupervisors.hibernation.stakater.com
 ```
 
-> ⚠️ Deleting a `ResourceSupervisor` or `ClusterResourceSupervisor` stops it
+> Deleting a `ResourceSupervisor` or `ClusterResourceSupervisor` stops it
 > from managing its targets, but workloads currently scaled to zero are not
 > automatically restored unless the resource is deleted while a wake is due.
 > Scale any needed workloads back up manually if required.
