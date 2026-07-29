@@ -159,3 +159,8 @@ Workloads sleep instantly. When the PR is merged, the pipeline deletes the names
 |-------|------|-------------|
 | `currentStatus` | `string` (`sleeping`, `running`, `error`) | Current state of the targeted workloads. |
 | `nextReconcileTime` | `string` (RFC 3339 timestamp) | Next time the operator will sleep or wake the namespace's workloads. |
+
+## Related guides
+
+- [Setup ResourceSupervisor](../guides/create-resource-supervisor.md)
+- [Hibernate a Tenant](../guides/hibernate-resources.md)

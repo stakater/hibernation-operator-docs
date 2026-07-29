@@ -243,3 +243,8 @@ spec:
 | `sleepingNamespaces[].sleepingApplications[].name` | `string` | Name of the sleeping application. |
 | `sleepingNamespaces[].sleepingApplications[].kind` | `string` | Workload kind. |
 | `sleepingNamespaces[].sleepingApplications[].replicas` | `int32` | Original replica count, preserved for restoration on wake. |
+
+## Related guides
+
+- [Setup ClusterResourceSupervisor](../guides/create-cluster-resource-supervisor.md)
+- [Hibernate a Tenant](../guides/hibernate-resources.md)
