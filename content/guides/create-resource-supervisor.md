@@ -26,7 +26,7 @@ spec:
 ```
 
 !!! note
-    Both schedules use standard five-field Unix cron syntax (`minute hour day month weekday`) and are evaluated in UTC, not the cluster's local timezone. [crontab.guru](https://crontab.guru) is useful for checking an expression before applying it.
+    Both schedules use standard five-field Unix cron syntax (`minute hour day month weekday`) and are evaluated in UTC, not the cluster's local timezone. [`crontab.guru`](https://crontab.guru) is useful for checking an expression before applying it.
 
 Omitting `wakeSchedule` puts the workloads to sleep and leaves them there until you edit or delete the resource. That is a deliberate option for environments you want parked indefinitely, but it is easy to do by accident.
 
