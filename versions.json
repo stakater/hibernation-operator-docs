@@ -92,7 +92,9 @@
   {
     "version": "added-concepts",
     "title": "added-concepts",
-    "aliases": []
+    "aliases": [
+      "latest"
+    ]
   },
   {
     "version": "0.1-fix-for-RS-status",
