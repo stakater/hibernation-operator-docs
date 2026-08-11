@@ -140,10 +140,12 @@ status:
 
 ## Hibernating namespaces and/or ArgoCD Applications with Cluster ResourceSupervisor
 
-Bill, the cluster administrator, wants to hibernate a collection of namespaces and AppProjects belonging to multiple different tenants. He can do so by creating a ResourceSupervisor manually, specifying the hibernation schedule in its spec, the namespaces and ArgoCD Applications that need to be hibernated as per the mentioned schedule.
-Bill can also use the same method to hibernate some namespaces and ArgoCD Applications that do not belong to any tenant on his cluster.
+Bill, the cluster administrator, wants to hibernate a collection of namespaces belonging to multiple different tenants. He can do so by creating a `ClusterResourceSupervisor` manually, specifying the hibernation schedule and the namespaces to be hibernated in its spec. The same method works for namespaces that do not belong to any tenant on his cluster.
 
-The example given below will hibernate the ArgoCD Applications in the 'test-app-project' AppProject; and it will also hibernate the 'ns2' and 'ns4' namespaces.
+The example below hibernates the 'ns2' and 'ns4' namespaces. It also names the 'test-app-project' AppProject under `argocd`, which puts a deny sync window on that project for the duration of the sleep so ArgoCD does not scale the workloads back up.
+
+!!! note
+    `spec.argocd` does not select namespaces to hibernate. Namespaces come only from `spec.namespaces`. Listing AppProjects without a `namespaces` block writes sync windows and hibernates nothing.
 
 ```yaml
 apiVersion: hibernation.stakater.com/v1beta1
@@ -159,9 +161,6 @@ spec:
     sleepSchedule: 0 20 * * 1-5
     wakeSchedule: 0 8 * * 1-5
   namespaces:
-    labelSelector:
-      matchLabels: {}
-      matchExpressions: {}
     names:
       - ns2
       - ns4

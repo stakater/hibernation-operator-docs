@@ -63,9 +63,7 @@ The `currentStatus` field reports `running`, `sleeping`, or `error`.
 
 ## Next steps
 
-- [Create a ResourceSupervisor](../guides/create-resource-supervisor.md) — full
-  namespace-scoped guide
-- [Create a ClusterResourceSupervisor](../guides/create-cluster-resource-supervisor.md)
-  — cluster-wide, label, and ArgoCD targeting
+- [Hibernate Workloads in a Single Namespace](../guides/create-resource-supervisor.md)
+- [Hibernate Workloads Across Multiple Namespaces](../guides/create-cluster-resource-supervisor.md)
 - [Concepts › Architecture](../concepts/architecture.md) — how it works
-- [Reference › API Reference](../reference/api/resource-supervisor.md) — every field
+- [Reference › API Reference](../reference/api.md) — every field

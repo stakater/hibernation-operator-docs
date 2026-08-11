@@ -1,6 +1,6 @@
 # Benefits
 
-## ✅ **Benefits of `ClusterResourceSupervisor` (Cluster-Scoped)**
+## Benefits of `ClusterResourceSupervisor` (Cluster-Scoped)
 
 1. **Centralized Control**  
    - Enables cluster administrators to define **global hibernation policies** that apply across many namespaces or ArgoCD AppProjects.
@@ -25,7 +25,7 @@
 
 ---
 
-## ✅ **Benefits of `ResourceSupervisor` (Namespace-Scoped)**
+## Benefits of `ResourceSupervisor` (Namespace-Scoped)
 
 1. **Self-Service for Teams**  
    - Application owners or namespace tenants can define their **own hibernation schedule** without cluster-level permissions.
@@ -48,7 +48,7 @@
 
 ---
 
-## 🎯 When to Use Which?
+## When to Use Which?
 
 | Need | Solved By |
 |------|-----------|
