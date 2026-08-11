@@ -2279,6 +2279,62 @@ This documentation is either for an old version, or for the unreleased 'main' ve
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concepts/resource-supervisor.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ResourceSupervisor
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concepts/cluster-resource-supervisor.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ClusterResourceSupervisor
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -2793,7 +2849,7 @@ This documentation is either for an old version, or for the unreleased 'main' ve
   <span class="md-ellipsis">
     
   
-    Setup ResourceSupervisor
+    Hibernate Workloads in a Single Namespace
   
 
     
@@ -2821,7 +2877,7 @@ This documentation is either for an old version, or for the unreleased 'main' ve
   <span class="md-ellipsis">
     
   
-    Setup ClusterResourceSupervisor
+    Hibernate Workloads Across Multiple Namespaces
   
 
     
@@ -3005,62 +3061,15 @@ This documentation is either for an old version, or for the unreleased 'main' ve
   
   
   
-    
-    
-    
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_1">
-        
-          
-          <label class="md-nav__link" for="__nav_6_1" id="__nav_6_1_label" tabindex="0">
-            
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    API Reference
-  
-
-    
-  </span>
-  
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_1_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_6_1">
-            <span class="md-nav__icon md-icon"></span>
-            
-  
-    API Reference
-  
-
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix="">
-            
-              
-                
-  
-  
-  
-  
     <li class="md-nav__item">
-      <a href="../../reference/api/resource-supervisor.html" class="md-nav__link">
+      <a href="../../reference/api.html" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    ResourceSupervisor
+    Api
   
 
     
@@ -3069,42 +3078,6 @@ This documentation is either for an old version, or for the unreleased 'main' ve
   
 
       </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../reference/api/cluster-resource-supervisor.html" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    ClusterResourceSupervisor
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
     </li>
   
 
@@ -3733,7 +3706,7 @@ This documentation is either for an old version, or for the unreleased 'main' ve
 </ol>
 <p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../images/hibernation_installed_successful.png" data-desc-position="bottom"><img alt="Installation successful" src="../../images/hibernation_installed_successful.png"></a></p>
 <blockquote>
-<p>💡 <strong>Note</strong>: The operator is installed in the <code>hibernation-operator-system</code> namespace by default.</p>
+<p><strong>Note</strong>: The operator is installed in the <code>hibernation-operator-system</code> namespace by default.</p>
 </blockquote>
 <hr>
 <h2 id="installing-via-cli-or-gitops">Installing via CLI or GitOps<a class="headerlink" href="#installing-via-cli-or-gitops" title="Permanent link">#</a></h2>
@@ -3771,7 +3744,7 @@ This documentation is either for an old version, or for the unreleased 'main' ve
 <span class="s">EOF</span>
 </code></pre></div>
 <blockquote>
-<p>✅ <strong>GitOps Tip</strong>: Commit these YAMLs to your GitOps repo to manage the operator declaratively.</p>
+<p><strong>GitOps Tip</strong>: Commit these YAMLs to your GitOps repo to manage the operator declaratively.</p>
 </blockquote>
 <h3 id="step-4-verify-installation">Step 4: Verify Installation<a class="headerlink" href="#step-4-verify-installation" title="Permanent link">#</a></h3>
 <p>In the OpenShift Console:</p>
@@ -3789,7 +3762,7 @@ oc<span class="w"> </span>get<span class="w"> </span>pods<span class="w"> </span
 <hr>
 <h2 id="uninstall-via-operatorhub-ui">Uninstall via OperatorHub UI<a class="headerlink" href="#uninstall-via-operatorhub-ui" title="Permanent link">#</a></h2>
 <blockquote>
-<p>⚠️ <strong>Warning</strong>: Uninstalling the operator <strong>does not delete your CRs</strong> (<code>ClusterResourceSupervisor</code>, <code>ResourceSupervisor</code>). Workloads may remain asleep if not cleaned up.</p>
+<p><strong>Warning</strong>: Uninstalling the operator <strong>does not delete your CRs</strong> (<code>ClusterResourceSupervisor</code>, <code>ResourceSupervisor</code>). Workloads may remain asleep if not cleaned up.</p>
 </blockquote>
 <h3 id="step-1-optional-clean-up-hibernation-policies">Step 1: (Optional) Clean Up Hibernation Policies<a class="headerlink" href="#step-1-optional-clean-up-hibernation-policies" title="Permanent link">#</a></h3>
 <p>Delete any active hibernation resources to restore workloads:</p>
@@ -3817,7 +3790,7 @@ oc<span class="w"> </span>delete<span class="w"> </span>crd<span class="w"> </sp
 oc<span class="w"> </span>delete<span class="w"> </span>crd<span class="w"> </span>resourcesupervisors.hibernation.stakater.com
 </code></pre></div>
 <blockquote>
-<p>🔒 <strong>Note</strong>: CRD deletion is irreversible. Ensure no other tools depend on them.</p>
+<p><strong>Note</strong>: CRD deletion is irreversible. Ensure no other tools depend on them.</p>
 </blockquote>
 <hr>
 <h2 id="notes">Notes<a class="headerlink" href="#notes" title="Permanent link">#</a></h2>
@@ -3826,8 +3799,9 @@ oc<span class="w"> </span>delete<span class="w"> </span>crd<span class="w"> </sp
 <li>It integrates natively with <strong>OpenShift workloads</strong> (<code>Deployments</code>, <code>StatefulSets</code>) and <strong>ArgoCD</strong> (if installed).</li>
 <li>For production, use <strong>Manual approval</strong> and test upgrades in a staging cluster first.</li>
 <li>Full CRD documentation:<ul>
-<li><a href="../../reference/api/cluster-resource-supervisor.html"><code>ClusterResourceSupervisor</code></a></li>
-<li><a href="../../reference/api/resource-supervisor.html"><code>ResourceSupervisor</code></a></li>
+<li><a href="../../concepts/cluster-resource-supervisor.html"><code>ClusterResourceSupervisor</code></a></li>
+<li><a href="../../concepts/resource-supervisor.html"><code>ResourceSupervisor</code></a></li>
+<li><a href="../../reference/api.html">API Reference</a> — generated field reference</li>
 </ul>
 </li>
 </ul>

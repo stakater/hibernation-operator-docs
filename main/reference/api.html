@@ -5,13 +5,13 @@
       
       
       
-        <link rel="canonical" href="https://docs.stakater.com/hibernation-operator-docs/main/getting-started/uninstalling.html">
+        <link rel="canonical" href="https://docs.stakater.com/hibernation-operator-docs/main/reference/api.html">
       
       
-        <link rel="prev" href="installation/kubernetes.html">
+        <link rel="prev" href="../integrations/argocd.html">
       
       
-        <link rel="next" href="../guides/create-resource-supervisor.html">
+        <link rel="next" href="configuration.html">
       
       
         
@@ -22,7 +22,7 @@
     
     
       
-        <title>Uninstalling - Hibernation Operator</title>
+        <title>Api - Hibernation Operator</title>
       
     
     
@@ -95,7 +95,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#uninstalling" class="md-skip">
+        <a href="#api-reference" class="md-skip">
           Skip to content
         </a>
       
@@ -2346,20 +2346,18 @@ This documentation is either for an old version, or for the unreleased 'main' ve
       
   
   
-    
   
   
-  
     
     
     
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked="">
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3">
         
           
           <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
@@ -2380,7 +2378,7 @@ This documentation is either for an old version, or for the unreleased 'main' ve
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_3">
             <span class="md-nav__icon md-icon"></span>
             
@@ -2398,7 +2396,7 @@ This documentation is either for an old version, or for the unreleased 'main' ve
   
   
     <li class="md-nav__item">
-      <a href="quick-start.html" class="md-nav__link">
+      <a href="../getting-started/quick-start.html" class="md-nav__link">
         
   
   
@@ -2473,7 +2471,7 @@ This documentation is either for an old version, or for the unreleased 'main' ve
   
   
     <li class="md-nav__item">
-      <a href="installation/overview.html" class="md-nav__link">
+      <a href="../getting-started/installation/overview.html" class="md-nav__link">
         
   
   
@@ -2501,7 +2499,7 @@ This documentation is either for an old version, or for the unreleased 'main' ve
   
   
     <li class="md-nav__item">
-      <a href="installation/openshift.html" class="md-nav__link">
+      <a href="../getting-started/installation/openshift.html" class="md-nav__link">
         
   
   
@@ -2529,7 +2527,7 @@ This documentation is either for an old version, or for the unreleased 'main' ve
   
   
     <li class="md-nav__item">
-      <a href="installation/kubernetes.html" class="md-nav__link">
+      <a href="../getting-started/installation/kubernetes.html" class="md-nav__link">
         
   
   
@@ -2562,37 +2560,10 @@ This documentation is either for an old version, or for the unreleased 'main' ve
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Uninstalling
-  
-
-    
-  </span>
-  
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="uninstalling.html" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../getting-started/uninstalling.html" class="md-nav__link">
         
   
   
@@ -2608,61 +2579,6 @@ This documentation is either for an old version, or for the unreleased 'main' ve
   
 
       </a>
-      
-        
-
-  
-
-<nav class="md-nav md-nav--secondary" aria-label="On this page">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      On this page
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
-      
-        <li class="md-nav__item">
-  <a href="#helm" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Helm
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#openshift-olm" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        OpenShift (OLM)
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#clean-up-custom-resources" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Clean up custom resources
-      
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -2899,18 +2815,20 @@ This documentation is either for an old version, or for the unreleased 'main' ve
       
   
   
+    
   
   
+  
     
     
     
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6">
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" checked="">
         
           
           <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
@@ -2931,7 +2849,7 @@ This documentation is either for an old version, or for the unreleased 'main' ve
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_6">
             <span class="md-nav__icon md-icon"></span>
             
@@ -2946,10 +2864,37 @@ This documentation is either for an old version, or for the unreleased 'main' ve
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../reference/api.html" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Api
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="api.html" class="md-nav__link md-nav__link--active">
         
   
   
@@ -2965,6 +2910,150 @@ This documentation is either for an old version, or for the unreleased 'main' ve
   
 
       </a>
+      
+        
+
+  
+
+<nav class="md-nav md-nav--secondary" aria-label="On this page">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      On this page
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+      
+        <li class="md-nav__item">
+  <a href="#packages" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Packages
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#hibernationstakatercomv1beta1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        hibernation.stakater.com/v1beta1
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="hibernation.stakater.com/v1beta1">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#resource-types" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Resource Types
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Resource Types">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#clusterresourcesupervisor" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ClusterResourceSupervisor
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#clusterresourcesupervisorspec" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ClusterResourceSupervisorSpec
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#clusterresourcesupervisorstatus" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ClusterResourceSupervisorStatus
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#resourcesupervisor" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ResourceSupervisor
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#resourcesupervisorspec" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ResourceSupervisorSpec
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#resourcesupervisorstatus" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ResourceSupervisorStatus
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#status" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Status
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -2977,7 +3066,7 @@ This documentation is either for an old version, or for the unreleased 'main' ve
   
   
     <li class="md-nav__item">
-      <a href="../reference/configuration.html" class="md-nav__link">
+      <a href="configuration.html" class="md-nav__link">
         
   
   
@@ -3005,7 +3094,7 @@ This documentation is either for an old version, or for the unreleased 'main' ve
   
   
     <li class="md-nav__item">
-      <a href="../reference/rbac.html" class="md-nav__link">
+      <a href="rbac.html" class="md-nav__link">
         
   
   
@@ -3033,7 +3122,7 @@ This documentation is either for an old version, or for the unreleased 'main' ve
   
   
     <li class="md-nav__item">
-      <a href="../reference/metrics.html" class="md-nav__link">
+      <a href="metrics.html" class="md-nav__link">
         
   
   
@@ -3061,7 +3150,7 @@ This documentation is either for an old version, or for the unreleased 'main' ve
   
   
     <li class="md-nav__item">
-      <a href="../reference/webhooks.html" class="md-nav__link">
+      <a href="webhooks.html" class="md-nav__link">
         
   
   
@@ -3089,7 +3178,7 @@ This documentation is either for an old version, or for the unreleased 'main' ve
   
   
     <li class="md-nav__item">
-      <a href="../reference/security-model.html" class="md-nav__link">
+      <a href="security-model.html" class="md-nav__link">
         
   
   
@@ -3392,10 +3481,10 @@ This documentation is either for an old version, or for the unreleased 'main' ve
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
       
         <li class="md-nav__item">
-  <a href="#helm" class="md-nav__link">
+  <a href="#packages" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Helm
+        Packages
       
     </span>
   </a>
@@ -3403,24 +3492,113 @@ This documentation is either for an old version, or for the unreleased 'main' ve
 </li>
       
         <li class="md-nav__item">
-  <a href="#openshift-olm" class="md-nav__link">
+  <a href="#hibernationstakatercomv1beta1" class="md-nav__link">
     <span class="md-ellipsis">
       
-        OpenShift (OLM)
+        hibernation.stakater.com/v1beta1
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="hibernation.stakater.com/v1beta1">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#resource-types" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Resource Types
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Resource Types">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#clusterresourcesupervisor" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ClusterResourceSupervisor
       
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#clean-up-custom-resources" class="md-nav__link">
+        
+          <li class="md-nav__item">
+  <a href="#clusterresourcesupervisorspec" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Clean up custom resources
+        ClusterResourceSupervisorSpec
       
     </span>
   </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#clusterresourcesupervisorstatus" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ClusterResourceSupervisorStatus
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#resourcesupervisor" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ResourceSupervisor
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#resourcesupervisorspec" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ResourceSupervisorSpec
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#resourcesupervisorstatus" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ResourceSupervisorStatus
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#status" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Status
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -3444,49 +3622,242 @@ This documentation is either for an old version, or for the unreleased 'main' ve
   
 
 
-<h1 id="uninstalling">Uninstalling<a class="headerlink" href="#uninstalling" title="Permanent link">#</a></h1>
-<p>How to remove the Hibernation Operator. The method depends on how you installed
-it. Uninstalling the operator does <strong>not</strong> wake any sleeping workloads on its
-own — see <a href="#clean-up-custom-resources">Clean up custom resources</a> below.</p>
-<h2 id="helm">Helm<a class="headerlink" href="#helm" title="Permanent link">#</a></h2>
-<p>Uninstall the Helm release:</p>
-<div class="highlight"><pre><span></span><code>helm<span class="w"> </span>uninstall<span class="w"> </span>hibernation-operator<span class="w"> </span>--namespace<span class="w"> </span>hibernation-operator-system
-</code></pre></div>
-<p>This removes the operator deployment, RBAC, and services. Optionally remove the
-namespace once it is empty:</p>
-<div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>delete<span class="w"> </span>namespace<span class="w"> </span>hibernation-operator-system
-</code></pre></div>
-<h2 id="openshift-olm">OpenShift (OLM)<a class="headerlink" href="#openshift-olm" title="Permanent link">#</a></h2>
-<p>If you installed via the OpenShift OperatorHub:</p>
-<ol>
-<li>In the web console, go to <strong>Operators → Installed Operators</strong>.</li>
-<li>Select <strong>Hibernation Operator</strong> and choose <strong>Uninstall Operator</strong>.</li>
-</ol>
-<p>Or with the CLI, delete the <code>Subscription</code> and <code>ClusterServiceVersion</code>:</p>
-<div class="highlight"><pre><span></span><code>oc<span class="w"> </span>delete<span class="w"> </span>subscription<span class="w"> </span>hibernation-operator<span class="w"> </span>-n<span class="w"> </span>&lt;install-namespace&gt;
-oc<span class="w"> </span>delete<span class="w"> </span>csv<span class="w"> </span>-n<span class="w"> </span>&lt;install-namespace&gt;<span class="w"> </span>-l<span class="w"> </span>operators.coreos.com/hibernation-operator.&lt;install-namespace&gt;
-</code></pre></div>
-<p>See <a href="installation/openshift.html">Installation › OpenShift OperatorHub</a> for the
-install-namespace you used.</p>
-<h2 id="clean-up-custom-resources">Clean up custom resources<a class="headerlink" href="#clean-up-custom-resources" title="Permanent link">#</a></h2>
-<p>Uninstalling the operator leaves your custom resources and their CRDs in place.
-Before deleting the CRDs, wake any workloads you still need, then remove the
-resources:</p>
-<div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>delete<span class="w"> </span>clusterresourcesupervisors.hibernation.stakater.com<span class="w"> </span>--all
-kubectl<span class="w"> </span>delete<span class="w"> </span>resourcesupervisors.hibernation.stakater.com<span class="w"> </span>--all<span class="w"> </span>--all-namespaces
-</code></pre></div>
-<p>To remove the CRDs entirely (this deletes <strong>all</strong> remaining instances of these
-resources):</p>
-<div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>delete<span class="w"> </span>crd<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>resourcesupervisors.hibernation.stakater.com<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>clusterresourcesupervisors.hibernation.stakater.com
-</code></pre></div>
-<blockquote>
-<p>Deleting a <code>ResourceSupervisor</code> or <code>ClusterResourceSupervisor</code> stops it
-from managing its targets, but workloads currently scaled to zero are not
-automatically restored unless the resource is deleted while a wake is due.
-Scale any needed workloads back up manually if required.</p>
-</blockquote>
+<!-- markdownlint-disable --><h1 id="api-reference">API Reference<a class="headerlink" href="#api-reference" title="Permanent link">#</a></h1>
+<h2 id="packages">Packages<a class="headerlink" href="#packages" title="Permanent link">#</a></h2>
+<ul>
+<li><a href="#hibernationstakatercomv1beta1">hibernation.stakater.com/v1beta1</a></li>
+</ul>
+<h2 id="hibernationstakatercomv1beta1">hibernation.stakater.com/v1beta1<a class="headerlink" href="#hibernationstakatercomv1beta1" title="Permanent link">#</a></h2>
+<h3 id="resource-types">Resource Types<a class="headerlink" href="#resource-types" title="Permanent link">#</a></h3>
+<ul>
+<li><a href="#clusterresourcesupervisor">ClusterResourceSupervisor</a></li>
+<li><a href="#resourcesupervisor">ResourceSupervisor</a></li>
+</ul>
+<h4 id="clusterresourcesupervisor">ClusterResourceSupervisor<a class="headerlink" href="#clusterresourcesupervisor" title="Permanent link">#</a></h4>
+<p>ClusterResourceSupervisor is the Schema for the resourcesupervisors API</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Description</th>
+<th>Default</th>
+<th>Validation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>apiVersion</code> <em>string</em></td>
+<td><code>hibernation.stakater.com/v1beta1</code></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><code>kind</code> <em>string</em></td>
+<td><code>ClusterResourceSupervisor</code></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><code>metadata</code> <em><a href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.30/#objectmeta-v1-meta">ObjectMeta</a></em></td>
+<td>Refer to Kubernetes API documentation for fields of <code>metadata</code>.</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><code>spec</code> <em><a href="#clusterresourcesupervisorspec">ClusterResourceSupervisorSpec</a></em></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><code>status</code> <em><a href="#clusterresourcesupervisorstatus">ClusterResourceSupervisorStatus</a></em></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h4 id="clusterresourcesupervisorspec">ClusterResourceSupervisorSpec<a class="headerlink" href="#clusterresourcesupervisorspec" title="Permanent link">#</a></h4>
+<p>ClusterResourceSupervisorSpec defines the desired state of ClusterResourceSupervisor</p>
+<p><em>Appears in:</em>
+- <a href="#clusterresourcesupervisor">ClusterResourceSupervisor</a></p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Description</th>
+<th>Default</th>
+<th>Validation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>schedule</code> <em>Hibernation</em></td>
+<td></td>
+<td></td>
+<td>Required: {} <br></td>
+</tr>
+<tr>
+<td><code>namespaces</code> <em>Namespaces</em></td>
+<td>Namespaces is a list of namespaces to which the schedule will be applied</td>
+<td></td>
+<td>Optional: {} <br></td>
+</tr>
+<tr>
+<td><code>argocd</code> <em>ArgoCDHibernation</em></td>
+<td>ArgoCD contains details about ArgoCD to which the schedule will be applied</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h4 id="clusterresourcesupervisorstatus">ClusterResourceSupervisorStatus<a class="headerlink" href="#clusterresourcesupervisorstatus" title="Permanent link">#</a></h4>
+<p>ClusterResourceSupervisorStatus defines the observed state of ClusterResourceSupervisor</p>
+<p><em>Appears in:</em>
+- <a href="#clusterresourcesupervisor">ClusterResourceSupervisor</a></p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Description</th>
+<th>Default</th>
+<th>Validation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>nextReconcileTime</code> <em><a href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.30/#time-v1-meta">Time</a></em></td>
+<td>NextReconcileTime contains the next time at which the namespace resources will sleep or wake up</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><code>currentStatus</code> <em><a href="#status">Status</a></em></td>
+<td>CurrentStatus shows the state the tenant's resources</td>
+<td></td>
+<td>Enum: [sleeping running error] <br></td>
+</tr>
+<tr>
+<td><code>sleepingNamespaces</code> <em>SleepingNamespace array</em></td>
+<td>SleepingResources contains the previous states for each of the deployments currently scaled down</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><code>watchedNamespaces</code> <em>string array</em></td>
+<td>WatchedNamespaces contains the list of namespaces that are being watched by the ClusterResourceSupervisor</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><code>ignoreNamespaces</code> <em>string array</em></td>
+<td>IgnoreNamespaces contains the list of namespaces that are being ignored by the ClusterResourceSupervisor</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h4 id="resourcesupervisor">ResourceSupervisor<a class="headerlink" href="#resourcesupervisor" title="Permanent link">#</a></h4>
+<p>ResourceSupervisor is the Schema for the resourcesupervisors API</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Description</th>
+<th>Default</th>
+<th>Validation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>apiVersion</code> <em>string</em></td>
+<td><code>hibernation.stakater.com/v1beta1</code></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><code>kind</code> <em>string</em></td>
+<td><code>ResourceSupervisor</code></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><code>metadata</code> <em><a href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.30/#objectmeta-v1-meta">ObjectMeta</a></em></td>
+<td>Refer to Kubernetes API documentation for fields of <code>metadata</code>.</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><code>spec</code> <em><a href="#resourcesupervisorspec">ResourceSupervisorSpec</a></em></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><code>status</code> <em><a href="#resourcesupervisorstatus">ResourceSupervisorStatus</a></em></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h4 id="resourcesupervisorspec">ResourceSupervisorSpec<a class="headerlink" href="#resourcesupervisorspec" title="Permanent link">#</a></h4>
+<p>ResourceSupervisorSpec defines the desired state of ResourceSupervisor API</p>
+<p><em>Appears in:</em>
+- <a href="#resourcesupervisor">ResourceSupervisor</a></p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Description</th>
+<th>Default</th>
+<th>Validation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>schedule</code> <em>Hibernation</em></td>
+<td></td>
+<td></td>
+<td>Required: {} <br></td>
+</tr>
+</tbody>
+</table>
+<h4 id="resourcesupervisorstatus">ResourceSupervisorStatus<a class="headerlink" href="#resourcesupervisorstatus" title="Permanent link">#</a></h4>
+<p>ResourceSupervisorStatus defines the observed state of ResourceSupervisor</p>
+<p><em>Appears in:</em>
+- <a href="#resourcesupervisor">ResourceSupervisor</a></p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Description</th>
+<th>Default</th>
+<th>Validation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>nextReconcileTime</code> <em><a href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.30/#time-v1-meta">Time</a></em></td>
+<td>NextReconcileTime contains the next time at which the namespace resources will sleep or wake up</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><code>currentStatus</code> <em><a href="#status">Status</a></em></td>
+<td>CurrentStatus shows the state the tenant's resources</td>
+<td></td>
+<td>Enum: [sleeping running error] <br></td>
+</tr>
+</tbody>
+</table>
+<h4 id="status">Status<a class="headerlink" href="#status" title="Permanent link">#</a></h4>
+<p><em>Underlying type:</em> <em>string</em></p>
+<p><em>Validation:</em>
+- Enum: [sleeping running error]</p>
+<p><em>Appears in:</em>
+- <a href="#clusterresourcesupervisorstatus">ClusterResourceSupervisorStatus</a>
+- <a href="#resourcesupervisorstatus">ResourceSupervisorStatus</a></p>
 
 
 

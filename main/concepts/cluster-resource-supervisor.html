@@ -5,13 +5,13 @@
       
       
       
-        <link rel="canonical" href="https://docs.stakater.com/hibernation-operator-docs/main/getting-started/uninstalling.html">
+        <link rel="canonical" href="https://docs.stakater.com/hibernation-operator-docs/main/concepts/cluster-resource-supervisor.html">
       
       
-        <link rel="prev" href="installation/kubernetes.html">
+        <link rel="prev" href="resource-supervisor.html">
       
       
-        <link rel="next" href="../guides/create-resource-supervisor.html">
+        <link rel="next" href="../getting-started/quick-start.html">
       
       
         
@@ -22,7 +22,7 @@
     
     
       
-        <title>Uninstalling - Hibernation Operator</title>
+        <title>ClusterResourceSupervisor - Hibernation Operator</title>
       
     
     
@@ -95,7 +95,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#uninstalling" class="md-skip">
+        <a href="#clusterresourcesupervisor" class="md-skip">
           Skip to content
         </a>
       
@@ -2180,18 +2180,20 @@ This documentation is either for an old version, or for the unreleased 'main' ve
       
   
   
+    
   
   
+  
     
     
     
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2">
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked="">
         
           
           <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
@@ -2212,7 +2214,7 @@ This documentation is either for an old version, or for the unreleased 'main' ve
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_2">
             <span class="md-nav__icon md-icon"></span>
             
@@ -2230,7 +2232,7 @@ This documentation is either for an old version, or for the unreleased 'main' ve
   
   
     <li class="md-nav__item">
-      <a href="../concepts/architecture.html" class="md-nav__link">
+      <a href="architecture.html" class="md-nav__link">
         
   
   
@@ -2258,7 +2260,7 @@ This documentation is either for an old version, or for the unreleased 'main' ve
   
   
     <li class="md-nav__item">
-      <a href="../concepts/terminology.html" class="md-nav__link">
+      <a href="terminology.html" class="md-nav__link">
         
   
   
@@ -2286,7 +2288,7 @@ This documentation is either for an old version, or for the unreleased 'main' ve
   
   
     <li class="md-nav__item">
-      <a href="../concepts/resource-supervisor.html" class="md-nav__link">
+      <a href="resource-supervisor.html" class="md-nav__link">
         
   
   
@@ -2311,10 +2313,37 @@ This documentation is either for an old version, or for the unreleased 'main' ve
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../concepts/cluster-resource-supervisor.html" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ClusterResourceSupervisor
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="cluster-resource-supervisor.html" class="md-nav__link md-nav__link--active">
         
   
   
@@ -2330,6 +2359,116 @@ This documentation is either for an old version, or for the unreleased 'main' ve
   
 
       </a>
+      
+        
+
+  
+
+<nav class="md-nav md-nav--secondary" aria-label="On this page">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      On this page
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+      
+        <li class="md-nav__item">
+  <a href="#selecting-namespaces" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Selecting namespaces
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#scheduling" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Scheduling
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#exclusions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exclusions
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#overlap-between-supervisors" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Overlap between supervisors
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#argocd-sync-windows" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ArgoCD sync windows
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#status" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Status
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#choosing-between-the-two" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Choosing between the two
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#related-guides" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Related guides
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -2346,20 +2485,18 @@ This documentation is either for an old version, or for the unreleased 'main' ve
       
   
   
-    
   
   
-  
     
     
     
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked="">
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3">
         
           
           <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
@@ -2380,7 +2517,7 @@ This documentation is either for an old version, or for the unreleased 'main' ve
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_3">
             <span class="md-nav__icon md-icon"></span>
             
@@ -2398,7 +2535,7 @@ This documentation is either for an old version, or for the unreleased 'main' ve
   
   
     <li class="md-nav__item">
-      <a href="quick-start.html" class="md-nav__link">
+      <a href="../getting-started/quick-start.html" class="md-nav__link">
         
   
   
@@ -2473,7 +2610,7 @@ This documentation is either for an old version, or for the unreleased 'main' ve
   
   
     <li class="md-nav__item">
-      <a href="installation/overview.html" class="md-nav__link">
+      <a href="../getting-started/installation/overview.html" class="md-nav__link">
         
   
   
@@ -2501,7 +2638,7 @@ This documentation is either for an old version, or for the unreleased 'main' ve
   
   
     <li class="md-nav__item">
-      <a href="installation/openshift.html" class="md-nav__link">
+      <a href="../getting-started/installation/openshift.html" class="md-nav__link">
         
   
   
@@ -2529,7 +2666,7 @@ This documentation is either for an old version, or for the unreleased 'main' ve
   
   
     <li class="md-nav__item">
-      <a href="installation/kubernetes.html" class="md-nav__link">
+      <a href="../getting-started/installation/kubernetes.html" class="md-nav__link">
         
   
   
@@ -2562,37 +2699,10 @@ This documentation is either for an old version, or for the unreleased 'main' ve
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Uninstalling
-  
-
-    
-  </span>
-  
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="uninstalling.html" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../getting-started/uninstalling.html" class="md-nav__link">
         
   
   
@@ -2608,61 +2718,6 @@ This documentation is either for an old version, or for the unreleased 'main' ve
   
 
       </a>
-      
-        
-
-  
-
-<nav class="md-nav md-nav--secondary" aria-label="On this page">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      On this page
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
-      
-        <li class="md-nav__item">
-  <a href="#helm" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Helm
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#openshift-olm" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        OpenShift (OLM)
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#clean-up-custom-resources" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Clean up custom resources
-      
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -3392,10 +3447,10 @@ This documentation is either for an old version, or for the unreleased 'main' ve
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
       
         <li class="md-nav__item">
-  <a href="#helm" class="md-nav__link">
+  <a href="#selecting-namespaces" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Helm
+        Selecting namespaces
       
     </span>
   </a>
@@ -3403,10 +3458,10 @@ This documentation is either for an old version, or for the unreleased 'main' ve
 </li>
       
         <li class="md-nav__item">
-  <a href="#openshift-olm" class="md-nav__link">
+  <a href="#scheduling" class="md-nav__link">
     <span class="md-ellipsis">
       
-        OpenShift (OLM)
+        Scheduling
       
     </span>
   </a>
@@ -3414,10 +3469,65 @@ This documentation is either for an old version, or for the unreleased 'main' ve
 </li>
       
         <li class="md-nav__item">
-  <a href="#clean-up-custom-resources" class="md-nav__link">
+  <a href="#exclusions" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Clean up custom resources
+        Exclusions
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#overlap-between-supervisors" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Overlap between supervisors
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#argocd-sync-windows" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ArgoCD sync windows
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#status" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Status
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#choosing-between-the-two" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Choosing between the two
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#related-guides" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Related guides
       
     </span>
   </a>
@@ -3444,49 +3554,117 @@ This documentation is either for an old version, or for the unreleased 'main' ve
   
 
 
-<h1 id="uninstalling">Uninstalling<a class="headerlink" href="#uninstalling" title="Permanent link">#</a></h1>
-<p>How to remove the Hibernation Operator. The method depends on how you installed
-it. Uninstalling the operator does <strong>not</strong> wake any sleeping workloads on its
-own — see <a href="#clean-up-custom-resources">Clean up custom resources</a> below.</p>
-<h2 id="helm">Helm<a class="headerlink" href="#helm" title="Permanent link">#</a></h2>
-<p>Uninstall the Helm release:</p>
-<div class="highlight"><pre><span></span><code>helm<span class="w"> </span>uninstall<span class="w"> </span>hibernation-operator<span class="w"> </span>--namespace<span class="w"> </span>hibernation-operator-system
+<h1 id="clusterresourcesupervisor">ClusterResourceSupervisor<a class="headerlink" href="#clusterresourcesupervisor" title="Permanent link">#</a></h1>
+<p>A <code>ClusterResourceSupervisor</code> applies one hibernation schedule to a group of namespaces. It is cluster-scoped and intended for platform teams parking development, test, or preview environments at scale. For a single namespace managed by the team that owns it, use a <a href="resource-supervisor.html">ResourceSupervisor</a>.</p>
+<p>As with the namespace-scoped resource, only <code>Deployments</code> and <code>StatefulSets</code> are affected.</p>
+<p>For the complete field listing, see the <a href="../reference/api.html">API Reference</a>.</p>
+<h2 id="selecting-namespaces">Selecting namespaces<a class="headerlink" href="#selecting-namespaces" title="Permanent link">#</a></h2>
+<p>Namespaces come from <code>spec.namespaces</code>, by explicit name, by label selector, or both. The results are combined, so a namespace selected either way is hibernated.</p>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">hibernation.stakater.com/v1beta1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ClusterResourceSupervisor</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dev-environments-hibernation</span>
+<span class="nt">spec</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">namespaces</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">names</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">legacy-staging</span>
+<span class="w">    </span><span class="nt">labelSelector</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">matchLabels</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">env</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dev</span>
+<span class="w">  </span><span class="nt">schedule</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">sleepSchedule</span><span class="p">:</span><span class="w"> </span><span class="s">"0</span><span class="nv"> </span><span class="s">18</span><span class="nv"> </span><span class="s">*</span><span class="nv"> </span><span class="s">*</span><span class="nv"> </span><span class="s">1-5"</span>
+<span class="w">    </span><span class="nt">wakeSchedule</span><span class="p">:</span><span class="w"> </span><span class="s">"0</span><span class="nv"> </span><span class="s">8</span><span class="nv"> </span><span class="s">*</span><span class="nv"> </span><span class="s">*</span><span class="nv"> </span><span class="s">1-5"</span>
 </code></pre></div>
-<p>This removes the operator deployment, RBAC, and services. Optionally remove the
-namespace once it is empty:</p>
-<div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>delete<span class="w"> </span>namespace<span class="w"> </span>hibernation-operator-system
+<p><code>labelSelector</code> is a standard Kubernetes label selector, so <code>matchLabels</code> and <code>matchExpressions</code> both work and are combined with AND. It is re-evaluated on each reconcile, which is what lets namespaces created later be picked up without editing the resource.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>An empty <code>labelSelector: {}</code> matches no namespaces, not all of them, and a <code>ClusterResourceSupervisor</code> with no <code>spec.namespaces</code> at all hibernates nothing. To cover a broad set, apply a label the target namespaces share and select on that.</p>
+</div>
+<h2 id="scheduling">Scheduling<a class="headerlink" href="#scheduling" title="Permanent link">#</a></h2>
+<p><code>spec.schedule</code> behaves as it does for <code>ResourceSupervisor</code>: two five-field cron expressions evaluated in UTC. Setting both cycles the workloads, and omitting <code>wakeSchedule</code> sleeps them at the next sleep time and leaves them asleep.</p>
+<div class="highlight"><pre><span></span><code><span class="nt">spec</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">schedule</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">sleepSchedule</span><span class="p">:</span><span class="w"> </span><span class="s">"0</span><span class="nv"> </span><span class="s">22</span><span class="nv"> </span><span class="s">*</span><span class="nv"> </span><span class="s">*</span><span class="nv"> </span><span class="s">*"</span>
+<span class="w">    </span><span class="nt">wakeSchedule</span><span class="p">:</span><span class="w"> </span><span class="s">"0</span><span class="nv"> </span><span class="s">6</span><span class="nv"> </span><span class="s">*</span><span class="nv"> </span><span class="s">*</span><span class="nv"> </span><span class="s">*"</span>
 </code></pre></div>
-<h2 id="openshift-olm">OpenShift (OLM)<a class="headerlink" href="#openshift-olm" title="Permanent link">#</a></h2>
-<p>If you installed via the OpenShift OperatorHub:</p>
-<ol>
-<li>In the web console, go to <strong>Operators → Installed Operators</strong>.</li>
-<li>Select <strong>Hibernation Operator</strong> and choose <strong>Uninstall Operator</strong>.</li>
-</ol>
-<p>Or with the CLI, delete the <code>Subscription</code> and <code>ClusterServiceVersion</code>:</p>
-<div class="highlight"><pre><span></span><code>oc<span class="w"> </span>delete<span class="w"> </span>subscription<span class="w"> </span>hibernation-operator<span class="w"> </span>-n<span class="w"> </span>&lt;install-namespace&gt;
-oc<span class="w"> </span>delete<span class="w"> </span>csv<span class="w"> </span>-n<span class="w"> </span>&lt;install-namespace&gt;<span class="w"> </span>-l<span class="w"> </span>operators.coreos.com/hibernation-operator.&lt;install-namespace&gt;
+<h2 id="exclusions">Exclusions<a class="headerlink" href="#exclusions" title="Permanent link">#</a></h2>
+<p>Two filters run after selection, and a namespace caught by either is reported in <code>status.ignoreNamespaces</code> rather than hibernated:</p>
+<ul>
+<li>The namespace is annotated <code>hibernation.stakater.com/exclude: "true"</code>.</li>
+<li>The namespace is the one the operator itself runs in.</li>
+</ul>
+<p>The annotation is how an individual team opts out of a platform-wide policy without needing the selector changed.</p>
+<h2 id="overlap-between-supervisors">Overlap between supervisors<a class="headerlink" href="#overlap-between-supervisors" title="Permanent link">#</a></h2>
+<p>The admission webhook rejects a <code>ClusterResourceSupervisor</code> that claims a namespace already claimed by another one, and also rejects duplicate names within a single resource. Two cluster-scoped supervisors therefore cannot fight over the same namespace.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>That check does not extend to <code>ResourceSupervisor</code>. A namespace can hold its own <code>ResourceSupervisor</code> while also being selected here, and both controllers will then act on the same workloads on their own schedules. Exclude the namespace with the annotation if it should manage itself.</p>
+</div>
+<h2 id="argocd-sync-windows">ArgoCD sync windows<a class="headerlink" href="#argocd-sync-windows" title="Permanent link">#</a></h2>
+<p>Workloads managed by ArgoCD present a problem: scaling them to zero is drift from Git, and ArgoCD will scale them back up. The <code>spec.argocd</code> field addresses this by writing a <code>deny</code> sync window onto the AppProjects you name, covering the sleep schedule and its computed duration.</p>
+<div class="highlight"><pre><span></span><code><span class="nt">spec</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">namespaces</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">labelSelector</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">matchLabels</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">team</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">frontend</span>
+<span class="w">  </span><span class="nt">argocd</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">argocd</span>
+<span class="w">    </span><span class="nt">appProjects</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">frontend-team</span>
+<span class="w">  </span><span class="nt">schedule</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">sleepSchedule</span><span class="p">:</span><span class="w"> </span><span class="s">"0</span><span class="nv"> </span><span class="s">22</span><span class="nv"> </span><span class="s">*</span><span class="nv"> </span><span class="s">*</span><span class="nv"> </span><span class="s">*"</span>
+<span class="w">    </span><span class="nt">wakeSchedule</span><span class="p">:</span><span class="w"> </span><span class="s">"0</span><span class="nv"> </span><span class="s">6</span><span class="nv"> </span><span class="s">*</span><span class="nv"> </span><span class="s">*</span><span class="nv"> </span><span class="s">*"</span>
 </code></pre></div>
-<p>See <a href="installation/openshift.html">Installation › OpenShift OperatorHub</a> for the
-install-namespace you used.</p>
-<h2 id="clean-up-custom-resources">Clean up custom resources<a class="headerlink" href="#clean-up-custom-resources" title="Permanent link">#</a></h2>
-<p>Uninstalling the operator leaves your custom resources and their CRDs in place.
-Before deleting the CRDs, wake any workloads you still need, then remove the
-resources:</p>
-<div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>delete<span class="w"> </span>clusterresourcesupervisors.hibernation.stakater.com<span class="w"> </span>--all
-kubectl<span class="w"> </span>delete<span class="w"> </span>resourcesupervisors.hibernation.stakater.com<span class="w"> </span>--all<span class="w"> </span>--all-namespaces
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p><code>spec.argocd</code> does not select namespaces. It suppresses syncing for the AppProjects listed, nothing more, and the namespaces to hibernate still come entirely from <code>spec.namespaces</code>. A resource with <code>argocd</code> but no <code>namespaces</code> writes sync windows and hibernates nothing.</p>
+</div>
+<p>Two further constraints:</p>
+<ul>
+<li>The operator replaces <code>spec.syncWindows</code> on each named AppProject rather than appending, so any sync windows maintained there by other means are overwritten.</li>
+<li>The ArgoCD <code>AppProject</code> CRD must be present. If it is absent the operator logs that and continues hibernating without touching ArgoCD.</li>
+</ul>
+<h2 id="status">Status<a class="headerlink" href="#status" title="Permanent link">#</a></h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Shows</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>currentStatus</code></td>
+<td><code>running</code>, <code>sleeping</code>, or <code>error</code></td>
+</tr>
+<tr>
+<td><code>watchedNamespaces</code></td>
+<td>Namespaces currently being managed</td>
+</tr>
+<tr>
+<td><code>ignoreNamespaces</code></td>
+<td>Selected namespaces filtered out by the exclusions above</td>
+</tr>
+<tr>
+<td><code>sleepingNamespaces</code></td>
+<td>Per-namespace detail of scaled-down workloads and their original replica counts</td>
+</tr>
+<tr>
+<td><code>nextReconcileTime</code></td>
+<td>Next scheduled sleep or wake</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>get<span class="w"> </span>clusterresourcesupervisor<span class="w"> </span>dev-environments-hibernation<span class="w"> </span>-o<span class="w"> </span><span class="nv">jsonpath</span><span class="o">=</span><span class="s1">'{.status}'</span>
 </code></pre></div>
-<p>To remove the CRDs entirely (this deletes <strong>all</strong> remaining instances of these
-resources):</p>
-<div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>delete<span class="w"> </span>crd<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>resourcesupervisors.hibernation.stakater.com<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>clusterresourcesupervisors.hibernation.stakater.com
-</code></pre></div>
-<blockquote>
-<p>Deleting a <code>ResourceSupervisor</code> or <code>ClusterResourceSupervisor</code> stops it
-from managing its targets, but workloads currently scaled to zero are not
-automatically restored unless the resource is deleted while a wake is due.
-Scale any needed workloads back up manually if required.</p>
-</blockquote>
+<p>When a namespace you expected is missing from <code>watchedNamespaces</code>, <code>ignoreNamespaces</code> is the first place to look.</p>
+<h2 id="choosing-between-the-two">Choosing between the two<a class="headerlink" href="#choosing-between-the-two" title="Permanent link">#</a></h2>
+<p>Use a <code>ResourceSupervisor</code> when a namespace should decide its own hibernation and the team owning it holds only namespace-level permissions. Use a <code>ClusterResourceSupervisor</code> when a platform team sets the policy across many namespaces, when the set is defined by labels and changes over time, or when ArgoCD sync windows need suppressing during sleep.</p>
+<h2 id="related-guides">Related guides<a class="headerlink" href="#related-guides" title="Permanent link">#</a></h2>
+<ul>
+<li><a href="../guides/create-cluster-resource-supervisor.html">Hibernate Workloads Across Multiple Namespaces</a></li>
+<li><a href="../guides/hibernate-resources.html">Hibernate a Tenant</a></li>
+</ul>
 
 
 
