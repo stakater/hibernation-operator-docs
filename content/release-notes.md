@@ -6,7 +6,7 @@ _**September 16, 2026**_
 
 ### Breaking Changes
 
-- `ResourceSupervisor` now records hibernated replica counts in `status.sleepingNamespaces` instead of the `hibernation.stakater.com/original-replicas` annotation on each workload, so GitOps controllers no longer report drift on hibernated workloads. Upgrading requires no action, as the first wake after upgrade restores anything still carrying the old annotation. Downgrading below this version while namespaces are asleep will leave workloads scaled to zero, so wait for a wake window or delete the `ResourceSupervisor` first.
+- `ResourceSupervisor` now records hibernated replica counts in `status.sleepingNamespaces` instead of the `hibernation.stakater.com/original-replicas` annotation on each workload, so GitOps controllers no longer report drift on hibernated workloads. Upgrading requires no action, as the first wake after upgrade restores anything still carrying the old annotation. 
 
 ### Bug Fixes
 
