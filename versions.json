@@ -92,7 +92,9 @@
   {
     "version": "docs-mto-1.10-changelog",
     "title": "docs-mto-1.10-changelog",
-    "aliases": []
+    "aliases": [
+      "latest"
+    ]
   },
   {
     "version": "0.1-fix-for-RS-status",
