@@ -30,7 +30,7 @@ _**September 16, 2026**_
 
 #### Enhancements
 
-- ArgoCD upgraded to `v3.3.12` and Go to 1.25, along with security updates.
+- Dependency and security updates.
 
 ### v0.1.103
 
