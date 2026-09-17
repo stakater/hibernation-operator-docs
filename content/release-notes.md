@@ -6,7 +6,7 @@ _**September 16, 2026**_
 
 ### Breaking Changes
 
-- `ResourceSupervisor` now records hibernated replica counts in `status.sleepingNamespaces` instead of the `hibernation.stakater.com/original-replicas` annotation on each workload, so GitOps controllers no longer report drift on hibernated workloads. Upgrading requires no action, as the first wake after upgrade restores anything still carrying the old annotation. 
+- `ResourceSupervisor` now records hibernated replica counts in `status.sleepingNamespaces` instead of the `hibernation.stakater.com/original-replicas` annotation on each workload, so GitOps controllers no longer report drift on hibernated workloads. Upgrading requires no action, as the first wake after upgrade restores anything still carrying the old annotation.
 
 ### Bug Fixes
 
@@ -28,7 +28,6 @@ _**September 16, 2026**_
 
 ### Enhancements
 
-- `ResourceSupervisor` and `ClusterResourceSupervisor` now share one reconciliation path, so both behave identically.
 - ArgoCD upgraded to `v3.3.12` and Go to 1.25, along with security updates.
 
 ## v0.1.103
