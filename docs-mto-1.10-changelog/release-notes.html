@@ -3550,7 +3550,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 <p><em><strong>September 16, 2026</strong></em></p>
 <h3 id="breaking-changes">Breaking Changes<a class="headerlink" href="#breaking-changes" title="Permanent link">#</a></h3>
 <ul>
-<li><code>ResourceSupervisor</code> now records hibernated replica counts in <code>status.sleepingNamespaces</code> instead of the <code>hibernation.stakater.com/original-replicas</code> annotation on each workload, so GitOps controllers no longer report drift on hibernated workloads. Upgrading requires no action, as the first wake after upgrade restores anything still carrying the old annotation. Downgrading below this version while namespaces are asleep will leave workloads scaled to zero, so wait for a wake window or delete the <code>ResourceSupervisor</code> first.</li>
+<li><code>ResourceSupervisor</code> now records hibernated replica counts in <code>status.sleepingNamespaces</code> instead of the <code>hibernation.stakater.com/original-replicas</code> annotation on each workload, so GitOps controllers no longer report drift on hibernated workloads. Upgrading requires no action, as the first wake after upgrade restores anything still carrying the old annotation. </li>
 </ul>
 <h3 id="bug-fixes">Bug Fixes<a class="headerlink" href="#bug-fixes" title="Permanent link">#</a></h3>
 <ul>
