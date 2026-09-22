@@ -28,7 +28,7 @@ is provided to scrape the endpoint:
   (`control-plane: hibernation-controller-manager`,
   `app.kubernetes.io/name: hibernation-operator`)
 
-> ⚠️ By default the `ServiceMonitor` uses `insecureSkipVerify: true`. For
+> By default the `ServiceMonitor` uses `insecureSkipVerify: true`. For
 > production, enable cert-manager and reference a managed certificate so
 > Prometheus verifies the metrics server's TLS certificate.
 

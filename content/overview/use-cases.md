@@ -1,6 +1,6 @@
 # Use Cases
 
-## ✅ **`ClusterResourceSupervisor` – Cluster-Scoped Hibernation**
+## `ClusterResourceSupervisor` – Cluster-Scoped Hibernation
 
 ### 1. **Platform Team Managing Dev/Test Environments**
 
@@ -24,7 +24,7 @@
 
 ---
 
-## ✅ **`ResourceSupervisor` – Namespace-Scoped Hibernation**
+## `ResourceSupervisor` – Namespace-Scoped Hibernation
 
 ### 1. **Application Team Self-Service Hibernation**
 
@@ -48,7 +48,7 @@
 
 ---
 
-## 🔄 Complementary Use Case: **Hybrid Governance**
+## Complementary Use Case: **Hybrid Governance**
 
 > **Scenario**: Your platform provides a default hibernation policy for all `env=dev` namespaces via `ClusterResourceSupervisor`, **but** allows teams to override it with a local `ResourceSupervisor` if they need custom behavior.
 > **Implementation**: Your operator is designed to **skip namespaces** that contain a `ResourceSupervisor`, giving precedence to namespace-scoped control. This enables both standardization and flexibility.

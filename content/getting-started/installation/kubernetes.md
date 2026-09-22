@@ -12,7 +12,7 @@ This document contains instructions for installing, uninstalling, and configurin
 * [kubectl](https://kubernetes.io/docs/tasks/tools/)  
 * *(Optional but recommended)* [cert-manager](https://cert-manager.io/docs/installation/) — required **only if you enable the webhook**
 
-> 💡 The Hibernation Operator uses admission webhooks for CR validation (e.g., cron format checks). If you disable the webhook (`webhook.create=false`), cert-manager is **not required**.
+> The Hibernation Operator uses admission webhooks for CR validation (e.g., cron format checks). If you disable the webhook (`webhook.create=false`), cert-manager is **not required**.
 
 ## Installing via Helm CLI
 
@@ -28,14 +28,15 @@ helm install hibernation-operator oci://ghcr.io/stakater/public/charts/hibernati
   --create-namespace
 ```
 
-* ✅ This installs
-* The **Hibernation Controller** (manages both `ClusterResourceSupervisor` and `ResourceSupervisor`)
-* The **Webhook** (for validation)
-* Required **RBAC**, **CRDs**, and **Service** resources
+This installs:
+
+* The Hibernation Controller, which manages both `ClusterResourceSupervisor` and `ResourceSupervisor`
+* The webhook, for admission validation
+* The required RBAC, CRDs, and Service resources
 
 ### Optional: Enable ArgoCD Integration
 
-If you use ArgoCD and want to target AppProjects, enable ArgoCD support:
+If your workloads are managed by ArgoCD, enable this so the operator can stop ArgoCD from syncing hibernated applications back up. See [ArgoCD Integration](../../integrations/argocd.md) for what it does and does not do:
 
 ```sh
 helm install hibernation-operator stakater/hibernation-operator \
@@ -53,8 +54,8 @@ kubectl get pods -n hibernation-operator-system --watch
 
 Once all pods are `Running`, you can begin creating hibernation policies:
 
-* [Create a ClusterResourceSupervisor](../../guides/create-cluster-resource-supervisor.md)  
-* [Create a ResourceSupervisor](../../guides/create-resource-supervisor.md)
+* [Hibernate Workloads Across Multiple Namespaces](../../guides/create-cluster-resource-supervisor.md)
+* [Hibernate Workloads in a Single Namespace](../../guides/create-resource-supervisor.md)
 
 ## Uninstall via Helm CLI
 
@@ -64,7 +65,7 @@ To uninstall the Hibernation Operator:
 helm uninstall hibernation-operator --namespace hibernation-operator-system
 ```
 
-> ⚠️ **Note**: This removes the operator and its RBAC, but **does not delete your CRs** (`ClusterResourceSupervisor`, `ResourceSupervisor`).  
+> **Note**: This removes the operator and its RBAC, but **does not delete your CRs** (`ClusterResourceSupervisor`, `ResourceSupervisor`).
 > If you want to fully clean up, delete any remaining CRs first:
 
 ```sh

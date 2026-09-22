@@ -1,10 +1,10 @@
 # Key Features
 
-## **1. `ClusterResourceSupervisor` (Cluster-Scoped)**
+## 1. `ClusterResourceSupervisor` (Cluster-Scoped)
 
 The `ClusterResourceSupervisor` enables **platform-level hibernation management** across multiple namespaces or ArgoCD AppProjects. Ideal for cluster administrators and GitOps-driven environments.
 
-### ✅ Key Features
+### Key Features
 
 - **Cluster-wide scope**: Applies hibernation policies across the entire cluster.
 - **Flexible namespace targeting**:
@@ -26,15 +26,15 @@ The `ClusterResourceSupervisor` enables **platform-level hibernation management*
         - Per-namespace and per-application status
     - `nextReconcileTime`: Predictable next action time (`ISO 8601 datetime`)
 
-> 💡 **Use Case**: Enforce cost-saving hibernation for all `env=dev` namespaces or all applications in the `platform-team` ArgoCD AppProject.
+> **Use Case**: Enforce cost-saving hibernation for all `env=dev` namespaces or all applications in the `platform-team` ArgoCD AppProject.
 
 ---
 
-## **2. `ResourceSupervisor` (Namespace-Scoped)**
+## 2. `ResourceSupervisor` (Namespace-Scoped)
 
 The `ResourceSupervisor` provides **self-service hibernation** within a single namespace. Designed for application teams who want autonomy without cluster-wide permissions.
 
-### ✅ Key Features
+### Key Features
 
 - **Namespace-scoped**: Only affects resources in the same namespace where the CR is created.
 - **Simple configuration**:
@@ -52,11 +52,11 @@ The `ResourceSupervisor` provides **self-service hibernation** within a single n
         - Original replica count (for accurate restoration)
         - Per-namespace and per-application status
 
-> 💡 **Use Case**: A development team creates a `ResourceSupervisor` in their `myapp-staging` namespace to sleep workloads every night and wake them each morning.
+> **Use Case**: A development team creates a `ResourceSupervisor` in their `myapp-staging` namespace to sleep workloads every night and wake them each morning.
 
 ---
 
-## 🎯 When to Use Which?
+## When to Use Which?
 
 | Scenario | Recommended CRD |
 |--------|------------------|

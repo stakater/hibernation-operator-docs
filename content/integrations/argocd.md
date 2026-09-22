@@ -1,26 +1,32 @@
 # ArgoCD Integration
 
-The **Hibernation Operator** provides optional, native integration with **ArgoCD**, enabling platform teams to apply hibernation schedules based on **ArgoCD AppProjects**. This allows hibernation policies to align with GitOps application boundaries rather than infrastructure namespaces—ideal for organizations using ArgoCD for declarative application delivery.
+When workloads are managed by ArgoCD, hibernation and GitOps pull in opposite directions. Scaling a `Deployment` to zero is drift from the desired state in Git, so ArgoCD syncs it back up and the workloads never stay asleep.
 
-> 💡 **Note**: ArgoCD integration is **optional** and must be explicitly enabled during installation.
+The Hibernation Operator resolves this by writing a `deny` sync window onto the ArgoCD `AppProject`s you name, covering the sleep period. ArgoCD then leaves those applications alone while they are hibernated, and resumes normal syncing afterwards.
 
-## How It Works
+!!! warning
+    `spec.argocd` does not choose which namespaces to hibernate. It only suppresses ArgoCD syncing. The namespaces still come entirely from `spec.namespaces`, and a `ClusterResourceSupervisor` with an `argocd` block but no `namespaces` block writes sync windows while hibernating nothing.
 
-When a `ClusterResourceSupervisor` specifies `argocd.appProjects`, the Hibernation Operator:
+The integration is optional and must be enabled at install time.
 
-1. **Discovers** all namespaces associated with the listed ArgoCD `AppProject`s (by reading the `AppProject.spec.destinations` field).
-1. **Applies hibernation** (scaling `Deployments`/`StatefulSets` to 0) to workloads in those namespaces according to the defined `sleepSchedule` and `wakeSchedule`.
-1. **Tracks state** in the CR’s `status.sleepingNamespaces` to ensure accurate restoration.
+## How it works
 
-This means you can hibernate entire application portfolios (e.g., `frontend-team`, `data-platform`) with a single policy—without manually listing namespaces.
+When a `ClusterResourceSupervisor` sets `spec.argocd`, the operator:
 
----
+1. Looks up each named `AppProject` in the namespace given by `spec.argocd.namespace`.
+1. Computes the sleep duration from `sleepSchedule` and `wakeSchedule`.
+1. Sets a single `deny` sync window on the AppProject, scheduled to match the sleep time and lasting that duration, with manual sync still permitted.
 
-## Enabling ArgoCD Integration
+Hibernation of the workloads themselves proceeds independently, driven by `spec.namespaces` as usual.
 
-### Step 1: Install Hibernation Operator with ArgoCD Support
+!!! warning
+    The operator replaces `spec.syncWindows` on each named AppProject rather than appending to it. Sync windows you maintain there by other means are overwritten. If you rely on existing sync windows, do not point the operator at that AppProject.
 
-During Helm installation, enable ArgoCD and specify the ArgoCD namespace:
+If the ArgoCD `AppProject` CRD is not present in the cluster, the operator logs that and continues hibernating without touching ArgoCD.
+
+## Enabling the integration
+
+Enable ArgoCD support and point the operator at the ArgoCD namespace during installation:
 
 ```sh
 helm install hibernation-operator oci://ghcr.io/stakater/public/charts/hibernation-operator \
@@ -30,9 +36,9 @@ helm install hibernation-operator oci://ghcr.io/stakater/public/charts/hibernati
   --set argoCD.namespace=argocd
 ```
 
-> ✅ The operator requires **read-only access** to `AppProject` resources in the ArgoCD namespace.
+## Using it
 
-### Step 2: Create a `ClusterResourceSupervisor` Targeting AppProjects
+Select the namespaces to hibernate as normal, and list the AppProjects whose syncing should be suppressed while they sleep:
 
 ```yaml
 apiVersion: hibernation.stakater.com/v1beta1
@@ -40,15 +46,18 @@ kind: ClusterResourceSupervisor
 metadata:
   name: argocd-hibernation-policy
 spec:
+  namespaces:
+    labelSelector:
+      matchLabels:
+        env: dev
   argocd:
-    namespace: argocd                # ← Namespace where ArgoCD is installed
-    appProjects:                     # ← List of AppProject names
+    namespace: argocd          # Namespace where the AppProjects live
+    appProjects:
       - frontend-team
       - mobile-apps
-      - data-platform
   schedule:
-    sleepSchedule: "0 18 * * 1-5"   # Sleep weekdays at 6 PM UTC
-    wakeSchedule: "0 8 * * 1-5"     # Wake weekdays at 8 AM UTC
+    sleepSchedule: "0 18 * * 1-5"   # Sleep weekdays at 18:00 UTC
+    wakeSchedule: "0 8 * * 1-5"     # Wake weekdays at 08:00 UTC
 ```
 
 Apply it:
@@ -57,78 +66,43 @@ Apply it:
 kubectl apply -f cluster-resource-supervisor-argocd.yaml
 ```
 
-### Step 3: Verify Targeted Namespaces
+## Verifying
 
-Check the status to see which namespaces are being watched:
+Check which namespaces the policy actually manages. These come from `spec.namespaces`, not from the AppProjects:
 
 ```sh
 kubectl get clusterresourcesupervisor argocd-hibernation-policy -o jsonpath='{.status.watchedNamespaces}'
 ```
 
-Example output:
+Then confirm the sync window landed on the AppProject:
 
-```json
-["frontend-dev", "mobile-staging", "data-platform-prod"]
+```sh
+kubectl get appproject frontend-team -n argocd -o jsonpath='{.spec.syncWindows}'
 ```
 
-These are the namespaces defined in the `destinations` of the specified AppProjects.
+You should see a single entry with `kind: deny` and a schedule matching your `sleepSchedule`.
 
----
+## Permissions
 
-## Key Benefits
-
-| Benefit | Description |
-|--------|-------------|
-| **GitOps-Aligned Hibernation** | Hibernation follows application ownership (via AppProjects), not manual namespace lists. |
-| **Dynamic Namespace Discovery** | New namespaces added to an AppProject are **automatically included** in hibernation. |
-| **No Duplication** | Avoid maintaining separate namespace lists in both ArgoCD and hibernation policies. |
-| **Safe & Observable** | Original replica counts are preserved; status shows exactly which apps are sleeping. |
-
----
-
-## Requirements & Permissions
-
-- ArgoCD must be installed in the cluster (typically in the `argocd` namespace).
-- The Hibernation Operator needs the following RBAC (automatically included when `argoCD.enabled=true`):
+ArgoCD must be installed, and the operator's ServiceAccount needs to read and modify AppProjects in the ArgoCD namespace, since writing the sync window is a patch rather than a read:
 
 ```yaml
 - apiGroups: ["argoproj.io"]
   resources: ["appprojects"]
-  verbs: ["get", "list", "watch"]
+  verbs: ["get", "list", "watch", "update", "patch"]
 ```
 
-> 🔒 The operator **never modifies** ArgoCD resources—it only reads `AppProject` definitions.
+## Troubleshooting
 
----
+| Symptom | Check |
+| --- | --- |
+| No sync window appears on the AppProject | The name in `appProjects` matches the `AppProject` resource name exactly, and `spec.argocd.namespace` is the namespace it lives in. Both are case-sensitive. |
+| Sync window exists but nothing hibernates | `spec.namespaces` is set. The `argocd` block alone selects no namespaces. |
+| Namespace missing from `status.watchedNamespaces` | `status.ignoreNamespaces`, which lists namespaces filtered out by the `hibernation.stakater.com/exclude` annotation or because they are the operator's own namespace. |
+| Workloads wake up during the sleep window | The sync window was overwritten, or the application belongs to an AppProject not listed in `spec.argocd.appProjects`. |
+| Permission errors in the operator log | The ServiceAccount has `update` and `patch` on `appprojects.argoproj.io`, not only read verbs. |
 
-## Combining with Other Targeting Methods
+## Related pages
 
-You can **combine** ArgoCD targeting with explicit namespaces or label selectors:
-
-```yaml
-spec:
-  argocd:
-    namespace: argocd
-    appProjects: ["frontend-team"]
-  namespaces:
-    names: ["legacy-staging"]
-    labelSelector:
-      matchLabels:
-        env: dev
-```
-
-In this case, hibernation applies to:
-
-- All namespaces in the `frontend-team` AppProject **plus**
-- The `legacy-staging` namespace **plus**
-- Any namespace with label `env=dev`
-
-> 🔄 The union of all targeting methods is used.
-
----
-
-## Troubleshooting Tips
-
-- **AppProject not found?** Ensure the `appProjects` names **exactly match** the `AppProject` resource names (case-sensitive).
-- **Namespace not hibernating?** Verify the namespace appears in `AppProject.spec.destinations`.
-- **Permission errors?** Check that the operator’s ServiceAccount has `get/list/watch` on `appprojects.argoproj.io`.
+- [ClusterResourceSupervisor](../concepts/cluster-resource-supervisor.md)
+- [Hibernate Workloads Across Multiple Namespaces](../guides/create-cluster-resource-supervisor.md)
