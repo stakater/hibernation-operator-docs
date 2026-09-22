@@ -5,13 +5,13 @@
       
       
       
-        <link rel="canonical" href="https://docs.stakater.com/hibernation-operator-docs/0.1/overview/benefits.html">
+        <link rel="canonical" href="https://docs.stakater.com/hibernation-operator-docs/0.1/concepts/resource-supervisor.html">
       
       
-        <link rel="prev" href="use-cases.html">
+        <link rel="prev" href="terminology.html">
       
       
-        <link rel="next" href="../concepts/architecture.html">
+        <link rel="next" href="cluster-resource-supervisor.html">
       
       
         
@@ -22,7 +22,7 @@
     
     
       
-        <title>Benefits - Hibernation Operator</title>
+        <title>ResourceSupervisor - Hibernation Operator</title>
       
     
     
@@ -95,7 +95,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#benefits" class="md-skip">
+        <a href="#resourcesupervisor" class="md-skip">
           Skip to content
         </a>
       
@@ -2014,20 +2014,18 @@ This documentation is either for an old version, or for the unreleased 'main' ve
       
   
   
-    
   
   
-  
     
     
     
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1" checked="">
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1">
         
           
           <label class="md-nav__link" for="__nav_1" id="__nav_1_label" tabindex="0">
@@ -2048,7 +2046,7 @@ This documentation is either for an old version, or for the unreleased 'main' ve
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_1">
             <span class="md-nav__icon md-icon"></span>
             
@@ -2094,7 +2092,7 @@ This documentation is either for an old version, or for the unreleased 'main' ve
   
   
     <li class="md-nav__item">
-      <a href="key-features.html" class="md-nav__link">
+      <a href="../overview/key-features.html" class="md-nav__link">
         
   
   
@@ -2122,7 +2120,7 @@ This documentation is either for an old version, or for the unreleased 'main' ve
   
   
     <li class="md-nav__item">
-      <a href="use-cases.html" class="md-nav__link">
+      <a href="../overview/use-cases.html" class="md-nav__link">
         
   
   
@@ -2130,6 +2128,146 @@ This documentation is either for an old version, or for the unreleased 'main' ve
     
   
     Use Cases
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../overview/benefits.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Benefits
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked="">
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Concepts
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Concepts
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="architecture.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Architecture
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="terminology.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Concepts
   
 
     
@@ -2166,7 +2304,7 @@ This documentation is either for an old version, or for the unreleased 'main' ve
   <span class="md-ellipsis">
     
   
-    Benefits
+    ResourceSupervisor
   
 
     
@@ -2177,14 +2315,14 @@ This documentation is either for an old version, or for the unreleased 'main' ve
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <a href="benefits.html" class="md-nav__link md-nav__link--active">
+      <a href="resource-supervisor.html" class="md-nav__link md-nav__link--active">
         
   
   
   <span class="md-ellipsis">
     
   
-    Benefits
+    ResourceSupervisor
   
 
     
@@ -2212,10 +2350,60 @@ This documentation is either for an old version, or for the unreleased 'main' ve
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
       
         <li class="md-nav__item">
-  <a href="#benefits-of-clusterresourcesupervisor-cluster-scoped" class="md-nav__link">
+  <a href="#scheduling-modes" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Benefits of ClusterResourceSupervisor (Cluster-Scoped)
+        Scheduling modes
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Scheduling modes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#recurring-hibernation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Recurring hibernation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sleep-with-no-scheduled-wake" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Sleep with no scheduled wake
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#immediate-sleep" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Immediate sleep
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#replica-counts-and-restoration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Replica counts and restoration
       
     </span>
   </a>
@@ -2223,10 +2411,10 @@ This documentation is either for an old version, or for the unreleased 'main' ve
 </li>
       
         <li class="md-nav__item">
-  <a href="#benefits-of-resourcesupervisor-namespace-scoped" class="md-nav__link">
+  <a href="#exclusions" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Benefits of ResourceSupervisor (Namespace-Scoped)
+        Exclusions
       
     </span>
   </a>
@@ -2234,10 +2422,32 @@ This documentation is either for an old version, or for the unreleased 'main' ve
 </li>
       
         <li class="md-nav__item">
-  <a href="#when-to-use-which" class="md-nav__link">
+  <a href="#status" class="md-nav__link">
     <span class="md-ellipsis">
       
-        When to Use Which?
+        Status
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#differences-from-clusterresourcesupervisor" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Differences from ClusterResourceSupervisor
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#related-guides" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Related guides
       
     </span>
   </a>
@@ -2253,60 +2463,6 @@ This documentation is either for an old version, or for the unreleased 'main' ve
 
               
             
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    
-    
-    
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2">
-        
-          
-          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
-            
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Concepts
-  
-
-    
-  </span>
-  
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_2">
-            <span class="md-nav__icon md-icon"></span>
-            
-  
-    Concepts
-  
-
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix="">
-            
               
                 
   
@@ -2314,91 +2470,7 @@ This documentation is either for an old version, or for the unreleased 'main' ve
   
   
     <li class="md-nav__item">
-      <a href="../concepts/architecture.html" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Architecture
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../concepts/terminology.html" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Concepts
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../concepts/resource-supervisor.html" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    ResourceSupervisor
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../concepts/cluster-resource-supervisor.html" class="md-nav__link">
+      <a href="cluster-resource-supervisor.html" class="md-nav__link">
         
   
   
@@ -3392,10 +3464,60 @@ This documentation is either for an old version, or for the unreleased 'main' ve
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
       
         <li class="md-nav__item">
-  <a href="#benefits-of-clusterresourcesupervisor-cluster-scoped" class="md-nav__link">
+  <a href="#scheduling-modes" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Benefits of ClusterResourceSupervisor (Cluster-Scoped)
+        Scheduling modes
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Scheduling modes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#recurring-hibernation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Recurring hibernation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sleep-with-no-scheduled-wake" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Sleep with no scheduled wake
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#immediate-sleep" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Immediate sleep
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#replica-counts-and-restoration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Replica counts and restoration
       
     </span>
   </a>
@@ -3403,10 +3525,10 @@ This documentation is either for an old version, or for the unreleased 'main' ve
 </li>
       
         <li class="md-nav__item">
-  <a href="#benefits-of-resourcesupervisor-namespace-scoped" class="md-nav__link">
+  <a href="#exclusions" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Benefits of ResourceSupervisor (Namespace-Scoped)
+        Exclusions
       
     </span>
   </a>
@@ -3414,10 +3536,32 @@ This documentation is either for an old version, or for the unreleased 'main' ve
 </li>
       
         <li class="md-nav__item">
-  <a href="#when-to-use-which" class="md-nav__link">
+  <a href="#status" class="md-nav__link">
     <span class="md-ellipsis">
       
-        When to Use Which?
+        Status
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#differences-from-clusterresourcesupervisor" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Differences from ClusterResourceSupervisor
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#related-guides" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Related guides
       
     </span>
   </a>
@@ -3444,106 +3588,93 @@ This documentation is either for an old version, or for the unreleased 'main' ve
   
 
 
-<h1 id="benefits">Benefits<a class="headerlink" href="#benefits" title="Permanent link">#</a></h1>
-<h2 id="benefits-of-clusterresourcesupervisor-cluster-scoped">Benefits of <code>ClusterResourceSupervisor</code> (Cluster-Scoped)<a class="headerlink" href="#benefits-of-clusterresourcesupervisor-cluster-scoped" title="Permanent link">#</a></h2>
-<ol>
-<li><strong>Centralized Control</strong>  </li>
-<li>Enables cluster administrators to define <strong>global hibernation policies</strong> that apply across many namespaces or ArgoCD AppProjects.</li>
-<li>
-<p>Ideal for cost optimization in large environments (e.g., dev/test clusters that sleep nights and weekends).</p>
-</li>
-<li>
-<p><strong>Flexible Namespace Targeting</strong>  </p>
-</li>
-<li>Supports <strong>explicit namespace lists</strong> (<code>names</code>) <strong>and</strong> <strong>dynamic selection via label selectors</strong> (<code>matchLabels</code>, <code>matchExpressions</code>).</li>
-<li>
-<p>Allows automatic inclusion of new namespaces that match certain labels (e.g., <code>env: dev</code>).</p>
-</li>
-<li>
-<p><strong>ArgoCD Integration</strong>  </p>
-</li>
-<li>Can target <strong>ArgoCD AppProjects</strong>, enabling hibernation based on GitOps application boundaries.</li>
-<li>
-<p>Useful in GitOps workflows where applications are grouped into projects—no need to track individual namespaces.</p>
-</li>
-<li>
-<p><strong>Rich Observability &amp; auditability</strong>  </p>
-</li>
-<li>Detailed <code>status</code> includes:<ul>
-<li><code>watchedNamespaces</code> / <code>ignoreNamespaces</code></li>
-<li><code>sleepingNamespaces</code> with per-application replica counts and kinds (<code>Deployment</code>/<code>StatefulSet</code>)</li>
-</ul>
-</li>
-<li>
-<p>Helps operators debug, verify, and report on hibernation impact.</p>
-</li>
-<li>
-<p><strong>Cluster-Wide Efficiency</strong>  </p>
-</li>
-<li>One CR can manage dozens or hundreds of namespaces—reducing configuration sprawl.</li>
-</ol>
-<hr>
-<h2 id="benefits-of-resourcesupervisor-namespace-scoped">Benefits of <code>ResourceSupervisor</code> (Namespace-Scoped)<a class="headerlink" href="#benefits-of-resourcesupervisor-namespace-scoped" title="Permanent link">#</a></h2>
-<ol>
-<li><strong>Self-Service for Teams</strong>  </li>
-<li>Application owners or namespace tenants can define their <strong>own hibernation schedule</strong> without cluster-level permissions.</li>
-<li>
-<p>Empowers autonomy while still enabling cost savings.</p>
-</li>
-<li>
-<p><strong>Simplicity &amp; Low Overhead</strong>  </p>
-</li>
-<li>Minimal spec: only requires a <code>schedule</code> (sleep/wake cron expressions).</li>
-<li>
-<p>No need to understand label selectors, ArgoCD, or cross-namespace concerns.</p>
-</li>
-<li>
-<p><strong>Namespace Isolation</strong>  </p>
-</li>
-<li>Each namespace can have <strong>independent schedules</strong>—e.g., staging sleeps weekends, QA sleeps every night.</li>
-<li>
-<p>Avoids "one-size-fits-all" policies that may not suit all workloads.</p>
-</li>
-<li>
-<p><strong>Lightweight Status</strong>  </p>
-</li>
-<li>Status tracks only <code>currentStatus</code> and <code>nextReconcileTime</code>—sufficient for local use cases.</li>
-<li>
-<p>Reduces cognitive load and storage overhead.</p>
-</li>
-<li>
-<p><strong>RBAC-Friendly</strong>  </p>
-</li>
-<li>Can be managed by users with only <strong>namespace-level roles</strong> (e.g., <code>edit</code> or custom roles), improving security posture.</li>
-</ol>
-<hr>
-<h2 id="when-to-use-which">When to Use Which?<a class="headerlink" href="#when-to-use-which" title="Permanent link">#</a></h2>
+<h1 id="resourcesupervisor">ResourceSupervisor<a class="headerlink" href="#resourcesupervisor" title="Permanent link">#</a></h1>
+<p>A <code>ResourceSupervisor</code> hibernates the workloads in the namespace it lives in. It is namespace-scoped, so a team that owns a namespace can park its own workloads outside working hours without needing cluster-wide permissions. To cover a group of namespaces from one place, use a <a href="cluster-resource-supervisor.html">ClusterResourceSupervisor</a>.</p>
+<p>Only <code>Deployments</code> and <code>StatefulSets</code> are affected. Everything else in the namespace is left running.</p>
+<p>For the complete field listing, see the <a href="../reference/api.html">API Reference</a>.</p>
+<h2 id="scheduling-modes">Scheduling modes<a class="headerlink" href="#scheduling-modes" title="Permanent link">#</a></h2>
+<p>The <code>spec.schedule</code> block accepts two cron expressions, and which of them you set determines the behavior.</p>
 <table>
 <thead>
 <tr>
-<th>Need</th>
-<th>Solved By</th>
+<th><code>sleepSchedule</code></th>
+<th><code>wakeSchedule</code></th>
+<th>Behavior</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>Platform team managing 100 dev namespaces</td>
-<td><code>ClusterResourceSupervisor</code></td>
+<td>Set</td>
+<td>Set</td>
+<td>Workloads cycle between the two times</td>
 </tr>
 <tr>
-<td>Developer team wanting to hibernate their own namespace</td>
-<td><code>ResourceSupervisor</code></td>
+<td>Set</td>
+<td>Omitted</td>
+<td>Workloads sleep at the next sleep time and stay asleep</td>
 </tr>
 <tr>
-<td>GitOps-driven environment using ArgoCD AppProjects</td>
-<td><code>ClusterResourceSupervisor</code></td>
-</tr>
-<tr>
-<td>Avoiding privilege escalation for namespace owners</td>
-<td><code>ResourceSupervisor</code></td>
+<td>Omitted</td>
+<td>Omitted</td>
+<td>Workloads sleep immediately and stay asleep</td>
 </tr>
 </tbody>
 </table>
+<p>Both expressions use standard five-field Unix cron syntax (<code>minute hour day month weekday</code>) and are evaluated in UTC, not the cluster's local timezone.</p>
+<h3 id="recurring-hibernation">Recurring hibernation<a class="headerlink" href="#recurring-hibernation" title="Permanent link">#</a></h3>
+<p>Setting both schedules is the common case, parking an environment overnight and bringing it back in the morning.</p>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">hibernation.stakater.com/v1beta1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ResourceSupervisor</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">nightly-hibernation</span>
+<span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">my-app-staging</span>
+<span class="nt">spec</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">schedule</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">sleepSchedule</span><span class="p">:</span><span class="w"> </span><span class="s">"0</span><span class="nv"> </span><span class="s">20</span><span class="nv"> </span><span class="s">*</span><span class="nv"> </span><span class="s">*</span><span class="nv"> </span><span class="s">*"</span><span class="w">   </span><span class="c1"># Sleep daily at 20:00 UTC</span>
+<span class="w">    </span><span class="nt">wakeSchedule</span><span class="p">:</span><span class="w"> </span><span class="s">"0</span><span class="nv"> </span><span class="s">8</span><span class="nv"> </span><span class="s">*</span><span class="nv"> </span><span class="s">*</span><span class="nv"> </span><span class="s">*"</span><span class="w">     </span><span class="c1"># Wake daily at 08:00 UTC</span>
+</code></pre></div>
+<h3 id="sleep-with-no-scheduled-wake">Sleep with no scheduled wake<a class="headerlink" href="#sleep-with-no-scheduled-wake" title="Permanent link">#</a></h3>
+<p>Omitting <code>wakeSchedule</code> sleeps the workloads at the next sleep time and leaves them there. The operator still reconciles at each subsequent sleep time, so workloads added to the namespace later are hibernated too rather than being left running.</p>
+<div class="highlight"><pre><span></span><code><span class="nt">spec</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">schedule</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">sleepSchedule</span><span class="p">:</span><span class="w"> </span><span class="s">"0</span><span class="nv"> </span><span class="s">12</span><span class="nv"> </span><span class="s">*</span><span class="nv"> </span><span class="s">*</span><span class="nv"> </span><span class="s">*"</span><span class="w">   </span><span class="c1"># Sleep at the next 12:00 UTC, no wake</span>
+</code></pre></div>
+<p>To bring the workloads back, add a <code>wakeSchedule</code> or delete the resource.</p>
+<h3 id="immediate-sleep">Immediate sleep<a class="headerlink" href="#immediate-sleep" title="Permanent link">#</a></h3>
+<p>An empty schedule sleeps the workloads as soon as the resource is created, and reconciles hourly to catch anything new. This suits ephemeral environments such as CI preview namespaces, where the namespace should be parked from the moment it exists.</p>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">hibernation.stakater.com/v1beta1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ResourceSupervisor</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">sleep-now</span>
+<span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ci-preview-pr123</span>
+<span class="nt">spec</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">schedule</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{}</span>
+</code></pre></div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Setting <code>wakeSchedule</code> without <code>sleepSchedule</code> is not a supported combination and the operator does not act on it.</p>
+</div>
+<h2 id="replica-counts-and-restoration">Replica counts and restoration<a class="headerlink" href="#replica-counts-and-restoration" title="Permanent link">#</a></h2>
+<p>Before scaling a workload down, the operator writes its replica count to the annotation <code>hibernation.stakater.com/original-replicas</code> on the workload itself, and reads it back on wake. Keeping the count on the workload rather than in the supervisor's status means it survives operator restarts and stays visible with <code>kubectl get</code>.</p>
+<p>Workloads already at zero replicas are skipped, so they are not later "restored" to zero-with-a-record they never had.</p>
+<p>Deleting the <code>ResourceSupervisor</code> wakes its workloads first. A finalizer holds the resource until the restore finishes, which makes deletion the straightforward way to cancel hibernation.</p>
+<h2 id="exclusions">Exclusions<a class="headerlink" href="#exclusions" title="Permanent link">#</a></h2>
+<p>A namespace annotated <code>hibernation.stakater.com/exclude: "true"</code> is never hibernated, even if a <code>ResourceSupervisor</code> exists in it. The operator's own namespace is excluded the same way. This gives platform teams a way to protect a namespace regardless of what is created inside it.</p>
+<h2 id="status">Status<a class="headerlink" href="#status" title="Permanent link">#</a></h2>
+<p><code>status.currentStatus</code> reports <code>running</code>, <code>sleeping</code>, or <code>error</code>, and <code>status.nextReconcileTime</code> gives the next time the operator will act.</p>
+<div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>get<span class="w"> </span>resourcesupervisor<span class="w"> </span>nightly-hibernation<span class="w"> </span>-n<span class="w"> </span>my-app-staging<span class="w"> </span>-o<span class="w"> </span><span class="nv">jsonpath</span><span class="o">=</span><span class="s1">'{.status}'</span>
+</code></pre></div>
+<h2 id="differences-from-clusterresourcesupervisor">Differences from ClusterResourceSupervisor<a class="headerlink" href="#differences-from-clusterresourcesupervisor" title="Permanent link">#</a></h2>
+<p><code>ResourceSupervisor</code> has no <code>namespaces</code> field and cannot target anything beyond its own namespace, and no <code>argocd</code> field, so it cannot suppress ArgoCD syncing during sleep. If the namespace's workloads are managed by ArgoCD, ArgoCD will see the scaled-down state as drift and may restore it. Use a <a href="cluster-resource-supervisor.html">ClusterResourceSupervisor</a> where that matters.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Nothing prevents a <code>ClusterResourceSupervisor</code> from also selecting a namespace that already has a <code>ResourceSupervisor</code>. The admission webhook rejects overlap between two <code>ClusterResourceSupervisor</code> resources, but it does not check for this case, and the two controllers will then act on the same workloads independently. Avoid the overlap, or exclude the namespace with the annotation above.</p>
+</div>
+<h2 id="related-guides">Related guides<a class="headerlink" href="#related-guides" title="Permanent link">#</a></h2>
+<ul>
+<li><a href="../guides/create-resource-supervisor.html">Hibernate Workloads in a Single Namespace</a></li>
+<li><a href="../guides/hibernate-resources.html">Hibernate a Tenant</a></li>
+</ul>
 
 
 
