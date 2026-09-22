@@ -3233,6 +3233,90 @@ This documentation is either for an old version, or for the unreleased 'main' ve
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
       
         <li class="md-nav__item">
+  <a href="#v01x" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        v0.1.x
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="v0.1.x">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#v01104" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        v0.1.104
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="v0.1.104">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#breaking-changes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Breaking Changes
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bug-fixes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Bug Fixes
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#changes-to-behavior" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Changes to behavior
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#enhancements" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Enhancements
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#v01103" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        v0.1.103
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#v01102" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -3240,6 +3324,11 @@ This documentation is either for an old version, or for the unreleased 'main' ve
       
     </span>
   </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -3370,6 +3459,90 @@ This documentation is either for an old version, or for the unreleased 'main' ve
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
       
         <li class="md-nav__item">
+  <a href="#v01x" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        v0.1.x
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="v0.1.x">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#v01104" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        v0.1.104
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="v0.1.104">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#breaking-changes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Breaking Changes
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bug-fixes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Bug Fixes
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#changes-to-behavior" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Changes to behavior
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#enhancements" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Enhancements
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#v01103" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        v0.1.103
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#v01102" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -3377,6 +3550,11 @@ This documentation is either for an old version, or for the unreleased 'main' ve
       
     </span>
   </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -3401,10 +3579,41 @@ This documentation is either for an old version, or for the unreleased 'main' ve
 
 
 <h1 id="changelog">Changelog<a class="headerlink" href="#changelog" title="Permanent link">#</a></h1>
-<h2 id="v01102">v0.1.102<a class="headerlink" href="#v01102" title="Permanent link">#</a></h2>
+<h2 id="v01x">v0.1.x<a class="headerlink" href="#v01x" title="Permanent link">#</a></h2>
+<h3 id="v01104">v0.1.104<a class="headerlink" href="#v01104" title="Permanent link">#</a></h3>
+<p><em><strong>September 16, 2026</strong></em></p>
+<h4 id="breaking-changes">Breaking Changes<a class="headerlink" href="#breaking-changes" title="Permanent link">#</a></h4>
 <ul>
-<li>Initial release</li>
+<li><code>ResourceSupervisor</code> now records hibernated replica counts in <code>status.sleepingNamespaces</code> instead of the <code>hibernation.stakater.com/original-replicas</code> annotation on each workload, so GitOps controllers no longer report drift on hibernated workloads. Upgrading requires no action, as the first wake after upgrade restores anything still carrying the old annotation.</li>
 </ul>
+<h4 id="bug-fixes">Bug Fixes<a class="headerlink" href="#bug-fixes" title="Permanent link">#</a></h4>
+<ul>
+<li>Fixed StatefulSets never being woken, which also discarded the only record of their original replica count.</li>
+<li>Fixed a Deployment and a StatefulSet sharing a name colliding, so that only one of them was ever woken.</li>
+<li>Fixed <code>ResourceSupervisor</code> waking workloads it never put to sleep, and restoring unannotated workloads to a single replica.</li>
+<li>Fixed a failed wake being reported as success, so the affected workloads were never retried.</li>
+<li>Fixed deletion removing the finalizer even when the pre-delete wake failed, leaving namespaces asleep with nothing left to retry.</li>
+<li>Fixed supervisors that reference only ArgoCD applications being rejected by the validating webhook.</li>
+<li>Fixed an invalid sleep schedule being accepted when no wake schedule was set, after which the supervisor stopped reconciling.</li>
+<li>Fixed a failed namespace lookup waking every sleeping namespace.</li>
+<li>Fixed transient errors permanently freezing a supervisor until the operator restarted.</li>
+<li>Fixed workloads rescaled between sleep passes being woken at a stale replica count.</li>
+</ul>
+<h4 id="changes-to-behavior">Changes to behavior<a class="headerlink" href="#changes-to-behavior" title="Permanent link">#</a></h4>
+<ul>
+<li>Logging now defaults to production mode (JSON, Info level) instead of debug console output. Pass <code>-zap-devel</code> for the previous behavior.</li>
+<li>The <code>pprof</code> endpoint no longer listens by default. Pass <code>--pprof-bind-address</code> to enable it.</li>
+</ul>
+<h4 id="enhancements">Enhancements<a class="headerlink" href="#enhancements" title="Permanent link">#</a></h4>
+<ul>
+<li>Dependency and security updates.</li>
+</ul>
+<h3 id="v01103">v0.1.103<a class="headerlink" href="#v01103" title="Permanent link">#</a></h3>
+<p><em><strong>October 2, 2025</strong></em></p>
+<p>Dependency and security updates.</p>
+<h3 id="v01102">v0.1.102<a class="headerlink" href="#v01102" title="Permanent link">#</a></h3>
+<p><em><strong>September 3, 2025</strong></em></p>
+<p>Initial release.</p>
 
 
 
