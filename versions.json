@@ -90,6 +90,11 @@
     "aliases": []
   },
   {
+    "version": "main",
+    "title": "main",
+    "aliases": []
+  },
+  {
     "version": "0.1-fix-for-RS-status",
     "title": "0.1-fix-for-RS-status",
     "aliases": []
