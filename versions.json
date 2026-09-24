@@ -92,7 +92,9 @@
   {
     "version": "docs-hib-25-align-behaviour",
     "title": "docs-hib-25-align-behaviour",
-    "aliases": []
+    "aliases": [
+      "latest"
+    ]
   },
   {
     "version": "0.1-fix-for-RS-status",
