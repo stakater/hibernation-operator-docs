@@ -15,10 +15,10 @@ The metrics endpoint is provided by controller-runtime and is disabled by defaul
 
 Both controllers follow the same shape on each reconcile:
 
-1. Work out the next sleep and wake times from the cron expressions in `spec.schedule`.
+1. Work out the next sleep and wake times from the cron expressions in `spec.schedule`, evaluated in UTC.
 1. Decide whether the workloads should currently be asleep or awake, and when to reconcile next.
 1. Apply that state to the target workloads if they are not already in it.
-1. Record the outcome in `status` and schedule the next check.
+1. Record the outcome in `status`, including the `Ready` condition, and schedule the next check.
 
 Because the decision is derived from the schedule and the current time on every pass rather than from a timer, a restarted operator picks up where it left off without missing a transition.
 
@@ -52,14 +52,11 @@ A `ClusterResourceSupervisor` builds its list from `spec.namespaces.names` and `
 
 ## Preserving replica counts
 
-The two resources record the pre-sleep replica count differently, which matters when reasoning about recovery.
+Both resources record the pre-sleep replica count in `status.sleepingNamespaces`, per namespace and workload, before scaling anything down. A wake restores exactly those counts and leaves every other workload alone.
 
-| Resource | Where the count is stored |
-| --- | --- |
-| `ResourceSupervisor` | The `hibernation.stakater.com/original-replicas` annotation on each workload |
-| `ClusterResourceSupervisor` | `status.sleepingNamespaces`, per namespace and workload |
+The count survives an operator restart, but the status is its only copy. If the status is lost the workloads stay at zero and the operator emits a `LedgerLost` Warning Event rather than guessing a count. Workloads already at zero replicas are skipped rather than recorded.
 
-Either way the count survives an operator restart. Workloads already at zero replicas are skipped rather than recorded.
+Before v0.1.104 a `ResourceSupervisor` kept the count in the `hibernation.stakater.com/original-replicas` annotation on each workload. That annotation is still read on wake and never written.
 
 ## ArgoCD
 
@@ -74,6 +71,7 @@ The webhook rejects a resource before it is stored when:
 
 - A cron expression in `spec.schedule` cannot be parsed.
 - `sleepSchedule` and `wakeSchedule` are identical.
+- `wakeSchedule` is set without `sleepSchedule`.
 - A `ClusterResourceSupervisor` lists the same namespace twice, or claims a namespace already claimed by another `ClusterResourceSupervisor`.
 
 An empty schedule is valid and means immediate, indefinite sleep. There is no check for a namespace being covered by both a `ClusterResourceSupervisor` and its own `ResourceSupervisor`, so that overlap has to be avoided by convention.

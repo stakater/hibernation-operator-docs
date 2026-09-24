@@ -81,6 +81,7 @@ kubectl get clusterresourcesupervisor dev-environments-hibernation -o yaml
 | `status.ignoreNamespaces` | Selected namespaces that were filtered out |
 | `status.sleepingNamespaces` | Per-namespace detail of the scaled-down workloads |
 | `status.nextReconcileTime` | Next scheduled sleep or wake |
+| `status.conditions` | `Ready`, `False` with the reason when a sleep or wake fails. See [Troubleshooting](../troubleshooting.md#finding-why-a-sleep-or-wake-failed) |
 
 If a namespace you expected is missing from `watchedNamespaces`, check `ignoreNamespaces`. Namespaces annotated `hibernation.stakater.com/exclude: "true"`, and the operator's own namespace, are always filtered out.
 

@@ -11,9 +11,9 @@ The `ClusterResourceSupervisor` enables **platform-level hibernation management*
     - Explicit list of namespace names (`names`)
     - Dynamic selection via Kubernetes-standard **label selectors** (`matchLabels` and `matchExpressions`)
 - **ArgoCD integration**:
-    - Target hibernation by **ArgoCD AppProject names**
+    - Hold off ArgoCD syncing on named **AppProjects** while their namespaces sleep
     - Specify the ArgoCD namespace where AppProjects reside
-- **Cron-based scheduling**:
+- **Cron-based scheduling**, evaluated in UTC:
     - `sleepSchedule`: Cron expression to scale down workloads
     - `wakeSchedule` (optional): Cron expression to restore workloads; if omitted, resources remain asleep
 - **Comprehensive status tracking**:
@@ -23,10 +23,11 @@ The `ClusterResourceSupervisor` enables **platform-level hibernation management*
         - Namespace name
         - Application kind (`Deployment` or `StatefulSet`)
         - Original replica count (for accurate restoration)
-        - Per-namespace and per-application status
+        - Per-namespace and per-application status, with an `errorMessage` after a failed wake
     - `nextReconcileTime`: Predictable next action time (`ISO 8601 datetime`)
+    - `conditions`: `Ready`, with the reason when the last sleep or wake failed
 
-> **Use Case**: Enforce cost-saving hibernation for all `env=dev` namespaces or all applications in the `platform-team` ArgoCD AppProject.
+> **Use Case**: Enforce cost-saving hibernation for all `env=dev` namespaces, holding off ArgoCD syncing for the `platform-team` AppProject while they sleep.
 
 ---
 
@@ -40,17 +41,18 @@ The `ResourceSupervisor` provides **self-service hibernation** within a single n
 - **Simple configuration**:
     - Minimal spec with just a `schedule` block
     - No need to manage namespace lists or label selectors
-- **Cron-based scheduling**:
-    - `sleepSchedule`: Required cron expression to hibernate workloads
+- **Cron-based scheduling**, evaluated in UTC:
+    - `sleepSchedule`: Cron expression to hibernate workloads
     - `wakeSchedule` (optional): Cron expression to wake workloads; if not set, workloads stay asleep indefinitely
 - **Comprehensive status tracking**:
     - `currentStatus`: Overall state (`sleeping`, `running`, `error`)
     - `nextReconcileTime`: Predictable next action time (`ISO 8601 datetime`)
-    - `sleepingApplications`: Detailed records of scaled-down applications within its namespace, including:
+    - `sleepingNamespaces`: Detailed records of scaled-down applications within its namespace, including:
         - Namespace name
         - Application kind (`Deployment` or `StatefulSet`)
         - Original replica count (for accurate restoration)
-        - Per-namespace and per-application status
+        - Per-namespace and per-application status, with an `errorMessage` after a failed wake
+    - `conditions`: `Ready`, with the reason when the last sleep or wake failed
 
 > **Use Case**: A development team creates a `ResourceSupervisor` in their `myapp-staging` namespace to sleep workloads every night and wake them each morning.
 
