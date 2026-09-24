@@ -3152,10 +3152,10 @@ This documentation is for a pull request deployment and is unreleased, it is onl
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
       
         <li class="md-nav__item">
-  <a href="#reading-a-failed-pass" class="md-nav__link">
+  <a href="#finding-why-a-sleep-or-wake-failed" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Reading a failed pass
+        Finding why a sleep or wake failed
       
     </span>
   </a>
@@ -3393,10 +3393,10 @@ This documentation is for a pull request deployment and is unreleased, it is onl
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
       
         <li class="md-nav__item">
-  <a href="#reading-a-failed-pass" class="md-nav__link">
+  <a href="#finding-why-a-sleep-or-wake-failed" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Reading a failed pass
+        Finding why a sleep or wake failed
       
     </span>
   </a>
@@ -3446,12 +3446,12 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 
 
 <h1 id="troubleshooting-guide">Troubleshooting Guide<a class="headerlink" href="#troubleshooting-guide" title="Permanent link">#</a></h1>
-<h2 id="reading-a-failed-pass">Reading a failed pass<a class="headerlink" href="#reading-a-failed-pass" title="Permanent link">#</a></h2>
+<h2 id="finding-why-a-sleep-or-wake-failed">Finding why a sleep or wake failed<a class="headerlink" href="#finding-why-a-sleep-or-wake-failed" title="Permanent link">#</a></h2>
 <p>When <code>status.currentStatus</code> is <code>error</code>, the reason is on the resource itself, no operator logs needed.</p>
 <div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>get<span class="w"> </span>clusterresourcesupervisor<span class="w"> </span>&lt;name&gt;<span class="w"> </span>-o<span class="w"> </span><span class="nv">jsonpath</span><span class="o">=</span><span class="s1">'{.status.conditions}'</span>
 kubectl<span class="w"> </span>get<span class="w"> </span>resourcesupervisor<span class="w"> </span>&lt;name&gt;<span class="w"> </span>-n<span class="w"> </span>&lt;namespace&gt;<span class="w"> </span>-o<span class="w"> </span><span class="nv">jsonpath</span><span class="o">=</span><span class="s1">'{.status.conditions}'</span>
 </code></pre></div>
-<p>The <code>Ready</code> condition is written after every pass. It is <code>True</code> once a pass reaches the state the schedule asks for, and <code>False</code> with one of these reasons when it does not:</p>
+<p>The <code>Ready</code> condition is <code>True</code> when the workloads are in the state the schedule asks for, and <code>False</code> with one of these reasons when they are not:</p>
 <table>
 <thead>
 <tr>
@@ -3462,11 +3462,11 @@ kubectl<span class="w"> </span>get<span class="w"> </span>resourcesupervisor<spa
 <tbody>
 <tr>
 <td><code>Reconciled</code></td>
-<td>The last pass succeeded (<code>True</code>)</td>
+<td>The last sleep or wake succeeded (<code>True</code>)</td>
 </tr>
 <tr>
 <td><code>Scheduled</code></td>
-<td>Nothing is due yet on the first pass (<code>True</code>)</td>
+<td>The resource is new and nothing is due yet (<code>True</code>)</td>
 </tr>
 <tr>
 <td><code>InvalidSleepSchedule</code></td>
@@ -3478,11 +3478,11 @@ kubectl<span class="w"> </span>get<span class="w"> </span>resourcesupervisor<spa
 </tr>
 <tr>
 <td><code>SleepFailed</code></td>
-<td>At least one workload could not be scaled down. The next pass retries</td>
+<td>At least one workload could not be scaled down. The operator retries automatically</td>
 </tr>
 <tr>
 <td><code>WakeFailed</code></td>
-<td>At least one workload could not be restored. The next pass retries</td>
+<td>At least one workload could not be restored. The operator retries automatically</td>
 </tr>
 <tr>
 <td><code>NamespacesUnresolved</code></td>
@@ -3511,7 +3511,7 @@ kubectl<span class="w"> </span>get<span class="w"> </span>resourcesupervisor<spa
 </code></pre></div>
 <p>The next sleep clears both <code>errorMessage</code> fields.</p>
 <h2 id="workloads-stay-at-zero-after-a-wake">Workloads stay at zero after a wake<a class="headerlink" href="#workloads-stay-at-zero-after-a-wake" title="Permanent link">#</a></h2>
-<p>Check the resource's Events for a <code>LedgerLost</code> Warning. The replica counts live only in <code>status.sleepingNamespaces</code>, so if the status was lost, for example by replacing the status subresource or an etcd restore, the operator has nothing to restore from and leaves the workloads at zero rather than guessing. Scale them back by hand.</p>
+<p>Check the resource's Events for a <code>LedgerLost</code> Warning. The replica counts live only in <code>status.sleepingNamespaces</code>, so if the status was lost the operator has nothing to restore from and leaves the workloads at zero rather than guessing. Scale them back by hand.</p>
 <p>A wake only restores workloads the operator slept. A workload that was already at zero when the sleep ran, or was created while the namespace slept, is left alone.</p>
 <h2 id="schedules-fire-at-the-wrong-time">Schedules fire at the wrong time<a class="headerlink" href="#schedules-fire-at-the-wrong-time" title="Permanent link">#</a></h2>
 <p>Both cron schedules are evaluated in UTC, never in the cluster's or the browser's timezone. <code>sleepSchedule: "0 18 * * *"</code> sleeps at 18:00 UTC.</p>

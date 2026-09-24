@@ -3546,7 +3546,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 <ul>
 <li><code>status.currentStatus</code> is <code>running</code>, <code>sleeping</code>, or <code>error</code>.</li>
 <li><code>status.nextReconcileTime</code> is the next time the operator will sleep or wake the workloads.</li>
-<li>The <code>Ready</code> condition in <code>status.conditions</code> is <code>True</code> after a successful pass, and <code>False</code> with the reason when one fails. See <a href="../troubleshooting.html#reading-a-failed-pass">Troubleshooting</a>.</li>
+<li>The <code>Ready</code> condition in <code>status.conditions</code> is <code>True</code> after a successful sleep or wake, and <code>False</code> with the reason when one fails. See <a href="../troubleshooting.html#finding-why-a-sleep-or-wake-failed">Troubleshooting</a>.</li>
 </ul>
 <h2 id="what-gets-hibernated">What gets hibernated<a class="headerlink" href="#what-gets-hibernated" title="Permanent link">#</a></h2>
 <p>Only <code>Deployments</code> and <code>StatefulSets</code> in the same namespace are touched. Other workload types, and resources in any other namespace, are left alone. Workloads already sitting at zero replicas are skipped rather than recorded as sleeping.</p>

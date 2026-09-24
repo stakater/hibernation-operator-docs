@@ -3503,10 +3503,6 @@ namespace targeting.</p>
   <strong>in the future</strong>, and the <strong>wake time must be after the sleep time</strong>.</li>
 </ul>
 <p>Schedules are evaluated in UTC.</p>
-<p>Webhooks are optional, so the controller does not rely on them. An invalid
-cron that reaches it stops the resource from being acted on and sets the
-<code>Ready</code> condition to <code>False</code> with reason <code>InvalidSleepSchedule</code> or
-<code>InvalidWakeSchedule</code>. A wake only schedule keeps the workloads awake.</p>
 <h2 id="clusterresourcesupervisor-namespace-validation">ClusterResourceSupervisor namespace validation<a class="headerlink" href="#clusterresourcesupervisor-namespace-validation" title="Permanent link">#</a></h2>
 <p>In addition to schedule validation, the <code>ClusterResourceSupervisor</code> webhook
 enforces namespace uniqueness:</p>

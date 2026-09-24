@@ -3583,7 +3583,6 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 <li><code>wakeSchedule</code> is set without <code>sleepSchedule</code>.</li>
 <li>A <code>ClusterResourceSupervisor</code> lists the same namespace twice, or claims a namespace already claimed by another <code>ClusterResourceSupervisor</code>.</li>
 </ul>
-<p>Webhooks are optional. Without them an invalid cron reaches the controller, which stops acting on the resource and sets <code>Ready</code> to <code>False</code> with reason <code>InvalidSleepSchedule</code> or <code>InvalidWakeSchedule</code> until the cron is fixed.</p>
 <p>An empty schedule is valid and means immediate, indefinite sleep. There is no check for a namespace being covered by both a <code>ClusterResourceSupervisor</code> and its own <code>ResourceSupervisor</code>, so that overlap has to be avoided by convention.</p>
 
 

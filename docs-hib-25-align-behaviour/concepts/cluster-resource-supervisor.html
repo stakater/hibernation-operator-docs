@@ -3656,13 +3656,13 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 </tr>
 <tr>
 <td><code>conditions</code></td>
-<td><code>Ready</code>, <code>True</code> after a successful pass and <code>False</code> with the reason after a failed one</td>
+<td><code>Ready</code>, <code>True</code> after a successful sleep or wake and <code>False</code> with the reason after a failed one</td>
 </tr>
 </tbody>
 </table>
 <div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>get<span class="w"> </span>clusterresourcesupervisor<span class="w"> </span>dev-environments-hibernation<span class="w"> </span>-o<span class="w"> </span><span class="nv">jsonpath</span><span class="o">=</span><span class="s1">'{.status}'</span>
 </code></pre></div>
-<p>When a namespace you expected is missing from <code>watchedNamespaces</code>, <code>ignoreNamespaces</code> is the first place to look. When <code>currentStatus</code> is <code>error</code>, read the <code>Ready</code> condition, see <a href="../troubleshooting.html#reading-a-failed-pass">Troubleshooting</a>.</p>
+<p>When a namespace you expected is missing from <code>watchedNamespaces</code>, <code>ignoreNamespaces</code> is the first place to look. When <code>currentStatus</code> is <code>error</code>, read the <code>Ready</code> condition, see <a href="../troubleshooting.html#finding-why-a-sleep-or-wake-failed">Troubleshooting</a>.</p>
 <p>The replica counts in <code>sleepingNamespaces</code> are the only record of them. If the status is lost the workloads stay at zero and the operator emits a <code>LedgerLost</code> Warning Event rather than guessing.</p>
 <h2 id="choosing-between-the-two">Choosing between the two<a class="headerlink" href="#choosing-between-the-two" title="Permanent link">#</a></h2>
 <p>Use a <code>ResourceSupervisor</code> when a namespace should decide its own hibernation and the team owning it holds only namespace-level permissions. Use a <code>ClusterResourceSupervisor</code> when a platform team sets the policy across many namespaces, when the set is defined by labels and changes over time, or when ArgoCD sync windows need suppressing during sleep.</p>
