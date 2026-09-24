@@ -14,20 +14,20 @@ A **ResourceSupervisor** is a **namespace-scoped** custom resource that allows *
 
 The **Hibernation Schedule** is defined via two optional cron expressions:
 
-- **`sleepSchedule`** (required): Specifies when workloads should be scaled to zero.
+- **`sleepSchedule`**: Specifies when workloads should be scaled to zero. Leaving both empty sleeps the workloads immediately.
 - **`wakeSchedule`** (optional): Specifies when workloads should be restored.  
 
-> If `wakeSchedule` is omitted, resources remain asleep indefinitely until manually woken or the CR is updated. Both schedules use standard Unix cron format (e.g., `"0 18 * * 1-5"`).
+> If `wakeSchedule` is omitted, resources remain asleep indefinitely until manually woken or the CR is updated. Both schedules use standard Unix cron format (e.g., `"0 18 * * 1-5"`) and are evaluated in UTC, never in the cluster's or the browser's timezone.
 
 ### Sleeping State
 
-The **Sleeping State** refers to the condition where a `Deployment` or `StatefulSet` has been scaled to **0 replicas** by the Hibernation Operator. The original replica count is preserved in the CR’s `status.sleepingNamespaces` field to ensure accurate restoration. Only workloads explicitly targeted by a supervisor are affected—everything else remains untouched.
+The **Sleeping State** refers to the condition where a `Deployment` or `StatefulSet` has been scaled to **0 replicas** by the Hibernation Operator. The original replica count is preserved in the CR’s `status.sleepingNamespaces` field, and waking restores exactly that count. Only workloads the supervisor slept are woken, everything else remains untouched.
 
 ## Integration Concepts
 
 ### ArgoCD AppProject Integration
 
-When a `ClusterResourceSupervisor` specifies `argocd.appProjects`, the operator automatically discovers all namespaces managed by those ArgoCD **AppProjects** and applies hibernation to them. This enables GitOps-native hibernation policies aligned with application boundaries rather than infrastructure boundaries.
+When a `ClusterResourceSupervisor` specifies `argocd.appProjects`, the operator writes a `deny` sync window onto those ArgoCD **AppProjects** so ArgoCD does not scale the hibernated workloads back up. It does not select namespaces: those still come only from `spec.namespaces`.
 
 ### Label-Based Namespace Selection
 
