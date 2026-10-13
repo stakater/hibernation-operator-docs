@@ -20,7 +20,7 @@ The public Helm chart for the Hibernation Operator is available in the public [*
 
 ### Install the Operator
 
-Install into the recommended namespace `hibernation-system`:
+Install into the recommended namespace `hibernation-operator-system`:
 
 ```sh
 helm install hibernation-operator oci://ghcr.io/stakater/public/charts/hibernation-operator \
@@ -40,7 +40,7 @@ If your workloads are managed by ArgoCD, enable this so the operator can stop Ar
 
 ```sh
 helm install hibernation-operator stakater/hibernation-operator \
-  --namespace hibernation-system \
+  --namespace hibernation-operator-system \
   --create-namespace \
   --set argoCD.enabled=true \
   --set argoCD.namespace=argocd

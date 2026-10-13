@@ -23,7 +23,7 @@ This document contains instructions for installing, configuring, and uninstallin
    ![Install button](../../images/operatorHub.png)
 
 1. Configure the installation:
-   * **Update channel**: `stable` (recommended for production)
+   * **Update channel**: `release-0.1`
    * **Installed Namespace**: Select **`hibernation-operator-system`** (create if it doesn’t exist)
    * **Update approval**:  
        * `Automatic` for development  
@@ -61,9 +61,7 @@ kind: OperatorGroup
 metadata:
   name: hibernation-operator
   namespace: hibernation-operator-system
-spec:
-  targetNamespaces:
-  - hibernation-operator-system
+spec: {}
 EOF
 ```
 
@@ -75,7 +73,7 @@ apiVersion: operators.coreos.com/v1alpha1
 kind: Subscription
 metadata:
   name: hibernation-operator
-  namespace: hibernation-system
+  namespace: hibernation-operator-system
 spec:
   channel: release-0.1
   installPlanApproval: Automatic
@@ -94,7 +92,7 @@ EOF
 In the OpenShift Console:
 
 * Go to **Operators → Installed Operators**
-* Select the `hibernation-system` project
+* Select the `hibernation-operator-system` project
 * Confirm the **Hibernation Operator** status is **Succeeded**
 
 Or via CLI:
