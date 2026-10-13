@@ -3565,7 +3565,7 @@ This documentation is either for an old version, or for the unreleased 'main' ve
 <h2 id="installing-via-helm-cli">Installing via Helm CLI<a class="headerlink" href="#installing-via-helm-cli" title="Permanent link">#</a></h2>
 <p>The public Helm chart for the Hibernation Operator is available in the public <a href="https://github.com/orgs/stakater/packages/container/package/public/charts/template-operator"><strong>Stakater Helm repository</strong></a>.</p>
 <h3 id="install-the-operator">Install the Operator<a class="headerlink" href="#install-the-operator" title="Permanent link">#</a></h3>
-<p>Install into the recommended namespace <code>hibernation-system</code>:</p>
+<p>Install into the recommended namespace <code>hibernation-operator-system</code>:</p>
 <div class="highlight"><pre><span></span><code>helm<span class="w"> </span>install<span class="w"> </span>hibernation-operator<span class="w"> </span>oci://ghcr.io/stakater/public/charts/hibernation-operator<span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>--namespace<span class="w"> </span>hibernation-operator-system<span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>--create-namespace
@@ -3579,7 +3579,7 @@ This documentation is either for an old version, or for the unreleased 'main' ve
 <h3 id="optional-enable-argocd-integration">Optional: Enable ArgoCD Integration<a class="headerlink" href="#optional-enable-argocd-integration" title="Permanent link">#</a></h3>
 <p>If your workloads are managed by ArgoCD, enable this so the operator can stop ArgoCD from syncing hibernated applications back up. See <a href="../../integrations/argocd.html">ArgoCD Integration</a> for what it does and does not do:</p>
 <div class="highlight"><pre><span></span><code>helm<span class="w"> </span>install<span class="w"> </span>hibernation-operator<span class="w"> </span>stakater/hibernation-operator<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>--namespace<span class="w"> </span>hibernation-system<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--namespace<span class="w"> </span>hibernation-operator-system<span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>--create-namespace<span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>--set<span class="w"> </span>argoCD.enabled<span class="o">=</span><span class="nb">true</span><span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>--set<span class="w"> </span>argoCD.namespace<span class="o">=</span>argocd

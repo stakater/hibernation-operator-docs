@@ -3556,7 +3556,7 @@ This documentation is either for an old version, or for the unreleased 'main' ve
 <h2 id="enabling-the-integration">Enabling the integration<a class="headerlink" href="#enabling-the-integration" title="Permanent link">#</a></h2>
 <p>Enable ArgoCD support and point the operator at the ArgoCD namespace during installation:</p>
 <div class="highlight"><pre><span></span><code>helm<span class="w"> </span>install<span class="w"> </span>hibernation-operator<span class="w"> </span>oci://ghcr.io/stakater/public/charts/hibernation-operator<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>--namespace<span class="w"> </span>hibernation-system<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--namespace<span class="w"> </span>hibernation-operator-system<span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>--create-namespace<span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>--set<span class="w"> </span>argoCD.enabled<span class="o">=</span><span class="nb">true</span><span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>--set<span class="w"> </span>argoCD.namespace<span class="o">=</span>argocd
