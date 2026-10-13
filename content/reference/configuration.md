@@ -37,7 +37,7 @@ Example — disable the controller at install time:
 ```sh
 helm install hibernation-operator \
   oci://ghcr.io/stakater/public/charts/hibernation-operator \
-  --namespace hibernation-system --create-namespace \
+  --namespace hibernation-operator-system --create-namespace \
   --set controllerManager.controllerManager.env.enableRsController="false"
 ```
 
