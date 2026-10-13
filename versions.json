@@ -92,14 +92,14 @@
   {
     "version": "docs-hib-25-align-behaviour",
     "title": "docs-hib-25-align-behaviour",
-    "aliases": [
-      "latest"
-    ]
+    "aliases": []
   },
   {
     "version": "docs-fix-operator-namespace",
     "title": "docs-fix-operator-namespace",
-    "aliases": []
+    "aliases": [
+      "latest"
+    ]
   },
   {
     "version": "0.1-fix-for-RS-status",
