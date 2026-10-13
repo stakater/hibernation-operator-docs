@@ -90,6 +90,11 @@
     "aliases": []
   },
   {
+    "version": "main",
+    "title": "main",
+    "aliases": []
+  },
+  {
     "version": "docs-hib-25-align-behaviour",
     "title": "docs-hib-25-align-behaviour",
     "aliases": []
