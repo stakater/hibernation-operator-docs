@@ -30,7 +30,7 @@ Enable ArgoCD support and point the operator at the ArgoCD namespace during inst
 
 ```sh
 helm install hibernation-operator oci://ghcr.io/stakater/public/charts/hibernation-operator \
-  --namespace hibernation-system \
+  --namespace hibernation-operator-system \
   --create-namespace \
   --set argoCD.enabled=true \
   --set argoCD.namespace=argocd
