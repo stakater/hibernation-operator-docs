@@ -3495,7 +3495,7 @@ namespace targeting.</p>
 <li><strong>Empty schedules are allowed</strong> — both <code>sleepSchedule</code> and <code>wakeSchedule</code>
   empty (immediate/permanent sleep use cases) passes validation.</li>
 <li>Whichever of <code>sleepSchedule</code> and <code>wakeSchedule</code> is set must be a <strong>valid cron
-  expression</strong>, and each is at most 256 characters.</li>
+  expression</strong>.</li>
 <li><code>sleepSchedule</code> and <code>wakeSchedule</code> <strong>must not be identical</strong>.</li>
 <li>A <code>wakeSchedule</code> <strong>requires a <code>sleepSchedule</code></strong>. A wake only schedule is
   rejected.</li>

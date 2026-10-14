@@ -3662,7 +3662,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 <p class="admonition-title">Warning</p>
 <p>The status is the only record of the counts. If it is lost, the workloads stay at zero and the operator emits a <code>LedgerLost</code> Warning Event instead of inventing a count. Scale them back by hand.</p>
 </div>
-<p>Versions before v0.1.104 stored the count in the annotation <code>hibernation.stakater.com/original-replicas</code> on each workload, and woke anything without it to 1 replica. The annotation is still read on wake, so workloads slept by an older version come back at their recorded count, but nothing writes it any more.</p>
+<p>Versions before v0.1.104 stored the count in the annotation <code>hibernation.stakater.com/original-replicas</code> on each workload, and woke anything without it to 1 replica. The annotation is still read on wake, so workloads slept by an older version come back at their recorded count, but nothing writes it anymore.</p>
 <p>Deleting the <code>ResourceSupervisor</code> wakes its workloads first. A finalizer holds the resource until the restore succeeds, and a failed wake keeps it in place and retries, which makes deletion the straightforward way to cancel hibernation.</p>
 <h2 id="exclusions">Exclusions<a class="headerlink" href="#exclusions" title="Permanent link">#</a></h2>
 <p>A namespace annotated <code>hibernation.stakater.com/exclude: "true"</code> is never hibernated, even if a <code>ResourceSupervisor</code> exists in it, and anything already asleep there is woken. The operator's own namespace is excluded the same way. This gives platform teams a way to protect a namespace regardless of what is created inside it.</p>

@@ -3691,7 +3691,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 <p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../images/operatorHub.png" data-desc-position="bottom"><img alt="Install button" src="../../images/operatorHub.png"></a></p>
 <ol>
 <li>Configure the installation:</li>
-<li><strong>Update channel</strong>: <code>stable</code> (recommended for production)</li>
+<li><strong>Update channel</strong>: <code>release-0.1</code></li>
 <li><strong>Installed Namespace</strong>: Select <strong><code>hibernation-operator-system</code></strong> (create if it doesn’t exist)</li>
 <li><strong>Update approval</strong>:  <ul>
 <li><code>Automatic</code> for development  </li>
@@ -3722,9 +3722,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 <span class="s">metadata:</span>
 <span class="s">  name: hibernation-operator</span>
 <span class="s">  namespace: hibernation-operator-system</span>
-<span class="s">spec:</span>
-<span class="s">  targetNamespaces:</span>
-<span class="s">  - hibernation-operator-system</span>
+<span class="s">spec: {}</span>
 <span class="s">EOF</span>
 </code></pre></div>
 <h3 id="step-3-create-a-subscription">Step 3: Create a Subscription<a class="headerlink" href="#step-3-create-a-subscription" title="Permanent link">#</a></h3>
@@ -3733,7 +3731,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 <span class="s">kind: Subscription</span>
 <span class="s">metadata:</span>
 <span class="s">  name: hibernation-operator</span>
-<span class="s">  namespace: hibernation-system</span>
+<span class="s">  namespace: hibernation-operator-system</span>
 <span class="s">spec:</span>
 <span class="s">  channel: release-0.1</span>
 <span class="s">  installPlanApproval: Automatic</span>
@@ -3751,7 +3749,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 <p>In the OpenShift Console:</p>
 <ul>
 <li>Go to <strong>Operators → Installed Operators</strong></li>
-<li>Select the <code>hibernation-system</code> project</li>
+<li>Select the <code>hibernation-operator-system</code> project</li>
 <li>Confirm the <strong>Hibernation Operator</strong> status is <strong>Succeeded</strong></li>
 </ul>
 <p>Or via CLI:</p>
