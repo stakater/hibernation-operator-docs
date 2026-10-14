@@ -100,13 +100,6 @@
     "aliases": []
   },
   {
-    "version": "docs-hib-25-align-behaviour",
-    "title": "docs-hib-25-align-behaviour",
-    "aliases": [
-      "latest"
-    ]
-  },
-  {
     "version": "0.1-fix-for-RS-status",
     "title": "0.1-fix-for-RS-status",
     "aliases": []
