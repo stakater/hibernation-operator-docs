@@ -3524,11 +3524,11 @@ This documentation is either for an old version, or for the unreleased 'main' ve
 </ul>
 </li>
 <li><strong>ArgoCD integration</strong>:<ul>
-<li>Target hibernation by <strong>ArgoCD AppProject names</strong></li>
+<li>Hold off ArgoCD syncing on named <strong>AppProjects</strong> while their namespaces sleep</li>
 <li>Specify the ArgoCD namespace where AppProjects reside</li>
 </ul>
 </li>
-<li><strong>Cron-based scheduling</strong>:<ul>
+<li><strong>Cron-based scheduling</strong>, evaluated in UTC:<ul>
 <li><code>sleepSchedule</code>: Cron expression to scale down workloads</li>
 <li><code>wakeSchedule</code> (optional): Cron expression to restore workloads; if omitted, resources remain asleep</li>
 </ul>
@@ -3540,15 +3540,16 @@ This documentation is either for an old version, or for the unreleased 'main' ve
 <li>Namespace name</li>
 <li>Application kind (<code>Deployment</code> or <code>StatefulSet</code>)</li>
 <li>Original replica count (for accurate restoration)</li>
-<li>Per-namespace and per-application status</li>
+<li>Per-namespace and per-application status, with a per-application <code>errorMessage</code> after a failed wake</li>
 </ul>
 </li>
 <li><code>nextReconcileTime</code>: Predictable next action time (<code>ISO 8601 datetime</code>)</li>
+<li><code>conditions</code>: <code>Ready</code>, with the reason when the last sleep or wake failed</li>
 </ul>
 </li>
 </ul>
 <blockquote>
-<p><strong>Use Case</strong>: Enforce cost-saving hibernation for all <code>env=dev</code> namespaces or all applications in the <code>platform-team</code> ArgoCD AppProject.</p>
+<p><strong>Use Case</strong>: Enforce cost-saving hibernation for all <code>env=dev</code> namespaces, holding off ArgoCD syncing for the <code>platform-team</code> AppProject while they sleep.</p>
 </blockquote>
 <hr>
 <h2 id="2-resourcesupervisor-namespace-scoped">2. <code>ResourceSupervisor</code> (Namespace-Scoped)<a class="headerlink" href="#2-resourcesupervisor-namespace-scoped" title="Permanent link">#</a></h2>
@@ -3561,21 +3562,22 @@ This documentation is either for an old version, or for the unreleased 'main' ve
 <li>No need to manage namespace lists or label selectors</li>
 </ul>
 </li>
-<li><strong>Cron-based scheduling</strong>:<ul>
-<li><code>sleepSchedule</code>: Required cron expression to hibernate workloads</li>
+<li><strong>Cron-based scheduling</strong>, evaluated in UTC:<ul>
+<li><code>sleepSchedule</code>: Cron expression to hibernate workloads</li>
 <li><code>wakeSchedule</code> (optional): Cron expression to wake workloads; if not set, workloads stay asleep indefinitely</li>
 </ul>
 </li>
 <li><strong>Comprehensive status tracking</strong>:<ul>
 <li><code>currentStatus</code>: Overall state (<code>sleeping</code>, <code>running</code>, <code>error</code>)</li>
 <li><code>nextReconcileTime</code>: Predictable next action time (<code>ISO 8601 datetime</code>)</li>
-<li><code>sleepingApplications</code>: Detailed records of scaled-down applications within its namespace, including:<ul>
+<li><code>sleepingNamespaces</code>: Detailed records of scaled-down applications within its namespace, including:<ul>
 <li>Namespace name</li>
 <li>Application kind (<code>Deployment</code> or <code>StatefulSet</code>)</li>
 <li>Original replica count (for accurate restoration)</li>
-<li>Per-namespace and per-application status</li>
+<li>Per-namespace and per-application status, with a per-application <code>errorMessage</code> after a failed wake</li>
 </ul>
 </li>
+<li><code>conditions</code>: <code>Ready</code>, with the reason when the last sleep or wake failed</li>
 </ul>
 </li>
 </ul>

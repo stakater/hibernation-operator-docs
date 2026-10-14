@@ -2788,10 +2788,10 @@ This documentation is either for an old version, or for the unreleased 'main' ve
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#manual-creation-of-resourcesupervisor" class="md-nav__link">
+  <a href="#manual-creation-of-clusterresourcesupervisor" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Manual creation of ResourceSupervisor
+        Manual creation of ClusterResourceSupervisor
       
     </span>
   </a>
@@ -3454,10 +3454,10 @@ This documentation is either for an old version, or for the unreleased 'main' ve
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#manual-creation-of-resourcesupervisor" class="md-nav__link">
+  <a href="#manual-creation-of-clusterresourcesupervisor" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Manual creation of ResourceSupervisor
+        Manual creation of ClusterResourceSupervisor
       
     </span>
   </a>
@@ -3531,6 +3531,7 @@ Hibernation downsizes the running <code>Deployments</code> and <code>StatefulSet
 <span class="w">  </span><span class="nt">sleepSchedule</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">23 * * * *</span>
 <span class="w">  </span><span class="nt">wakeSchedule</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">26 * * * *</span>
 </code></pre></div>
+<p>Both schedules are evaluated in UTC.</p>
 <p><code>spec.hibernation.sleepSchedule</code> accepts a cron expression indicating the time to put the workloads in your tenant’s namespaces to sleep.</p>
 <p><code>spec.hibernation.wakeSchedule</code> accepts a cron expression indicating the time to wake the workloads in your tenant’s namespaces up.</p>
 <div class="admonition note">
@@ -3571,9 +3572,9 @@ Hibernation downsizes the running <code>Deployments</code> and <code>StatefulSet
 <blockquote>
 <p>Currently, Hibernation is available only for <code>StatefulSets</code> and <code>Deployments</code>.</p>
 </blockquote>
-<h3 id="manual-creation-of-resourcesupervisor">Manual creation of ResourceSupervisor<a class="headerlink" href="#manual-creation-of-resourcesupervisor" title="Permanent link">#</a></h3>
-<p>Hibernation can also be applied by creating a ResourceSupervisor resource manually.
-The ResourceSupervisor definition will contain the hibernation cron schedule, the names of the namespaces to be hibernated, and the names of the ArgoCD AppProjects whose ArgoCD Applications have to be hibernated (as per the given schedule).</p>
+<h3 id="manual-creation-of-clusterresourcesupervisor">Manual creation of ClusterResourceSupervisor<a class="headerlink" href="#manual-creation-of-clusterresourcesupervisor" title="Permanent link">#</a></h3>
+<p>Hibernation can also be applied by creating a ClusterResourceSupervisor resource manually.
+The ClusterResourceSupervisor definition will contain the hibernation cron schedule, the names of the namespaces to be hibernated, and the names of the ArgoCD AppProjects whose syncing has to be held off while the namespaces sleep.</p>
 <p>This method can be used to hibernate:</p>
 <ul>
 <li>Some specific namespaces and AppProjects in a tenant</li>

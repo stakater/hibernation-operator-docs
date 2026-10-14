@@ -3610,6 +3610,16 @@ container <code>args</code>).</p>
 <td>Address for liveness/readiness probes.</td>
 </tr>
 <tr>
+<td><code>--pprof-bind-address</code></td>
+<td><code>0</code> (disabled)</td>
+<td>Address the <code>pprof</code> profiling endpoint binds to, <code>0</code> to disable. Prefer a local address such as <code>127.0.0.1:6060</code> with a port forward, anything else publishes profiling data to the cluster network.</td>
+</tr>
+<tr>
+<td><code>-zap-devel</code></td>
+<td><code>false</code></td>
+<td>Switch logs to console output at Debug level for a local run. The default is production mode, JSON at Info with stack traces at Error.</td>
+</tr>
+<tr>
 <td><code>--leader-elect</code></td>
 <td><code>false</code></td>
 <td>Enable leader election for high-availability deployments.</td>
@@ -3651,6 +3661,8 @@ container <code>args</code>).</p>
 </tr>
 </tbody>
 </table>
+<p>The standard <code>-zap-log-level</code>, <code>-zap-encoder</code> and
+<code>-zap-stacktrace-level</code> flags are accepted as well.</p>
 <blockquote>
 <p>See <a href="metrics.html">Metrics</a> for how the metrics endpoint and <code>ServiceMonitor</code>
 are wired up, and <a href="webhooks.html">Webhooks</a> for webhook certificate management.</p>
