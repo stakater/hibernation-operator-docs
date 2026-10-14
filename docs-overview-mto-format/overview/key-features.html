@@ -3624,7 +3624,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 <tbody>
 <tr>
 <td>Scope</td>
-<td>Namespaced</td>
+<td>Namespace</td>
 <td>Cluster</td>
 </tr>
 <tr>
@@ -3672,6 +3672,9 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>The operator replaces the existing <code>spec.syncWindows</code> of each AppProject with its own window, and removes all sync windows when the supervisor is deleted. It should therefore not be used with AppProjects that define sync windows of their own.</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
 <p>The operator's ClusterRole does not include permissions on <code>appprojects</code> in the <code>argoproj.io</code> API group. Grant <code>get</code> and <code>patch</code> on this resource to the operator's service account before using <code>spec.argocd</code>.</p>
 </div>
 <p>For further details, refer to <a href="../integrations/argocd.html">ArgoCD Integration</a>.</p>
