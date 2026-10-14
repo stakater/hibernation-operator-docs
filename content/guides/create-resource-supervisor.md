@@ -46,19 +46,20 @@ Two fields tell you where things stand:
 
 - `status.currentStatus` is `running`, `sleeping`, or `error`.
 - `status.nextReconcileTime` is the next time the operator will sleep or wake the workloads.
+- The `Ready` condition in `status.conditions` is `True` after a successful sleep or wake, and `False` with the reason when one fails. See [Troubleshooting](../troubleshooting.md#finding-why-a-sleep-or-wake-failed).
 
 ## What gets hibernated
 
 Only `Deployments` and `StatefulSets` in the same namespace are touched. Other workload types, and resources in any other namespace, are left alone. Workloads already sitting at zero replicas are skipped rather than recorded as sleeping.
 
-Before scaling a workload down, the operator writes its replica count to the annotation `hibernation.stakater.com/original-replicas` on the workload itself. Waking reads the count back from there, so you can always see what a sleeping workload will return to:
+Before scaling a workload down, the operator records its replica count in the supervisor's `status.sleepingNamespaces`. Waking restores exactly that count and touches nothing it did not sleep, so you can always see what a sleeping workload will return to:
 
 ```sh
-kubectl get deploy -n my-app-staging -o custom-columns=\
-NAME:.metadata.name,REPLICAS:.spec.replicas,ORIGINAL:'.metadata.annotations.hibernation\.stakater\.com/original-replicas'
+kubectl get resourcesupervisor my-namespace-hibernation -n my-app-staging \
+  -o jsonpath='{range .status.sleepingNamespaces[*].sleepingApplications[*]}{.kind}/{.name}: {.replicas}{"\n"}{end}'
 ```
 
-Deleting the `ResourceSupervisor` wakes its workloads first. A finalizer holds the resource until the restore completes, so removing the supervisor is a safe way to cancel hibernation rather than a way to strand workloads at zero.
+Deleting the `ResourceSupervisor` wakes its workloads first. A finalizer holds the resource until the restore succeeds, so removing the supervisor is a safe way to cancel hibernation rather than a way to strand workloads at zero.
 
 A namespace annotated with `hibernation.stakater.com/exclude: "true"` is skipped, even if a `ResourceSupervisor` exists in it.
 

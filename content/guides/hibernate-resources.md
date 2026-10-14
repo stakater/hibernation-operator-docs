@@ -13,6 +13,8 @@ hibernation:
   wakeSchedule: 26 * * * *
 ```
 
+Both schedules are evaluated in UTC.
+
 `spec.hibernation.sleepSchedule` accepts a cron expression indicating the time to put the workloads in your tenant’s namespaces to sleep.
 
 `spec.hibernation.wakeSchedule` accepts a cron expression indicating the time to wake the workloads in your tenant’s namespaces up.
@@ -59,10 +61,10 @@ spec:
 
 > Currently, Hibernation is available only for `StatefulSets` and `Deployments`.
 
-### Manual creation of ResourceSupervisor
+### Manual creation of ClusterResourceSupervisor
 
-Hibernation can also be applied by creating a ResourceSupervisor resource manually.
-The ResourceSupervisor definition will contain the hibernation cron schedule, the names of the namespaces to be hibernated, and the names of the ArgoCD AppProjects whose ArgoCD Applications have to be hibernated (as per the given schedule).
+Hibernation can also be applied by creating a ClusterResourceSupervisor resource manually.
+The ClusterResourceSupervisor definition will contain the hibernation cron schedule, the names of the namespaces to be hibernated, and the names of the ArgoCD AppProjects whose syncing has to be held off while the namespaces sleep.
 
 This method can be used to hibernate:
 

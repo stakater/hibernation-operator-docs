@@ -66,6 +66,8 @@ container `args`).
 | `--metrics-bind-address` | `0` (disabled) | Address the metrics endpoint binds to (`:8443` secure, `:8080` insecure, `0` to disable). |
 | `--metrics-secure` | `true` | Serve metrics over https. |
 | `--health-probe-bind-address` | `:8081` | Address for liveness/readiness probes. |
+| `--pprof-bind-address` | `0` (disabled) | Address the `pprof` profiling endpoint binds to, `0` to disable. Prefer a local address such as `127.0.0.1:6060` with a port forward, anything else publishes profiling data to the cluster network. |
+| `-zap-devel` | `false` | Switch logs to console output at Debug level for a local run. The default is production mode, JSON at Info with stack traces at Error. |
 | `--leader-elect` | `false` | Enable leader election for high-availability deployments. |
 | `--enable-http2` | `false` | Enable `HTTP/2` for the metrics and webhook servers. Disabled by default to mitigate `HTTP/2` CVEs. |
 | `--webhook-cert-path` | `""` | Directory containing the webhook certificate. |
@@ -74,6 +76,9 @@ container `args`).
 | `--metrics-cert-path` | `""` | Directory containing the metrics server certificate. |
 | `--metrics-cert-name` | `tls.crt` | Metrics certificate file name. |
 | `--metrics-cert-key` | `tls.key` | Metrics key file name. |
+
+The standard `-zap-log-level`, `-zap-encoder` and
+`-zap-stacktrace-level` flags are accepted as well.
 
 > See [Metrics](metrics.md) for how the metrics endpoint and `ServiceMonitor`
 > are wired up, and [Webhooks](webhooks.md) for webhook certificate management.
