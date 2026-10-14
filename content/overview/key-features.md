@@ -23,7 +23,7 @@ The `ClusterResourceSupervisor` enables **platform-level hibernation management*
         - Namespace name
         - Application kind (`Deployment` or `StatefulSet`)
         - Original replica count (for accurate restoration)
-        - Per-namespace and per-application status, with an `errorMessage` after a failed wake
+        - Per-namespace and per-application status, with a per-application `errorMessage` after a failed wake
     - `nextReconcileTime`: Predictable next action time (`ISO 8601 datetime`)
     - `conditions`: `Ready`, with the reason when the last sleep or wake failed
 
@@ -51,7 +51,7 @@ The `ResourceSupervisor` provides **self-service hibernation** within a single n
         - Namespace name
         - Application kind (`Deployment` or `StatefulSet`)
         - Original replica count (for accurate restoration)
-        - Per-namespace and per-application status, with an `errorMessage` after a failed wake
+        - Per-namespace and per-application status, with a per-application `errorMessage` after a failed wake
     - `conditions`: `Ready`, with the reason when the last sleep or wake failed
 
 > **Use Case**: A development team creates a `ResourceSupervisor` in their `myapp-staging` namespace to sleep workloads every night and wake them each morning.

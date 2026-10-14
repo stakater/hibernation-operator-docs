@@ -2,14 +2,21 @@
 
 ## Finding why a sleep or wake failed
 
-When `status.currentStatus` is `error`, the reason is on the resource itself, no operator logs needed.
+When `status.currentStatus` is `error`, the reason is on the resource itself, no operator logs needed. The `Ready` and `Reason` columns show it for every supervisor at a glance:
+
+```sh
+kubectl get clusterresourcesupervisors
+kubectl get resourcesupervisors -A
+```
+
+For the full message, read the conditions:
 
 ```sh
 kubectl get clusterresourcesupervisor <name> -o jsonpath='{.status.conditions}'
 kubectl get resourcesupervisor <name> -n <namespace> -o jsonpath='{.status.conditions}'
 ```
 
-The `Ready` condition is `True` when the workloads are in the state the schedule asks for, and `False` with one of these reasons when they are not:
+The `Ready` condition carries one of these reasons: `True` when the workloads are in the state the schedule asks for, `False` when they are not:
 
 | Reason | Meaning |
 | --- | --- |
@@ -21,7 +28,7 @@ The `Ready` condition is `True` when the workloads are in the state the schedule
 | `WakeFailed` | At least one workload could not be restored. The operator retries automatically |
 | `NamespacesUnresolved` | The governed namespaces could not be listed |
 
-The condition `message` carries the underlying error. After a failed wake, each application still asleep also carries its own `errorMessage`, and its namespace counts them:
+The condition `message` carries the underlying error. After a failed wake, each application still asleep also carries its own `errorMessage`:
 
 ```yaml
 status:
@@ -34,7 +41,6 @@ status:
   sleepingNamespaces:
     - Namespace: team-a
       status: error
-      errorMessage: 1 of 2 applications failed to wake
       sleepingApplications:
         - name: web
           kind: Deployment
@@ -43,7 +49,7 @@ status:
           errorMessage: 'deployments.apps "web" is forbidden: ...'
 ```
 
-The next sleep clears both `errorMessage` fields.
+The next sleep clears the `errorMessage` fields.
 
 ## Workloads stay at zero after a wake
 

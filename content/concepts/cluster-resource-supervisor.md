@@ -93,7 +93,7 @@ Two further constraints:
 | `currentStatus` | `running`, `sleeping`, or `error` |
 | `watchedNamespaces` | Namespaces currently being managed |
 | `ignoreNamespaces` | Selected namespaces filtered out by the exclusions above |
-| `sleepingNamespaces` | Per-namespace detail of scaled-down workloads and their original replica counts. After a failed wake, each application still asleep carries an `errorMessage` and its namespace counts them |
+| `sleepingNamespaces` | Per-namespace detail of scaled-down workloads and their original replica counts. After a failed wake, each application still asleep carries an `errorMessage` |
 | `nextReconcileTime` | Next scheduled sleep or wake |
 | `conditions` | `Ready`, `True` after a successful sleep or wake and `False` with the reason after a failed one |
 

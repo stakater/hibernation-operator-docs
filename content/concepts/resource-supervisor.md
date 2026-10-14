@@ -72,7 +72,7 @@ Workloads already at zero replicas are skipped, so they are not later "restored"
 !!! warning
     The status is the only record of the counts. If it is lost, the workloads stay at zero and the operator emits a `LedgerLost` Warning Event instead of inventing a count. Scale them back by hand.
 
-Versions before v0.1.104 stored the count in the annotation `hibernation.stakater.com/original-replicas` on each workload, and woke anything without it to 1 replica. The annotation is still read on wake, so workloads slept by an older version come back at their recorded count, but nothing writes it any more.
+Versions before v0.1.104 stored the count in the annotation `hibernation.stakater.com/original-replicas` on each workload, and woke anything without it to 1 replica. The annotation is still read on wake, so workloads slept by an older version come back at their recorded count, but nothing writes it anymore.
 
 Deleting the `ResourceSupervisor` wakes its workloads first. A finalizer holds the resource until the restore succeeds, and a failed wake keeps it in place and retries, which makes deletion the straightforward way to cancel hibernation.
 

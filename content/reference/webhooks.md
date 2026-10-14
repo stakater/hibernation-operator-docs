@@ -29,7 +29,7 @@ Cron schedules are parsed using standard cron syntax. The webhook enforces:
 - **Empty schedules are allowed** — both `sleepSchedule` and `wakeSchedule`
   empty (immediate/permanent sleep use cases) passes validation.
 - Whichever of `sleepSchedule` and `wakeSchedule` is set must be a **valid cron
-  expression**, and each is at most 256 characters.
+  expression**.
 - `sleepSchedule` and `wakeSchedule` **must not be identical**.
 - A `wakeSchedule` **requires a `sleepSchedule`**. A wake only schedule is
   rejected.
