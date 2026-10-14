@@ -20,7 +20,8 @@ plugins:
       redirect_maps:
         about/key-features.md: overview/key-features.md
         about/use-cases.md: overview/use-cases.md
-        about/benefits.md: overview/benefits.md
+        about/benefits.md: overview/key-features.md
+        overview/benefits.md: overview/key-features.md
         architecture/architecture.md: concepts/architecture.md
         architecture/concepts.md: concepts/terminology.md
         installation/overview.md: getting-started/installation/overview.md
@@ -45,7 +46,6 @@ nav:
     - Introduction: index.md
     - overview/key-features.md
     - overview/use-cases.md
-    - overview/benefits.md
   - Concepts:
     - concepts/architecture.md
     - concepts/terminology.md

@@ -1,65 +1,111 @@
 # Key Features
 
-## 1. `ClusterResourceSupervisor` (Cluster-Scoped)
+The operator is driven by two custom resources that share the same schedule format and the same status format. They differ only in who creates them and in how many namespaces they govern.
 
-The `ClusterResourceSupervisor` enables **platform-level hibernation management** across multiple namespaces or ArgoCD AppProjects. Ideal for cluster administrators and GitOps-driven environments.
+| Feature | Question it addresses |
+|---|---|
+| [Scheduled sleep and wake](#scheduled-sleep-and-wake) | How can idle hours, such as nights and weekends, be removed from the bill? |
+| [Exact restoration](#exact-restoration) | Will every workload return to its previous state? |
+| [Two scopes](#two-scopes) | Who decides what is hibernated? |
+| [Namespace targeting](#namespace-targeting) | Which environments should be hibernated? |
+| [Administrator exclusions](#administrator-exclusions) | Which namespaces must never be hibernated? |
+| [ArgoCD awareness](#argocd-awareness) | How is ArgoCD prevented from restoring hibernated workloads? |
+| [Observable status](#observable-status) | What is currently hibernated, and when will that change? |
 
-### Key Features
+## Scheduled sleep and wake
 
-- **Cluster-wide scope**: Applies hibernation policies across the entire cluster.
-- **Flexible namespace targeting**:
-    - Explicit list of namespace names (`names`)
-    - Dynamic selection via Kubernetes-standard **label selectors** (`matchLabels` and `matchExpressions`)
-- **ArgoCD integration**:
-    - Target hibernation by **ArgoCD AppProject names**
-    - Specify the ArgoCD namespace where AppProjects reside
-- **Cron-based scheduling**:
-    - `sleepSchedule`: Cron expression to scale down workloads
-    - `wakeSchedule` (optional): Cron expression to restore workloads; if omitted, resources remain asleep
-- **Comprehensive status tracking**:
-    - `currentStatus`: Overall state (`sleeping`, `running`, `error`)
-    - `watchedNamespaces` / `ignoreNamespaces`: Lists of affected and excluded namespaces
-    - `sleepingNamespaces`: Detailed records of scaled-down applications, including:
-        - Namespace name
-        - Application kind (`Deployment` or `StatefulSet`)
-        - Original replica count (for accurate restoration)
-        - Per-namespace and per-application status
-    - `nextReconcileTime`: Predictable next action time (`ISO 8601 datetime`)
+The `spec.schedule` field accepts a `sleepSchedule` and a `wakeSchedule`, each expressed as a standard five-field cron expression and evaluated in UTC. Both fields are optional, and the combination that is set determines the behaviour:
 
-> **Use Case**: Enforce cost-saving hibernation for all `env=dev` namespaces or all applications in the `platform-team` ArgoCD AppProject.
+| `sleepSchedule` | `wakeSchedule` | Behaviour |
+|---|---|---|
+| Set | Set | Workloads sleep at each sleep time and wake at each wake time |
+| Set | Empty | Workloads sleep at the next sleep time and remain asleep |
+| Empty | Empty | Workloads sleep immediately and remain asleep until the schedule is changed or the resource is deleted |
+| Empty | Set | Rejected by the admission webhook, as there is no sleep period to apply |
 
----
+The admission webhook also rejects cron expressions that cannot be parsed, and sleep and wake schedules that are identical.
 
-## 2. `ResourceSupervisor` (Namespace-Scoped)
+For further details, refer to [ResourceSupervisor](../concepts/resource-supervisor.md) and [ClusterResourceSupervisor](../concepts/cluster-resource-supervisor.md).
 
-The `ResourceSupervisor` provides **self-service hibernation** within a single namespace. Designed for application teams who want autonomy without cluster-wide permissions.
+## Exact restoration
 
-### Key Features
+Before any workload is scaled down, the operator records its replica count in `status.sleepingNamespaces` on the resource responsible for hibernating it. Workloads are restored exclusively from this record, which ensures that:
 
-- **Namespace-scoped**: Only affects resources in the same namespace where the CR is created.
-- **Simple configuration**:
-    - Minimal spec with just a `schedule` block
-    - No need to manage namespace lists or label selectors
-- **Cron-based scheduling**:
-    - `sleepSchedule`: Required cron expression to hibernate workloads
-    - `wakeSchedule` (optional): Cron expression to wake workloads; if not set, workloads stay asleep indefinitely
-- **Comprehensive status tracking**:
-    - `currentStatus`: Overall state (`sleeping`, `running`, `error`)
-    - `nextReconcileTime`: Predictable next action time (`ISO 8601 datetime`)
-    - `sleepingApplications`: Detailed records of scaled-down applications within its namespace, including:
-        - Namespace name
-        - Application kind (`Deployment` or `StatefulSet`)
-        - Original replica count (for accurate restoration)
-        - Per-namespace and per-application status
+* Each workload is restored to its own replica count rather than to a default value.
+* Workloads that the operator did not hibernate are never modified when it restores others.
+* Workloads already scaled to zero are skipped, so that their recorded count is never overwritten with zero.
+* The record is stored in the Kubernetes API and therefore persists across operator restarts.
 
-> **Use Case**: A development team creates a `ResourceSupervisor` in their `myapp-staging` namespace to sleep workloads every night and wake them each morning.
+When a supervisor is deleted, its workloads are restored first. A finalizer retains the resource until the restoration has completed successfully.
 
----
+Hibernation applies to `Deployments` and `StatefulSets` only. `PersistentVolumeClaims`, and the storage costs associated with them, are not affected.
 
-## When to Use Which?
+## Two scopes
 
-| Scenario | Recommended CRD |
-|--------|------------------|
-| Cluster admin managing hibernation for many teams | `ClusterResourceSupervisor` |
-| GitOps with ArgoCD AppProjects | `ClusterResourceSupervisor` |
-| Team wants full control over their namespace | `ResourceSupervisor` |
+| | `ResourceSupervisor` | `ClusterResourceSupervisor` |
+|---|---|---|
+| Scope | Namespaced | Cluster |
+| Governs | The namespace in which it is created | Every namespace it selects |
+| Created by | Any user permitted to create it in that namespace | A cluster administrator |
+| Namespace targeting | Not applicable | Namespace names and label selectors |
+| ArgoCD sync windows | Not supported | Supported |
+
+The admission webhook prevents two `ClusterResourceSupervisor` resources from selecting the same namespace. It does not, however, prevent a `ClusterResourceSupervisor` and a `ResourceSupervisor` from governing the same namespace, so such overlaps must be avoided by convention.
+
+## Namespace targeting
+
+A `ClusterResourceSupervisor` combines two lists defined under `spec.namespaces`:
+
+* `names`: namespaces specified explicitly by name.
+* `labelSelector`: a standard Kubernetes label selector using `matchLabels` and `matchExpressions`. Namespaces created later with matching labels are included at the next reconcile.
+
+A label selector that defines neither `matchLabels` nor `matchExpressions` selects **no** namespaces, rather than all of them.
+
+When a namespace is removed from the scope of a supervisor, any workloads the supervisor had hibernated in that namespace are restored.
+
+For further details, refer to [Hibernate Workloads Across Multiple Namespaces](../guides/create-cluster-resource-supervisor.md).
+
+## Administrator exclusions
+
+A namespace carrying the following annotation is never hibernated by a supervisor of either kind:
+
+```yaml
+metadata:
+  annotations:
+    hibernation.stakater.com/exclude: "true"
+```
+
+An exclusion takes precedence over every schedule. Any workloads that a supervisor had already hibernated in the namespace are restored at its next scheduled reconcile. The namespace in which the operator runs is always excluded. Excluded namespaces are listed in `status.ignoreNamespaces`, which explains why a schedule may have had no effect.
+
+## ArgoCD awareness
+
+ArgoCD treats a workload scaled to zero as drift from the desired state in Git and synchronises it back to its declared replica count. When `spec.argocd` is set on a `ClusterResourceSupervisor`, the operator applies a `deny` sync window to each specified AppProject. The window opens at the sleep time and remains in effect until the wake time. Manual synchronisation remains permitted.
+
+The `spec.argocd` field does not determine which namespaces are hibernated; these are always selected through `spec.namespaces`. Because the sync window is derived from `sleepSchedule`, no window is applied when that field is empty.
+
+!!! warning
+    The operator replaces the existing `spec.syncWindows` of each AppProject with its own window, and removes all sync windows when the supervisor is deleted. It should therefore not be used with AppProjects that define sync windows of their own.
+
+    The operator's ClusterRole does not include permissions on `appprojects` in the `argoproj.io` API group. Grant `get` and `patch` on this resource to the operator's service account before using `spec.argocd`.
+
+For further details, refer to [ArgoCD Integration](../integrations/argocd.md).
+
+## Observable status
+
+Both resources report the same status fields:
+
+| Field | Description |
+|---|---|
+| `currentStatus` | The current state: `sleeping`, `running` or `error` |
+| `nextReconcileTime` | The time at which the next sleep or wake is due |
+| `watchedNamespaces` | The namespaces the supervisor is permitted to hibernate |
+| `ignoreNamespaces` | The namespaces that were selected but cannot be hibernated, because they are excluded or no longer exist |
+| `sleepingNamespaces` | Each hibernated workload, with its kind and recorded replica count |
+
+If a reconcile fails, `currentStatus` is set to `error` and the operation is retried. Errors that a retry cannot resolve, such as an invalid cron expression, are reported as Kubernetes events on the resource.
+
+## Next steps
+
+* [Use Cases](use-cases.md): the scenarios the operator is designed for
+* [Architecture](../concepts/architecture.md): the components and the reconcile flow
+* [Quick Start](../getting-started/quick-start.md): hibernating a first namespace
