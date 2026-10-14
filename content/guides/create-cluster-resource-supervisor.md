@@ -114,7 +114,7 @@ spec:
 Two further points before enabling this:
 
 - The operator replaces `spec.syncWindows` on each named AppProject rather than appending to it. Any sync windows you maintain there by other means are overwritten.
-- The integration requires the ArgoCD `AppProject` CRD to be present, and `argoCD.enabled=true` at [install time](../getting-started/installation/kubernetes.md#optional-enable-argocd-integration). If the CRD is absent the operator logs the fact and carries on hibernating.
+- The integration requires the ArgoCD `AppProject` CRD to be present, and needs no installation option. If the CRD is absent, the operator logs the fact and continues hibernating. Refer to [ArgoCD Integration](../integrations/argocd.md).
 
 ## Related guides
 

@@ -7,8 +7,8 @@ schedule in a few minutes.
 
 - A Kubernetes cluster (v1.24+) with `kubectl` access
 - [Helm CLI](https://helm.sh/docs/intro/install/)
-- *(Optional)* [cert-manager](https://cert-manager.io/docs/installation/) —
-  required only if you enable the validating webhooks
+- [cert-manager](https://cert-manager.io/docs/installation/), which the Helm
+  chart requires for its webhook and metrics certificates
 
 For OpenShift OperatorHub and detailed options, see
 [Installation](installation/overview.md).

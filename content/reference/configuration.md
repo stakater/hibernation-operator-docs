@@ -10,7 +10,7 @@ For the full installation flow, see [Installation › Kubernetes](../getting-sta
 ## Helm values
 
 The operator is installed from the OCI chart
-`oci://ghcr.io/stakater/public/charts/hibernation-operator`. The table below lists the values most commonly tuned — inspect the full set with:
+`oci://ghcr.io/stakater/public/charts/hibernation-operator`. The table below lists the values most commonly tuned. Inspect the full set with:
 
 ```sh
 helm show values oci://ghcr.io/stakater/public/charts/hibernation-operator
@@ -23,7 +23,7 @@ helm show values oci://ghcr.io/stakater/public/charts/hibernation-operator
 | `controllerManager.controllerManager.env.enableWebhooks` | `"false"` | Enable validating webhooks on the controller deployment. |
 | `controllerManager.controllerManager.env.leaderElectionId` | `hibernation-operator-election-id` | Leader-election lock identifier. |
 | `controllerManager.controllerManager.image.repository` | `ghcr.io/stakater/public/hibernation-operator` | Operator image repository. |
-| `controllerManager.controllerManager.image.tag` | chart `appVersion` | Operator image tag. |
+| `controllerManager.controllerManager.image.tag` | the release tag, for example `v0.1.104` | Operator image tag. |
 | `controllerManager.controllerManager.resources` | requests `10m`/`64Mi`, limits `500m`/`128Mi` | Manager container resource requests/limits. |
 | `controllerManager.replicas` | `1` | Number of manager replicas. |
 | `webhook.manager.env.enableWebhooks` | `"true"` | Enable webhooks on the dedicated webhook deployment. |
@@ -32,7 +32,7 @@ helm show values oci://ghcr.io/stakater/public/charts/hibernation-operator
 | `imagePullSecrets` | `[]` | Image pull secrets for private registries. |
 | `kubernetesClusterDomain` | `cluster.local` | Cluster DNS domain (used for in-cluster service URLs). |
 
-Example — disable the controller at install time:
+For example, to disable the `ResourceSupervisor` controller at install time:
 
 ```sh
 helm install hibernation-operator \
@@ -53,8 +53,8 @@ string `"true"`.
 | `ENABLE_CRS_CONTROLLER` | unset (off) | Enable the `ClusterResourceSupervisor` controller. |
 | `ENABLE_WEBHOOKS` | unset (off) | Enable the validating webhooks. |
 | `OPERATOR_NAME_PREFIX` | `hibernation-operator` | Name prefix used for operator-owned resources. |
-| `OPERATOR_NAMESPACE` | `hibernation-operator-system` | Namespace the operator runs in (used for leader election; auto-detected in-cluster if unset). |
-| `LEADER_ELECTION_ID` | — | Identifier for the leader-election lock. |
+| `OPERATOR_NAMESPACE` | auto-detected in-cluster, falling back to `hibernation-operator-system` | Namespace the operator runs in. Workloads in this namespace are never hibernated. |
+| `LEADER_ELECTION_ID` | unset | Identifier for the leader-election lock. When unset, leader election is disabled even if `--leader-elect` is passed. |
 
 ## Manager flags
 
@@ -63,8 +63,9 @@ container `args`).
 
 | Flag | Default | Description |
 |------|---------|-------------|
-| `--metrics-bind-address` | `0` (disabled) | Address the metrics endpoint binds to (`:8443` secure, `:8080` insecure, `0` to disable). |
-| `--metrics-secure` | `true` | Serve metrics over https. |
+| `--metrics-bind-address` | `0` (disabled) | Address the metrics endpoint binds to, or `0` to disable it. The Helm chart and the OLM bundle set `:6443`. |
+| `--metrics-tls-cert-dir` | `""` | Directory containing `tls.crt` and `tls.key`. When set, metrics are served over HTTPS; otherwise over HTTP. |
+| `--metrics-secure` | `true` | Accepted but has no effect. Use `--metrics-tls-cert-dir` to enable HTTPS. |
 | `--health-probe-bind-address` | `:8081` | Address for liveness/readiness probes. |
 | `--leader-elect` | `false` | Enable leader election for high-availability deployments. |
 | `--enable-http2` | `false` | Enable `HTTP/2` for the metrics and webhook servers. Disabled by default to mitigate `HTTP/2` CVEs. |
@@ -75,5 +76,5 @@ container `args`).
 | `--metrics-cert-name` | `tls.crt` | Metrics certificate file name. |
 | `--metrics-cert-key` | `tls.key` | Metrics key file name. |
 
-> See [Metrics](metrics.md) for how the metrics endpoint and `ServiceMonitor`
-> are wired up, and [Webhooks](webhooks.md) for webhook certificate management.
+> See [Metrics](metrics.md) for how the metrics endpoint is exposed, and
+> [Webhooks](webhooks.md) for webhook certificate management.

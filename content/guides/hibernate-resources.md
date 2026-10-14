@@ -1,179 +1,96 @@
 # Hibernate a Tenant
 
-Implementing hibernation for tenants' namespaces efficiently manages cluster resources by temporarily reducing workload activities during off-peak hours. This guide demonstrates how to configure hibernation schedules for tenant namespaces, leveraging Tenant and ResourceSupervisor for precise control.
-
-## Configuring Hibernation for Tenant Namespaces
-
-You can manage workloads in your cluster with MTO by implementing a hibernation schedule for your tenants.
-Hibernation downsizes the running `Deployments` and `StatefulSets` in a tenant’s namespace according to a defined cron schedule. You can set a hibernation schedule for your tenants by adding the ‘spec.hibernation’ field to the tenant's respective Custom Resource.
-
-```yaml
-hibernation:
-  sleepSchedule: 23 * * * *
-  wakeSchedule: 26 * * * *
-```
-
-`spec.hibernation.sleepSchedule` accepts a cron expression indicating the time to put the workloads in your tenant’s namespaces to sleep.
-
-`spec.hibernation.wakeSchedule` accepts a cron expression indicating the time to wake the workloads in your tenant’s namespaces up.
+This guide describes how to hibernate every namespace that belongs to a [Multi-Tenant Operator](https://docs.stakater.com/mto/) tenant by using a `ClusterResourceSupervisor`.
 
 !!! note
-    Both sleep and wake schedules must be specified for your tenant's hibernation schedule to be valid.
+    The `spec.hibernation` field was removed from the `Tenant` resource in MTO 1.7. Tenant hibernation is configured with a `ClusterResourceSupervisor` that selects the tenant's namespaces by label.
 
-Additionally, adding the `hibernation.stakater.com/exclude: 'true'` annotation to a namespace excludes it from hibernating.
+## Prerequisites
 
-!!! note
-    This is only true for hibernation applied via the Tenant Custom Resource, and does not apply for hibernation done by manually creating a ClusterResourceSupervisor (details about that below).
+* The Hibernation Operator is installed in the cluster. Refer to [Installation](../getting-started/installation/overview.md).
+* Permission to create `ClusterResourceSupervisor` resources, which are cluster scoped.
 
-## Cluster & Namespace Resource Supervisor
+## Hibernate all namespaces of a tenant
 
-Adding a Hibernation Schedule to a Tenant creates an accompanying ClusterResourceSupervisor Custom Resource.
-
-When the sleep timer is activated, the Resource Supervisor puts your applications to sleep and store their previous state. When the wake timer is activated, it uses the stored state to bring them back to running state.
-
-Enabling ArgoCD support for Tenants will also hibernate applications in the tenants' `appProjects`.
+MTO applies the label `stakater.com/tenant: <tenant-name>` to every namespace it manages for a tenant. A `ClusterResourceSupervisor` can select those namespaces with a single label selector:
 
 ```yaml
 apiVersion: hibernation.stakater.com/v1beta1
 kind: ClusterResourceSupervisor
 metadata:
-  name: sigma-tenant
+  name: sigma-hibernation
 spec:
-  argocd:
-    appProjects:
-      - sigma-tenant
-    namespace: openshift-gitops
   schedule:
-    sleepSchedule: 42 * * * *
-    wakeSchedule: 45 * * * *
-
+    sleepSchedule: "0 20 * * 1-5"   # 20:00 UTC, Monday to Friday
+    wakeSchedule: "0 8 * * 1-5"     # 08:00 UTC, Monday to Friday
   namespaces:
     labelSelector:
       matchLabels:
-        stakater.com/current-tenant: sigma
-      matchExpressions: {}
-    names:
-    - tenant-ns1
-    - tenant-ns2
+        stakater.com/tenant: sigma
 ```
 
-> Currently, Hibernation is available only for `StatefulSets` and `Deployments`.
+At 20:00 UTC on each weekday, every `Deployment` and `StatefulSet` in the namespaces of the `sigma` tenant is scaled to zero, and its replica count is recorded in the resource status. At 08:00 UTC, each workload is restored to its recorded count. Namespaces created for the tenant later are included at the next scheduled reconcile.
 
-### Manual creation of ResourceSupervisor
+## Keep a namespace of the tenant running
 
-Hibernation can also be applied by creating a ResourceSupervisor resource manually.
-The ResourceSupervisor definition will contain the hibernation cron schedule, the names of the namespaces to be hibernated, and the names of the ArgoCD AppProjects whose ArgoCD Applications have to be hibernated (as per the given schedule).
+To exclude one of the tenant's namespaces, annotate it rather than changing the selector:
 
-This method can be used to hibernate:
+```sh
+kubectl annotate namespace sigma-prod hibernation.stakater.com/exclude=true
+```
 
-- Some specific namespaces and AppProjects in a tenant
-- A set of namespaces and AppProjects belonging to different tenants
-- Namespaces and AppProjects belonging to a tenant that the cluster admin is not a member of
-- Non-tenant namespaces and ArgoCD AppProjects
+The exclusion applies to every supervisor, whether it was created for a tenant or not. Excluded namespaces are listed in `status.ignoreNamespaces`.
 
-As an example, the following ClusterResourceSupervisor could be created manually, to apply hibernation explicitly to the 'ns1' and 'ns2' namespaces, and to the 'sample-app-project' AppProject.
+## Tenants deployed with ArgoCD
+
+If the tenant's workloads are deployed by ArgoCD, ArgoCD synchronises them back to their declared replica count after they are hibernated. To prevent this, name the tenant's AppProjects under `spec.argocd`:
 
 ```yaml
 apiVersion: hibernation.stakater.com/v1beta1
 kind: ClusterResourceSupervisor
 metadata:
-  name: hibernator
+  name: sigma-hibernation
 spec:
+  schedule:
+    sleepSchedule: "0 20 * * 1-5"
+    wakeSchedule: "0 8 * * 1-5"
+  namespaces:
+    labelSelector:
+      matchLabels:
+        stakater.com/tenant: sigma
   argocd:
-    appProjects:
-      - sample-app-project
     namespace: openshift-gitops
-  schedule:
-    sleepSchedule: 42 * * * *
-    wakeSchedule: 45 * * * *
-
-  namespaces:
-    labelSelector:
-      matchLabels: {}
-      matchExpressions: {}
-    names:
-    - ns1
-    - ns2
-```
-
-## Freeing up unused resources with hibernation
-
-## Hibernation States
-
-The ClusterResourceSupervisor will look like this at 'sleeping' time (as per the schedule):
-
-```yaml
-apiVersion: hibernation.stakater.com/v1beta1
-kind: ClusterResourceSupervisor
-metadata:
-  name: example
-spec:
-  argocd:
-    appProjects: []
-    namespace: ''
-  schedule:
-    sleepSchedule: 0 20 * * 1-5
-    wakeSchedule: 0 8 * * 1-5
-  namespaces:
-    labelSelector:
-      matchLabels: {}
-      matchExpressions: {}
-    names:
-      - build
-      - stage
-      - dev
-status:
-  currentStatus: sleeping
-  nextReconcileTime: '2024-06-11T08:00:00Z'
-  sleepingNamespaces:
-  - Namespace: build
-    sleepingApplications:
-    - kind: Deployment
-      name: Example
-      replicas: 3
-  - Namespace: stage
-    sleepingApplications:
-    - kind: Deployment
-      name: Example
-      replicas: 3
-```
-
-## Hibernating namespaces and/or ArgoCD Applications with Cluster ResourceSupervisor
-
-Bill, the cluster administrator, wants to hibernate a collection of namespaces belonging to multiple different tenants. He can do so by creating a `ClusterResourceSupervisor` manually, specifying the hibernation schedule and the namespaces to be hibernated in its spec. The same method works for namespaces that do not belong to any tenant on his cluster.
-
-The example below hibernates the 'ns2' and 'ns4' namespaces. It also names the 'test-app-project' AppProject under `argocd`, which puts a deny sync window on that project for the duration of the sleep so ArgoCD does not scale the workloads back up.
-
-!!! note
-    `spec.argocd` does not select namespaces to hibernate. Namespaces come only from `spec.namespaces`. Listing AppProjects without a `namespaces` block writes sync windows and hibernates nothing.
-
-```yaml
-apiVersion: hibernation.stakater.com/v1beta1
-kind: ClusterResourceSupervisor
-metadata:
-  name: test-cluster-resource-supervisor
-spec:
-  argocd:
     appProjects:
-      - test-app-project
-    namespace: argocd-ns
-  schedule:
-    sleepSchedule: 0 20 * * 1-5
-    wakeSchedule: 0 8 * * 1-5
-  namespaces:
-    names:
-      - ns2
-      - ns4
+      - sigma
+```
+
+The operator applies a deny sync window to the `sigma` AppProject for the duration of the sleep period. `spec.argocd` does not select namespaces; the namespaces are still selected by `spec.namespaces`. Refer to [ArgoCD Integration](../integrations/argocd.md) before enabling it.
+
+## Verify the status
+
+While the tenant is hibernated, the status of the resource lists each workload and the replica count it will be restored to:
+
+```yaml
 status:
   currentStatus: sleeping
-  nextReconcileTime: '2022-10-13T08:00:00Z'
+  nextReconcileTime: "2026-06-11T08:00:00Z"
+  watchedNamespaces:
+    - sigma-dev
+    - sigma-staging
   sleepingNamespaces:
-  - Namespace: build
-    sleepingApplications:
-    - kind: Deployment
-      name: test-deployment
-      replicas: 3
-    - kind: Deployment
-      name: test-deployment
-      replicas: 3
+    - Namespace: sigma-dev
+      sleepingApplications:
+        - kind: Deployment
+          name: web
+          replicas: 3
+    - Namespace: sigma-staging
+      sleepingApplications:
+        - kind: StatefulSet
+          name: database
+          replicas: 1
 ```
+
+## Related guides
+
+* [Hibernate Workloads Across Multiple Namespaces](create-cluster-resource-supervisor.md)
+* [Hibernate Workloads in a Single Namespace](create-resource-supervisor.md)
