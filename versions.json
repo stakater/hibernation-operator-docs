@@ -92,14 +92,14 @@
   {
     "version": "main",
     "title": "main",
-    "aliases": [
-      "latest"
-    ]
+    "aliases": []
   },
   {
     "version": "docs-overview-mto-format",
     "title": "docs-overview-mto-format",
-    "aliases": []
+    "aliases": [
+      "latest"
+    ]
   },
   {
     "version": "docs-hib-25-align-behaviour",
