@@ -54,7 +54,7 @@ left untouched.
   for Helm installations, by OLM on OpenShift, or supplied through flags. See
   [Webhooks](webhooks.md).
 - **Metrics** require a bearer token authorized through the Kubernetes API, but
-  are served over plain HTTP unless `--metrics-tls-cert-dir` is set. See
+  are served over plain http unless `--metrics-tls-cert-dir` is set. See
   [Metrics](metrics.md).
 - **`HTTP/2` is disabled by default** (`--enable-http2=false`) to mitigate known
   `HTTP/2` denial-of-service vulnerabilities (e.g. the "Rapid Reset" class of

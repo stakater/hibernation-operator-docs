@@ -6,7 +6,7 @@ The Hibernation Operator exposes Prometheus metrics through the [controller-runt
 
 The metrics server is controlled by the `--metrics-bind-address` flag. The binary disables it by default (`0`), but both the Helm chart and the OLM bundle start the controller manager with `--metrics-bind-address=:6443`, so an installed operator serves metrics on port `6443` at the path `/metrics`.
 
-The server uses TLS only when `--metrics-tls-cert-dir` points to a directory containing `tls.crt` and `tls.key`. Neither installation method sets this flag, so the endpoint is served over plain HTTP by default. The `--metrics-secure` flag is accepted but has no effect.
+The server uses TLS only when `--metrics-tls-cert-dir` points to a directory containing `tls.crt` and `tls.key`. Neither installation method sets this flag, so the endpoint is served over plain http by default. The `--metrics-secure` flag is accepted but has no effect.
 
 Requests pass through the controller-runtime authentication and authorization filter, which validates the caller's bearer token against the Kubernetes API. The scraping principal therefore needs the `hibernation-operator-metrics-reader` ClusterRole. Refer to [RBAC](rbac.md).
 

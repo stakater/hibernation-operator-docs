@@ -44,7 +44,7 @@ Hibernation applies to `Deployments` and `StatefulSets` only. `PersistentVolumeC
 
 | | `ResourceSupervisor` | `ClusterResourceSupervisor` |
 |---|---|---|
-| Scope | Namespaced | Cluster |
+| Scope | Namespace | Cluster |
 | Governs | The namespace in which it is created | Every namespace it selects |
 | Created by | Any user permitted to create it in that namespace | A cluster administrator |
 | Namespace targeting | Not applicable | Namespace names and label selectors |
@@ -86,6 +86,7 @@ The `spec.argocd` field does not determine which namespaces are hibernated; thes
 !!! warning
     The operator replaces the existing `spec.syncWindows` of each AppProject with its own window, and removes all sync windows when the supervisor is deleted. It should therefore not be used with AppProjects that define sync windows of their own.
 
+!!! warning
     The operator's ClusterRole does not include permissions on `appprojects` in the `argoproj.io` API group. Grant `get` and `patch` on this resource to the operator's service account before using `spec.argocd`.
 
 For further details, refer to [ArgoCD Integration](../integrations/argocd.md).

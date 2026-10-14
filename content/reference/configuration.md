@@ -64,8 +64,8 @@ container `args`).
 | Flag | Default | Description |
 |------|---------|-------------|
 | `--metrics-bind-address` | `0` (disabled) | Address the metrics endpoint binds to, or `0` to disable it. The Helm chart and the OLM bundle set `:6443`. |
-| `--metrics-tls-cert-dir` | `""` | Directory containing `tls.crt` and `tls.key`. When set, metrics are served over HTTPS; otherwise over HTTP. |
-| `--metrics-secure` | `true` | Accepted but has no effect. Use `--metrics-tls-cert-dir` to enable HTTPS. |
+| `--metrics-tls-cert-dir` | `""` | Directory containing `tls.crt` and `tls.key`. When set, metrics are served over https; otherwise over http. |
+| `--metrics-secure` | `true` | Accepted but has no effect. Use `--metrics-tls-cert-dir` to enable https. |
 | `--health-probe-bind-address` | `:8081` | Address for liveness/readiness probes. |
 | `--leader-elect` | `false` | Enable leader election for high-availability deployments. |
 | `--enable-http2` | `false` | Enable `HTTP/2` for the metrics and webhook servers. Disabled by default to mitigate `HTTP/2` CVEs. |
