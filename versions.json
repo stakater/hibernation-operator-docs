@@ -95,13 +95,6 @@
     "aliases": []
   },
   {
-    "version": "docs-overview-mto-format",
-    "title": "docs-overview-mto-format",
-    "aliases": [
-      "latest"
-    ]
-  },
-  {
     "version": "0.1-fix-for-RS-status",
     "title": "0.1-fix-for-RS-status",
     "aliases": []
