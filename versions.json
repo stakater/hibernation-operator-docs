@@ -97,7 +97,9 @@
   {
     "version": "docs-overview-mto-format",
     "title": "docs-overview-mto-format",
-    "aliases": []
+    "aliases": [
+      "latest"
+    ]
   },
   {
     "version": "0.1-fix-for-RS-status",
