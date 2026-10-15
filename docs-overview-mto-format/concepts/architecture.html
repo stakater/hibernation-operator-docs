@@ -3556,20 +3556,6 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 </tr>
 </tbody>
 </table>
-<pre class="mermaid"><code>graph TD
-    subgraph "Kubernetes cluster"
-        A[Controller manager] --&gt;|Reads| B[ClusterResourceSupervisor]
-        A --&gt;|Reads| C[ResourceSupervisor]
-        A --&gt;|Selects| E[(Namespaces)]
-        A --&gt;|Scales to zero and back| F[Deployment / StatefulSet]
-        A --&gt;|Applies deny sync window| D[ArgoCD AppProject]
-        E --&gt;|Contain| F
-    end
-
-    subgraph "Validation"
-        L[Webhook] --&gt;|Validates| B
-        L --&gt;|Validates| C
-    end</code></pre>
 <h2 id="behaviour">Behaviour<a class="headerlink" href="#behaviour" title="Permanent link">#</a></h2>
 <h3 id="at-the-sleep-time">At the sleep time<a class="headerlink" href="#at-the-sleep-time" title="Permanent link">#</a></h3>
 <p>Every <code>Deployment</code> and <code>StatefulSet</code> with a non-zero replica count in the governed namespaces is scaled to zero. Its replica count is recorded in the status of the resource first, so that it can be restored later. Workloads already at zero are left as they are.</p>

@@ -3581,14 +3581,14 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 <span class="w">    </span><span class="nt">wakeSchedule</span><span class="p">:</span><span class="w"> </span><span class="s">"0</span><span class="nv"> </span><span class="s">8</span><span class="nv"> </span><span class="s">*</span><span class="nv"> </span><span class="s">*</span><span class="nv"> </span><span class="s">*"</span><span class="w">     </span><span class="c1"># Wake daily at 08:00 UTC</span>
 </code></pre></div>
 <h3 id="sleep-with-no-scheduled-wake">Sleep with no scheduled wake<a class="headerlink" href="#sleep-with-no-scheduled-wake" title="Permanent link">#</a></h3>
-<p>Omitting <code>wakeSchedule</code> sleeps the workloads at the next sleep time and leaves them there. The operator still reconciles at each subsequent sleep time, so workloads added to the namespace later are hibernated too rather than being left running.</p>
+<p>Omitting <code>wakeSchedule</code> sleeps the workloads at the next sleep time and leaves them there. Workloads are hibernated again at each subsequent sleep time, so workloads added to the namespace later are hibernated too rather than being left running.</p>
 <div class="highlight"><pre><span></span><code><span class="nt">spec</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">schedule</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">sleepSchedule</span><span class="p">:</span><span class="w"> </span><span class="s">"0</span><span class="nv"> </span><span class="s">12</span><span class="nv"> </span><span class="s">*</span><span class="nv"> </span><span class="s">*</span><span class="nv"> </span><span class="s">*"</span><span class="w">   </span><span class="c1"># Sleep at the next 12:00 UTC, no wake</span>
 </code></pre></div>
 <p>To bring the workloads back, add a <code>wakeSchedule</code> or delete the resource.</p>
 <h3 id="immediate-sleep">Immediate sleep<a class="headerlink" href="#immediate-sleep" title="Permanent link">#</a></h3>
-<p>An empty schedule sleeps the workloads as soon as the resource is created, and reconciles hourly to catch anything new. This suits ephemeral environments such as CI preview namespaces, where the namespace should be parked from the moment it exists.</p>
+<p>An empty schedule sleeps the workloads as soon as the resource is created, and hibernates any new workloads within the hour. This suits ephemeral environments such as CI preview namespaces, where the namespace should be parked from the moment it exists.</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">hibernation.stakater.com/v1beta1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ResourceSupervisor</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -3609,7 +3609,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 <p>The status is the only record of the counts. If it is lost, the workloads stay at zero and the operator emits a <code>LedgerLost</code> Warning Event instead of inventing a count. Scale them back by hand.</p>
 </div>
 <p>Versions before v0.1.104 stored the count in the annotation <code>hibernation.stakater.com/original-replicas</code> on each workload, and woke anything without it to 1 replica. The annotation is still read on wake, so workloads slept by an older version come back at their recorded count, but nothing writes it anymore.</p>
-<p>Deleting the <code>ResourceSupervisor</code> wakes its workloads first. A finalizer holds the resource until the restore succeeds, and a failed wake keeps it in place and retries, which makes deletion the straightforward way to cancel hibernation.</p>
+<p>Deleting the <code>ResourceSupervisor</code> wakes its workloads first. The resource is retained until the restore succeeds, and a failed wake is retried, which makes deletion the straightforward way to cancel hibernation.</p>
 <h2 id="exclusions">Exclusions<a class="headerlink" href="#exclusions" title="Permanent link">#</a></h2>
 <p>A namespace annotated <code>hibernation.stakater.com/exclude: "true"</code> is never hibernated, even if a <code>ResourceSupervisor</code> exists in it, and anything already asleep there is woken. The operator's own namespace is excluded the same way. This gives platform teams a way to protect a namespace regardless of what is created inside it.</p>
 <h2 id="status">Status<a class="headerlink" href="#status" title="Permanent link">#</a></h2>

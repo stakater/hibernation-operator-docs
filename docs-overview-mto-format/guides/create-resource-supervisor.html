@@ -3500,7 +3500,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 <div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>get<span class="w"> </span>resourcesupervisor<span class="w"> </span>my-namespace-hibernation<span class="w"> </span>-n<span class="w"> </span>my-app-staging<span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>-o<span class="w"> </span><span class="nv">jsonpath</span><span class="o">=</span><span class="s1">'{range .status.sleepingNamespaces[*].sleepingApplications[*]}{.kind}/{.name}: {.replicas}{"\n"}{end}'</span>
 </code></pre></div>
-<p>Deleting the <code>ResourceSupervisor</code> wakes its workloads first. A finalizer holds the resource until the restore succeeds, so removing the supervisor is a safe way to cancel hibernation rather than a way to strand workloads at zero.</p>
+<p>Deleting the <code>ResourceSupervisor</code> wakes its workloads first. The resource is retained until the restore succeeds, so removing the supervisor is a safe way to cancel hibernation rather than a way to strand workloads at zero.</p>
 <p>A namespace annotated with <code>hibernation.stakater.com/exclude: "true"</code> is skipped, even if a <code>ResourceSupervisor</code> exists in it.</p>
 <h2 id="related-guides">Related guides<a class="headerlink" href="#related-guides" title="Permanent link">#</a></h2>
 <ul>

@@ -3522,7 +3522,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 <span class="w">    </span><span class="nt">sleepSchedule</span><span class="p">:</span><span class="w"> </span><span class="s">"0</span><span class="nv"> </span><span class="s">18</span><span class="nv"> </span><span class="s">*</span><span class="nv"> </span><span class="s">*</span><span class="nv"> </span><span class="s">1-5"</span>
 <span class="w">    </span><span class="nt">wakeSchedule</span><span class="p">:</span><span class="w"> </span><span class="s">"0</span><span class="nv"> </span><span class="s">8</span><span class="nv"> </span><span class="s">*</span><span class="nv"> </span><span class="s">*</span><span class="nv"> </span><span class="s">1-5"</span>
 </code></pre></div>
-<p><code>labelSelector</code> is a standard Kubernetes label selector, so <code>matchLabels</code> and <code>matchExpressions</code> both work and are combined with AND. It is re-evaluated on each reconcile, which is what lets namespaces created later be picked up without editing the resource.</p>
+<p><code>labelSelector</code> is a standard Kubernetes label selector, so <code>matchLabels</code> and <code>matchExpressions</code> both work and are combined with AND. It is re-evaluated at each scheduled sleep or wake, so namespaces created later are picked up without editing the resource.</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>An empty <code>labelSelector: {}</code> matches no namespaces, not all of them, and a <code>ClusterResourceSupervisor</code> with no <code>spec.namespaces</code> at all hibernates nothing. To cover a broad set, apply a label the target namespaces share and select on that.</p>

@@ -3470,7 +3470,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 
 
 <h1 id="uninstalling">Uninstalling<a class="headerlink" href="#uninstalling" title="Permanent link">#</a></h1>
-<p>The Hibernation Operator must remove its custom resources before the operator itself is removed. Each <code>ResourceSupervisor</code> and <code>ClusterResourceSupervisor</code> carries a finalizer, and the operator handles that finalizer by restoring every workload the resource put to sleep and, for a <code>ClusterResourceSupervisor</code>, by clearing the ArgoCD sync windows it wrote. If the operator is removed first, nothing remains to process the finalizers: the deletion of the resources does not complete, and the hibernated workloads remain at zero replicas.</p>
+<p>The custom resources must be deleted before the operator itself is removed. Deleting a <code>ResourceSupervisor</code> or <code>ClusterResourceSupervisor</code> restores every workload it put to sleep and, for a <code>ClusterResourceSupervisor</code>, removes the ArgoCD sync windows it applied. That work is done by the operator, so if the operator is removed first, the deletion of the resources does not complete and the hibernated workloads remain at zero replicas.</p>
 <p>Uninstall in the following order.</p>
 <h2 id="1-delete-the-custom-resources">1. Delete the custom resources<a class="headerlink" href="#1-delete-the-custom-resources" title="Permanent link">#</a></h2>
 <p>While the operator is still running, delete every supervisor:</p>
@@ -3481,7 +3481,7 @@ kubectl<span class="w"> </span>delete<span class="w"> </span>resourcesupervisors
 <div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>get<span class="w"> </span>clusterresourcesupervisors.hibernation.stakater.com
 kubectl<span class="w"> </span>get<span class="w"> </span>resourcesupervisors.hibernation.stakater.com<span class="w"> </span>--all-namespaces
 </code></pre></div>
-<p>If a deletion does not complete, inspect the events on the resource with <code>kubectl describe</code>. A failed restoration is reported there as a <code>WakeFailed</code> event, and the finalizer is retained until the restoration succeeds.</p>
+<p>If a deletion does not complete, inspect the events on the resource with <code>kubectl describe</code>. A failed restoration is reported there as a <code>WakeFailed</code> event, and the resource is retained until the restoration succeeds.</p>
 <h2 id="2-remove-the-operator">2. Remove the operator<a class="headerlink" href="#2-remove-the-operator" title="Permanent link">#</a></h2>
 <h3 id="helm">Helm<a class="headerlink" href="#helm" title="Permanent link">#</a></h3>
 <div class="highlight"><pre><span></span><code>helm<span class="w"> </span>uninstall<span class="w"> </span>hibernation-operator<span class="w"> </span>--namespace<span class="w"> </span>hibernation-operator-system
@@ -3509,8 +3509,8 @@ oc<span class="w"> </span>delete<span class="w"> </span>csv<span class="w"> </sp
 kubectl<span class="w"> </span>delete<span class="w"> </span>namespace<span class="w"> </span>hibernation-operator-system
 </code></pre></div>
 <h2 id="recovering-from-an-incorrect-order">Recovering from an incorrect order<a class="headerlink" href="#recovering-from-an-incorrect-order" title="Permanent link">#</a></h2>
-<p>If the operator was removed while supervisors still existed, their deletion remains pending on the finalizer. The simplest recovery is to reinstall the operator, which then processes the pending deletions and restores the workloads.</p>
-<p>If reinstalling is not possible, record the replica counts from <code>status.sleepingNamespaces</code> of each pending resource, scale the workloads back manually, and then remove the finalizer:</p>
+<p>If the operator was removed while supervisors still existed, their deletion remains pending. The simplest recovery is to reinstall the operator, which then processes the pending deletions and restores the workloads.</p>
+<p>If reinstalling is not possible, record the replica counts from <code>status.sleepingNamespaces</code> of each pending resource, scale the workloads back manually, and then remove the finalizer that keeps the resource pending:</p>
 <div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>patch<span class="w"> </span>clusterresourcesupervisor<span class="w"> </span>&lt;name&gt;<span class="w"> </span>--type<span class="w"> </span>merge<span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>-p<span class="w"> </span><span class="s1">'{"metadata":{"finalizers":null}}'</span>
 </code></pre></div>

@@ -3483,7 +3483,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 <span class="w">      </span><span class="nt">matchLabels</span><span class="p">:</span>
 <span class="w">        </span><span class="nt">stakater.com/tenant</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">sigma</span>
 </code></pre></div>
-<p>At 20:00 UTC on each weekday, every <code>Deployment</code> and <code>StatefulSet</code> in the namespaces of the <code>sigma</code> tenant is scaled to zero, and its replica count is recorded in the resource status. At 08:00 UTC, each workload is restored to its recorded count. Namespaces created for the tenant later are included at the next scheduled reconcile.</p>
+<p>At 20:00 UTC on each weekday, every <code>Deployment</code> and <code>StatefulSet</code> in the namespaces of the <code>sigma</code> tenant is scaled to zero, and its replica count is recorded in the resource status. At 08:00 UTC, each workload is restored to its recorded count. Namespaces created for the tenant later are included at the next scheduled sleep or wake.</p>
 <h2 id="keep-a-namespace-of-the-tenant-running">Keep a namespace of the tenant running<a class="headerlink" href="#keep-a-namespace-of-the-tenant-running" title="Permanent link">#</a></h2>
 <p>To exclude one of the tenant's namespaces, annotate it rather than changing the selector:</p>
 <div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>annotate<span class="w"> </span>namespace<span class="w"> </span>sigma-prod<span class="w"> </span>hibernation.stakater.com/exclude<span class="o">=</span><span class="nb">true</span>
