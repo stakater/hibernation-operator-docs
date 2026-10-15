@@ -50,6 +50,8 @@
     
       <link rel="stylesheet" href="../stylesheets/extra.css">
     
+      <link rel="stylesheet" href="../stylesheets/headings.css">
+    
     <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
@@ -2370,34 +2372,6 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../concepts/terminology.html" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Concepts
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
       <a href="../concepts/resource-supervisor.html" class="md-nav__link">
         
   
@@ -2984,7 +2958,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   <span class="md-ellipsis">
     
   
-    Api
+    API Reference
   
 
     
@@ -3530,8 +3504,8 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 <h1 id="use-cases">Use Cases<a class="headerlink" href="#use-cases" title="Permanent link">#</a></h1>
 <p>The Hibernation Operator is intended for clusters that run environments continuously, even though those environments are only used for part of the day. The scenarios below describe the situations for which it was designed.</p>
 <h2 id="development-and-test-platforms">Development and test platforms<a class="headerlink" href="#development-and-test-platforms" title="Permanent link">#</a></h2>
-<p><strong>Scenario.</strong> A platform team operates a shared cluster for many development teams. Each team maintains <code>dev</code>, <code>test</code> and <code>staging</code> namespaces, all of which continue to run overnight and at weekends while no one is using them.</p>
-<p><strong>Approach.</strong> A single <code>ClusterResourceSupervisor</code> selects every non-production namespace by label and hibernates those namespaces outside working hours:</p>
+<p><strong>Scenario:</strong> A platform team operates a shared cluster for many development teams. Each team maintains <code>dev</code>, <code>test</code> and <code>staging</code> namespaces, all of which continue to run overnight and at weekends while no one is using them.</p>
+<p><strong>Approach:</strong> A single <code>ClusterResourceSupervisor</code> selects every non-production namespace by label and hibernates those namespaces outside working hours:</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">hibernation.stakater.com/v1beta1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ClusterResourceSupervisor</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -3549,14 +3523,14 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 </code></pre></div>
 <p>Newly created namespaces with a matching label are included without any change to the supervisor. A namespace that must remain available, for example during a demonstration or a load test, is annotated with <code>hibernation.stakater.com/exclude: "true"</code> rather than being removed from the selector.</p>
 <h2 id="team-self-service">Team self-service<a class="headerlink" href="#team-self-service" title="Permanent link">#</a></h2>
-<p><strong>Scenario.</strong> A product team owns the <code>payments-staging</code> namespace and is best placed to determine its own working hours. The team should be able to reduce costs without raising a request with the platform team or holding cluster-level permissions.</p>
-<p><strong>Approach.</strong> The team creates a <code>ResourceSupervisor</code> in its own namespace. Because the resource can only affect the namespace in which it is created, permission to create it can safely be granted to namespace owners, and each team can define its own schedule. For further details, refer to <a href="../guides/create-resource-supervisor.html">Hibernate Workloads in a Single Namespace</a>.</p>
+<p><strong>Scenario:</strong> A product team owns the <code>payments-staging</code> namespace and is best placed to determine its own working hours. The team should be able to reduce costs without raising a request with the platform team or holding cluster-level permissions.</p>
+<p><strong>Approach:</strong> The team creates a <code>ResourceSupervisor</code> in its own namespace. Because the resource can only affect the namespace in which it is created, permission to create it can safely be granted to namespace owners, and each team can define its own schedule. For further details, refer to <a href="../guides/create-resource-supervisor.html">Hibernate Workloads in a Single Namespace</a>.</p>
 <h2 id="gitops-managed-environments">GitOps-managed environments<a class="headerlink" href="#gitops-managed-environments" title="Permanent link">#</a></h2>
-<p><strong>Scenario.</strong> The environments are deployed by ArgoCD. A workload scaled to zero is treated as drift from Git, so ArgoCD synchronises it back to its declared replica count and hibernation does not take effect.</p>
-<p><strong>Approach.</strong> A <code>ClusterResourceSupervisor</code> that specifies the relevant AppProjects under <code>spec.argocd</code> applies a deny sync window to them for the duration of the sleep period, so that ArgoCD does not restore the hibernated workloads before the wake time. The namespaces to be hibernated are still selected under <code>spec.namespaces</code>. For further details, refer to <a href="../integrations/argocd.html">ArgoCD Integration</a>.</p>
+<p><strong>Scenario:</strong> The environments are deployed by ArgoCD. A workload scaled to zero is treated as drift from Git, so ArgoCD synchronises it back to its declared replica count and hibernation does not take effect.</p>
+<p><strong>Approach:</strong> A <code>ClusterResourceSupervisor</code> that specifies the relevant AppProjects under <code>spec.argocd</code> applies a deny sync window to them for the duration of the sleep period, so that ArgoCD does not restore the hibernated workloads before the wake time. The namespaces to be hibernated are still selected under <code>spec.namespaces</code>. For further details, refer to <a href="../integrations/argocd.html">ArgoCD Integration</a>.</p>
 <h2 id="holiday-and-shutdown-periods">Holiday and shutdown periods<a class="headerlink" href="#holiday-and-shutdown-periods" title="Permanent link">#</a></h2>
-<p><strong>Scenario.</strong> During an organisation-wide closure, non-critical environments should remain unavailable for the entire period and be restored only when a deliberate decision is made to do so.</p>
-<p><strong>Approach.</strong> A <code>ClusterResourceSupervisor</code> with an empty schedule hibernates the selected namespaces immediately and keeps them hibernated. Deleting the supervisor at the end of the period restores every workload to its recorded replica count.</p>
+<p><strong>Scenario:</strong> During an organisation-wide closure, non-critical environments should remain unavailable for the entire period and be restored only when a deliberate decision is made to do so.</p>
+<p><strong>Approach:</strong> A <code>ClusterResourceSupervisor</code> with an empty schedule hibernates the selected namespaces immediately and keeps them hibernated. Deleting the supervisor at the end of the period restores every workload to its recorded replica count.</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">hibernation.stakater.com/v1beta1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ClusterResourceSupervisor</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -3569,17 +3543,17 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 <span class="w">        </span><span class="nt">criticality</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">low</span>
 </code></pre></div>
 <h2 id="demonstration-and-training-environments">Demonstration and training environments<a class="headerlink" href="#demonstration-and-training-environments" title="Permanent link">#</a></h2>
-<p><strong>Scenario.</strong> Environments used for customer demonstrations or training are only required during business hours, and many copies of them may exist at any time.</p>
-<p><strong>Approach.</strong> A <code>ResourceSupervisor</code> is included in the environment template, so every copy is provisioned with a hibernation schedule already in place and no manual intervention is required.</p>
+<p><strong>Scenario:</strong> Environments used for customer demonstrations or training are only required during business hours, and many copies of them may exist at any time.</p>
+<p><strong>Approach:</strong> A <code>ResourceSupervisor</code> is included in the environment template, so every copy is provisioned with a hibernation schedule already in place and no manual intervention is required.</p>
 <h2 id="multi-tenant-clusters">Multi-tenant clusters<a class="headerlink" href="#multi-tenant-clusters" title="Permanent link">#</a></h2>
-<p><strong>Scenario.</strong> A cluster hosts many tenants, and the non-production environments of lower-tier tenants are not required to run overnight.</p>
-<p><strong>Approach.</strong> A <code>ClusterResourceSupervisor</code> selects namespaces by a tenant or tier label, such as <code>tier: basic</code>, while namespaces belonging to other tenants continue to run. When <a href="https://docs.stakater.com/mto/">Multi-Tenant Operator</a> is in use, every tenant namespace already carries the <code>stakater.com/tenant: &lt;tenant-name&gt;</code> label, so a single selector can cover an entire tenant.</p>
+<p><strong>Scenario:</strong> A cluster hosts many tenants, and the non-production environments of lower-tier tenants are not required to run overnight.</p>
+<p><strong>Approach:</strong> A <code>ClusterResourceSupervisor</code> selects namespaces by a tenant or tier label, such as <code>tier: basic</code>, while namespaces belonging to other tenants continue to run. When <a href="https://docs.stakater.com/mto/">Multi-Tenant Operator</a> is in use, every tenant namespace already carries the <code>stakater.com/tenant: &lt;tenant-name&gt;</code> label, so a single selector can cover an entire tenant.</p>
 <h2 id="limitations">Limitations<a class="headerlink" href="#limitations" title="Permanent link">#</a></h2>
 <p>The operator is not the appropriate tool in the following situations:</p>
 <ul>
-<li><strong>Ephemeral environments that should be removed.</strong> Hibernation retains the namespace, its configuration and its volumes. Preview environments that are no longer needed should be deleted instead.</li>
-<li><strong>Storage costs.</strong> Only <code>Deployments</code> and <code>StatefulSets</code> are scaled. <code>PersistentVolumeClaims</code> are not affected.</li>
-<li><strong>Other workload kinds.</strong> <code>DaemonSets</code>, <code>Jobs</code>, <code>CronJobs</code> and custom workload resources are not hibernated.</li>
+<li><strong>Ephemeral environments that should be removed:</strong> Hibernation retains the namespace, its configuration and its volumes. Preview environments that are no longer needed should be deleted instead.</li>
+<li><strong>Storage costs:</strong> Only <code>Deployments</code> and <code>StatefulSets</code> are scaled. <code>PersistentVolumeClaims</code> are not affected.</li>
+<li><strong>Other workload kinds:</strong> <code>DaemonSets</code>, <code>Jobs</code>, <code>CronJobs</code> and custom workload resources are not hibernated.</li>
 </ul>
 <h2 id="next-steps">Next steps<a class="headerlink" href="#next-steps" title="Permanent link">#</a></h2>
 <ul>

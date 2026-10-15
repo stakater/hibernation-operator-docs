@@ -48,6 +48,8 @@
     
       <link rel="stylesheet" href="stylesheets/extra.css">
     
+      <link rel="stylesheet" href="stylesheets/headings.css">
+    
     <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
@@ -2127,10 +2129,10 @@ This documentation is for a pull request deployment and is unreleased, it is onl
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
       
         <li class="md-nav__item">
-  <a href="#capabilities" class="md-nav__link">
+  <a href="#how-it-works" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Capabilities
+        How it works
       
     </span>
   </a>
@@ -2138,10 +2140,10 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 </li>
       
         <li class="md-nav__item">
-  <a href="#a-single-resource" class="md-nav__link">
+  <a href="#example" class="md-nav__link">
     <span class="md-ellipsis">
       
-        A single resource
+        Example
       
     </span>
   </a>
@@ -2321,34 +2323,6 @@ This documentation is for a pull request deployment and is unreleased, it is onl
     
   
     Architecture
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="concepts/terminology.html" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Concepts
   
 
     
@@ -2955,7 +2929,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   <span class="md-ellipsis">
     
   
-    Api
+    API Reference
   
 
     
@@ -3391,10 +3365,10 @@ This documentation is for a pull request deployment and is unreleased, it is onl
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
       
         <li class="md-nav__item">
-  <a href="#capabilities" class="md-nav__link">
+  <a href="#how-it-works" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Capabilities
+        How it works
       
     </span>
   </a>
@@ -3402,10 +3376,10 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 </li>
       
         <li class="md-nav__item">
-  <a href="#a-single-resource" class="md-nav__link">
+  <a href="#example" class="md-nav__link">
     <span class="md-ellipsis">
       
-        A single resource
+        Example
       
     </span>
   </a>
@@ -3472,52 +3446,16 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 
 
 <h1 id="hibernation-operator">Hibernation Operator<a class="headerlink" href="#hibernation-operator" title="Permanent link">#</a></h1>
-<p><strong>Reduce the cost of idle Kubernetes environments.</strong></p>
 <p>Development, test, demonstration and preview environments are typically in use for only part of the working week, yet their workloads continue to run and to hold the capacity they request. The Hibernation Operator scales these workloads down to zero according to a schedule and restores them to their previous state when they are next required.</p>
 <p>Platform teams can apply hibernation to many namespaces through a single resource, while application teams can manage hibernation for their own namespace without requiring cluster-level permissions.</p>
-<h2 id="capabilities">Capabilities<a class="headerlink" href="#capabilities" title="Permanent link">#</a></h2>
-<table>
-<thead>
-<tr>
-<th>Capability</th>
-<th>Question it addresses</th>
-<th>How the operator addresses it</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><strong>Scheduled sleep and wake</strong></td>
-<td>How can idle hours, such as nights and weekends, be removed from the bill?</td>
-<td>Scales <code>Deployments</code> and <code>StatefulSets</code> to zero on a sleep schedule and restores them on a wake schedule</td>
-</tr>
-<tr>
-<td><strong>Exact restoration</strong></td>
-<td>Will every workload return to its previous state?</td>
-<td>Records each replica count in the resource status before scaling down, and restores from that record</td>
-</tr>
-<tr>
-<td><strong>Two scopes</strong></td>
-<td>Who decides what is hibernated?</td>
-<td><code>ClusterResourceSupervisor</code> for platform teams across namespaces, and <code>ResourceSupervisor</code> for application teams within a single namespace</td>
-</tr>
-<tr>
-<td><strong>Namespace targeting</strong></td>
-<td>Which environments should be hibernated?</td>
-<td>Selects namespaces by name, by label selector, or by both</td>
-</tr>
-<tr>
-<td><strong>Administrator exclusions</strong></td>
-<td>Which namespaces must never be hibernated?</td>
-<td>A single namespace annotation excludes a namespace regardless of any schedule</td>
-</tr>
-<tr>
-<td><strong>ArgoCD awareness</strong></td>
-<td>How is ArgoCD prevented from restoring hibernated workloads?</td>
-<td>Applies a deny sync window to the specified AppProjects for the duration of the sleep period</td>
-</tr>
-</tbody>
-</table>
-<h2 id="a-single-resource">A single resource<a class="headerlink" href="#a-single-resource" title="Permanent link">#</a></h2>
+<h2 id="how-it-works">How it works<a class="headerlink" href="#how-it-works" title="Permanent link">#</a></h2>
+<ol>
+<li><strong>Select namespaces:</strong> a <code>ResourceSupervisor</code> governs the namespace in which it is created, while a <code>ClusterResourceSupervisor</code> selects namespaces by name or by label.</li>
+<li><strong>Set a schedule:</strong> a sleep and a wake time, each expressed as a cron expression in UTC.</li>
+<li><strong>Sleep:</strong> at the sleep time, every <code>Deployment</code> and <code>StatefulSet</code> in the selected namespaces is scaled to zero, and its replica count is recorded in the status of the resource.</li>
+<li><strong>Wake:</strong> at the wake time, each workload is restored to its recorded replica count.</li>
+</ol>
+<h2 id="example">Example<a class="headerlink" href="#example" title="Permanent link">#</a></h2>
 <p>To hibernate a staging namespace outside working hours, a team creates one resource in that namespace:</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">hibernation.stakater.com/v1beta1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ResourceSupervisor</span>
@@ -3529,14 +3467,13 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 <span class="w">    </span><span class="nt">sleepSchedule</span><span class="p">:</span><span class="w"> </span><span class="s">"0</span><span class="nv"> </span><span class="s">20</span><span class="nv"> </span><span class="s">*</span><span class="nv"> </span><span class="s">*</span><span class="nv"> </span><span class="s">1-5"</span><span class="w">   </span><span class="c1"># 20:00 UTC, Monday to Friday</span>
 <span class="w">    </span><span class="nt">wakeSchedule</span><span class="p">:</span><span class="w"> </span><span class="s">"0</span><span class="nv"> </span><span class="s">8</span><span class="nv"> </span><span class="s">*</span><span class="nv"> </span><span class="s">*</span><span class="nv"> </span><span class="s">1-5"</span><span class="w">     </span><span class="c1"># 08:00 UTC, Monday to Friday</span>
 </code></pre></div>
-<p>At 20:00, every <code>Deployment</code> and <code>StatefulSet</code> in <code>payments-staging</code> is scaled to zero, and its replica count is recorded in the status of the resource. At 08:00, each workload is restored to its recorded replica count. The namespace remains hibernated over the weekend, as no wake is scheduled between the Friday sleep and Monday morning. When the resource is deleted, its workloads are restored before the deletion completes.</p>
-<p>The same schedule, applied through a <code>ClusterResourceSupervisor</code>, governs every namespace that the resource selects. Refer to <a href="overview/key-features.html">Key Features</a> for a full description of both resources.</p>
+<p>The namespace sleeps every weekday evening and wakes the following morning. It remains hibernated over the weekend, as no wake is scheduled between the Friday sleep and Monday morning. When the resource is deleted, its workloads are restored before the deletion completes.</p>
 <h2 id="where-to-go-next">Where to go next<a class="headerlink" href="#where-to-go-next" title="Permanent link">#</a></h2>
 <h3 id="evaluating-the-operator">Evaluating the operator<a class="headerlink" href="#evaluating-the-operator" title="Permanent link">#</a></h3>
 <ul>
 <li><a href="overview/key-features.html">Key Features</a>: a description of each feature</li>
 <li><a href="overview/use-cases.html">Use Cases</a>: the scenarios the operator is designed for</li>
-<li><a href="concepts/architecture.html">Architecture</a>: the components and the reconcile flow</li>
+<li><a href="concepts/architecture.html">Architecture</a>: the components and how they behave</li>
 </ul>
 <h3 id="running-the-operator">Running the operator<a class="headerlink" href="#running-the-operator" title="Permanent link">#</a></h3>
 <ul>

@@ -50,6 +50,8 @@
     
       <link rel="stylesheet" href="../stylesheets/extra.css">
     
+      <link rel="stylesheet" href="../stylesheets/headings.css">
+    
     <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
@@ -2157,10 +2159,10 @@ This documentation is for a pull request deployment and is unreleased, it is onl
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
       
         <li class="md-nav__item">
-  <a href="#scheduled-sleep-and-wake" class="md-nav__link">
+  <a href="#sleep-and-wake-on-a-cron-schedule" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Scheduled sleep and wake
+        Sleep and wake on a cron schedule
       
     </span>
   </a>
@@ -2168,10 +2170,10 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 </li>
       
         <li class="md-nav__item">
-  <a href="#exact-restoration" class="md-nav__link">
+  <a href="#restore-every-workload-to-its-previous-replica-count" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Exact restoration
+        Restore every workload to its previous replica count
       
     </span>
   </a>
@@ -2179,10 +2181,10 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 </li>
       
         <li class="md-nav__item">
-  <a href="#two-scopes" class="md-nav__link">
+  <a href="#hibernate-one-namespace-or-many" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Two scopes
+        Hibernate one namespace or many
       
     </span>
   </a>
@@ -2190,10 +2192,10 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 </li>
       
         <li class="md-nav__item">
-  <a href="#namespace-targeting" class="md-nav__link">
+  <a href="#select-namespaces-by-name-or-label" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Namespace targeting
+        Select namespaces by name or label
       
     </span>
   </a>
@@ -2201,10 +2203,10 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 </li>
       
         <li class="md-nav__item">
-  <a href="#administrator-exclusions" class="md-nav__link">
+  <a href="#exclude-namespaces-from-hibernation" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Administrator exclusions
+        Exclude namespaces from hibernation
       
     </span>
   </a>
@@ -2212,10 +2214,10 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 </li>
       
         <li class="md-nav__item">
-  <a href="#argocd-awareness" class="md-nav__link">
+  <a href="#keep-argocd-from-undoing-hibernation" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ArgoCD awareness
+        Keep ArgoCD from undoing hibernation
       
     </span>
   </a>
@@ -2223,10 +2225,10 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 </li>
       
         <li class="md-nav__item">
-  <a href="#observable-status" class="md-nav__link">
+  <a href="#track-hibernation-state-in-the-resource-status" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Observable status
+        Track hibernation state in the resource status
       
     </span>
   </a>
@@ -2350,34 +2352,6 @@ This documentation is for a pull request deployment and is unreleased, it is onl
     
   
     Architecture
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../concepts/terminology.html" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Concepts
   
 
     
@@ -2984,7 +2958,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   <span class="md-ellipsis">
     
   
-    Api
+    API Reference
   
 
     
@@ -3420,10 +3394,10 @@ This documentation is for a pull request deployment and is unreleased, it is onl
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
       
         <li class="md-nav__item">
-  <a href="#scheduled-sleep-and-wake" class="md-nav__link">
+  <a href="#sleep-and-wake-on-a-cron-schedule" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Scheduled sleep and wake
+        Sleep and wake on a cron schedule
       
     </span>
   </a>
@@ -3431,10 +3405,10 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 </li>
       
         <li class="md-nav__item">
-  <a href="#exact-restoration" class="md-nav__link">
+  <a href="#restore-every-workload-to-its-previous-replica-count" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Exact restoration
+        Restore every workload to its previous replica count
       
     </span>
   </a>
@@ -3442,10 +3416,10 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 </li>
       
         <li class="md-nav__item">
-  <a href="#two-scopes" class="md-nav__link">
+  <a href="#hibernate-one-namespace-or-many" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Two scopes
+        Hibernate one namespace or many
       
     </span>
   </a>
@@ -3453,10 +3427,10 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 </li>
       
         <li class="md-nav__item">
-  <a href="#namespace-targeting" class="md-nav__link">
+  <a href="#select-namespaces-by-name-or-label" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Namespace targeting
+        Select namespaces by name or label
       
     </span>
   </a>
@@ -3464,10 +3438,10 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 </li>
       
         <li class="md-nav__item">
-  <a href="#administrator-exclusions" class="md-nav__link">
+  <a href="#exclude-namespaces-from-hibernation" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Administrator exclusions
+        Exclude namespaces from hibernation
       
     </span>
   </a>
@@ -3475,10 +3449,10 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 </li>
       
         <li class="md-nav__item">
-  <a href="#argocd-awareness" class="md-nav__link">
+  <a href="#keep-argocd-from-undoing-hibernation" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ArgoCD awareness
+        Keep ArgoCD from undoing hibernation
       
     </span>
   </a>
@@ -3486,10 +3460,10 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 </li>
       
         <li class="md-nav__item">
-  <a href="#observable-status" class="md-nav__link">
+  <a href="#track-hibernation-state-in-the-resource-status" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Observable status
+        Track hibernation state in the resource status
       
     </span>
   </a>
@@ -3529,46 +3503,8 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 
 <h1 id="key-features">Key Features<a class="headerlink" href="#key-features" title="Permanent link">#</a></h1>
 <p>The operator is driven by two custom resources that share the same schedule format and the same status format. They differ only in who creates them and in how many namespaces they govern.</p>
-<table>
-<thead>
-<tr>
-<th>Feature</th>
-<th>Question it addresses</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><a href="#scheduled-sleep-and-wake">Scheduled sleep and wake</a></td>
-<td>How can idle hours, such as nights and weekends, be removed from the bill?</td>
-</tr>
-<tr>
-<td><a href="#exact-restoration">Exact restoration</a></td>
-<td>Will every workload return to its previous state?</td>
-</tr>
-<tr>
-<td><a href="#two-scopes">Two scopes</a></td>
-<td>Who decides what is hibernated?</td>
-</tr>
-<tr>
-<td><a href="#namespace-targeting">Namespace targeting</a></td>
-<td>Which environments should be hibernated?</td>
-</tr>
-<tr>
-<td><a href="#administrator-exclusions">Administrator exclusions</a></td>
-<td>Which namespaces must never be hibernated?</td>
-</tr>
-<tr>
-<td><a href="#argocd-awareness">ArgoCD awareness</a></td>
-<td>How is ArgoCD prevented from restoring hibernated workloads?</td>
-</tr>
-<tr>
-<td><a href="#observable-status">Observable status</a></td>
-<td>What is currently hibernated, and when will that change?</td>
-</tr>
-</tbody>
-</table>
-<h2 id="scheduled-sleep-and-wake">Scheduled sleep and wake<a class="headerlink" href="#scheduled-sleep-and-wake" title="Permanent link">#</a></h2>
-<p>The <code>spec.schedule</code> field accepts a <code>sleepSchedule</code> and a <code>wakeSchedule</code>, each expressed as a standard five-field cron expression and evaluated in UTC. Both fields are optional, and the combination that is set determines the behaviour:</p>
+<h2 id="sleep-and-wake-on-a-cron-schedule">Sleep and wake on a cron schedule<a class="headerlink" href="#sleep-and-wake-on-a-cron-schedule" title="Permanent link">#</a></h2>
+<p>Most non-production environments are idle at night and at weekends, and hibernation removes those hours from the cost of running them. The <code>spec.schedule</code> field accepts a <code>sleepSchedule</code> and a <code>wakeSchedule</code>, each expressed as a standard five-field cron expression and evaluated in UTC. Both fields are optional, and the combination that is set determines the behaviour:</p>
 <table>
 <thead>
 <tr>
@@ -3602,17 +3538,18 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 </table>
 <p>The admission webhook also rejects cron expressions that cannot be parsed, and sleep and wake schedules that are identical.</p>
 <p>For further details, refer to <a href="../concepts/resource-supervisor.html">ResourceSupervisor</a> and <a href="../concepts/cluster-resource-supervisor.html">ClusterResourceSupervisor</a>.</p>
-<h2 id="exact-restoration">Exact restoration<a class="headerlink" href="#exact-restoration" title="Permanent link">#</a></h2>
-<p>Before any workload is scaled down, the operator records its replica count in <code>status.sleepingNamespaces</code> on the resource responsible for hibernating it. Workloads are restored exclusively from this record, which ensures that:</p>
+<h2 id="restore-every-workload-to-its-previous-replica-count">Restore every workload to its previous replica count<a class="headerlink" href="#restore-every-workload-to-its-previous-replica-count" title="Permanent link">#</a></h2>
+<p>A hibernated environment must come back exactly as it was. Before any workload is scaled down, the operator records its replica count in <code>status.sleepingNamespaces</code> on the resource responsible for hibernating it. Workloads are restored exclusively from this record, which ensures that:</p>
 <ul>
 <li>Each workload is restored to its own replica count rather than to a default value.</li>
 <li>Workloads that the operator did not hibernate are never modified when it restores others.</li>
 <li>Workloads already scaled to zero are skipped, so that their recorded count is never overwritten with zero.</li>
 <li>The record is stored in the Kubernetes API and therefore persists across operator restarts.</li>
 </ul>
-<p>When a supervisor is deleted, its workloads are restored first. A finalizer retains the resource until the restoration has completed successfully.</p>
+<p>When a supervisor is deleted, its workloads are restored before the deletion completes. If a restoration fails, the resource is retained until it succeeds.</p>
 <p>Hibernation applies to <code>Deployments</code> and <code>StatefulSets</code> only. <code>PersistentVolumeClaims</code>, and the storage costs associated with them, are not affected.</p>
-<h2 id="two-scopes">Two scopes<a class="headerlink" href="#two-scopes" title="Permanent link">#</a></h2>
+<h2 id="hibernate-one-namespace-or-many">Hibernate one namespace or many<a class="headerlink" href="#hibernate-one-namespace-or-many" title="Permanent link">#</a></h2>
+<p>Hibernation can be decided by the team that owns a namespace or by the platform team that runs the cluster, and each has its own resource:</p>
 <table>
 <thead>
 <tr>
@@ -3650,23 +3587,23 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 </tbody>
 </table>
 <p>The admission webhook prevents two <code>ClusterResourceSupervisor</code> resources from selecting the same namespace. It does not, however, prevent a <code>ClusterResourceSupervisor</code> and a <code>ResourceSupervisor</code> from governing the same namespace, so such overlaps must be avoided by convention.</p>
-<h2 id="namespace-targeting">Namespace targeting<a class="headerlink" href="#namespace-targeting" title="Permanent link">#</a></h2>
-<p>A <code>ClusterResourceSupervisor</code> combines two lists defined under <code>spec.namespaces</code>:</p>
+<h2 id="select-namespaces-by-name-or-label">Select namespaces by name or label<a class="headerlink" href="#select-namespaces-by-name-or-label" title="Permanent link">#</a></h2>
+<p>A platform team decides which environments are hibernated by selecting their namespaces. A <code>ClusterResourceSupervisor</code> combines two lists defined under <code>spec.namespaces</code>:</p>
 <ul>
 <li><code>names</code>: namespaces specified explicitly by name.</li>
-<li><code>labelSelector</code>: a standard Kubernetes label selector using <code>matchLabels</code> and <code>matchExpressions</code>. Namespaces created later with matching labels are included at the next reconcile.</li>
+<li><code>labelSelector</code>: a standard Kubernetes label selector using <code>matchLabels</code> and <code>matchExpressions</code>. Namespaces created later with matching labels are included at the next scheduled sleep or wake.</li>
 </ul>
 <p>A label selector that defines neither <code>matchLabels</code> nor <code>matchExpressions</code> selects <strong>no</strong> namespaces, rather than all of them.</p>
 <p>When a namespace is removed from the scope of a supervisor, any workloads the supervisor had hibernated in that namespace are restored.</p>
 <p>For further details, refer to <a href="../guides/create-cluster-resource-supervisor.html">Hibernate Workloads Across Multiple Namespaces</a>.</p>
-<h2 id="administrator-exclusions">Administrator exclusions<a class="headerlink" href="#administrator-exclusions" title="Permanent link">#</a></h2>
-<p>A namespace carrying the following annotation is never hibernated by a supervisor of either kind:</p>
+<h2 id="exclude-namespaces-from-hibernation">Exclude namespaces from hibernation<a class="headerlink" href="#exclude-namespaces-from-hibernation" title="Permanent link">#</a></h2>
+<p>Some namespaces must never be hibernated, whatever schedule selects them. A namespace carrying the following annotation is never hibernated by a supervisor of either kind:</p>
 <div class="highlight"><pre><span></span><code><span class="nt">metadata</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">annotations</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">hibernation.stakater.com/exclude</span><span class="p">:</span><span class="w"> </span><span class="s">"true"</span>
 </code></pre></div>
-<p>An exclusion takes precedence over every schedule. Any workloads that a supervisor had already hibernated in the namespace are restored at its next scheduled reconcile. The namespace in which the operator runs is always excluded. Excluded namespaces are listed in <code>status.ignoreNamespaces</code>, which explains why a schedule may have had no effect.</p>
-<h2 id="argocd-awareness">ArgoCD awareness<a class="headerlink" href="#argocd-awareness" title="Permanent link">#</a></h2>
+<p>An exclusion takes precedence over every schedule. Any workloads that a supervisor had already hibernated in the namespace are restored at its next scheduled sleep or wake. The namespace in which the operator runs is always excluded. Excluded namespaces are listed in <code>status.ignoreNamespaces</code>, which explains why a schedule may have had no effect.</p>
+<h2 id="keep-argocd-from-undoing-hibernation">Keep ArgoCD from undoing hibernation<a class="headerlink" href="#keep-argocd-from-undoing-hibernation" title="Permanent link">#</a></h2>
 <p>ArgoCD treats a workload scaled to zero as drift from the desired state in Git and synchronises it back to its declared replica count. When <code>spec.argocd</code> is set on a <code>ClusterResourceSupervisor</code>, the operator applies a <code>deny</code> sync window to each specified AppProject. The window opens at the sleep time and remains in effect until the wake time. Manual synchronisation remains permitted.</p>
 <p>The <code>spec.argocd</code> field does not determine which namespaces are hibernated; these are always selected through <code>spec.namespaces</code>. Because the sync window is derived from <code>sleepSchedule</code>, no window is applied when that field is empty.</p>
 <div class="admonition warning">
@@ -3678,8 +3615,8 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 <p>The operator's ClusterRole does not include permissions on <code>appprojects</code> in the <code>argoproj.io</code> API group. Grant <code>get</code> and <code>patch</code> on this resource to the operator's service account before using <code>spec.argocd</code>.</p>
 </div>
 <p>For further details, refer to <a href="../integrations/argocd.html">ArgoCD Integration</a>.</p>
-<h2 id="observable-status">Observable status<a class="headerlink" href="#observable-status" title="Permanent link">#</a></h2>
-<p>Both resources report the same status fields:</p>
+<h2 id="track-hibernation-state-in-the-resource-status">Track hibernation state in the resource status<a class="headerlink" href="#track-hibernation-state-in-the-resource-status" title="Permanent link">#</a></h2>
+<p>The status of each resource shows what is currently hibernated and when that will change. Both resources report the same fields:</p>
 <table>
 <thead>
 <tr>
@@ -3714,11 +3651,11 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 </tr>
 </tbody>
 </table>
-<p>If a reconcile fails, <code>currentStatus</code> is set to <code>error</code>, the <code>Ready</code> condition records the reason, such as <code>SleepFailed</code>, <code>WakeFailed</code> or <code>InvalidSleepSchedule</code>, and the operation is retried. The same failures are also reported as Kubernetes events on the resource. For further details, refer to <a href="../troubleshooting.html">Troubleshooting</a>.</p>
+<p>If a sleep or wake fails, <code>currentStatus</code> is set to <code>error</code>, the <code>Ready</code> condition records the reason, such as <code>SleepFailed</code>, <code>WakeFailed</code> or <code>InvalidSleepSchedule</code>, and the operation is retried. The same failures are also reported as Kubernetes events on the resource. For further details, refer to <a href="../troubleshooting.html">Troubleshooting</a>.</p>
 <h2 id="next-steps">Next steps<a class="headerlink" href="#next-steps" title="Permanent link">#</a></h2>
 <ul>
 <li><a href="use-cases.html">Use Cases</a>: the scenarios the operator is designed for</li>
-<li><a href="../concepts/architecture.html">Architecture</a>: the components and the reconcile flow</li>
+<li><a href="../concepts/architecture.html">Architecture</a>: the components and how they behave</li>
 <li><a href="../getting-started/quick-start.html">Quick Start</a>: hibernating a first namespace</li>
 </ul>
 
