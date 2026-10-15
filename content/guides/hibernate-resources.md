@@ -29,7 +29,7 @@ spec:
         stakater.com/tenant: sigma
 ```
 
-At 20:00 UTC on each weekday, every `Deployment` and `StatefulSet` in the namespaces of the `sigma` tenant is scaled to zero, and its replica count is recorded in the resource status. At 08:00 UTC, each workload is restored to its recorded count. Namespaces created for the tenant later are included at the next scheduled reconcile.
+At 20:00 UTC on each weekday, every `Deployment` and `StatefulSet` in the namespaces of the `sigma` tenant is scaled to zero, and its replica count is recorded in the resource status. At 08:00 UTC, each workload is restored to its recorded count. Namespaces created for the tenant later are included at the next scheduled sleep or wake.
 
 ## Keep a namespace of the tenant running
 

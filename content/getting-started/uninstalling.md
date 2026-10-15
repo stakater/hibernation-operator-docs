@@ -1,6 +1,6 @@
 # Uninstalling
 
-The Hibernation Operator must remove its custom resources before the operator itself is removed. Each `ResourceSupervisor` and `ClusterResourceSupervisor` carries a finalizer, and the operator handles that finalizer by restoring every workload the resource put to sleep and, for a `ClusterResourceSupervisor`, by clearing the ArgoCD sync windows it wrote. If the operator is removed first, nothing remains to process the finalizers: the deletion of the resources does not complete, and the hibernated workloads remain at zero replicas.
+The custom resources must be deleted before the operator itself is removed. Deleting a `ResourceSupervisor` or `ClusterResourceSupervisor` restores every workload it put to sleep and, for a `ClusterResourceSupervisor`, removes the ArgoCD sync windows it applied. That work is done by the operator, so if the operator is removed first, the deletion of the resources does not complete and the hibernated workloads remain at zero replicas.
 
 Uninstall in the following order.
 
@@ -20,7 +20,7 @@ kubectl get clusterresourcesupervisors.hibernation.stakater.com
 kubectl get resourcesupervisors.hibernation.stakater.com --all-namespaces
 ```
 
-If a deletion does not complete, inspect the events on the resource with `kubectl describe`. A failed restoration is reported there as a `WakeFailed` event, and the finalizer is retained until the restoration succeeds.
+If a deletion does not complete, inspect the events on the resource with `kubectl describe`. A failed restoration is reported there as a `WakeFailed` event, and the resource is retained until the restoration succeeds.
 
 ## 2. Remove the operator
 
@@ -65,9 +65,9 @@ kubectl delete namespace hibernation-operator-system
 
 ## Recovering from an incorrect order
 
-If the operator was removed while supervisors still existed, their deletion remains pending on the finalizer. The simplest recovery is to reinstall the operator, which then processes the pending deletions and restores the workloads.
+If the operator was removed while supervisors still existed, their deletion remains pending. The simplest recovery is to reinstall the operator, which then processes the pending deletions and restores the workloads.
 
-If reinstalling is not possible, record the replica counts from `status.sleepingNamespaces` of each pending resource, scale the workloads back manually, and then remove the finalizer:
+If reinstalling is not possible, record the replica counts from `status.sleepingNamespaces` of each pending resource, scale the workloads back manually, and then remove the finalizer that keeps the resource pending:
 
 ```sh
 kubectl patch clusterresourcesupervisor <name> --type merge \

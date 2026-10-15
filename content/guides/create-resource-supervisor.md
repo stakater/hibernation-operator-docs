@@ -59,7 +59,7 @@ kubectl get resourcesupervisor my-namespace-hibernation -n my-app-staging \
   -o jsonpath='{range .status.sleepingNamespaces[*].sleepingApplications[*]}{.kind}/{.name}: {.replicas}{"\n"}{end}'
 ```
 
-Deleting the `ResourceSupervisor` wakes its workloads first. A finalizer holds the resource until the restore succeeds, so removing the supervisor is a safe way to cancel hibernation rather than a way to strand workloads at zero.
+Deleting the `ResourceSupervisor` wakes its workloads first. The resource is retained until the restore succeeds, so removing the supervisor is a safe way to cancel hibernation rather than a way to strand workloads at zero.
 
 A namespace annotated with `hibernation.stakater.com/exclude: "true"` is skipped, even if a `ResourceSupervisor` exists in it.
 

@@ -27,7 +27,7 @@ spec:
     wakeSchedule: "0 8 * * 1-5"
 ```
 
-`labelSelector` is a standard Kubernetes label selector, so `matchLabels` and `matchExpressions` both work and are combined with AND. It is re-evaluated on each reconcile, which is what lets namespaces created later be picked up without editing the resource.
+`labelSelector` is a standard Kubernetes label selector, so `matchLabels` and `matchExpressions` both work and are combined with AND. It is re-evaluated at each scheduled sleep or wake, so namespaces created later are picked up without editing the resource.
 
 !!! warning
     An empty `labelSelector: {}` matches no namespaces, not all of them, and a `ClusterResourceSupervisor` with no `spec.namespaces` at all hibernates nothing. To cover a broad set, apply a label the target namespaces share and select on that.

@@ -9,23 +9,6 @@ The Hibernation Operator scales `Deployments` and `StatefulSets` down to zero on
 | `hibernation-operator-controller-manager` | Hibernates and restores workloads according to the schedule of each resource, and reports the outcome in its status. |
 | `hibernation-operator-webhook` | Validates both resources when they are created or updated. |
 
-```mermaid
-graph TD
-    subgraph "Kubernetes cluster"
-        A[Controller manager] -->|Reads| B[ClusterResourceSupervisor]
-        A -->|Reads| C[ResourceSupervisor]
-        A -->|Selects| E[(Namespaces)]
-        A -->|Scales to zero and back| F[Deployment / StatefulSet]
-        A -->|Applies deny sync window| D[ArgoCD AppProject]
-        E -->|Contain| F
-    end
-
-    subgraph "Validation"
-        L[Webhook] -->|Validates| B
-        L -->|Validates| C
-    end
-```
-
 ## Behaviour
 
 ### At the sleep time
