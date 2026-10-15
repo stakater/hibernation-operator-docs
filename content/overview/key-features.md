@@ -101,9 +101,10 @@ Both resources report the same status fields:
 | `nextReconcileTime` | The time at which the next sleep or wake is due |
 | `watchedNamespaces` | The namespaces the supervisor is permitted to hibernate |
 | `ignoreNamespaces` | The namespaces that were selected but cannot be hibernated, because they are excluded or no longer exist |
-| `sleepingNamespaces` | Each hibernated workload, with its kind and recorded replica count |
+| `sleepingNamespaces` | Each hibernated workload, with its kind, its recorded replica count and, after a failed wake, an `errorMessage` |
+| `conditions` | A `Ready` condition stating whether the last sleep or wake succeeded and, if not, the reason |
 
-If a reconcile fails, `currentStatus` is set to `error` and the operation is retried. Errors that a retry cannot resolve, such as an invalid cron expression, are reported as Kubernetes events on the resource.
+If a reconcile fails, `currentStatus` is set to `error`, the `Ready` condition records the reason, such as `SleepFailed`, `WakeFailed` or `InvalidSleepSchedule`, and the operation is retried. The same failures are also reported as Kubernetes events on the resource. For further details, refer to [Troubleshooting](../troubleshooting.md).
 
 ## Next steps
 

@@ -67,10 +67,11 @@ _Appears in:_
 | Field | Description | Default | Validation |
 | --- | --- | --- | --- |
 | `nextReconcileTime` _[Time](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.30/#time-v1-meta)_ | NextReconcileTime contains the next time at which the namespace resources will sleep or wake up |  |  |
-| `currentStatus` _[Status](#status)_ | CurrentStatus shows the state the tenant's resources |  | Enum: [sleeping running error] <br /> |
+| `currentStatus` _Status_ | CurrentStatus shows the state the tenant's resources |  | Enum: [sleeping running error] <br /> |
 | `sleepingNamespaces` _SleepingNamespace array_ | SleepingResources contains the previous states for each of the deployments currently scaled down |  |  |
-| `watchedNamespaces` _string array_ | WatchedNamespaces contains the list of namespaces that are being watched by the ClusterResourceSupervisor |  |  |
-| `ignoreNamespaces` _string array_ | IgnoreNamespaces contains the list of namespaces that are being ignored by the ClusterResourceSupervisor |  |  |
+| `watchedNamespaces` _string array_ | WatchedNamespaces contains the namespaces this supervisor may hibernate |  |  |
+| `ignoreNamespaces` _string array_ | IgnoreNamespaces contains the namespaces this supervisor was asked to hibernate but may not |  |  |
+| `conditions` _[Condition](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.30/#condition-v1-meta) array_ | Conditions holds Ready, which says whether the last pass did what the schedule<br />asked and if not why. An Event expires and nothing queries it, so without it a<br />failed pass or an unparseable cron would leave no trace on the resource at all. |  | Optional: \{\} <br /> |
 
 
 #### ResourceSupervisor
@@ -124,21 +125,12 @@ _Appears in:_
 | Field | Description | Default | Validation |
 | --- | --- | --- | --- |
 | `nextReconcileTime` _[Time](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.30/#time-v1-meta)_ | NextReconcileTime contains the next time at which the namespace resources will sleep or wake up |  |  |
-| `currentStatus` _[Status](#status)_ | CurrentStatus shows the state the tenant's resources |  | Enum: [sleeping running error] <br /> |
+| `currentStatus` _Status_ | CurrentStatus shows the state the tenant's resources |  | Enum: [sleeping running error] <br /> |
+| `sleepingNamespaces` _SleepingNamespace array_ | SleepingResources contains the previous states for each of the deployments currently scaled down |  |  |
+| `watchedNamespaces` _string array_ | WatchedNamespaces contains the namespaces this supervisor may hibernate |  |  |
+| `ignoreNamespaces` _string array_ | IgnoreNamespaces contains the namespaces this supervisor was asked to hibernate but may not |  |  |
+| `conditions` _[Condition](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.30/#condition-v1-meta) array_ | Conditions holds Ready, which says whether the last pass did what the schedule<br />asked and if not why. An Event expires and nothing queries it, so without it a<br />failed pass or an unparseable cron would leave no trace on the resource at all. |  | Optional: \{\} <br /> |
 
-
-#### Status
-
-_Underlying type:_ _string_
-
-
-
-_Validation:_
-- Enum: [sleeping running error]
-
-_Appears in:_
-- [ClusterResourceSupervisorStatus](#clusterresourcesupervisorstatus)
-- [ResourceSupervisorStatus](#resourcesupervisorstatus)
 
 
 
