@@ -1,0 +1,24 @@
+# Config for generating content/reference/api.md from the hibernation-operator
+# Go types with https://github.com/elastic/crd-ref-docs (template-operator-docs
+# model). Regenerate via .github/workflows/generate-api-reference.yaml, or
+# locally:
+#
+#   go install github.com/elastic/crd-ref-docs@latest
+#   crd-ref-docs --source-path=<hibernation-operator>/api \
+#     --config=crd-ref-docs.yaml --renderer=markdown \
+#     --output-mode=single --output-path=content/reference/api.md
+#   # Then prepend the '<!-- markdownlint-disable -->' header, and delink the
+#   # api/common helper types that crd-ref-docs links but does not render
+#   # (they fail `mkdocs build --strict`).
+#
+processor:
+  ignoreTypes:
+    - "List$"
+  ignoreFields:
+    - "TypeMeta$"
+  # hibernation.stakater.com serves a single version (v1beta1) for both kinds,
+  # so there is nothing to ignore here.
+  ignoreGroupVersions: []
+
+render:
+  kubernetesVersion: "1.30"

@@ -1,62 +1,77 @@
 # Uninstalling
 
-How to remove the Hibernation Operator. The method depends on how you installed
-it. Uninstalling the operator does **not** wake any sleeping workloads on its
-own — see [Clean up custom resources](#clean-up-custom-resources) below.
+The custom resources must be deleted before the operator itself is removed. Deleting a `ResourceSupervisor` or `ClusterResourceSupervisor` restores every workload it put to sleep and, for a `ClusterResourceSupervisor`, removes the ArgoCD sync windows it applied. That work is done by the operator, so if the operator is removed first, the deletion of the resources does not complete and the hibernated workloads remain at zero replicas.
 
-## Helm
+Uninstall in the following order.
 
-Uninstall the Helm release:
+## 1. Delete the custom resources
 
-```sh
-helm uninstall hibernation-operator --namespace hibernation-operator-system
-```
-
-This removes the operator deployment, RBAC, and services. Optionally remove the
-namespace once it is empty:
-
-```sh
-kubectl delete namespace hibernation-operator-system
-```
-
-## OpenShift (OLM)
-
-If you installed via the OpenShift OperatorHub:
-
-1. In the web console, go to **Operators → Installed Operators**.
-1. Select **Hibernation Operator** and choose **Uninstall Operator**.
-
-Or with the CLI, delete the `Subscription` and `ClusterServiceVersion`:
-
-```sh
-oc delete subscription hibernation-operator -n <install-namespace>
-oc delete csv -n <install-namespace> -l operators.coreos.com/hibernation-operator.<install-namespace>
-```
-
-See [Installation › OpenShift OperatorHub](installation/openshift.md) for the
-install-namespace you used.
-
-## Clean up custom resources
-
-Uninstalling the operator leaves your custom resources and their CRDs in place.
-Before deleting the CRDs, wake any workloads you still need, then remove the
-resources:
+While the operator is still running, delete every supervisor:
 
 ```sh
 kubectl delete clusterresourcesupervisors.hibernation.stakater.com --all
 kubectl delete resourcesupervisors.hibernation.stakater.com --all --all-namespaces
 ```
 
-To remove the CRDs entirely (this deletes **all** remaining instances of these
-resources):
+Each deletion completes once the operator has restored the workloads of that resource. Confirm that none remain before continuing:
+
+```sh
+kubectl get clusterresourcesupervisors.hibernation.stakater.com
+kubectl get resourcesupervisors.hibernation.stakater.com --all-namespaces
+```
+
+If a deletion does not complete, inspect the events on the resource with `kubectl describe`. A failed restoration is reported there as a `WakeFailed` event, and the resource is retained until the restoration succeeds.
+
+## 2. Remove the operator
+
+### Helm
+
+```sh
+helm uninstall hibernation-operator --namespace hibernation-operator-system
+```
+
+This removes the operator deployments, RBAC resources and services. Helm does not remove the CRDs, because the chart installs them from its `crds/` directory.
+
+### OpenShift (OLM)
+
+In the OpenShift web console:
+
+1. Navigate to **Operators → Installed Operators** and select the `hibernation-operator-system` project.
+1. Open the actions menu for **Hibernation Operator** and select **Uninstall Operator**.
+1. Confirm the removal.
+
+   ![Uninstall from the OpenShift console](../images/hibernation_uninstall.png)
+
+Alternatively, delete the `Subscription` and the `ClusterServiceVersion` with the CLI:
+
+```sh
+oc delete subscription hibernation-operator -n hibernation-operator-system
+oc delete csv -n hibernation-operator-system \
+  -l operators.coreos.com/hibernation-operator.hibernation-operator-system
+```
+
+OLM does not remove the CRDs either.
+
+## 3. Remove the CRDs and the namespace
+
+Once no custom resources remain, the CRDs and the operator namespace can be removed:
 
 ```sh
 kubectl delete crd \
   resourcesupervisors.hibernation.stakater.com \
   clusterresourcesupervisors.hibernation.stakater.com
+kubectl delete namespace hibernation-operator-system
 ```
 
-> Deleting a `ResourceSupervisor` or `ClusterResourceSupervisor` stops it
-> from managing its targets, but workloads currently scaled to zero are not
-> automatically restored unless the resource is deleted while a wake is due.
-> Scale any needed workloads back up manually if required.
+## Recovering from an incorrect order
+
+If the operator was removed while supervisors still existed, their deletion remains pending. The simplest recovery is to reinstall the operator, which then processes the pending deletions and restores the workloads.
+
+If reinstalling is not possible, record the replica counts from `status.sleepingNamespaces` of each pending resource, scale the workloads back manually, and then remove the finalizer that keeps the resource pending:
+
+```sh
+kubectl patch clusterresourcesupervisor <name> --type merge \
+  -p '{"metadata":{"finalizers":null}}'
+```
+
+Removing the finalizer without first restoring the workloads discards the only record of their replica counts.

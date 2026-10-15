@@ -36,7 +36,7 @@ spec:
 
 ### Sleep with no scheduled wake
 
-Omitting `wakeSchedule` sleeps the workloads at the next sleep time and leaves them there. The operator still reconciles at each subsequent sleep time, so workloads added to the namespace later are hibernated too rather than being left running.
+Omitting `wakeSchedule` sleeps the workloads at the next sleep time and leaves them there. Workloads are hibernated again at each subsequent sleep time, so workloads added to the namespace later are hibernated too rather than being left running.
 
 ```yaml
 spec:
@@ -48,7 +48,7 @@ To bring the workloads back, add a `wakeSchedule` or delete the resource.
 
 ### Immediate sleep
 
-An empty schedule sleeps the workloads as soon as the resource is created, and reconciles hourly to catch anything new. This suits ephemeral environments such as CI preview namespaces, where the namespace should be parked from the moment it exists.
+An empty schedule sleeps the workloads as soon as the resource is created, and hibernates any new workloads within the hour. This suits ephemeral environments such as CI preview namespaces, where the namespace should be parked from the moment it exists.
 
 ```yaml
 apiVersion: hibernation.stakater.com/v1beta1
@@ -74,7 +74,7 @@ Workloads already at zero replicas are skipped, so they are not later "restored"
 
 Versions before v0.1.104 stored the count in the annotation `hibernation.stakater.com/original-replicas` on each workload, and woke anything without it to 1 replica. The annotation is still read on wake, so workloads slept by an older version come back at their recorded count, but nothing writes it anymore.
 
-Deleting the `ResourceSupervisor` wakes its workloads first. A finalizer holds the resource until the restore succeeds, and a failed wake keeps it in place and retries, which makes deletion the straightforward way to cancel hibernation.
+Deleting the `ResourceSupervisor` wakes its workloads first. The resource is retained until the restore succeeds, and a failed wake is retried, which makes deletion the straightforward way to cancel hibernation.
 
 ## Exclusions
 

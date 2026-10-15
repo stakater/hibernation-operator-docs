@@ -2,15 +2,13 @@
 
 The **Hibernation Operator** is a [Red Hat Certified Operator](https://catalog.redhat.com/en/software/container-stacks/detail/687efb0f70dee945827cfe24) available on the **Red Hat Marketplace** and **OperatorHub** in OpenShift.
 
-This document contains instructions for installing, configuring, and uninstalling the Hibernation Operator on OpenShift.
-
-1. [OpenShift OperatorHub UI](#installing-via-operatorhub-ui)  
-1. [CLI / GitOps](#installing-via-cli-or-gitops)  
-1. [Uninstall](#uninstall-via-operatorhub-ui)
+This page describes how to install the Hibernation Operator on OpenShift, either through the OperatorHub UI or declaratively with the CLI. To remove the operator, refer to [Uninstalling](../uninstalling.md).
 
 ## Requirements
 
 * An **OpenShift** cluster (v4.10 or higher recommended)
+
+cert-manager is not required on OpenShift. OLM manages the certificate for the validating admission webhook itself.
 
 ---
 
@@ -102,57 +100,14 @@ oc get csv -n hibernation-operator-system
 oc get pods -n hibernation-operator-system
 ```
 
-Wait until the `hibernation-controller` pod is `Running`.
+Wait until the `hibernation-operator-controller-manager` and `hibernation-operator-webhook` pods are `Running`.
 
 ![Running](../../images/hibernation_running.png)
 
 ---
 
-## Uninstall via OperatorHub UI
-
-> **Warning**: Uninstalling the operator **does not delete your CRs** (`ClusterResourceSupervisor`, `ResourceSupervisor`). Workloads may remain asleep if not cleaned up.
-
-### Step 1: (Optional) Clean Up Hibernation Policies
-
-Delete any active hibernation resources to restore workloads:
-
-```bash
-# Delete all cluster-wide hibernation rules
-oc delete clusterresourcesupervisors.hibernation.stakater.com --all
-
-# Delete all namespace-scoped hibernation rules
-oc delete resourcesupervisors.hibernation.stakater.com --all --all-namespaces
-```
-
-### Step 2: Uninstall the Operator
-
-1. In OpenShift Console, go to **Operators → Installed Operators**
-1. Find **Hibernation Operator** in the `hibernation-operator-system` project
-1. Click the **three-dot menu → Uninstall Operator**
-1. Confirm removal
-
-   ![Uninstall from UI](../../images/hibernation_uninstall.png)
-
-### Step 3: (Optional) Clean Up Leftover Resources
-
-To fully remove all traces:
-
-```bash
-# Remove namespace (includes RBAC, deployments, etc.)
-oc delete namespace hibernation-operator-system
-
-# Remove CRDs (only if no other instances exist)
-oc delete crd clusterresourcesupervisors.hibernation.stakater.com
-oc delete crd resourcesupervisors.hibernation.stakater.com
-```
-
-> **Note**: CRD deletion is irreversible. Ensure no other tools depend on them.
-
----
-
 ## Notes
 
-* The Hibernation Operator **does not include a web console**—it is a lightweight, API-driven operator.
 * It integrates natively with **OpenShift workloads** (`Deployments`, `StatefulSets`) and **ArgoCD** (if installed).
 * For production, use **Manual approval** and test upgrades in a staging cluster first.
 * Full CRD documentation:

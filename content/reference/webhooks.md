@@ -62,5 +62,6 @@ The webhook server requires TLS. The operator integrates with
 Alternatively, you can supply certificates directly via the
 `--webhook-cert-path`, `--webhook-cert-name`, and `--webhook-cert-key` flags.
 
-> cert-manager is a prerequisite only when webhooks are enabled. See
+> The Helm chart always deploys the webhook, so cert-manager is required for
+> Helm installations. On OpenShift, OLM manages the webhook certificate. See
 > [Installation › Kubernetes](../getting-started/installation/kubernetes.md).

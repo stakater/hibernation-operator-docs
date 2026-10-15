@@ -11,6 +11,9 @@ validation:
   links:
     anchors: warn
 
+extra_css:
+  - stylesheets/headings.css
+
 # Redirects for pages relocated during the docs restructure, so old bookmarks
 # keep working. Requires the `mkdocs-redirects` package at build time — see the
 # note in docs/superpowers/shared-theme-redirects.md (must be added to the
@@ -20,9 +23,11 @@ plugins:
       redirect_maps:
         about/key-features.md: overview/key-features.md
         about/use-cases.md: overview/use-cases.md
-        about/benefits.md: overview/benefits.md
+        about/benefits.md: overview/key-features.md
+        overview/benefits.md: overview/key-features.md
         architecture/architecture.md: concepts/architecture.md
-        architecture/concepts.md: concepts/terminology.md
+        architecture/concepts.md: overview/key-features.md
+        concepts/terminology.md: overview/key-features.md
         installation/overview.md: getting-started/installation/overview.md
         installation/openshift.md: getting-started/installation/openshift.md
         installation/kubernetes.md: getting-started/installation/kubernetes.md
@@ -45,10 +50,8 @@ nav:
     - Introduction: index.md
     - overview/key-features.md
     - overview/use-cases.md
-    - overview/benefits.md
   - Concepts:
     - concepts/architecture.md
-    - concepts/terminology.md
     - concepts/resource-supervisor.md
     - concepts/cluster-resource-supervisor.md
   - Getting Started:
@@ -65,7 +68,7 @@ nav:
   - Integrations:
     - integrations/argocd.md
   - Reference:
-    - reference/api.md
+    - API Reference: reference/api.md
     - reference/configuration.md
     - reference/rbac.md
     - reference/metrics.md

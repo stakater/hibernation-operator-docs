@@ -1,54 +1,85 @@
 # Use Cases
 
-## `ClusterResourceSupervisor` – Cluster-Scoped Hibernation
+The Hibernation Operator is intended for clusters that run environments continuously, even though those environments are only used for part of the day. The scenarios below describe the situations for which it was designed.
 
-### 1. **Platform Team Managing Dev/Test Environments**
+## Development and test platforms
 
-> **Scenario**: A central platform team operates a shared Kubernetes cluster for 50+ development teams. To reduce cloud costs, they want all non-production namespaces to sleep during nights and weekends.
-> **Solution**: Create a single `ClusterResourceSupervisor` with a label selector like `env in (dev, test, staging)` and a sleep schedule of `0 18 * * 1-5` (sleep at 6 PM on weekdays) and wake at `0 8 * * 1-5`.
+**Scenario:** A platform team operates a shared cluster for many development teams. Each team maintains `dev`, `test` and `staging` namespaces, all of which continue to run overnight and at weekends while no one is using them.
 
-### 2. **GitOps-Driven Hibernation via ArgoCD AppProjects**
+**Approach:** A single `ClusterResourceSupervisor` selects every non-production namespace by label and hibernates those namespaces outside working hours:
 
-> **Scenario**: Your organization uses ArgoCD with AppProjects to group applications (e.g., `frontend-team`, `data-platform`). You want to hibernate entire AppProjects during off-hours.
-> **Solution**: Define a `ClusterResourceSupervisor` targeting `appProjects: ["frontend-team", "data-platform"]` in the `argocd` namespace. The operator automatically discovers all namespaces managed by those AppProjects and applies hibernation.
+```yaml
+apiVersion: hibernation.stakater.com/v1beta1
+kind: ClusterResourceSupervisor
+metadata:
+  name: non-production-office-hours
+spec:
+  schedule:
+    sleepSchedule: "0 19 * * 1-5"
+    wakeSchedule: "0 7 * * 1-5"
+  namespaces:
+    labelSelector:
+      matchExpressions:
+        - key: env
+          operator: In
+          values: [dev, test, staging]
+```
 
-### 3. **Temporary Cluster-Wide Freeze for Maintenance**
+Newly created namespaces with a matching label are included without any change to the supervisor. A namespace that must remain available, for example during a demonstration or a load test, is annotated with `hibernation.stakater.com/exclude: "true"` rather than being removed from the selector.
 
-> **Scenario**: During a company-wide holiday break, you want to pause all non-critical workloads across the cluster.
-> **Solution**: Deploy a `ClusterResourceSupervisor` with an empty `labelSelector` (which matches all namespaces) and no `wakeSchedule`. Workloads stay asleep until manually removed or overridden.
+## Team self-service
 
-### 4. **Cost Optimization in Multi-Tenant Clusters**
+**Scenario:** A product team owns the `payments-staging` namespace and is best placed to determine its own working hours. The team should be able to reduce costs without raising a request with the platform team or holding cluster-level permissions.
 
-> **Scenario**: You run a multi-tenant cluster where each tenant has a namespace labeled with `tenant-id`. Finance requires cost reports per tenant, and hibernation is part of the SLA.
-> **Solution**: Use label selectors (`matchLabels: { tenant-tier: basic }`) to hibernate only lower-tier tenants, while premium tenants remain running.
+**Approach:** The team creates a `ResourceSupervisor` in its own namespace. Because the resource can only affect the namespace in which it is created, permission to create it can safely be granted to namespace owners, and each team can define its own schedule. For further details, refer to [Hibernate Workloads in a Single Namespace](../guides/create-resource-supervisor.md).
 
----
+## GitOps-managed environments
 
-## `ResourceSupervisor` – Namespace-Scoped Hibernation
+**Scenario:** The environments are deployed by ArgoCD. A workload scaled to zero is treated as drift from Git, so ArgoCD synchronises it back to its declared replica count and hibernation does not take effect.
 
-### 1. **Application Team Self-Service Hibernation**
+**Approach:** A `ClusterResourceSupervisor` that specifies the relevant AppProjects under `spec.argocd` applies a deny sync window to them for the duration of the sleep period, so that ArgoCD does not restore the hibernated workloads before the wake time. The namespaces to be hibernated are still selected under `spec.namespaces`. For further details, refer to [ArgoCD Integration](../integrations/argocd.md).
 
-> **Scenario**: A product team owns the `payment-service-staging` namespace and wants it to sleep every night to save costs, but wake up by 9 AM for QA.
-> **Solution**: The team creates a `ResourceSupervisor` in their namespace with `sleepSchedule: "0 20 * * *"` and `wakeSchedule: "0 9 * * *"`. No cluster admin involvement needed.
+## Holiday and shutdown periods
 
-### 2. **CI/CD Dynamic Environments**
+**Scenario:** During an organisation-wide closure, non-critical environments should remain unavailable for the entire period and be restored only when a deliberate decision is made to do so.
 
-> **Scenario**: Your CI pipeline spins up ephemeral namespaces for PR previews (e.g., `pr-1234`). You want them to auto-sleep after 2 hours and never wake up.
-> **Solution**: The CI job creates a `ResourceSupervisor` with a one-time-like cron (e.g., using a tool that schedules a future sleep) or a short recurring sleep with no wake. Alternatively, pair with a TTL controller—but `ResourceSupervisor` gives fine-grained control over *what* sleeps (Deployments/StatefulSets).
+**Approach:** A `ClusterResourceSupervisor` with an empty schedule hibernates the selected namespaces immediately and keeps them hibernated. Deleting the supervisor at the end of the period restores every workload to its recorded replica count.
 
-### 3. **Training or Demo Environments**
+```yaml
+apiVersion: hibernation.stakater.com/v1beta1
+kind: ClusterResourceSupervisor
+metadata:
+  name: year-end-shutdown
+spec:
+  schedule: {}
+  namespaces:
+    labelSelector:
+      matchLabels:
+        criticality: low
+```
 
-> **Scenario**: You provide demo environments for sales or training that should only run during business hours.
-> **Solution**: In each demo namespace (`demo-customer-x`), deploy a `ResourceSupervisor` with weekday business-hour schedules. Easy to template and replicate.
+## Demonstration and training environments
 
-### 4. **Compliance-Driven Restrictions**
+**Scenario:** Environments used for customer demonstrations or training are only required during business hours, and many copies of them may exist at any time.
 
-> **Scenario**: A regulated workload must only run during approved maintenance windows (e.g., weekends).
-> **Solution**: Namespace owners define a `ResourceSupervisor` that enforces strict `sleepSchedule`/`wakeSchedule` aligned with compliance policies.
+**Approach:** A `ResourceSupervisor` is included in the environment template, so every copy is provisioned with a hibernation schedule already in place and no manual intervention is required.
 
----
+## Multi-tenant clusters
 
-## Complementary Use Case: **Hybrid Governance**
+**Scenario:** A cluster hosts many tenants, and the non-production environments of lower-tier tenants are not required to run overnight.
 
-> **Scenario**: Your platform provides a default hibernation policy for all `env=dev` namespaces via `ClusterResourceSupervisor`, **but** allows teams to override it with a local `ResourceSupervisor` if they need custom behavior.
-> **Implementation**: Your operator is designed to **skip namespaces** that contain a `ResourceSupervisor`, giving precedence to namespace-scoped control. This enables both standardization and flexibility.
+**Approach:** A `ClusterResourceSupervisor` selects namespaces by a tenant or tier label, such as `tier: basic`, while namespaces belonging to other tenants continue to run. When [Multi-Tenant Operator](https://docs.stakater.com/mto/) is in use, every tenant namespace already carries the `stakater.com/tenant: <tenant-name>` label, so a single selector can cover an entire tenant.
+
+## Limitations
+
+The operator is not the appropriate tool in the following situations:
+
+* **Ephemeral environments that should be removed:** Hibernation retains the namespace, its configuration and its volumes. Preview environments that are no longer needed should be deleted instead.
+* **Storage costs:** Only `Deployments` and `StatefulSets` are scaled. `PersistentVolumeClaims` are not affected.
+* **Other workload kinds:** `DaemonSets`, `Jobs`, `CronJobs` and custom workload resources are not hibernated.
+
+## Next steps
+
+* [Key Features](key-features.md): a description of each feature
+* [Quick Start](../getting-started/quick-start.md): hibernating a first namespace
+* [Hibernate Workloads Across Multiple Namespaces](../guides/create-cluster-resource-supervisor.md): the cluster-scoped resource in detail
