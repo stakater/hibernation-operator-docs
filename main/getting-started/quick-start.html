@@ -50,6 +50,8 @@
     
       <link rel="stylesheet" href="../stylesheets/extra.css">
     
+      <link rel="stylesheet" href="../stylesheets/headings.css">
+    
     <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
@@ -2141,34 +2143,6 @@ This documentation is either for an old version, or for the unreleased 'main' ve
 
               
             
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../overview/benefits.html" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Benefits
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
           </ul>
         </nav>
       
@@ -2238,34 +2212,6 @@ This documentation is either for an old version, or for the unreleased 'main' ve
     
   
     Architecture
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../concepts/terminology.html" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Concepts
   
 
     
@@ -2978,7 +2924,7 @@ This documentation is either for an old version, or for the unreleased 'main' ve
   <span class="md-ellipsis">
     
   
-    Api
+    API Reference
   
 
     
@@ -3495,8 +3441,8 @@ schedule in a few minutes.</p>
 <ul>
 <li>A Kubernetes cluster (v1.24+) with <code>kubectl</code> access</li>
 <li><a href="https://helm.sh/docs/intro/install/">Helm CLI</a></li>
-<li><em>(Optional)</em> <a href="https://cert-manager.io/docs/installation/">cert-manager</a> —
-  required only if you enable the validating webhooks</li>
+<li><a href="https://cert-manager.io/docs/installation/">cert-manager</a>, which the Helm
+  chart requires for its webhook and metrics certificates</li>
 </ul>
 <p>For OpenShift OperatorHub and detailed options, see
 <a href="installation/overview.html">Installation</a>.</p>

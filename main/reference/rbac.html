@@ -50,6 +50,8 @@
     
       <link rel="stylesheet" href="../stylesheets/extra.css">
     
+      <link rel="stylesheet" href="../stylesheets/headings.css">
+    
     <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
@@ -2141,34 +2143,6 @@ This documentation is either for an old version, or for the unreleased 'main' ve
 
               
             
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../overview/benefits.html" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Benefits
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
           </ul>
         </nav>
       
@@ -2238,34 +2212,6 @@ This documentation is either for an old version, or for the unreleased 'main' ve
     
   
     Architecture
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../concepts/terminology.html" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Concepts
   
 
     
@@ -2874,7 +2820,7 @@ This documentation is either for an old version, or for the unreleased 'main' ve
   <span class="md-ellipsis">
     
   
-    Api
+    API Reference
   
 
     
@@ -3450,7 +3396,7 @@ permissions the controller itself needs to operate, and a set of user-facing
 roles you can bind to your own users and groups for self-service access to the
 custom resources.</p>
 <h2 id="operator-manager-permissions">Operator (manager) permissions<a class="headerlink" href="#operator-manager-permissions" title="Permanent link">#</a></h2>
-<p>The operator's <code>manager-role</code> <code>ClusterRole</code> grants only what is required to
+<p>The operator's <code>hibernation-operator-manager-role</code> <code>ClusterRole</code> grants only what is required to
 watch the custom resources and scale workloads:</p>
 <table>
 <thead>
@@ -3461,6 +3407,11 @@ watch the custom resources and scale workloads:</p>
 </tr>
 </thead>
 <tbody>
+<tr>
+<td><code>""</code> (core)</td>
+<td><code>events</code></td>
+<td>create, patch</td>
+</tr>
 <tr>
 <td><code>""</code> (core)</td>
 <td><code>namespaces</code></td>
@@ -3493,13 +3444,14 @@ watch the custom resources and scale workloads:</p>
 </tr>
 </tbody>
 </table>
-<p>Note the operator has <strong>read-only</strong> access to namespaces and CRDs, and can
-<strong>only</strong> modify <code>Deployments</code> and <code>StatefulSets</code> (for scaling) — it never
-touches other workload types or arbitrary resources. See the
+<p>The operator has read-only access to namespaces and CRDs. Apart from its own
+custom resources and the events it records on them, it modifies only
+<code>Deployments</code> and <code>StatefulSets</code>, to scale them. See the
 <a href="security-model.html">Security Model</a> for how this supports safe operation.</p>
 <h2 id="user-facing-roles">User-facing roles<a class="headerlink" href="#user-facing-roles" title="Permanent link">#</a></h2>
-<p>For each custom resource the chart provides admin, editor, and viewer
-<code>ClusterRole</code>s intended for binding to your users:</p>
+<p>For each custom resource the chart provides admin, editor and viewer
+<code>ClusterRole</code>s, named <code>hibernation-operator-&lt;resource&gt;-&lt;role&gt;-role</code>, for
+binding to users and groups:</p>
 <table>
 <thead>
 <tr>
@@ -3528,15 +3480,15 @@ touches other workload types or arbitrary resources. See the
 </table>
 <p>Bind one of these to a user or group, for example:</p>
 <div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>create<span class="w"> </span>rolebinding<span class="w"> </span>alice-rs-editor<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>--clusterrole<span class="o">=</span>resourcesupervisor-editor-role<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--clusterrole<span class="o">=</span>hibernation-operator-resourcesupervisor-editor-role<span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>--user<span class="o">=</span>alice<span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>--namespace<span class="o">=</span>my-app-staging
 </code></pre></div>
 <h2 id="leader-election-and-metrics-roles">Leader election and metrics roles<a class="headerlink" href="#leader-election-and-metrics-roles" title="Permanent link">#</a></h2>
 <ul>
-<li><strong>Leader election</strong> — a <code>Role</code> granting access to <code>coordination.k8s.io</code>
+<li><strong>Leader election</strong>: a <code>Role</code> granting access to <code>coordination.k8s.io</code>
   leases and events, used only when <code>--leader-elect</code> is enabled.</li>
-<li><strong>Metrics access</strong> — a <code>metrics-reader</code> role (read the <code>/metrics</code> endpoint) and
+<li><strong>Metrics access</strong>: a <code>metrics-reader</code> role (read the <code>/metrics</code> endpoint) and
   a <code>metrics-auth</code> role used by the authentication/authorization filter that
   protects the metrics endpoint. See <a href="metrics.html">Metrics</a>.</li>
 </ul>

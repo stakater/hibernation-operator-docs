@@ -50,6 +50,8 @@
     
       <link rel="stylesheet" href="../stylesheets/extra.css">
     
+      <link rel="stylesheet" href="../stylesheets/headings.css">
+    
     <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
@@ -2141,34 +2143,6 @@ This documentation is either for an old version, or for the unreleased 'main' ve
 
               
             
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../overview/benefits.html" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Benefits
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
           </ul>
         </nav>
       
@@ -2238,34 +2212,6 @@ This documentation is either for an old version, or for the unreleased 'main' ve
     
   
     Architecture
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../concepts/terminology.html" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Concepts
   
 
     
@@ -2874,7 +2820,7 @@ This documentation is either for an old version, or for the unreleased 'main' ve
   <span class="md-ellipsis">
     
   
-    Api
+    API Reference
   
 
     
@@ -3024,10 +2970,10 @@ This documentation is either for an old version, or for the unreleased 'main' ve
 </li>
       
         <li class="md-nav__item">
-  <a href="#servicemonitor" class="md-nav__link">
+  <a href="#scraping" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ServiceMonitor
+        Scraping
       
     </span>
   </a>
@@ -3403,10 +3349,10 @@ This documentation is either for an old version, or for the unreleased 'main' ve
 </li>
       
         <li class="md-nav__item">
-  <a href="#servicemonitor" class="md-nav__link">
+  <a href="#scraping" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ServiceMonitor
+        Scraping
       
     </span>
   </a>
@@ -3445,48 +3391,24 @@ This documentation is either for an old version, or for the unreleased 'main' ve
 
 
 <h1 id="metrics">Metrics<a class="headerlink" href="#metrics" title="Permanent link">#</a></h1>
-<p>The Hibernation Operator exposes Prometheus-compatible metrics through the
-<a href="https://book.kubebuilder.io/reference/metrics">controller-runtime</a> framework.</p>
+<p>The Hibernation Operator exposes Prometheus metrics through the <a href="https://book.kubebuilder.io/reference/metrics">controller-runtime</a> metrics server.</p>
 <h2 id="metrics-endpoint">Metrics endpoint<a class="headerlink" href="#metrics-endpoint" title="Permanent link">#</a></h2>
-<p>The metrics server is <strong>disabled by default</strong> (<code>--metrics-bind-address=0</code>). When
-enabled it serves on:</p>
-<ul>
-<li><strong><code>:8443</code></strong> over https when <code>--metrics-secure=true</code> (the default), or</li>
-<li><strong><code>:8080</code></strong> over http when <code>--metrics-secure=false</code>.</li>
-</ul>
-<p>The endpoint path is <code>/metrics</code>. In secure mode, requests are authenticated and
-authorized using the Kubernetes API (bearer token), so only principals granted
-the metrics-reader permission can scrape it. See
-<a href="configuration.html">Configuration</a> for the relevant flags and
-<a href="rbac.html">RBAC</a> for the metrics roles.</p>
-<h2 id="servicemonitor">ServiceMonitor<a class="headerlink" href="#servicemonitor" title="Permanent link">#</a></h2>
-<p>A Prometheus Operator <code>ServiceMonitor</code> (<code>controller-manager-metrics-monitor</code>)
-is provided to scrape the endpoint:</p>
-<ul>
-<li><strong>scheme:</strong> https, <strong>port:</strong> <code>https</code>, <strong>path:</strong> <code>/metrics</code></li>
-<li><strong>auth:</strong> bearer token from <code>/var/run/secrets/kubernetes.io/serviceaccount/token</code></li>
-<li><strong>selector:</strong> matches the manager service labels
-  (<code>control-plane: hibernation-controller-manager</code>,
-  <code>app.kubernetes.io/name: hibernation-operator</code>)</li>
-</ul>
-<blockquote>
-<p>By default the <code>ServiceMonitor</code> uses <code>insecureSkipVerify: true</code>. For
-production, enable cert-manager and reference a managed certificate so
-Prometheus verifies the metrics server's TLS certificate.</p>
-</blockquote>
+<p>The metrics server is controlled by the <code>--metrics-bind-address</code> flag. The binary disables it by default (<code>0</code>), but both the Helm chart and the OLM bundle start the controller manager with <code>--metrics-bind-address=:6443</code>, so an installed operator serves metrics on port <code>6443</code> at the path <code>/metrics</code>.</p>
+<p>The server uses TLS only when <code>--metrics-tls-cert-dir</code> points to a directory containing <code>tls.crt</code> and <code>tls.key</code>. Neither installation method sets this flag, so the endpoint is served over plain http by default. The <code>--metrics-secure</code> flag is accepted but has no effect.</p>
+<p>Requests pass through the controller-runtime authentication and authorization filter, which validates the caller's bearer token against the Kubernetes API. The scraping principal therefore needs the <code>hibernation-operator-metrics-reader</code> ClusterRole. Refer to <a href="rbac.html">RBAC</a>.</p>
+<p>The webhook deployment does not serve metrics.</p>
+<h2 id="scraping">Scraping<a class="headerlink" href="#scraping" title="Permanent link">#</a></h2>
+<p>Neither installation method ships a <code>ServiceMonitor</code>. To scrape the operator with the Prometheus Operator, create a <code>Service</code> that targets port <code>6443</code> of the <code>hibernation-operator-controller-manager</code> pods, and a <code>ServiceMonitor</code> that selects it and authenticates with a token bound to the metrics reader role.</p>
 <h2 id="available-metrics">Available metrics<a class="headerlink" href="#available-metrics" title="Permanent link">#</a></h2>
-<p>The operator exports the <strong>standard controller-runtime metrics</strong> — there are
-currently no custom hibernation-specific metrics. These include, among others:</p>
+<p>The operator exports the standard controller-runtime metrics and defines no hibernation-specific metrics. These include:</p>
 <ul>
-<li><code>controller_runtime_reconcile_total</code> — reconciliations per controller and result</li>
-<li><code>controller_runtime_reconcile_errors_total</code> — reconcile errors per controller</li>
-<li><code>controller_runtime_reconcile_time_seconds</code> — reconcile latency histogram</li>
-<li><code>workqueue_*</code> — depth, adds, latency, and retries of the controller work queues</li>
-<li><code>rest_client_*</code> — Kubernetes API client request metrics</li>
+<li><code>controller_runtime_reconcile_total</code>: reconciles per controller and result</li>
+<li><code>controller_runtime_reconcile_errors_total</code>: reconcile errors per controller</li>
+<li><code>controller_runtime_reconcile_time_seconds</code>: reconcile latency histogram</li>
+<li><code>workqueue_*</code>: depth, additions, latency and retries of the controller work queues</li>
+<li><code>rest_client_*</code>: Kubernetes API client request metrics</li>
 </ul>
-<p>Use these to monitor reconciliation health, error rates, and API client
-behavior for both the <code>ResourceSupervisor</code> and <code>ClusterResourceSupervisor</code>
-controllers.</p>
+<p>These metrics describe the reconcile health, error rates and API client behaviour of both the <code>ResourceSupervisor</code> and <code>ClusterResourceSupervisor</code> controllers.</p>
 
 
 
