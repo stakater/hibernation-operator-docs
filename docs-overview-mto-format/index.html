@@ -95,7 +95,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#hibernation-operator" class="md-skip">
+        <a href="#introduction" class="md-skip">
           Skip to content
         </a>
       
@@ -2129,63 +2129,13 @@ This documentation is for a pull request deployment and is unreleased, it is onl
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
       
         <li class="md-nav__item">
-  <a href="#how-it-works" class="md-nav__link">
+  <a href="#installation" class="md-nav__link">
     <span class="md-ellipsis">
       
-        How it works
+        Installation
       
     </span>
   </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#example" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Example
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#where-to-go-next" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Where to go next
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Where to go next">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#evaluating-the-operator" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Evaluating the operator
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#running-the-operator" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Running the operator
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -3365,63 +3315,13 @@ This documentation is for a pull request deployment and is unreleased, it is onl
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
       
         <li class="md-nav__item">
-  <a href="#how-it-works" class="md-nav__link">
+  <a href="#installation" class="md-nav__link">
     <span class="md-ellipsis">
       
-        How it works
+        Installation
       
     </span>
   </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#example" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Example
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#where-to-go-next" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Where to go next
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Where to go next">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#evaluating-the-operator" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Evaluating the operator
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#running-the-operator" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Running the operator
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -3445,43 +3345,22 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
 
 
-<h1 id="hibernation-operator">Hibernation Operator<a class="headerlink" href="#hibernation-operator" title="Permanent link">#</a></h1>
-<p>Development, test, demonstration and preview environments are typically in use for only part of the working week, yet their workloads continue to run and to hold the capacity they request. The Hibernation Operator scales these workloads down to zero according to a schedule and restores them to their previous state when they are next required.</p>
-<p>Platform teams can apply hibernation to many namespaces through a single resource, while application teams can manage hibernation for their own namespace without requiring cluster-level permissions.</p>
-<h2 id="how-it-works">How it works<a class="headerlink" href="#how-it-works" title="Permanent link">#</a></h2>
-<ol>
-<li><strong>Select namespaces:</strong> a <code>ResourceSupervisor</code> governs the namespace in which it is created, while a <code>ClusterResourceSupervisor</code> selects namespaces by name or by label.</li>
-<li><strong>Set a schedule:</strong> a sleep and a wake time, each expressed as a cron expression in UTC.</li>
-<li><strong>Sleep:</strong> at the sleep time, every <code>Deployment</code> and <code>StatefulSet</code> in the selected namespaces is scaled to zero, and its replica count is recorded in the status of the resource.</li>
-<li><strong>Wake:</strong> at the wake time, each workload is restored to its recorded replica count.</li>
-</ol>
-<h2 id="example">Example<a class="headerlink" href="#example" title="Permanent link">#</a></h2>
-<p>To hibernate a staging namespace outside working hours, a team creates one resource in that namespace:</p>
-<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">hibernation.stakater.com/v1beta1</span>
-<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ResourceSupervisor</span>
-<span class="nt">metadata</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">office-hours</span>
-<span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">payments-staging</span>
-<span class="nt">spec</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">schedule</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">sleepSchedule</span><span class="p">:</span><span class="w"> </span><span class="s">"0</span><span class="nv"> </span><span class="s">20</span><span class="nv"> </span><span class="s">*</span><span class="nv"> </span><span class="s">*</span><span class="nv"> </span><span class="s">1-5"</span><span class="w">   </span><span class="c1"># 20:00 UTC, Monday to Friday</span>
-<span class="w">    </span><span class="nt">wakeSchedule</span><span class="p">:</span><span class="w"> </span><span class="s">"0</span><span class="nv"> </span><span class="s">8</span><span class="nv"> </span><span class="s">*</span><span class="nv"> </span><span class="s">*</span><span class="nv"> </span><span class="s">1-5"</span><span class="w">     </span><span class="c1"># 08:00 UTC, Monday to Friday</span>
-</code></pre></div>
-<p>The namespace sleeps every weekday evening and wakes the following morning. It remains hibernated over the weekend, as no wake is scheduled between the Friday sleep and Monday morning. When the resource is deleted, its workloads are restored before the deletion completes.</p>
-<h2 id="where-to-go-next">Where to go next<a class="headerlink" href="#where-to-go-next" title="Permanent link">#</a></h2>
-<h3 id="evaluating-the-operator">Evaluating the operator<a class="headerlink" href="#evaluating-the-operator" title="Permanent link">#</a></h3>
+<h1 id="introduction">Introduction<a class="headerlink" href="#introduction" title="Permanent link">#</a></h1>
+<p>Managing Kubernetes clusters at scale often leads to underutilized resources—especially in development, staging, and CI/CD environments that run 24/7 but are only actively used during business hours. This results in unnecessary cloud spend and inefficient resource utilization.</p>
+<p>The <strong>Hibernation Operator</strong> solves this by enabling <strong>automated, policy-driven hibernation</strong> of workloads. It safely scales down <code>Deployments</code> and <code>StatefulSets</code> to zero during off-hours and restores them to their original state when needed—helping teams reduce costs without sacrificing developer experience.</p>
+<p>With the Hibernation Operator, you can:</p>
 <ul>
-<li><a href="overview/key-features.html">Key Features</a>: a description of each feature</li>
-<li><a href="overview/use-cases.html">Use Cases</a>: the scenarios the operator is designed for</li>
-<li><a href="concepts/architecture.html">Architecture</a>: the components and how they behave</li>
+<li><strong>Schedule hibernation</strong> using standard cron expressions for sleep and wake times.</li>
+<li><strong>Target workloads</strong> across multiple namespaces using explicit lists or dynamic label selectors.</li>
+<li><strong>Work with ArgoCD</strong>: a deny sync window on the named <strong>AppProjects</strong> stops ArgoCD from scaling hibernated workloads back up.</li>
+<li><strong>Empower platform teams</strong> with cluster-wide policies via <code>ClusterResourceSupervisor</code>.</li>
+<li><strong>Enable self-service</strong> for application teams using namespace-scoped <code>ResourceSupervisor</code>.</li>
+<li><strong>Preserve state reliably</strong>: Original replica counts are stored in the CR’s status for accurate restoration—even after operator restarts.</li>
+<li><strong>Integrate seamlessly</strong> with existing Kubernetes and ArgoCD workflows, using only native Kubernetes resources.</li>
 </ul>
-<h3 id="running-the-operator">Running the operator<a class="headerlink" href="#running-the-operator" title="Permanent link">#</a></h3>
-<ul>
-<li><a href="getting-started/installation/overview.html">Installation</a>: installation on OpenShift or Kubernetes</li>
-<li><a href="getting-started/quick-start.html">Quick Start</a>: hibernating a first namespace</li>
-<li><a href="guides/create-resource-supervisor.html">Hibernate Workloads in a Single Namespace</a>: the namespace-scoped resource</li>
-<li><a href="guides/create-cluster-resource-supervisor.html">Hibernate Workloads Across Multiple Namespaces</a>: the cluster-scoped resource</li>
-</ul>
+<p>The Hibernation Operator is lightweight, secure, and built for real-world Kubernetes environments—whether you're running on OpenShift, EKS, AKS, GKE, or vanilla Kubernetes.</p>
+<h2 id="installation">Installation<a class="headerlink" href="#installation" title="Permanent link">#</a></h2>
+<p>Refer to the <a href="getting-started/installation/overview.html">installation guide</a> to deploy the Hibernation Operator in your cluster via <strong>Helm</strong> or <strong>Operator Lifecycle Manager (OLM)</strong>.</p>
 
 
 
