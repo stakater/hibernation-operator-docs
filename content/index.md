@@ -7,24 +7,18 @@ head:
 
 # Hibernation Operator
 
-**Reduce the cost of idle Kubernetes environments.**
-
 Development, test, demonstration and preview environments are typically in use for only part of the working week, yet their workloads continue to run and to hold the capacity they request. The Hibernation Operator scales these workloads down to zero according to a schedule and restores them to their previous state when they are next required.
 
 Platform teams can apply hibernation to many namespaces through a single resource, while application teams can manage hibernation for their own namespace without requiring cluster-level permissions.
 
-## Capabilities
+## How it works
 
-| Capability | Question it addresses | How the operator addresses it |
-|---|---|---|
-| **Scheduled sleep and wake** | How can idle hours, such as nights and weekends, be removed from the bill? | Scales `Deployments` and `StatefulSets` to zero on a sleep schedule and restores them on a wake schedule |
-| **Exact restoration** | Will every workload return to its previous state? | Records each replica count in the resource status before scaling down, and restores from that record |
-| **Two scopes** | Who decides what is hibernated? | `ClusterResourceSupervisor` for platform teams across namespaces, and `ResourceSupervisor` for application teams within a single namespace |
-| **Namespace targeting** | Which environments should be hibernated? | Selects namespaces by name, by label selector, or by both |
-| **Administrator exclusions** | Which namespaces must never be hibernated? | A single namespace annotation excludes a namespace regardless of any schedule |
-| **ArgoCD awareness** | How is ArgoCD prevented from restoring hibernated workloads? | Applies a deny sync window to the specified AppProjects for the duration of the sleep period |
+1. **Select namespaces:** a `ResourceSupervisor` governs the namespace in which it is created, while a `ClusterResourceSupervisor` selects namespaces by name or by label.
+1. **Set a schedule:** a sleep and a wake time, each expressed as a cron expression in UTC.
+1. **Sleep:** at the sleep time, every `Deployment` and `StatefulSet` in the selected namespaces is scaled to zero, and its replica count is recorded in the status of the resource.
+1. **Wake:** at the wake time, each workload is restored to its recorded replica count.
 
-## A single resource
+## Example
 
 To hibernate a staging namespace outside working hours, a team creates one resource in that namespace:
 
@@ -40,9 +34,7 @@ spec:
     wakeSchedule: "0 8 * * 1-5"     # 08:00 UTC, Monday to Friday
 ```
 
-At 20:00, every `Deployment` and `StatefulSet` in `payments-staging` is scaled to zero, and its replica count is recorded in the status of the resource. At 08:00, each workload is restored to its recorded replica count. The namespace remains hibernated over the weekend, as no wake is scheduled between the Friday sleep and Monday morning. When the resource is deleted, its workloads are restored before the deletion completes.
-
-The same schedule, applied through a `ClusterResourceSupervisor`, governs every namespace that the resource selects. Refer to [Key Features](overview/key-features.md) for a full description of both resources.
+The namespace sleeps every weekday evening and wakes the following morning. It remains hibernated over the weekend, as no wake is scheduled between the Friday sleep and Monday morning. When the resource is deleted, its workloads are restored before the deletion completes.
 
 ## Where to go next
 
@@ -50,7 +42,7 @@ The same schedule, applied through a `ClusterResourceSupervisor`, governs every 
 
 - [Key Features](overview/key-features.md): a description of each feature
 - [Use Cases](overview/use-cases.md): the scenarios the operator is designed for
-- [Architecture](concepts/architecture.md): the components and the reconcile flow
+- [Architecture](concepts/architecture.md): the components and how they behave
 
 ### Running the operator
 
