@@ -3560,17 +3560,17 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 <h3 id="hibernation-schedule">Hibernation Schedule<a class="headerlink" href="#hibernation-schedule" title="Permanent link">#</a></h3>
 <p>The <strong>Hibernation Schedule</strong> is defined via two optional cron expressions:</p>
 <ul>
-<li><strong><code>sleepSchedule</code></strong> (required): Specifies when workloads should be scaled to zero.</li>
+<li><strong><code>sleepSchedule</code></strong>: Specifies when workloads should be scaled to zero. Leaving both empty sleeps the workloads immediately.</li>
 <li><strong><code>wakeSchedule</code></strong> (optional): Specifies when workloads should be restored.  </li>
 </ul>
 <blockquote>
-<p>If <code>wakeSchedule</code> is omitted, resources remain asleep indefinitely until manually woken or the CR is updated. Both schedules use standard Unix cron format (e.g., <code>"0 18 * * 1-5"</code>).</p>
+<p>If <code>wakeSchedule</code> is omitted, resources remain asleep indefinitely until manually woken or the CR is updated. Both schedules use standard Unix cron format (e.g., <code>"0 18 * * 1-5"</code>) and are evaluated in UTC, never in the cluster's or the browser's timezone.</p>
 </blockquote>
 <h3 id="sleeping-state">Sleeping State<a class="headerlink" href="#sleeping-state" title="Permanent link">#</a></h3>
-<p>The <strong>Sleeping State</strong> refers to the condition where a <code>Deployment</code> or <code>StatefulSet</code> has been scaled to <strong>0 replicas</strong> by the Hibernation Operator. The original replica count is preserved in the CR’s <code>status.sleepingNamespaces</code> field to ensure accurate restoration. Only workloads explicitly targeted by a supervisor are affected—everything else remains untouched.</p>
+<p>The <strong>Sleeping State</strong> refers to the condition where a <code>Deployment</code> or <code>StatefulSet</code> has been scaled to <strong>0 replicas</strong> by the Hibernation Operator. The original replica count is preserved in the CR’s <code>status.sleepingNamespaces</code> field, and waking restores exactly that count. Only workloads the supervisor slept are woken, everything else remains untouched.</p>
 <h2 id="integration-concepts">Integration Concepts<a class="headerlink" href="#integration-concepts" title="Permanent link">#</a></h2>
 <h3 id="argocd-appproject-integration">ArgoCD AppProject Integration<a class="headerlink" href="#argocd-appproject-integration" title="Permanent link">#</a></h3>
-<p>When a <code>ClusterResourceSupervisor</code> specifies <code>argocd.appProjects</code>, the operator automatically discovers all namespaces managed by those ArgoCD <strong>AppProjects</strong> and applies hibernation to them. This enables GitOps-native hibernation policies aligned with application boundaries rather than infrastructure boundaries.</p>
+<p>When a <code>ClusterResourceSupervisor</code> specifies <code>argocd.appProjects</code>, the operator writes a <code>deny</code> sync window onto those ArgoCD <strong>AppProjects</strong> so ArgoCD does not scale the hibernated workloads back up. It does not select namespaces: those still come only from <code>spec.namespaces</code>.</p>
 <h3 id="label-based-namespace-selection">Label-Based Namespace Selection<a class="headerlink" href="#label-based-namespace-selection" title="Permanent link">#</a></h3>
 <p>Instead of listing namespaces individually, platform teams can use <strong>Kubernetes-standard label selectors</strong> (<code>matchLabels</code> and <code>matchExpressions</code>) to dynamically include namespaces that match certain criteria (e.g., <code>env: dev</code>, <code>team: frontend</code>). This supports scalable, policy-driven hibernation in large clusters.</p>
 

@@ -3508,10 +3508,10 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 <h2 id="reconcile-flow">Reconcile flow<a class="headerlink" href="#reconcile-flow" title="Permanent link">#</a></h2>
 <p>Both controllers follow the same shape on each reconcile:</p>
 <ol>
-<li>Work out the next sleep and wake times from the cron expressions in <code>spec.schedule</code>.</li>
+<li>Work out the next sleep and wake times from the cron expressions in <code>spec.schedule</code>, evaluated in UTC.</li>
 <li>Decide whether the workloads should currently be asleep or awake, and when to reconcile next.</li>
 <li>Apply that state to the target workloads if they are not already in it.</li>
-<li>Record the outcome in <code>status</code> and schedule the next check.</li>
+<li>Record the outcome in <code>status</code>, including the <code>Ready</code> condition, and schedule the next check.</li>
 </ol>
 <p>Because the decision is derived from the schedule and the current time on every pass rather than from a timer, a restarted operator picks up where it left off without missing a transition.</p>
 <pre class="mermaid"><code>graph TD
@@ -3538,26 +3538,9 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 <li>The namespace the operator runs in.</li>
 </ul>
 <h2 id="preserving-replica-counts">Preserving replica counts<a class="headerlink" href="#preserving-replica-counts" title="Permanent link">#</a></h2>
-<p>The two resources record the pre-sleep replica count differently, which matters when reasoning about recovery.</p>
-<table>
-<thead>
-<tr>
-<th>Resource</th>
-<th>Where the count is stored</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>ResourceSupervisor</code></td>
-<td>The <code>hibernation.stakater.com/original-replicas</code> annotation on each workload</td>
-</tr>
-<tr>
-<td><code>ClusterResourceSupervisor</code></td>
-<td><code>status.sleepingNamespaces</code>, per namespace and workload</td>
-</tr>
-</tbody>
-</table>
-<p>Either way the count survives an operator restart. Workloads already at zero replicas are skipped rather than recorded.</p>
+<p>Both resources record the pre-sleep replica count in <code>status.sleepingNamespaces</code>, per namespace and workload, before scaling anything down. A wake restores exactly those counts and leaves every other workload alone.</p>
+<p>The count survives an operator restart, but the status is its only copy. If the status is lost the workloads stay at zero and the operator emits a <code>LedgerLost</code> Warning Event rather than guessing a count. Workloads already at zero replicas are skipped rather than recorded.</p>
+<p>Before v0.1.104 a <code>ResourceSupervisor</code> kept the count in the <code>hibernation.stakater.com/original-replicas</code> annotation on each workload. That annotation is still read on wake and never written.</p>
 <h2 id="argocd">ArgoCD<a class="headerlink" href="#argocd" title="Permanent link">#</a></h2>
 <p>ArgoCD treats a workload scaled to zero as drift from Git and will scale it back up, which would undo hibernation. The <code>spec.argocd</code> field on a <code>ClusterResourceSupervisor</code> handles this by writing a <code>deny</code> sync window onto the AppProjects it names, covering the sleep schedule and its duration.</p>
 <div class="admonition note">
@@ -3569,6 +3552,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 <ul>
 <li>A cron expression in <code>spec.schedule</code> cannot be parsed.</li>
 <li><code>sleepSchedule</code> and <code>wakeSchedule</code> are identical.</li>
+<li><code>wakeSchedule</code> is set without <code>sleepSchedule</code>.</li>
 <li>A <code>ClusterResourceSupervisor</code> lists the same namespace twice, or claims a namespace already claimed by another <code>ClusterResourceSupervisor</code>.</li>
 </ul>
 <p>An empty schedule is valid and means immediate, indefinite sleep. There is no check for a namespace being covered by both a <code>ClusterResourceSupervisor</code> and its own <code>ResourceSupervisor</code>, so that overlap has to be avoided by convention.</p>

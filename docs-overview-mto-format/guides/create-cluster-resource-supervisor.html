@@ -3603,6 +3603,10 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 <td><code>status.nextReconcileTime</code></td>
 <td>Next scheduled sleep or wake</td>
 </tr>
+<tr>
+<td><code>status.conditions</code></td>
+<td><code>Ready</code>, <code>False</code> with the reason when a sleep or wake fails. See <a href="../troubleshooting.html#finding-why-a-sleep-or-wake-failed">Troubleshooting</a></td>
+</tr>
 </tbody>
 </table>
 <p>If a namespace you expected is missing from <code>watchedNamespaces</code>, check <code>ignoreNamespaces</code>. Namespaces annotated <code>hibernation.stakater.com/exclude: "true"</code>, and the operator's own namespace, are always filtered out.</p>

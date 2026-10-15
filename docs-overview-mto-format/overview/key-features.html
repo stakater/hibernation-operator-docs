@@ -3706,11 +3706,15 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 </tr>
 <tr>
 <td><code>sleepingNamespaces</code></td>
-<td>Each hibernated workload, with its kind and recorded replica count</td>
+<td>Each hibernated workload, with its kind, its recorded replica count and, after a failed wake, an <code>errorMessage</code></td>
+</tr>
+<tr>
+<td><code>conditions</code></td>
+<td>A <code>Ready</code> condition stating whether the last sleep or wake succeeded and, if not, the reason</td>
 </tr>
 </tbody>
 </table>
-<p>If a reconcile fails, <code>currentStatus</code> is set to <code>error</code> and the operation is retried. Errors that a retry cannot resolve, such as an invalid cron expression, are reported as Kubernetes events on the resource.</p>
+<p>If a reconcile fails, <code>currentStatus</code> is set to <code>error</code>, the <code>Ready</code> condition records the reason, such as <code>SleepFailed</code>, <code>WakeFailed</code> or <code>InvalidSleepSchedule</code>, and the operation is retried. The same failures are also reported as Kubernetes events on the resource. For further details, refer to <a href="../troubleshooting.html">Troubleshooting</a>.</p>
 <h2 id="next-steps">Next steps<a class="headerlink" href="#next-steps" title="Permanent link">#</a></h2>
 <ul>
 <li><a href="use-cases.html">Use Cases</a>: the scenarios the operator is designed for</li>
