@@ -92,7 +92,9 @@
   {
     "version": "ci-docs-target-sync",
     "title": "ci-docs-target-sync",
-    "aliases": []
+    "aliases": [
+      "latest"
+    ]
   },
   {
     "version": "0.1-fix-for-RS-status",
