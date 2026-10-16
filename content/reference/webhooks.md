@@ -28,12 +28,15 @@ Cron schedules are parsed using standard cron syntax. The webhook enforces:
 
 - **Empty schedules are allowed** — both `sleepSchedule` and `wakeSchedule`
   empty (immediate/permanent sleep use cases) passes validation.
-- If a `wakeSchedule` is provided, both `sleepSchedule` and `wakeSchedule` must
-  be **valid cron expressions**.
+- Whichever of `sleepSchedule` and `wakeSchedule` is set must be a **valid cron
+  expression**.
 - `sleepSchedule` and `wakeSchedule` **must not be identical**.
-- When neither schedule uses a wildcard (`*`), both must resolve to a time **in
-  the future**, and the **wake time must be after the sleep time**. Schedules
-  containing `*` are always considered valid.
+- A `wakeSchedule` **requires a `sleepSchedule`**. A wake only schedule is
+  rejected.
+- Unless both schedules contain a wildcard (`*`), both must resolve to a time
+  **in the future**, and the **wake time must be after the sleep time**.
+
+Schedules are evaluated in UTC.
 
 ## ClusterResourceSupervisor namespace validation
 
@@ -59,5 +62,6 @@ The webhook server requires TLS. The operator integrates with
 Alternatively, you can supply certificates directly via the
 `--webhook-cert-path`, `--webhook-cert-name`, and `--webhook-cert-key` flags.
 
-> cert-manager is a prerequisite only when webhooks are enabled. See
+> The Helm chart always deploys the webhook, so cert-manager is required for
+> Helm installations. On OpenShift, OLM manages the webhook certificate. See
 > [Installation › Kubernetes](../getting-started/installation/kubernetes.md).

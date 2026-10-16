@@ -27,7 +27,7 @@ spec:
     wakeSchedule: "0 8 * * 1-5"
 ```
 
-`labelSelector` is a standard Kubernetes label selector, so `matchLabels` and `matchExpressions` both work and are combined with AND. It is re-evaluated on each reconcile, which is what lets namespaces created later be picked up without editing the resource.
+`labelSelector` is a standard Kubernetes label selector, so `matchLabels` and `matchExpressions` both work and are combined with AND. It is re-evaluated at each scheduled sleep or wake, so namespaces created later are picked up without editing the resource.
 
 !!! warning
     An empty `labelSelector: {}` matches no namespaces, not all of them, and a `ClusterResourceSupervisor` with no `spec.namespaces` at all hibernates nothing. To cover a broad set, apply a label the target namespaces share and select on that.
@@ -50,7 +50,7 @@ Two filters run after selection, and a namespace caught by either is reported in
 - The namespace is annotated `hibernation.stakater.com/exclude: "true"`.
 - The namespace is the one the operator itself runs in.
 
-The annotation is how an individual team opts out of a platform-wide policy without needing the selector changed.
+Anything the supervisor already slept in a namespace that becomes excluded is woken. The annotation is how an individual team opts out of a platform-wide policy without needing the selector changed.
 
 ## Overlap between supervisors
 
@@ -93,14 +93,17 @@ Two further constraints:
 | `currentStatus` | `running`, `sleeping`, or `error` |
 | `watchedNamespaces` | Namespaces currently being managed |
 | `ignoreNamespaces` | Selected namespaces filtered out by the exclusions above |
-| `sleepingNamespaces` | Per-namespace detail of scaled-down workloads and their original replica counts |
+| `sleepingNamespaces` | Per-namespace detail of scaled-down workloads and their original replica counts. After a failed wake, each application still asleep carries an `errorMessage` |
 | `nextReconcileTime` | Next scheduled sleep or wake |
+| `conditions` | `Ready`, `True` after a successful sleep or wake and `False` with the reason after a failed one |
 
 ```sh
 kubectl get clusterresourcesupervisor dev-environments-hibernation -o jsonpath='{.status}'
 ```
 
-When a namespace you expected is missing from `watchedNamespaces`, `ignoreNamespaces` is the first place to look.
+When a namespace you expected is missing from `watchedNamespaces`, `ignoreNamespaces` is the first place to look. When `currentStatus` is `error`, read the `Ready` condition, see [Troubleshooting](../troubleshooting.md#finding-why-a-sleep-or-wake-failed).
+
+The replica counts in `sleepingNamespaces` are the only record of them. If the status is lost the workloads stay at zero and the operator emits a `LedgerLost` Warning Event rather than guessing.
 
 ## Choosing between the two
 

@@ -7,7 +7,7 @@ The Hibernation Operator resolves this by writing a `deny` sync window onto the 
 !!! warning
     `spec.argocd` does not choose which namespaces to hibernate. It only suppresses ArgoCD syncing. The namespaces still come entirely from `spec.namespaces`, and a `ClusterResourceSupervisor` with an `argocd` block but no `namespaces` block writes sync windows while hibernating nothing.
 
-The integration is optional and must be enabled at install time.
+The integration is optional and is enabled per resource by setting `spec.argocd` on a `ClusterResourceSupervisor`. No installation option is required.
 
 ## How it works
 
@@ -23,18 +23,6 @@ Hibernation of the workloads themselves proceeds independently, driven by `spec.
     The operator replaces `spec.syncWindows` on each named AppProject rather than appending to it. Sync windows you maintain there by other means are overwritten. If you rely on existing sync windows, do not point the operator at that AppProject.
 
 If the ArgoCD `AppProject` CRD is not present in the cluster, the operator logs that and continues hibernating without touching ArgoCD.
-
-## Enabling the integration
-
-Enable ArgoCD support and point the operator at the ArgoCD namespace during installation:
-
-```sh
-helm install hibernation-operator oci://ghcr.io/stakater/public/charts/hibernation-operator \
-  --namespace hibernation-operator-system \
-  --create-namespace \
-  --set argoCD.enabled=true \
-  --set argoCD.namespace=argocd
-```
 
 ## Using it
 

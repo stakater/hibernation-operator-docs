@@ -1,79 +1,52 @@
 # Architecture
 
-The Hibernation Operator scales `Deployments` and `StatefulSets` down to zero on a schedule and restores them afterwards, so environments that are only needed during working hours stop consuming compute the rest of the time. It reconciles two custom resources: [ResourceSupervisor](resource-supervisor.md), which a namespace owner creates to hibernate their own namespace, and [ClusterResourceSupervisor](cluster-resource-supervisor.md), which a platform team uses to cover a group of namespaces.
+The Hibernation Operator scales `Deployments` and `StatefulSets` down to zero on a schedule and restores them afterwards, so that environments needed only during working hours stop consuming compute for the rest of the time. It manages two custom resources: the [ResourceSupervisor](resource-supervisor.md), which a namespace owner creates to hibernate their own namespace, and the [ClusterResourceSupervisor](cluster-resource-supervisor.md), which a platform team uses to hibernate a group of namespaces.
 
 ## Components
 
 | Deployment | Description |
 | --- | --- |
-| `controller-manager` | Runs both reconcilers. Resolves target namespaces, scales workloads at the scheduled times, and maintains the status on each resource. |
-| `webhook` | Serves the validating admission webhooks for both kinds. |
+| `hibernation-operator-controller-manager` | Hibernates and restores workloads according to the schedule of each resource, and reports the outcome in its status. |
+| `hibernation-operator-webhook` | Validates both resources when they are created or updated. |
 
-The metrics endpoint is provided by controller-runtime and is disabled by default. See [Metrics](../reference/metrics.md) for how to enable and scrape it.
+## Behaviour
 
-## Reconcile flow
+### At the sleep time
 
-Both controllers follow the same shape on each reconcile:
+Every `Deployment` and `StatefulSet` with a non-zero replica count in the governed namespaces is scaled to zero. Its replica count is recorded in the status of the resource first, so that it can be restored later. Workloads already at zero are left as they are.
 
-1. Work out the next sleep and wake times from the cron expressions in `spec.schedule`.
-1. Decide whether the workloads should currently be asleep or awake, and when to reconcile next.
-1. Apply that state to the target workloads if they are not already in it.
-1. Record the outcome in `status` and schedule the next check.
+### At the wake time
 
-Because the decision is derived from the schedule and the current time on every pass rather than from a timer, a restarted operator picks up where it left off without missing a transition.
+Each workload recorded in the status is restored to its recorded replica count. Workloads that the operator did not hibernate are not modified.
 
-```mermaid
-graph TD
-    subgraph "Kubernetes Cluster"
-        A[Hibernation Controller] -->|Watches| B[ClusterResourceSupervisor]
-        A -->|Watches| C[ResourceSupervisor]
-        A -->|Lists by name and label| E[(Namespaces)]
-        A -->|Scales to zero and back| F[Deployment / StatefulSet]
-        A -->|Writes deny sync window| D[ArgoCD AppProject]
-        A -->|Updates| G[Status]
+### When a resource is deleted
 
-        E -->|Contains| F
-    end
+The workloads of the resource are restored before the deletion completes, and any ArgoCD sync windows it applied are removed. If a restoration fails, the resource is retained until it succeeds.
 
-    subgraph "Validation"
-        L[Webhook] -->|Validates| B
-        L -->|Validates| C
-    end
-```
+### When a namespace is excluded or leaves the selection
 
-## Selecting namespaces
+Namespaces annotated `hibernation.stakater.com/exclude: "true"`, and the namespace in which the operator runs, are never hibernated. When a namespace becomes excluded or is no longer selected, the workloads hibernated there are restored at the next scheduled sleep or wake. Such namespaces are listed in `status.ignoreNamespaces`.
 
-A `ResourceSupervisor` acts only on its own namespace and has nothing to select.
+### When the operator restarts
 
-A `ClusterResourceSupervisor` builds its list from `spec.namespaces.names` and `spec.namespaces.labelSelector`, combining the two. Two filters then run, and anything they catch is reported in `status.ignoreNamespaces` instead of being hibernated:
-
-- Namespaces annotated `hibernation.stakater.com/exclude: "true"`.
-- The namespace the operator runs in.
-
-## Preserving replica counts
-
-The two resources record the pre-sleep replica count differently, which matters when reasoning about recovery.
-
-| Resource | Where the count is stored |
-| --- | --- |
-| `ResourceSupervisor` | The `hibernation.stakater.com/original-replicas` annotation on each workload |
-| `ClusterResourceSupervisor` | `status.sleepingNamespaces`, per namespace and workload |
-
-Either way the count survives an operator restart. Workloads already at zero replicas are skipped rather than recorded.
+The schedule is evaluated against the current time rather than against a running timer, and the recorded replica counts are stored in the Kubernetes API. A restarted operator therefore continues where it left off.
 
 ## ArgoCD
 
-ArgoCD treats a workload scaled to zero as drift from Git and will scale it back up, which would undo hibernation. The `spec.argocd` field on a `ClusterResourceSupervisor` handles this by writing a `deny` sync window onto the AppProjects it names, covering the sleep schedule and its duration.
+ArgoCD treats a workload scaled to zero as drift from Git and scales it back up, which would undo hibernation. When `spec.argocd` is set on a `ClusterResourceSupervisor`, the operator applies a `deny` sync window to the specified AppProjects for the duration of the sleep period.
 
 !!! note
-    This is the operator's only interaction with ArgoCD. It does not read `AppProject` destinations and does not use AppProjects to decide which namespaces to hibernate. Targets always come from `spec.namespaces`.
+    This is the operator's only interaction with ArgoCD. AppProjects do not determine which namespaces are hibernated; these are always selected through `spec.namespaces`.
 
 ## Admission validation
 
-The webhook rejects a resource before it is stored when:
+The webhook rejects a resource when:
 
 - A cron expression in `spec.schedule` cannot be parsed.
 - `sleepSchedule` and `wakeSchedule` are identical.
-- A `ClusterResourceSupervisor` lists the same namespace twice, or claims a namespace already claimed by another `ClusterResourceSupervisor`.
+- `wakeSchedule` is set without `sleepSchedule`.
+- A `ClusterResourceSupervisor` lists the same namespace twice, or selects a namespace already selected by another `ClusterResourceSupervisor`.
 
-An empty schedule is valid and means immediate, indefinite sleep. There is no check for a namespace being covered by both a `ClusterResourceSupervisor` and its own `ResourceSupervisor`, so that overlap has to be avoided by convention.
+An empty schedule is valid and hibernates the workloads immediately and indefinitely. The webhook does not prevent a namespace from being governed by both a `ClusterResourceSupervisor` and its own `ResourceSupervisor`, so such overlaps must be avoided by convention.
+
+The metrics endpoint is described in [Metrics](../reference/metrics.md).

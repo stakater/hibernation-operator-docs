@@ -81,6 +81,7 @@ kubectl get clusterresourcesupervisor dev-environments-hibernation -o yaml
 | `status.ignoreNamespaces` | Selected namespaces that were filtered out |
 | `status.sleepingNamespaces` | Per-namespace detail of the scaled-down workloads |
 | `status.nextReconcileTime` | Next scheduled sleep or wake |
+| `status.conditions` | `Ready`, `False` with the reason when a sleep or wake fails. See [Troubleshooting](../troubleshooting.md#finding-why-a-sleep-or-wake-failed) |
 
 If a namespace you expected is missing from `watchedNamespaces`, check `ignoreNamespaces`. Namespaces annotated `hibernation.stakater.com/exclude: "true"`, and the operator's own namespace, are always filtered out.
 
@@ -114,7 +115,7 @@ spec:
 Two further points before enabling this:
 
 - The operator replaces `spec.syncWindows` on each named AppProject rather than appending to it. Any sync windows you maintain there by other means are overwritten.
-- The integration requires the ArgoCD `AppProject` CRD to be present, and `argoCD.enabled=true` at [install time](../getting-started/installation/kubernetes.md#optional-enable-argocd-integration). If the CRD is absent the operator logs the fact and carries on hibernating.
+- The integration requires the ArgoCD `AppProject` CRD to be present, and needs no installation option. If the CRD is absent, the operator logs the fact and continues hibernating. Refer to [ArgoCD Integration](../integrations/argocd.md).
 
 ## Related guides
 

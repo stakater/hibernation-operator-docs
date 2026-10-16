@@ -14,11 +14,12 @@ The **Hibernation Operator** solves this by enabling **automated, policy-driven 
 With the Hibernation Operator, you can:
 
 - **Schedule hibernation** using standard cron expressions for sleep and wake times.
-- **Target workloads** across multiple namespaces using explicit lists, dynamic label selectors, or **ArgoCD AppProjects** (for GitOps-aligned teams).
+- **Target workloads** across multiple namespaces using explicit lists or dynamic label selectors.
+- **Work with ArgoCD**: a deny sync window on the named **AppProjects** stops ArgoCD from scaling hibernated workloads back up.
 - **Empower platform teams** with cluster-wide policies via `ClusterResourceSupervisor`.
 - **Enable self-service** for application teams using namespace-scoped `ResourceSupervisor`.
 - **Preserve state reliably**: Original replica counts are stored in the CR’s status for accurate restoration—even after operator restarts.
-- **Integrate seamlessly** with existing Kubernetes and ArgoCD workflows—no external dependencies required.
+- **Integrate seamlessly** with existing Kubernetes and ArgoCD workflows, using only native Kubernetes resources.
 
 The Hibernation Operator is lightweight, secure, and built for real-world Kubernetes environments—whether you're running on OpenShift, EKS, AKS, GKE, or vanilla Kubernetes.
 

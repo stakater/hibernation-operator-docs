@@ -1,0 +1,40 @@
+name: Generate API Reference
+
+# Regenerates content/reference/api.md from the operator's Go types by calling
+# the shared reusable workflow in stakater/.github. Run manually from the
+# Actions tab; it opens a PR with the regenerated reference.
+#
+# Repo-specific config lives in crd-ref-docs.yaml (which types/fields to ignore).
+#
+# Note: the shared workflow does not delink the api/common helper types
+# (Hibernation, Namespaces, ArgoCDHibernation, SleepingNamespace, Status) that crd-ref-docs links but does
+# not render. Apply that fixup on the generated PR before merging, otherwise
+# `mkdocs build --strict` fails on the dangling anchors:
+#
+#   sed -i -E 's/\[(Hibernation|Namespaces|ArgoCDHibernation|SleepingNamespace|Status)\]\(#(hibernation|namespaces|argocdhibernation|sleepingnamespace|status)\)/\1/g' content/reference/api.md
+
+on:
+  workflow_dispatch:
+    inputs:
+      operator_ref:
+        description: "Operator git ref to generate from"
+        required: false
+        default: "main"
+
+jobs:
+  generate:
+    uses: stakater/.github/.github/workflows/generate-api-reference.yaml@main
+    with:
+      operator_repo: https://github.com/stakater-ab/hibernation-operator.git
+      operator_ref: ${{ github.event.inputs.operator_ref }}
+      # api (not api/v1beta1): the v1beta1 types reference helper types in
+      # api/common, which must be in the source path to resolve.
+      api_path: api
+      config_file: crd-ref-docs.yaml
+      output_file: content/reference/api.md
+      # hibernation-operator is under the private stakater-ab org; the shared
+      # workflow configures git auth so the plain HTTPS URL clones with the token.
+      ENABLE_STAKATER_AB_GIT_AUTH: true
+    secrets:
+      PR_TOKEN: ${{ secrets.PUBLISH_TOKEN }}
+      STAKATER_AB_REPOS: ${{ secrets.STAKATER_AB_REPOS }}

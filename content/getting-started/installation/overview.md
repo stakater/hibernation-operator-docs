@@ -1,32 +1,26 @@
 # Overview
 
-The **Hibernation Operator** supports two installation methods: **Operator Lifecycle Manager (OLM)** and **Helm Chart**. These methods ensure flexibility and compatibility across various Kubernetes environments, including **OpenShift**, **Azure Kubernetes Service (AKS)**, **Amazon Elastic Kubernetes Service (EKS)**, **Google Kubernetes Engine (GKE)**, and other standard Kubernetes distributions.
+The Hibernation Operator can be installed with the Operator Lifecycle Manager (OLM) or with Helm. Both methods deploy the same controller, admission webhook, CRDs and RBAC resources.
 
-## Installation Methods
+## Installation methods
 
-### 1. Operator Lifecycle Manager (OLM)
+### Operator Lifecycle Manager (OLM)
 
-OLM is the recommended installation method for **OpenShift** clusters. The Hibernation Operator is [Red Hat Certified](https://catalog.redhat.com/en/software/container-stacks/detail/687efb0f70dee945827cfe24) and available in the **OpenShift OperatorHub**. This method provides native lifecycle management, automatic upgrades (when configured), and seamless integration with OpenShift’s operator framework.
+OLM is the recommended method on OpenShift. The Hibernation Operator is [Red Hat Certified](https://catalog.redhat.com/en/software/container-stacks/detail/687efb0f70dee945827cfe24) and available in the OpenShift OperatorHub, and OLM manages its upgrades and the certificate of its admission webhook.
 
-### 2. Helm Chart
+### Helm
 
-Helm is the preferred installation method for **all other Kubernetes platforms**, including AKS, EKS, GKE, and vanilla Kubernetes. The Helm chart offers a lightweight, customizable, and GitOps-friendly deployment with support for optional features like **ArgoCD integration** and **admission webhooks**.
+Helm is the recommended method on all other Kubernetes distributions, including AKS, EKS, GKE and upstream Kubernetes. The chart is published as an OCI artifact and suits GitOps workflows. It requires cert-manager to issue the webhook and metrics certificates.
 
 ## Prerequisites
 
-Before proceeding, ensure the following:
+* An OpenShift cluster for OLM, or a Kubernetes cluster at version 1.24 or later for Helm
+* Cluster administrator permissions
+* `kubectl`, or `oc` on OpenShift
+* The Helm CLI, when installing with Helm
+* cert-manager, when installing with Helm
 
-* Access to an **OpenShift cluster** (for OLM) or a **Kubernetes cluster v1.24+** (for Helm).
-* **Cluster administrator** or equivalent permissions.
-* Familiarity with `kubectl` (or `oc` for OpenShift).
-* **Helm CLI installed locally** if using Helm-based installation.
-* *(Optional)* **cert-manager** installed if enabling the admission webhook (required only for validation of cron schedules and CR structure).
+## Next steps
 
-## Next Steps
-
-Choose the installation guide that matches your environment:
-
-* [Installing with OLM on OpenShift](openshift.md)  
-* [Installing with Helm on Kubernetes (generic)](kubernetes.md)
-
-By following the appropriate guide, you’ll be able to deploy the Hibernation Operator and start automating cost-saving hibernation of your workloads—whether you're a platform team managing hundreds of namespaces or a developer optimizing a single staging environment.
+* [On OpenShift](openshift.md): installation with OLM
+* [On Kubernetes](kubernetes.md): installation with Helm
