@@ -22,7 +22,7 @@
     
     
       
-        <title>Api - Hibernation Operator</title>
+        <title>API Reference - Hibernation Operator</title>
       
     
     
@@ -49,6 +49,8 @@
     
     
       <link rel="stylesheet" href="../stylesheets/extra.css">
+    
+      <link rel="stylesheet" href="../stylesheets/headings.css">
     
     <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
@@ -2141,34 +2143,6 @@ This documentation is either for an old version, or for the unreleased 'main' ve
 
               
             
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../overview/benefits.html" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Benefits
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
           </ul>
         </nav>
       
@@ -2238,34 +2212,6 @@ This documentation is either for an old version, or for the unreleased 'main' ve
     
   
     Architecture
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../concepts/terminology.html" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Concepts
   
 
     
@@ -2883,7 +2829,7 @@ This documentation is either for an old version, or for the unreleased 'main' ve
   <span class="md-ellipsis">
     
   
-    Api
+    API Reference
   
 
     
@@ -2901,7 +2847,7 @@ This documentation is either for an old version, or for the unreleased 'main' ve
   <span class="md-ellipsis">
     
   
-    Api
+    API Reference
   
 
     
@@ -3023,17 +2969,6 @@ This documentation is either for an old version, or for the unreleased 'main' ve
     <span class="md-ellipsis">
       
         ResourceSupervisorStatus
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#status" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Status
       
     </span>
   </a>
@@ -3581,17 +3516,6 @@ This documentation is either for an old version, or for the unreleased 'main' ve
   
 </li>
         
-          <li class="md-nav__item">
-  <a href="#status" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Status
-      
-    </span>
-  </a>
-  
-</li>
-        
       </ul>
     </nav>
   
@@ -3732,7 +3656,7 @@ This documentation is either for an old version, or for the unreleased 'main' ve
 <td></td>
 </tr>
 <tr>
-<td><code>currentStatus</code> <em><a href="#status">Status</a></em></td>
+<td><code>currentStatus</code> <em>Status</em></td>
 <td>CurrentStatus shows the state the tenant's resources</td>
 <td></td>
 <td>Enum: [sleeping running error] <br></td>
@@ -3745,15 +3669,21 @@ This documentation is either for an old version, or for the unreleased 'main' ve
 </tr>
 <tr>
 <td><code>watchedNamespaces</code> <em>string array</em></td>
-<td>WatchedNamespaces contains the list of namespaces that are being watched by the ClusterResourceSupervisor</td>
+<td>WatchedNamespaces contains the namespaces this supervisor may hibernate</td>
 <td></td>
 <td></td>
 </tr>
 <tr>
 <td><code>ignoreNamespaces</code> <em>string array</em></td>
-<td>IgnoreNamespaces contains the list of namespaces that are being ignored by the ClusterResourceSupervisor</td>
+<td>IgnoreNamespaces contains the namespaces this supervisor was asked to hibernate but may not</td>
 <td></td>
 <td></td>
+</tr>
+<tr>
+<td><code>conditions</code> <em><a href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.30/#condition-v1-meta">Condition</a> array</em></td>
+<td>Conditions holds Ready, which says whether the last pass did what the schedule<br>asked and if not why. An Event expires and nothing queries it, so without it a<br>failed pass or an unparseable cron would leave no trace on the resource at all.</td>
+<td></td>
+<td>Optional: {} <br></td>
 </tr>
 </tbody>
 </table>
@@ -3844,20 +3774,37 @@ This documentation is either for an old version, or for the unreleased 'main' ve
 <td></td>
 </tr>
 <tr>
-<td><code>currentStatus</code> <em><a href="#status">Status</a></em></td>
+<td><code>currentStatus</code> <em>Status</em></td>
 <td>CurrentStatus shows the state the tenant's resources</td>
 <td></td>
 <td>Enum: [sleeping running error] <br></td>
 </tr>
+<tr>
+<td><code>sleepingNamespaces</code> <em>SleepingNamespace array</em></td>
+<td>SleepingResources contains the previous states for each of the deployments currently scaled down</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><code>watchedNamespaces</code> <em>string array</em></td>
+<td>WatchedNamespaces contains the namespaces this supervisor may hibernate</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><code>ignoreNamespaces</code> <em>string array</em></td>
+<td>IgnoreNamespaces contains the namespaces this supervisor was asked to hibernate but may not</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><code>conditions</code> <em><a href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.30/#condition-v1-meta">Condition</a> array</em></td>
+<td>Conditions holds Ready, which says whether the last pass did what the schedule<br>asked and if not why. An Event expires and nothing queries it, so without it a<br>failed pass or an unparseable cron would leave no trace on the resource at all.</td>
+<td></td>
+<td>Optional: {} <br></td>
+</tr>
 </tbody>
 </table>
-<h4 id="status">Status<a class="headerlink" href="#status" title="Permanent link">#</a></h4>
-<p><em>Underlying type:</em> <em>string</em></p>
-<p><em>Validation:</em>
-- Enum: [sleeping running error]</p>
-<p><em>Appears in:</em>
-- <a href="#clusterresourcesupervisorstatus">ClusterResourceSupervisorStatus</a>
-- <a href="#resourcesupervisorstatus">ResourceSupervisorStatus</a></p>
 
 
 

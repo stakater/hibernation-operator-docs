@@ -48,6 +48,8 @@
     
       <link rel="stylesheet" href="stylesheets/extra.css">
     
+      <link rel="stylesheet" href="stylesheets/headings.css">
+    
     <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
@@ -2201,34 +2203,6 @@ This documentation is either for an old version, or for the unreleased 'main' ve
 
               
             
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="overview/benefits.html" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Benefits
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
           </ul>
         </nav>
       
@@ -2298,34 +2272,6 @@ This documentation is either for an old version, or for the unreleased 'main' ve
     
   
     Architecture
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="concepts/terminology.html" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Concepts
   
 
     
@@ -2932,7 +2878,7 @@ This documentation is either for an old version, or for the unreleased 'main' ve
   <span class="md-ellipsis">
     
   
-    Api
+    API Reference
   
 
     
@@ -3404,11 +3350,12 @@ This documentation is either for an old version, or for the unreleased 'main' ve
 <p>With the Hibernation Operator, you can:</p>
 <ul>
 <li><strong>Schedule hibernation</strong> using standard cron expressions for sleep and wake times.</li>
-<li><strong>Target workloads</strong> across multiple namespaces using explicit lists, dynamic label selectors, or <strong>ArgoCD AppProjects</strong> (for GitOps-aligned teams).</li>
+<li><strong>Target workloads</strong> across multiple namespaces using explicit lists or dynamic label selectors.</li>
+<li><strong>Work with ArgoCD</strong>: a deny sync window on the named <strong>AppProjects</strong> stops ArgoCD from scaling hibernated workloads back up.</li>
 <li><strong>Empower platform teams</strong> with cluster-wide policies via <code>ClusterResourceSupervisor</code>.</li>
 <li><strong>Enable self-service</strong> for application teams using namespace-scoped <code>ResourceSupervisor</code>.</li>
 <li><strong>Preserve state reliably</strong>: Original replica counts are stored in the CR’s status for accurate restoration—even after operator restarts.</li>
-<li><strong>Integrate seamlessly</strong> with existing Kubernetes and ArgoCD workflows—no external dependencies required.</li>
+<li><strong>Integrate seamlessly</strong> with existing Kubernetes and ArgoCD workflows, using only native Kubernetes resources.</li>
 </ul>
 <p>The Hibernation Operator is lightweight, secure, and built for real-world Kubernetes environments—whether you're running on OpenShift, EKS, AKS, GKE, or vanilla Kubernetes.</p>
 <h2 id="installation">Installation<a class="headerlink" href="#installation" title="Permanent link">#</a></h2>
