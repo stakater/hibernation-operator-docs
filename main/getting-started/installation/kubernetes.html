@@ -50,6 +50,8 @@
     
       <link rel="stylesheet" href="../../stylesheets/extra.css">
     
+      <link rel="stylesheet" href="../../stylesheets/headings.css">
+    
     <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
@@ -2142,34 +2144,6 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 
               
             
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../overview/benefits.html" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Benefits
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
           </ul>
         </nav>
       
@@ -2239,34 +2213,6 @@ This documentation is for a pull request deployment and is unreleased, it is onl
     
   
     Architecture
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../concepts/terminology.html" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Concepts
   
 
     
@@ -2605,60 +2551,10 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 </li>
       
         <li class="md-nav__item">
-  <a href="#installing-via-helm-cli" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Installing via Helm CLI
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Installing via Helm CLI">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
   <a href="#install-the-operator" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Install the Operator
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#optional-enable-argocd-integration" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Optional: Enable ArgoCD Integration
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#wait-for-pods-to-start" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Wait for Pods to Start
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#uninstall-via-helm-cli" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Uninstall via Helm CLI
+        Install the operator
       
     </span>
   </a>
@@ -2666,10 +2562,10 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 </li>
       
         <li class="md-nav__item">
-  <a href="#notes" class="md-nav__link">
+  <a href="#verify-the-installation" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Notes
+        Verify the installation
       
     </span>
   </a>
@@ -3009,7 +2905,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   <span class="md-ellipsis">
     
   
-    Api
+    API Reference
   
 
     
@@ -3456,60 +3352,10 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 </li>
       
         <li class="md-nav__item">
-  <a href="#installing-via-helm-cli" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Installing via Helm CLI
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Installing via Helm CLI">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
   <a href="#install-the-operator" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Install the Operator
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#optional-enable-argocd-integration" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Optional: Enable ArgoCD Integration
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#wait-for-pods-to-start" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Wait for Pods to Start
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#uninstall-via-helm-cli" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Uninstall via Helm CLI
+        Install the operator
       
     </span>
   </a>
@@ -3517,10 +3363,10 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 </li>
       
         <li class="md-nav__item">
-  <a href="#notes" class="md-nav__link">
+  <a href="#verify-the-installation" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Notes
+        Verify the installation
       
     </span>
   </a>
@@ -3548,72 +3394,39 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 
 
 <h1 id="on-kubernetes">On Kubernetes<a class="headerlink" href="#on-kubernetes" title="Permanent link">#</a></h1>
-<p>This document contains instructions for installing, uninstalling, and configuring the <strong>Hibernation Operator</strong> on Kubernetes.</p>
-<ol>
-<li><a href="#installing-via-helm-cli">Installing via Helm CLI</a>  </li>
-<li><a href="#uninstall-via-helm-cli">Uninstall</a></li>
-</ol>
+<p>This page describes how to install the Hibernation Operator on Kubernetes with Helm. To remove the operator, refer to <a href="../uninstalling.html">Uninstalling</a>.</p>
 <h2 id="requirements">Requirements<a class="headerlink" href="#requirements" title="Permanent link">#</a></h2>
 <ul>
-<li>A <strong>Kubernetes</strong> cluster (v1.24 or higher)  </li>
-<li><a href="https://helm.sh/docs/intro/install/">Helm CLI</a>  </li>
-<li><a href="https://kubernetes.io/docs/tasks/tools/">kubectl</a>  </li>
-<li><em>(Optional but recommended)</em> <a href="https://cert-manager.io/docs/installation/">cert-manager</a> — required <strong>only if you enable the webhook</strong></li>
+<li>A Kubernetes cluster, version 1.24 or later</li>
+<li>The <a href="https://helm.sh/docs/intro/install/">Helm CLI</a></li>
+<li><a href="https://kubernetes.io/docs/tasks/tools/">kubectl</a></li>
+<li><a href="https://cert-manager.io/docs/installation/">cert-manager</a>, installed in the cluster</li>
 </ul>
-<blockquote>
-<p>The Hibernation Operator uses admission webhooks for CR validation (e.g., cron format checks). If you disable the webhook (<code>webhook.create=false</code>), cert-manager is <strong>not required</strong>.</p>
-</blockquote>
-<h2 id="installing-via-helm-cli">Installing via Helm CLI<a class="headerlink" href="#installing-via-helm-cli" title="Permanent link">#</a></h2>
-<p>The public Helm chart for the Hibernation Operator is available in the public <a href="https://github.com/orgs/stakater/packages/container/package/public/charts/template-operator"><strong>Stakater Helm repository</strong></a>.</p>
-<h3 id="install-the-operator">Install the Operator<a class="headerlink" href="#install-the-operator" title="Permanent link">#</a></h3>
-<p>Install into the recommended namespace <code>hibernation-operator-system</code>:</p>
-<div class="highlight"><pre><span></span><code>helm<span class="w"> </span>install<span class="w"> </span>hibernation-operator<span class="w"> </span>oci://ghcr.io/stakater/public/charts/hibernation-operator<span class="w"> </span><span class="se">\</span>
+<p>The chart always deploys the validating admission webhook, and it issues the webhook and metrics certificates through a cert-manager <code>Issuer</code>. cert-manager is therefore required, and the chart provides no option to disable it.</p>
+<h2 id="install-the-operator">Install the operator<a class="headerlink" href="#install-the-operator" title="Permanent link">#</a></h2>
+<p>The chart is published as an OCI artifact in the <a href="https://github.com/orgs/stakater/packages/container/package/public/charts/hibernation-operator">Stakater package registry</a>. Install it into the <code>hibernation-operator-system</code> namespace:</p>
+<div class="highlight"><pre><span></span><code>helm<span class="w"> </span>install<span class="w"> </span>hibernation-operator<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>oci://ghcr.io/stakater/public/charts/hibernation-operator<span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>--namespace<span class="w"> </span>hibernation-operator-system<span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>--create-namespace
 </code></pre></div>
-<p>This installs:</p>
+<p>For production clusters, pin the chart to a specific version by adding <code>--version &lt;chart-version&gt;</code>.</p>
+<p>The release creates:</p>
 <ul>
-<li>The Hibernation Controller, which manages both <code>ClusterResourceSupervisor</code> and <code>ResourceSupervisor</code></li>
-<li>The webhook, for admission validation</li>
-<li>The required RBAC, CRDs, and Service resources</li>
+<li>The <code>hibernation-operator-controller-manager</code> deployment, which runs the <code>ResourceSupervisor</code> and <code>ClusterResourceSupervisor</code> controllers</li>
+<li>The <code>hibernation-operator-webhook</code> deployment, which serves the validating admission webhook</li>
+<li>The CRDs, RBAC resources, services and cert-manager certificates</li>
 </ul>
-<h3 id="optional-enable-argocd-integration">Optional: Enable ArgoCD Integration<a class="headerlink" href="#optional-enable-argocd-integration" title="Permanent link">#</a></h3>
-<p>If your workloads are managed by ArgoCD, enable this so the operator can stop ArgoCD from syncing hibernated applications back up. See <a href="../../integrations/argocd.html">ArgoCD Integration</a> for what it does and does not do:</p>
-<div class="highlight"><pre><span></span><code>helm<span class="w"> </span>install<span class="w"> </span>hibernation-operator<span class="w"> </span>stakater/hibernation-operator<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>--namespace<span class="w"> </span>hibernation-operator-system<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>--create-namespace<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>--set<span class="w"> </span>argoCD.enabled<span class="o">=</span><span class="nb">true</span><span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>--set<span class="w"> </span>argoCD.namespace<span class="o">=</span>argocd
-</code></pre></div>
-<h3 id="wait-for-pods-to-start">Wait for Pods to Start<a class="headerlink" href="#wait-for-pods-to-start" title="Permanent link">#</a></h3>
+<p>For the available chart values, refer to <a href="../../reference/configuration.html">Configuration</a>.</p>
+<h2 id="verify-the-installation">Verify the installation<a class="headerlink" href="#verify-the-installation" title="Permanent link">#</a></h2>
 <div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>get<span class="w"> </span>pods<span class="w"> </span>-n<span class="w"> </span>hibernation-operator-system<span class="w"> </span>--watch
 </code></pre></div>
-<p>Once all pods are <code>Running</code>, you can begin creating hibernation policies:</p>
+<p>Once both pods report <code>Running</code>, hibernation schedules can be created:</p>
 <ul>
-<li><a href="../../guides/create-cluster-resource-supervisor.html">Hibernate Workloads Across Multiple Namespaces</a></li>
 <li><a href="../../guides/create-resource-supervisor.html">Hibernate Workloads in a Single Namespace</a></li>
+<li><a href="../../guides/create-cluster-resource-supervisor.html">Hibernate Workloads Across Multiple Namespaces</a></li>
 </ul>
-<h2 id="uninstall-via-helm-cli">Uninstall via Helm CLI<a class="headerlink" href="#uninstall-via-helm-cli" title="Permanent link">#</a></h2>
-<p>To uninstall the Hibernation Operator:</p>
-<div class="highlight"><pre><span></span><code>helm<span class="w"> </span>uninstall<span class="w"> </span>hibernation-operator<span class="w"> </span>--namespace<span class="w"> </span>hibernation-operator-system
-</code></pre></div>
-<blockquote>
-<p><strong>Note</strong>: This removes the operator and its RBAC, but <strong>does not delete your CRs</strong> (<code>ClusterResourceSupervisor</code>, <code>ResourceSupervisor</code>).
-If you want to fully clean up, delete any remaining CRs first:</p>
-</blockquote>
-<div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>delete<span class="w"> </span>clusterresourcesupervisors.hibernation.stakater.com<span class="w"> </span>--all
-kubectl<span class="w"> </span>delete<span class="w"> </span>resourcesupervisors.hibernation.stakater.com<span class="w"> </span>--all<span class="w"> </span>--all-namespaces
-</code></pre></div>
-<p>Then uninstall the Helm release.</p>
-<h2 id="notes">Notes<a class="headerlink" href="#notes" title="Permanent link">#</a></h2>
-<ul>
-<li>The operator <strong>does not require a database, cache, or external scheduler</strong>—it works entirely with native Kubernetes resources.</li>
-<li>Workloads are only scaled if explicitly targeted by a supervisor. <strong>No namespace is modified by default</strong>.</li>
-<li>Replica counts are stored in the CR’s <code>status</code> field, ensuring safe restoration even after operator restarts.</li>
-<li>For production use, consider pinning to a specific chart version:</li>
-</ul>
-<div class="highlight"><pre><span></span><code><span class="w">  </span>helm<span class="w"> </span>install<span class="w"> </span>hibernation-operator<span class="w"> </span>stakater/hibernation-operator<span class="w"> </span>--version<span class="w"> </span>a.b.ccc<span class="w"> </span>...
-</code></pre></div>
+<p>The ArgoCD integration requires no installation option. It is enabled per resource through <code>spec.argocd</code> on a <code>ClusterResourceSupervisor</code>; refer to <a href="../../integrations/argocd.html">ArgoCD Integration</a>.</p>
 
 
 

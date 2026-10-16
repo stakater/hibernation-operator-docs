@@ -50,6 +50,8 @@
     
       <link rel="stylesheet" href="../stylesheets/extra.css">
     
+      <link rel="stylesheet" href="../stylesheets/headings.css">
+    
     <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
@@ -2142,34 +2144,6 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 
               
             
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../overview/benefits.html" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Benefits
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
           </ul>
         </nav>
       
@@ -2239,34 +2213,6 @@ This documentation is for a pull request deployment and is unreleased, it is onl
     
   
     Architecture
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../concepts/terminology.html" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Concepts
   
 
     
@@ -2875,7 +2821,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   <span class="md-ellipsis">
     
   
-    Api
+    API Reference
   
 
     
@@ -3472,21 +3418,25 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 clusters. Its security model rests on four pillars: hardened workloads,
 least-privilege RBAC, namespace-level safety controls, and secured transport.</p>
 <h2 id="pod-and-container-hardening">Pod and container hardening<a class="headerlink" href="#pod-and-container-hardening" title="Permanent link">#</a></h2>
-<p>The operator and webhook deployments adhere to the Kubernetes
-<a href="https://kubernetes.io/docs/concepts/security/pod-security-standards/#restricted">restricted Pod Security Standards</a>:</p>
+<p>The controller manager deployment meets the Kubernetes
+<a href="https://kubernetes.io/docs/concepts/security/pod-security-standards/#restricted">restricted Pod Security Standard</a>:</p>
 <ul>
 <li><strong>Pod:</strong> <code>runAsNonRoot: true</code>, <code>seccompProfile.type: RuntimeDefault</code></li>
 <li><strong>Container:</strong> <code>allowPrivilegeEscalation: false</code>, all Linux capabilities
   dropped (<code>capabilities.drop: ["ALL"]</code>)</li>
-<li>Resource requests and limits are set to bound resource consumption.</li>
 </ul>
+<p>The webhook deployment sets <code>runAsNonRoot: true</code> and
+<code>allowPrivilegeEscalation: false</code>, but it sets no <code>seccompProfile</code> and does not
+drop capabilities, so it meets the baseline standard rather than the
+restricted one.</p>
+<p>Both deployments set resource requests and limits.</p>
 <h2 id="least-privilege-rbac">Least-privilege RBAC<a class="headerlink" href="#least-privilege-rbac" title="Permanent link">#</a></h2>
-<p>The operator runs under a dedicated <code>controller-manager</code> ServiceAccount with a
-tightly scoped <code>ClusterRole</code>:</p>
+<p>Both deployments run under the dedicated <code>hibernation-operator-controller-manager</code>
+ServiceAccount, bound to a tightly scoped <code>ClusterRole</code>:</p>
 <ul>
 <li><strong>Read-only</strong> on <code>namespaces</code> and <code>customresourcedefinitions</code>.</li>
-<li><strong>Write</strong> access limited to <code>Deployments</code> and <code>StatefulSets</code> (for scaling) and
-  the operator's own custom resources.</li>
+<li><strong>Write</strong> access limited to <code>Deployments</code> and <code>StatefulSets</code> (for scaling),
+  the operator's own custom resources, and <code>events</code>.</li>
 <li><code>status</code> and <code>finalizers</code> permissions are separated from the main resource
   rules.</li>
 </ul>
@@ -3497,7 +3447,7 @@ the complete permission set.</p>
 supervisor:</p>
 <ul>
 <li>A namespace annotated with <code>hibernation.stakater.com/exclude: "true"</code> is
-  <strong>always ignored</strong> — the operator never scales workloads in it.</li>
+  <strong>always ignored</strong>, and the operator never scales workloads in it.</li>
 <li>The <strong>operator's own namespace is automatically excluded</strong>.</li>
 </ul>
 <p>This lets platform teams carve out critical namespaces (or let application teams
@@ -3506,15 +3456,17 @@ opt out of cluster-wide policies) safely. The operator only ever modifies
 left untouched.</p>
 <h2 id="transport-security">Transport security<a class="headerlink" href="#transport-security" title="Permanent link">#</a></h2>
 <ul>
-<li><strong>Webhooks</strong> are served over TLS, with certificates managed by cert-manager
-  (or supplied via flags). See <a href="webhooks.html">Webhooks</a>.</li>
-<li><strong>Metrics</strong> are served over https with bearer-token authentication by default.
-  See <a href="metrics.html">Metrics</a>.</li>
+<li><strong>Webhooks</strong> are served over TLS. The certificate is issued by cert-manager
+  for Helm installations, by OLM on OpenShift, or supplied through flags. See
+  <a href="webhooks.html">Webhooks</a>.</li>
+<li><strong>Metrics</strong> require a bearer token authorized through the Kubernetes API, but
+  are served over plain http unless <code>--metrics-tls-cert-dir</code> is set. See
+  <a href="metrics.html">Metrics</a>.</li>
 <li><strong><code>HTTP/2</code> is disabled by default</strong> (<code>--enable-http2=false</code>) to mitigate known
   <code>HTTP/2</code> denial-of-service vulnerabilities (e.g. the "Rapid Reset" class of
   CVEs). Enable it only if you understand the risk.</li>
-<li>An optional <code>NetworkPolicy</code> is provided to restrict ingress to the metrics
-  endpoint.</li>
+<li>No <code>NetworkPolicy</code> is shipped. To restrict access to the metrics endpoint,
+  create one that limits ingress on port <code>6443</code> to your Prometheus instance.</li>
 </ul>
 
 

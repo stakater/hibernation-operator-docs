@@ -50,6 +50,8 @@
     
       <link rel="stylesheet" href="../stylesheets/extra.css">
     
+      <link rel="stylesheet" href="../stylesheets/headings.css">
+    
     <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
@@ -2142,34 +2144,6 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 
               
             
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../overview/benefits.html" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Benefits
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
           </ul>
         </nav>
       
@@ -2239,34 +2213,6 @@ This documentation is for a pull request deployment and is unreleased, it is onl
     
   
     Architecture
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../concepts/terminology.html" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Concepts
   
 
     
@@ -2628,6 +2574,29 @@ This documentation is for a pull request deployment and is unreleased, it is onl
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
       
         <li class="md-nav__item">
+  <a href="#1-delete-the-custom-resources" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Delete the custom resources
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-remove-the-operator" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Remove the operator
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Remove the operator">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
   <a href="#helm" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2637,8 +2606,8 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
+        
+          <li class="md-nav__item">
   <a href="#openshift-olm" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2648,12 +2617,28 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   </a>
   
 </li>
+        
+      </ul>
+    </nav>
+  
+</li>
       
         <li class="md-nav__item">
-  <a href="#clean-up-custom-resources" class="md-nav__link">
+  <a href="#3-remove-the-crds-and-the-namespace" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Clean up custom resources
+        3. Remove the CRDs and the namespace
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#recovering-from-an-incorrect-order" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Recovering from an incorrect order
       
     </span>
   </a>
@@ -2957,7 +2942,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   <span class="md-ellipsis">
     
   
-    Api
+    API Reference
   
 
     
@@ -3393,6 +3378,29 @@ This documentation is for a pull request deployment and is unreleased, it is onl
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
       
         <li class="md-nav__item">
+  <a href="#1-delete-the-custom-resources" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Delete the custom resources
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-remove-the-operator" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Remove the operator
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Remove the operator">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
   <a href="#helm" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -3402,8 +3410,8 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
+        
+          <li class="md-nav__item">
   <a href="#openshift-olm" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -3413,12 +3421,28 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   </a>
   
 </li>
+        
+      </ul>
+    </nav>
+  
+</li>
       
         <li class="md-nav__item">
-  <a href="#clean-up-custom-resources" class="md-nav__link">
+  <a href="#3-remove-the-crds-and-the-namespace" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Clean up custom resources
+        3. Remove the CRDs and the namespace
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#recovering-from-an-incorrect-order" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Recovering from an incorrect order
       
     </span>
   </a>
@@ -3446,48 +3470,51 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 
 
 <h1 id="uninstalling">Uninstalling<a class="headerlink" href="#uninstalling" title="Permanent link">#</a></h1>
-<p>How to remove the Hibernation Operator. The method depends on how you installed
-it. Uninstalling the operator does <strong>not</strong> wake any sleeping workloads on its
-own — see <a href="#clean-up-custom-resources">Clean up custom resources</a> below.</p>
-<h2 id="helm">Helm<a class="headerlink" href="#helm" title="Permanent link">#</a></h2>
-<p>Uninstall the Helm release:</p>
-<div class="highlight"><pre><span></span><code>helm<span class="w"> </span>uninstall<span class="w"> </span>hibernation-operator<span class="w"> </span>--namespace<span class="w"> </span>hibernation-operator-system
-</code></pre></div>
-<p>This removes the operator deployment, RBAC, and services. Optionally remove the
-namespace once it is empty:</p>
-<div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>delete<span class="w"> </span>namespace<span class="w"> </span>hibernation-operator-system
-</code></pre></div>
-<h2 id="openshift-olm">OpenShift (OLM)<a class="headerlink" href="#openshift-olm" title="Permanent link">#</a></h2>
-<p>If you installed via the OpenShift OperatorHub:</p>
-<ol>
-<li>In the web console, go to <strong>Operators → Installed Operators</strong>.</li>
-<li>Select <strong>Hibernation Operator</strong> and choose <strong>Uninstall Operator</strong>.</li>
-</ol>
-<p>Or with the CLI, delete the <code>Subscription</code> and <code>ClusterServiceVersion</code>:</p>
-<div class="highlight"><pre><span></span><code>oc<span class="w"> </span>delete<span class="w"> </span>subscription<span class="w"> </span>hibernation-operator<span class="w"> </span>-n<span class="w"> </span>&lt;install-namespace&gt;
-oc<span class="w"> </span>delete<span class="w"> </span>csv<span class="w"> </span>-n<span class="w"> </span>&lt;install-namespace&gt;<span class="w"> </span>-l<span class="w"> </span>operators.coreos.com/hibernation-operator.&lt;install-namespace&gt;
-</code></pre></div>
-<p>See <a href="installation/openshift.html">Installation › OpenShift OperatorHub</a> for the
-install-namespace you used.</p>
-<h2 id="clean-up-custom-resources">Clean up custom resources<a class="headerlink" href="#clean-up-custom-resources" title="Permanent link">#</a></h2>
-<p>Uninstalling the operator leaves your custom resources and their CRDs in place.
-Before deleting the CRDs, wake any workloads you still need, then remove the
-resources:</p>
+<p>The custom resources must be deleted before the operator itself is removed. Deleting a <code>ResourceSupervisor</code> or <code>ClusterResourceSupervisor</code> restores every workload it put to sleep and, for a <code>ClusterResourceSupervisor</code>, removes the ArgoCD sync windows it applied. That work is done by the operator, so if the operator is removed first, the deletion of the resources does not complete and the hibernated workloads remain at zero replicas.</p>
+<p>Uninstall in the following order.</p>
+<h2 id="1-delete-the-custom-resources">1. Delete the custom resources<a class="headerlink" href="#1-delete-the-custom-resources" title="Permanent link">#</a></h2>
+<p>While the operator is still running, delete every supervisor:</p>
 <div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>delete<span class="w"> </span>clusterresourcesupervisors.hibernation.stakater.com<span class="w"> </span>--all
 kubectl<span class="w"> </span>delete<span class="w"> </span>resourcesupervisors.hibernation.stakater.com<span class="w"> </span>--all<span class="w"> </span>--all-namespaces
 </code></pre></div>
-<p>To remove the CRDs entirely (this deletes <strong>all</strong> remaining instances of these
-resources):</p>
+<p>Each deletion completes once the operator has restored the workloads of that resource. Confirm that none remain before continuing:</p>
+<div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>get<span class="w"> </span>clusterresourcesupervisors.hibernation.stakater.com
+kubectl<span class="w"> </span>get<span class="w"> </span>resourcesupervisors.hibernation.stakater.com<span class="w"> </span>--all-namespaces
+</code></pre></div>
+<p>If a deletion does not complete, inspect the events on the resource with <code>kubectl describe</code>. A failed restoration is reported there as a <code>WakeFailed</code> event, and the resource is retained until the restoration succeeds.</p>
+<h2 id="2-remove-the-operator">2. Remove the operator<a class="headerlink" href="#2-remove-the-operator" title="Permanent link">#</a></h2>
+<h3 id="helm">Helm<a class="headerlink" href="#helm" title="Permanent link">#</a></h3>
+<div class="highlight"><pre><span></span><code>helm<span class="w"> </span>uninstall<span class="w"> </span>hibernation-operator<span class="w"> </span>--namespace<span class="w"> </span>hibernation-operator-system
+</code></pre></div>
+<p>This removes the operator deployments, RBAC resources and services. Helm does not remove the CRDs, because the chart installs them from its <code>crds/</code> directory.</p>
+<h3 id="openshift-olm">OpenShift (OLM)<a class="headerlink" href="#openshift-olm" title="Permanent link">#</a></h3>
+<p>In the OpenShift web console:</p>
+<ol>
+<li>Navigate to <strong>Operators → Installed Operators</strong> and select the <code>hibernation-operator-system</code> project.</li>
+<li>Open the actions menu for <strong>Hibernation Operator</strong> and select <strong>Uninstall Operator</strong>.</li>
+<li>Confirm the removal.</li>
+</ol>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../images/hibernation_uninstall.png" data-desc-position="bottom"><img alt="Uninstall from the OpenShift console" src="../images/hibernation_uninstall.png"></a></p>
+<p>Alternatively, delete the <code>Subscription</code> and the <code>ClusterServiceVersion</code> with the CLI:</p>
+<div class="highlight"><pre><span></span><code>oc<span class="w"> </span>delete<span class="w"> </span>subscription<span class="w"> </span>hibernation-operator<span class="w"> </span>-n<span class="w"> </span>hibernation-operator-system
+oc<span class="w"> </span>delete<span class="w"> </span>csv<span class="w"> </span>-n<span class="w"> </span>hibernation-operator-system<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-l<span class="w"> </span>operators.coreos.com/hibernation-operator.hibernation-operator-system
+</code></pre></div>
+<p>OLM does not remove the CRDs either.</p>
+<h2 id="3-remove-the-crds-and-the-namespace">3. Remove the CRDs and the namespace<a class="headerlink" href="#3-remove-the-crds-and-the-namespace" title="Permanent link">#</a></h2>
+<p>Once no custom resources remain, the CRDs and the operator namespace can be removed:</p>
 <div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>delete<span class="w"> </span>crd<span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>resourcesupervisors.hibernation.stakater.com<span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>clusterresourcesupervisors.hibernation.stakater.com
+kubectl<span class="w"> </span>delete<span class="w"> </span>namespace<span class="w"> </span>hibernation-operator-system
 </code></pre></div>
-<blockquote>
-<p>Deleting a <code>ResourceSupervisor</code> or <code>ClusterResourceSupervisor</code> stops it
-from managing its targets, but workloads currently scaled to zero are not
-automatically restored unless the resource is deleted while a wake is due.
-Scale any needed workloads back up manually if required.</p>
-</blockquote>
+<h2 id="recovering-from-an-incorrect-order">Recovering from an incorrect order<a class="headerlink" href="#recovering-from-an-incorrect-order" title="Permanent link">#</a></h2>
+<p>If the operator was removed while supervisors still existed, their deletion remains pending. The simplest recovery is to reinstall the operator, which then processes the pending deletions and restores the workloads.</p>
+<p>If reinstalling is not possible, record the replica counts from <code>status.sleepingNamespaces</code> of each pending resource, scale the workloads back manually, and then remove the finalizer that keeps the resource pending:</p>
+<div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>patch<span class="w"> </span>clusterresourcesupervisor<span class="w"> </span>&lt;name&gt;<span class="w"> </span>--type<span class="w"> </span>merge<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-p<span class="w"> </span><span class="s1">'{"metadata":{"finalizers":null}}'</span>
+</code></pre></div>
+<p>Removing the finalizer without first restoring the workloads discards the only record of their replica counts.</p>
 
 
 

@@ -50,6 +50,8 @@
     
       <link rel="stylesheet" href="../../stylesheets/extra.css">
     
+      <link rel="stylesheet" href="../../stylesheets/headings.css">
+    
     <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
@@ -2142,34 +2144,6 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 
               
             
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../overview/benefits.html" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Benefits
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
           </ul>
         </nav>
       
@@ -2239,34 +2213,6 @@ This documentation is for a pull request deployment and is unreleased, it is onl
     
   
     Architecture
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../concepts/terminology.html" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Concepts
   
 
     
@@ -2637,56 +2583,6 @@ This documentation is for a pull request deployment and is unreleased, it is onl
     <span class="md-ellipsis">
       
         Step 4: Verify Installation
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#uninstall-via-operatorhub-ui" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Uninstall via OperatorHub UI
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Uninstall via OperatorHub UI">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#step-1-optional-clean-up-hibernation-policies" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Step 1: (Optional) Clean Up Hibernation Policies
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#step-2-uninstall-the-operator" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Step 2: Uninstall the Operator
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#step-3-optional-clean-up-leftover-resources" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Step 3: (Optional) Clean Up Leftover Resources
       
     </span>
   </a>
@@ -3070,7 +2966,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   <span class="md-ellipsis">
     
   
-    Api
+    API Reference
   
 
     
@@ -3589,56 +3485,6 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 </li>
       
         <li class="md-nav__item">
-  <a href="#uninstall-via-operatorhub-ui" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Uninstall via OperatorHub UI
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Uninstall via OperatorHub UI">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#step-1-optional-clean-up-hibernation-policies" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Step 1: (Optional) Clean Up Hibernation Policies
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#step-2-uninstall-the-operator" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Step 2: Uninstall the Operator
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#step-3-optional-clean-up-leftover-resources" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Step 3: (Optional) Clean Up Leftover Resources
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#notes" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -3671,16 +3517,12 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 
 <h1 id="on-openshift">On OpenShift<a class="headerlink" href="#on-openshift" title="Permanent link">#</a></h1>
 <p>The <strong>Hibernation Operator</strong> is a <a href="https://catalog.redhat.com/en/software/container-stacks/detail/687efb0f70dee945827cfe24">Red Hat Certified Operator</a> available on the <strong>Red Hat Marketplace</strong> and <strong>OperatorHub</strong> in OpenShift.</p>
-<p>This document contains instructions for installing, configuring, and uninstalling the Hibernation Operator on OpenShift.</p>
-<ol>
-<li><a href="#installing-via-operatorhub-ui">OpenShift OperatorHub UI</a>  </li>
-<li><a href="#installing-via-cli-or-gitops">CLI / GitOps</a>  </li>
-<li><a href="#uninstall-via-operatorhub-ui">Uninstall</a></li>
-</ol>
+<p>This page describes how to install the Hibernation Operator on OpenShift, either through the OperatorHub UI or declaratively with the CLI. To remove the operator, refer to <a href="../uninstalling.html">Uninstalling</a>.</p>
 <h2 id="requirements">Requirements<a class="headerlink" href="#requirements" title="Permanent link">#</a></h2>
 <ul>
 <li>An <strong>OpenShift</strong> cluster (v4.10 or higher recommended)</li>
 </ul>
+<p>cert-manager is not required on OpenShift. OLM manages the certificate for the validating admission webhook itself.</p>
 <hr>
 <h2 id="installing-via-operatorhub-ui">Installing via OperatorHub UI<a class="headerlink" href="#installing-via-operatorhub-ui" title="Permanent link">#</a></h2>
 <ol>
@@ -3756,45 +3598,11 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 <div class="highlight"><pre><span></span><code>oc<span class="w"> </span>get<span class="w"> </span>csv<span class="w"> </span>-n<span class="w"> </span>hibernation-operator-system
 oc<span class="w"> </span>get<span class="w"> </span>pods<span class="w"> </span>-n<span class="w"> </span>hibernation-operator-system
 </code></pre></div>
-<p>Wait until the <code>hibernation-controller</code> pod is <code>Running</code>.</p>
+<p>Wait until the <code>hibernation-operator-controller-manager</code> and <code>hibernation-operator-webhook</code> pods are <code>Running</code>.</p>
 <p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../images/hibernation_running.png" data-desc-position="bottom"><img alt="Running" src="../../images/hibernation_running.png"></a></p>
-<hr>
-<h2 id="uninstall-via-operatorhub-ui">Uninstall via OperatorHub UI<a class="headerlink" href="#uninstall-via-operatorhub-ui" title="Permanent link">#</a></h2>
-<blockquote>
-<p><strong>Warning</strong>: Uninstalling the operator <strong>does not delete your CRs</strong> (<code>ClusterResourceSupervisor</code>, <code>ResourceSupervisor</code>). Workloads may remain asleep if not cleaned up.</p>
-</blockquote>
-<h3 id="step-1-optional-clean-up-hibernation-policies">Step 1: (Optional) Clean Up Hibernation Policies<a class="headerlink" href="#step-1-optional-clean-up-hibernation-policies" title="Permanent link">#</a></h3>
-<p>Delete any active hibernation resources to restore workloads:</p>
-<div class="highlight"><pre><span></span><code><span class="c1"># Delete all cluster-wide hibernation rules</span>
-oc<span class="w"> </span>delete<span class="w"> </span>clusterresourcesupervisors.hibernation.stakater.com<span class="w"> </span>--all
-
-<span class="c1"># Delete all namespace-scoped hibernation rules</span>
-oc<span class="w"> </span>delete<span class="w"> </span>resourcesupervisors.hibernation.stakater.com<span class="w"> </span>--all<span class="w"> </span>--all-namespaces
-</code></pre></div>
-<h3 id="step-2-uninstall-the-operator">Step 2: Uninstall the Operator<a class="headerlink" href="#step-2-uninstall-the-operator" title="Permanent link">#</a></h3>
-<ol>
-<li>In OpenShift Console, go to <strong>Operators → Installed Operators</strong></li>
-<li>Find <strong>Hibernation Operator</strong> in the <code>hibernation-operator-system</code> project</li>
-<li>Click the <strong>three-dot menu → Uninstall Operator</strong></li>
-<li>Confirm removal</li>
-</ol>
-<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../images/hibernation_uninstall.png" data-desc-position="bottom"><img alt="Uninstall from UI" src="../../images/hibernation_uninstall.png"></a></p>
-<h3 id="step-3-optional-clean-up-leftover-resources">Step 3: (Optional) Clean Up Leftover Resources<a class="headerlink" href="#step-3-optional-clean-up-leftover-resources" title="Permanent link">#</a></h3>
-<p>To fully remove all traces:</p>
-<div class="highlight"><pre><span></span><code><span class="c1"># Remove namespace (includes RBAC, deployments, etc.)</span>
-oc<span class="w"> </span>delete<span class="w"> </span>namespace<span class="w"> </span>hibernation-operator-system
-
-<span class="c1"># Remove CRDs (only if no other instances exist)</span>
-oc<span class="w"> </span>delete<span class="w"> </span>crd<span class="w"> </span>clusterresourcesupervisors.hibernation.stakater.com
-oc<span class="w"> </span>delete<span class="w"> </span>crd<span class="w"> </span>resourcesupervisors.hibernation.stakater.com
-</code></pre></div>
-<blockquote>
-<p><strong>Note</strong>: CRD deletion is irreversible. Ensure no other tools depend on them.</p>
-</blockquote>
 <hr>
 <h2 id="notes">Notes<a class="headerlink" href="#notes" title="Permanent link">#</a></h2>
 <ul>
-<li>The Hibernation Operator <strong>does not include a web console</strong>—it is a lightweight, API-driven operator.</li>
 <li>It integrates natively with <strong>OpenShift workloads</strong> (<code>Deployments</code>, <code>StatefulSets</code>) and <strong>ArgoCD</strong> (if installed).</li>
 <li>For production, use <strong>Manual approval</strong> and test upgrades in a staging cluster first.</li>
 <li>Full CRD documentation:<ul>

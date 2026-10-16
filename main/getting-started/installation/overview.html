@@ -50,6 +50,8 @@
     
       <link rel="stylesheet" href="../../stylesheets/extra.css">
     
+      <link rel="stylesheet" href="../../stylesheets/headings.css">
+    
     <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
@@ -2142,34 +2144,6 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 
               
             
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../overview/benefits.html" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Benefits
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
           </ul>
         </nav>
       
@@ -2239,34 +2213,6 @@ This documentation is for a pull request deployment and is unreleased, it is onl
     
   
     Architecture
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../concepts/terminology.html" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Concepts
   
 
     
@@ -2541,19 +2487,19 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   <a href="#installation-methods" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Installation Methods
+        Installation methods
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Installation Methods">
+    <nav class="md-nav" aria-label="Installation methods">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#1-operator-lifecycle-manager-olm" class="md-nav__link">
+  <a href="#operator-lifecycle-manager-olm" class="md-nav__link">
     <span class="md-ellipsis">
       
-        1. Operator Lifecycle Manager (OLM)
+        Operator Lifecycle Manager (OLM)
       
     </span>
   </a>
@@ -2561,10 +2507,10 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 </li>
         
           <li class="md-nav__item">
-  <a href="#2-helm-chart" class="md-nav__link">
+  <a href="#helm" class="md-nav__link">
     <span class="md-ellipsis">
       
-        2. Helm Chart
+        Helm
       
     </span>
   </a>
@@ -2591,7 +2537,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   <a href="#next-steps" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Next Steps
+        Next steps
       
     </span>
   </a>
@@ -2987,7 +2933,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   <span class="md-ellipsis">
     
   
-    Api
+    API Reference
   
 
     
@@ -3426,19 +3372,19 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   <a href="#installation-methods" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Installation Methods
+        Installation methods
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Installation Methods">
+    <nav class="md-nav" aria-label="Installation methods">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#1-operator-lifecycle-manager-olm" class="md-nav__link">
+  <a href="#operator-lifecycle-manager-olm" class="md-nav__link">
     <span class="md-ellipsis">
       
-        1. Operator Lifecycle Manager (OLM)
+        Operator Lifecycle Manager (OLM)
       
     </span>
   </a>
@@ -3446,10 +3392,10 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 </li>
         
           <li class="md-nav__item">
-  <a href="#2-helm-chart" class="md-nav__link">
+  <a href="#helm" class="md-nav__link">
     <span class="md-ellipsis">
       
-        2. Helm Chart
+        Helm
       
     </span>
   </a>
@@ -3476,7 +3422,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   <a href="#next-steps" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Next Steps
+        Next steps
       
     </span>
   </a>
@@ -3504,28 +3450,25 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 
 
 <h1 id="overview">Overview<a class="headerlink" href="#overview" title="Permanent link">#</a></h1>
-<p>The <strong>Hibernation Operator</strong> supports two installation methods: <strong>Operator Lifecycle Manager (OLM)</strong> and <strong>Helm Chart</strong>. These methods ensure flexibility and compatibility across various Kubernetes environments, including <strong>OpenShift</strong>, <strong>Azure Kubernetes Service (AKS)</strong>, <strong>Amazon Elastic Kubernetes Service (EKS)</strong>, <strong>Google Kubernetes Engine (GKE)</strong>, and other standard Kubernetes distributions.</p>
-<h2 id="installation-methods">Installation Methods<a class="headerlink" href="#installation-methods" title="Permanent link">#</a></h2>
-<h3 id="1-operator-lifecycle-manager-olm">1. Operator Lifecycle Manager (OLM)<a class="headerlink" href="#1-operator-lifecycle-manager-olm" title="Permanent link">#</a></h3>
-<p>OLM is the recommended installation method for <strong>OpenShift</strong> clusters. The Hibernation Operator is <a href="https://catalog.redhat.com/en/software/container-stacks/detail/687efb0f70dee945827cfe24">Red Hat Certified</a> and available in the <strong>OpenShift OperatorHub</strong>. This method provides native lifecycle management, automatic upgrades (when configured), and seamless integration with OpenShift’s operator framework.</p>
-<h3 id="2-helm-chart">2. Helm Chart<a class="headerlink" href="#2-helm-chart" title="Permanent link">#</a></h3>
-<p>Helm is the preferred installation method for <strong>all other Kubernetes platforms</strong>, including AKS, EKS, GKE, and vanilla Kubernetes. The Helm chart offers a lightweight, customizable, and GitOps-friendly deployment with support for optional features like <strong>ArgoCD integration</strong> and <strong>admission webhooks</strong>.</p>
+<p>The Hibernation Operator can be installed with the Operator Lifecycle Manager (OLM) or with Helm. Both methods deploy the same controller, admission webhook, CRDs and RBAC resources.</p>
+<h2 id="installation-methods">Installation methods<a class="headerlink" href="#installation-methods" title="Permanent link">#</a></h2>
+<h3 id="operator-lifecycle-manager-olm">Operator Lifecycle Manager (OLM)<a class="headerlink" href="#operator-lifecycle-manager-olm" title="Permanent link">#</a></h3>
+<p>OLM is the recommended method on OpenShift. The Hibernation Operator is <a href="https://catalog.redhat.com/en/software/container-stacks/detail/687efb0f70dee945827cfe24">Red Hat Certified</a> and available in the OpenShift OperatorHub, and OLM manages its upgrades and the certificate of its admission webhook.</p>
+<h3 id="helm">Helm<a class="headerlink" href="#helm" title="Permanent link">#</a></h3>
+<p>Helm is the recommended method on all other Kubernetes distributions, including AKS, EKS, GKE and upstream Kubernetes. The chart is published as an OCI artifact and suits GitOps workflows. It requires cert-manager to issue the webhook and metrics certificates.</p>
 <h2 id="prerequisites">Prerequisites<a class="headerlink" href="#prerequisites" title="Permanent link">#</a></h2>
-<p>Before proceeding, ensure the following:</p>
 <ul>
-<li>Access to an <strong>OpenShift cluster</strong> (for OLM) or a <strong>Kubernetes cluster v1.24+</strong> (for Helm).</li>
-<li><strong>Cluster administrator</strong> or equivalent permissions.</li>
-<li>Familiarity with <code>kubectl</code> (or <code>oc</code> for OpenShift).</li>
-<li><strong>Helm CLI installed locally</strong> if using Helm-based installation.</li>
-<li><em>(Optional)</em> <strong>cert-manager</strong> installed if enabling the admission webhook (required only for validation of cron schedules and CR structure).</li>
+<li>An OpenShift cluster for OLM, or a Kubernetes cluster at version 1.24 or later for Helm</li>
+<li>Cluster administrator permissions</li>
+<li><code>kubectl</code>, or <code>oc</code> on OpenShift</li>
+<li>The Helm CLI, when installing with Helm</li>
+<li>cert-manager, when installing with Helm</li>
 </ul>
-<h2 id="next-steps">Next Steps<a class="headerlink" href="#next-steps" title="Permanent link">#</a></h2>
-<p>Choose the installation guide that matches your environment:</p>
+<h2 id="next-steps">Next steps<a class="headerlink" href="#next-steps" title="Permanent link">#</a></h2>
 <ul>
-<li><a href="openshift.html">Installing with OLM on OpenShift</a>  </li>
-<li><a href="kubernetes.html">Installing with Helm on Kubernetes (generic)</a></li>
+<li><a href="openshift.html">On OpenShift</a>: installation with OLM</li>
+<li><a href="kubernetes.html">On Kubernetes</a>: installation with Helm</li>
 </ul>
-<p>By following the appropriate guide, you’ll be able to deploy the Hibernation Operator and start automating cost-saving hibernation of your workloads—whether you're a platform team managing hundreds of namespaces or a developer optimizing a single staging environment.</p>
 
 
 

@@ -8,10 +8,10 @@
         <link rel="canonical" href="https://docs.stakater.com/hibernation-operator-docs/main/concepts/architecture.html">
       
       
-        <link rel="prev" href="../overview/benefits.html">
+        <link rel="prev" href="../overview/use-cases.html">
       
       
-        <link rel="next" href="terminology.html">
+        <link rel="next" href="resource-supervisor.html">
       
       
         
@@ -49,6 +49,8 @@
     
     
       <link rel="stylesheet" href="../stylesheets/extra.css">
+    
+      <link rel="stylesheet" href="../stylesheets/headings.css">
     
     <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
@@ -2142,34 +2144,6 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 
               
             
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../overview/benefits.html" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Benefits
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
           </ul>
         </nav>
       
@@ -2306,35 +2280,74 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 </li>
       
         <li class="md-nav__item">
-  <a href="#reconcile-flow" class="md-nav__link">
+  <a href="#behaviour" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Reconcile flow
+        Behaviour
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Behaviour">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#at-the-sleep-time" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        At the sleep time
       
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#selecting-namespaces" class="md-nav__link">
+        
+          <li class="md-nav__item">
+  <a href="#at-the-wake-time" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Selecting namespaces
+        At the wake time
       
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#preserving-replica-counts" class="md-nav__link">
+        
+          <li class="md-nav__item">
+  <a href="#when-a-resource-is-deleted" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Preserving replica counts
+        When a resource is deleted
       
     </span>
   </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#when-a-namespace-is-excluded-or-leaves-the-selection" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        When a namespace is excluded or leaves the selection
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#when-the-operator-restarts" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        When the operator restarts
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -2364,34 +2377,6 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
 </nav>
       
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="terminology.html" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Concepts
-  
-
-    
-  </span>
-  
-  
-
-      </a>
     </li>
   
 
@@ -2990,7 +2975,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   <span class="md-ellipsis">
     
   
-    Api
+    API Reference
   
 
     
@@ -3437,35 +3422,74 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 </li>
       
         <li class="md-nav__item">
-  <a href="#reconcile-flow" class="md-nav__link">
+  <a href="#behaviour" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Reconcile flow
+        Behaviour
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Behaviour">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#at-the-sleep-time" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        At the sleep time
       
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#selecting-namespaces" class="md-nav__link">
+        
+          <li class="md-nav__item">
+  <a href="#at-the-wake-time" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Selecting namespaces
+        At the wake time
       
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#preserving-replica-counts" class="md-nav__link">
+        
+          <li class="md-nav__item">
+  <a href="#when-a-resource-is-deleted" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Preserving replica counts
+        When a resource is deleted
       
     </span>
   </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#when-a-namespace-is-excluded-or-leaves-the-selection" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        When a namespace is excluded or leaves the selection
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#when-the-operator-restarts" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        When the operator restarts
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -3512,7 +3536,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 
 
 <h1 id="architecture">Architecture<a class="headerlink" href="#architecture" title="Permanent link">#</a></h1>
-<p>The Hibernation Operator scales <code>Deployments</code> and <code>StatefulSets</code> down to zero on a schedule and restores them afterwards, so environments that are only needed during working hours stop consuming compute the rest of the time. It reconciles two custom resources: <a href="resource-supervisor.html">ResourceSupervisor</a>, which a namespace owner creates to hibernate their own namespace, and <a href="cluster-resource-supervisor.html">ClusterResourceSupervisor</a>, which a platform team uses to cover a group of namespaces.</p>
+<p>The Hibernation Operator scales <code>Deployments</code> and <code>StatefulSets</code> down to zero on a schedule and restores them afterwards, so that environments needed only during working hours stop consuming compute for the rest of the time. It manages two custom resources: the <a href="resource-supervisor.html">ResourceSupervisor</a>, which a namespace owner creates to hibernate their own namespace, and the <a href="cluster-resource-supervisor.html">ClusterResourceSupervisor</a>, which a platform team uses to hibernate a group of namespaces.</p>
 <h2 id="components">Components<a class="headerlink" href="#components" title="Permanent link">#</a></h2>
 <table>
 <thead>
@@ -3523,83 +3547,42 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 </thead>
 <tbody>
 <tr>
-<td><code>controller-manager</code></td>
-<td>Runs both reconcilers. Resolves target namespaces, scales workloads at the scheduled times, and maintains the status on each resource.</td>
+<td><code>hibernation-operator-controller-manager</code></td>
+<td>Hibernates and restores workloads according to the schedule of each resource, and reports the outcome in its status.</td>
 </tr>
 <tr>
-<td><code>webhook</code></td>
-<td>Serves the validating admission webhooks for both kinds.</td>
+<td><code>hibernation-operator-webhook</code></td>
+<td>Validates both resources when they are created or updated.</td>
 </tr>
 </tbody>
 </table>
-<p>The metrics endpoint is provided by controller-runtime and is disabled by default. See <a href="../reference/metrics.html">Metrics</a> for how to enable and scrape it.</p>
-<h2 id="reconcile-flow">Reconcile flow<a class="headerlink" href="#reconcile-flow" title="Permanent link">#</a></h2>
-<p>Both controllers follow the same shape on each reconcile:</p>
-<ol>
-<li>Work out the next sleep and wake times from the cron expressions in <code>spec.schedule</code>.</li>
-<li>Decide whether the workloads should currently be asleep or awake, and when to reconcile next.</li>
-<li>Apply that state to the target workloads if they are not already in it.</li>
-<li>Record the outcome in <code>status</code> and schedule the next check.</li>
-</ol>
-<p>Because the decision is derived from the schedule and the current time on every pass rather than from a timer, a restarted operator picks up where it left off without missing a transition.</p>
-<pre class="mermaid"><code>graph TD
-    subgraph "Kubernetes Cluster"
-        A[Hibernation Controller] --&gt;|Watches| B[ClusterResourceSupervisor]
-        A --&gt;|Watches| C[ResourceSupervisor]
-        A --&gt;|Lists by name and label| E[(Namespaces)]
-        A --&gt;|Scales to zero and back| F[Deployment / StatefulSet]
-        A --&gt;|Writes deny sync window| D[ArgoCD AppProject]
-        A --&gt;|Updates| G[Status]
-
-        E --&gt;|Contains| F
-    end
-
-    subgraph "Validation"
-        L[Webhook] --&gt;|Validates| B
-        L --&gt;|Validates| C
-    end</code></pre>
-<h2 id="selecting-namespaces">Selecting namespaces<a class="headerlink" href="#selecting-namespaces" title="Permanent link">#</a></h2>
-<p>A <code>ResourceSupervisor</code> acts only on its own namespace and has nothing to select.</p>
-<p>A <code>ClusterResourceSupervisor</code> builds its list from <code>spec.namespaces.names</code> and <code>spec.namespaces.labelSelector</code>, combining the two. Two filters then run, and anything they catch is reported in <code>status.ignoreNamespaces</code> instead of being hibernated:</p>
-<ul>
-<li>Namespaces annotated <code>hibernation.stakater.com/exclude: "true"</code>.</li>
-<li>The namespace the operator runs in.</li>
-</ul>
-<h2 id="preserving-replica-counts">Preserving replica counts<a class="headerlink" href="#preserving-replica-counts" title="Permanent link">#</a></h2>
-<p>The two resources record the pre-sleep replica count differently, which matters when reasoning about recovery.</p>
-<table>
-<thead>
-<tr>
-<th>Resource</th>
-<th>Where the count is stored</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>ResourceSupervisor</code></td>
-<td>The <code>hibernation.stakater.com/original-replicas</code> annotation on each workload</td>
-</tr>
-<tr>
-<td><code>ClusterResourceSupervisor</code></td>
-<td><code>status.sleepingNamespaces</code>, per namespace and workload</td>
-</tr>
-</tbody>
-</table>
-<p>Either way the count survives an operator restart. Workloads already at zero replicas are skipped rather than recorded.</p>
+<h2 id="behaviour">Behaviour<a class="headerlink" href="#behaviour" title="Permanent link">#</a></h2>
+<h3 id="at-the-sleep-time">At the sleep time<a class="headerlink" href="#at-the-sleep-time" title="Permanent link">#</a></h3>
+<p>Every <code>Deployment</code> and <code>StatefulSet</code> with a non-zero replica count in the governed namespaces is scaled to zero. Its replica count is recorded in the status of the resource first, so that it can be restored later. Workloads already at zero are left as they are.</p>
+<h3 id="at-the-wake-time">At the wake time<a class="headerlink" href="#at-the-wake-time" title="Permanent link">#</a></h3>
+<p>Each workload recorded in the status is restored to its recorded replica count. Workloads that the operator did not hibernate are not modified.</p>
+<h3 id="when-a-resource-is-deleted">When a resource is deleted<a class="headerlink" href="#when-a-resource-is-deleted" title="Permanent link">#</a></h3>
+<p>The workloads of the resource are restored before the deletion completes, and any ArgoCD sync windows it applied are removed. If a restoration fails, the resource is retained until it succeeds.</p>
+<h3 id="when-a-namespace-is-excluded-or-leaves-the-selection">When a namespace is excluded or leaves the selection<a class="headerlink" href="#when-a-namespace-is-excluded-or-leaves-the-selection" title="Permanent link">#</a></h3>
+<p>Namespaces annotated <code>hibernation.stakater.com/exclude: "true"</code>, and the namespace in which the operator runs, are never hibernated. When a namespace becomes excluded or is no longer selected, the workloads hibernated there are restored at the next scheduled sleep or wake. Such namespaces are listed in <code>status.ignoreNamespaces</code>.</p>
+<h3 id="when-the-operator-restarts">When the operator restarts<a class="headerlink" href="#when-the-operator-restarts" title="Permanent link">#</a></h3>
+<p>The schedule is evaluated against the current time rather than against a running timer, and the recorded replica counts are stored in the Kubernetes API. A restarted operator therefore continues where it left off.</p>
 <h2 id="argocd">ArgoCD<a class="headerlink" href="#argocd" title="Permanent link">#</a></h2>
-<p>ArgoCD treats a workload scaled to zero as drift from Git and will scale it back up, which would undo hibernation. The <code>spec.argocd</code> field on a <code>ClusterResourceSupervisor</code> handles this by writing a <code>deny</code> sync window onto the AppProjects it names, covering the sleep schedule and its duration.</p>
+<p>ArgoCD treats a workload scaled to zero as drift from Git and scales it back up, which would undo hibernation. When <code>spec.argocd</code> is set on a <code>ClusterResourceSupervisor</code>, the operator applies a <code>deny</code> sync window to the specified AppProjects for the duration of the sleep period.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>This is the operator's only interaction with ArgoCD. It does not read <code>AppProject</code> destinations and does not use AppProjects to decide which namespaces to hibernate. Targets always come from <code>spec.namespaces</code>.</p>
+<p>This is the operator's only interaction with ArgoCD. AppProjects do not determine which namespaces are hibernated; these are always selected through <code>spec.namespaces</code>.</p>
 </div>
 <h2 id="admission-validation">Admission validation<a class="headerlink" href="#admission-validation" title="Permanent link">#</a></h2>
-<p>The webhook rejects a resource before it is stored when:</p>
+<p>The webhook rejects a resource when:</p>
 <ul>
 <li>A cron expression in <code>spec.schedule</code> cannot be parsed.</li>
 <li><code>sleepSchedule</code> and <code>wakeSchedule</code> are identical.</li>
-<li>A <code>ClusterResourceSupervisor</code> lists the same namespace twice, or claims a namespace already claimed by another <code>ClusterResourceSupervisor</code>.</li>
+<li><code>wakeSchedule</code> is set without <code>sleepSchedule</code>.</li>
+<li>A <code>ClusterResourceSupervisor</code> lists the same namespace twice, or selects a namespace already selected by another <code>ClusterResourceSupervisor</code>.</li>
 </ul>
-<p>An empty schedule is valid and means immediate, indefinite sleep. There is no check for a namespace being covered by both a <code>ClusterResourceSupervisor</code> and its own <code>ResourceSupervisor</code>, so that overlap has to be avoided by convention.</p>
+<p>An empty schedule is valid and hibernates the workloads immediately and indefinitely. The webhook does not prevent a namespace from being governed by both a <code>ClusterResourceSupervisor</code> and its own <code>ResourceSupervisor</code>, so such overlaps must be avoided by convention.</p>
+<p>The metrics endpoint is described in <a href="../reference/metrics.html">Metrics</a>.</p>
 
 
 

@@ -50,6 +50,8 @@
     
       <link rel="stylesheet" href="../stylesheets/extra.css">
     
+      <link rel="stylesheet" href="../stylesheets/headings.css">
+    
     <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
@@ -2142,34 +2144,6 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 
               
             
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../overview/benefits.html" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Benefits
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
           </ul>
         </nav>
       
@@ -2239,34 +2213,6 @@ This documentation is for a pull request deployment and is unreleased, it is onl
     
   
     Architecture
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../concepts/terminology.html" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Concepts
   
 
     
@@ -2875,7 +2821,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   <span class="md-ellipsis">
     
   
-    Api
+    API Reference
   
 
     
@@ -3453,7 +3399,7 @@ that control the metrics, health, and webhook endpoints.</p>
 <p>For the full installation flow, see <a href="../getting-started/installation/kubernetes.html">Installation › Kubernetes</a>.</p>
 <h2 id="helm-values">Helm values<a class="headerlink" href="#helm-values" title="Permanent link">#</a></h2>
 <p>The operator is installed from the OCI chart
-<code>oci://ghcr.io/stakater/public/charts/hibernation-operator</code>. The table below lists the values most commonly tuned — inspect the full set with:</p>
+<code>oci://ghcr.io/stakater/public/charts/hibernation-operator</code>. The table below lists the values most commonly tuned. Inspect the full set with:</p>
 <div class="highlight"><pre><span></span><code>helm<span class="w"> </span>show<span class="w"> </span>values<span class="w"> </span>oci://ghcr.io/stakater/public/charts/hibernation-operator
 </code></pre></div>
 <table>
@@ -3492,7 +3438,7 @@ that control the metrics, health, and webhook endpoints.</p>
 </tr>
 <tr>
 <td><code>controllerManager.controllerManager.image.tag</code></td>
-<td>chart <code>appVersion</code></td>
+<td>the release tag, for example <code>v0.1.104</code></td>
 <td>Operator image tag.</td>
 </tr>
 <tr>
@@ -3532,7 +3478,7 @@ that control the metrics, health, and webhook endpoints.</p>
 </tr>
 </tbody>
 </table>
-<p>Example — disable the controller at install time:</p>
+<p>For example, to disable the <code>ResourceSupervisor</code> controller at install time:</p>
 <div class="highlight"><pre><span></span><code>helm<span class="w"> </span>install<span class="w"> </span>hibernation-operator<span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>oci://ghcr.io/stakater/public/charts/hibernation-operator<span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>--namespace<span class="w"> </span>hibernation-operator-system<span class="w"> </span>--create-namespace<span class="w"> </span><span class="se">\</span>
@@ -3573,13 +3519,13 @@ string <code>"true"</code>.</p>
 </tr>
 <tr>
 <td><code>OPERATOR_NAMESPACE</code></td>
-<td><code>hibernation-operator-system</code></td>
-<td>Namespace the operator runs in (used for leader election; auto-detected in-cluster if unset).</td>
+<td>auto-detected in-cluster, falling back to <code>hibernation-operator-system</code></td>
+<td>Namespace the operator runs in. Workloads in this namespace are never hibernated.</td>
 </tr>
 <tr>
 <td><code>LEADER_ELECTION_ID</code></td>
-<td>—</td>
-<td>Identifier for the leader-election lock.</td>
+<td>unset</td>
+<td>Identifier for the leader-election lock. When unset, leader election is disabled even if <code>--leader-elect</code> is passed.</td>
 </tr>
 </tbody>
 </table>
@@ -3598,17 +3544,32 @@ container <code>args</code>).</p>
 <tr>
 <td><code>--metrics-bind-address</code></td>
 <td><code>0</code> (disabled)</td>
-<td>Address the metrics endpoint binds to (<code>:8443</code> secure, <code>:8080</code> insecure, <code>0</code> to disable).</td>
+<td>Address the metrics endpoint binds to, or <code>0</code> to disable it. The Helm chart and the OLM bundle set <code>:6443</code>.</td>
+</tr>
+<tr>
+<td><code>--metrics-tls-cert-dir</code></td>
+<td><code>""</code></td>
+<td>Directory containing <code>tls.crt</code> and <code>tls.key</code>. When set, metrics are served over https; otherwise over http.</td>
 </tr>
 <tr>
 <td><code>--metrics-secure</code></td>
 <td><code>true</code></td>
-<td>Serve metrics over https.</td>
+<td>Accepted but has no effect. Use <code>--metrics-tls-cert-dir</code> to enable https.</td>
 </tr>
 <tr>
 <td><code>--health-probe-bind-address</code></td>
 <td><code>:8081</code></td>
 <td>Address for liveness/readiness probes.</td>
+</tr>
+<tr>
+<td><code>--pprof-bind-address</code></td>
+<td><code>0</code> (disabled)</td>
+<td>Address the <code>pprof</code> profiling endpoint binds to, <code>0</code> to disable. Prefer a local address such as <code>127.0.0.1:6060</code> with a port forward, anything else publishes profiling data to the cluster network.</td>
+</tr>
+<tr>
+<td><code>-zap-devel</code></td>
+<td><code>false</code></td>
+<td>Switch logs to console output at Debug level for a local run. The default is production mode, JSON at Info with stack traces at Error.</td>
 </tr>
 <tr>
 <td><code>--leader-elect</code></td>
@@ -3652,9 +3613,11 @@ container <code>args</code>).</p>
 </tr>
 </tbody>
 </table>
+<p>The standard <code>-zap-log-level</code>, <code>-zap-encoder</code> and
+<code>-zap-stacktrace-level</code> flags are accepted as well.</p>
 <blockquote>
-<p>See <a href="metrics.html">Metrics</a> for how the metrics endpoint and <code>ServiceMonitor</code>
-are wired up, and <a href="webhooks.html">Webhooks</a> for webhook certificate management.</p>
+<p>See <a href="metrics.html">Metrics</a> for how the metrics endpoint is exposed, and
+<a href="webhooks.html">Webhooks</a> for webhook certificate management.</p>
 </blockquote>
 
 
