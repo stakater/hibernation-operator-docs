@@ -90,6 +90,11 @@
     "aliases": []
   },
   {
+    "version": "ci-docs-target-sync",
+    "title": "ci-docs-target-sync",
+    "aliases": []
+  },
+  {
     "version": "0.1-fix-for-RS-status",
     "title": "0.1-fix-for-RS-status",
     "aliases": []
