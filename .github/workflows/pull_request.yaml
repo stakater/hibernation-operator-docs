@@ -41,7 +41,7 @@ jobs:
     # cdn.playwright.dev at runtime, which hangs indefinitely on the runner.
     # The tag MUST match the @playwright/test version in e2e/yarn.lock.
     container:
-      image: mcr.microsoft.com/playwright:v1.57.0-noble
+      image: mcr.microsoft.com/playwright:v1.64.1-noble
     # Serve the built docs image as a sibling container on the same job
     # network; it is reachable from the test container at hostname `docs`.
     services:
