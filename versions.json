@@ -90,6 +90,11 @@
     "aliases": []
   },
   {
+    "version": "fix-serialize-gh-pages-deploys",
+    "title": "fix-serialize-gh-pages-deploys",
+    "aliases": []
+  },
+  {
     "version": "0.1-fix-for-RS-status",
     "title": "0.1-fix-for-RS-status",
     "aliases": []
