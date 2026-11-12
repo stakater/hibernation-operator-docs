@@ -22,7 +22,3 @@ With the Hibernation Operator, you can:
 - **Integrate seamlessly** with existing Kubernetes and ArgoCD workflows, using only native Kubernetes resources.
 
 The Hibernation Operator is lightweight, secure, and built for real-world Kubernetes environments—whether you're running on OpenShift, EKS, AKS, GKE, or vanilla Kubernetes.
-
-## Installation
-
-Refer to the [installation guide](./getting-started/installation/overview.md) to deploy the Hibernation Operator in your cluster via **Helm** or **Operator Lifecycle Manager (OLM)**.
