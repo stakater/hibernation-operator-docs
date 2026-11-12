@@ -90,13 +90,6 @@
     "aliases": []
   },
   {
-    "version": "docs-welcome-page",
-    "title": "docs-welcome-page",
-    "aliases": [
-      "latest"
-    ]
-  },
-  {
     "version": "0.1-fix-for-RS-status",
     "title": "0.1-fix-for-RS-status",
     "aliases": []
