@@ -21,6 +21,7 @@ extra_css:
 plugins:
   - redirects:
       redirect_maps:
+        index.md: overview/introduction.md
         about/key-features.md: overview/key-features.md
         about/use-cases.md: overview/use-cases.md
         about/benefits.md: overview/key-features.md
@@ -47,7 +48,7 @@ extra:
 
 nav:
   - Overview:
-    - Introduction: index.md
+    - Introduction: overview/introduction.md
     - overview/key-features.md
     - overview/use-cases.md
   - Concepts:
